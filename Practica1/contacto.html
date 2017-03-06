@@ -1,15 +1,23 @@
 <!DOCTYPE HTML>
-<!--Este documento ha sido creado por Alfonso Soria Muñoz y Gonzalo Jiménez Corta-->
-<HTML>
-	<HEAD>
-		<TITLE>Formulario de contacto</TITLE>
 
-	</HEAD>
-	<BODY>
+<html>
+	<head>
+		<title>Formulario de contacto</title>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<a href="index.html">Índice</a>
+		<a href="detalles.html">Detalles</a>
+		<a href="bocetos.html">Bocetos</a>
+		<a href="miembros.html">Miembros</a>
+		<a href="planificacion.html">Planificación</a>
+		<a href="contacto.html">Contacto</a>
+
 		<h1>Formulario de contacto</h1>
-		<h3>&#191;Tienes alguna duda, aclaraci&oacute;n o propuesta? <br>Contacta con nosotros rellenando el siguiente formulario de nuestra web:</h3>
+		<h3>¿Tienes alguna duda, aclaración o propuesta?<br>Contacta con nosotros rellenando el siguiente formulario de nuestra web:</h3>
 		<p>
-			<form action="mailto:alfsoria@ucm.es">
+			<!--<form action="mailto:alfsoria@ucm.es">-->
+			<form>
 				- Nombre: 
 					<input type="text" name="nombre">
 					<br>
@@ -17,20 +25,20 @@
 					<input type="text" name="email">
 					<br>
 				- Motivo de la consulta: 
-					<input type="radio" name="motivo" value=1 checked> Evaluaci&oacute;n 
+					<input type="radio" name="motivo" value=1 checked> Evaluación 
 					<input type="radio" name="motivo" value=2 checked> Sugerencias
-					<input type="radio" name="motivo" value=3 checked> Cr&iacute;ticas
+					<input type="radio" name="motivo" value=3 checked> Críticas
 					<br>
-				- Marque esta casilla para verificar que ha le&iacute;do nuestros t&eacute;rminos y condiciones del servicio: 
+				- Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio: 
 					<input type="checkbox" nombre:"terminos" value=1>
 					<br>
 					<br>
 				- Escribe tu consulta:
 					<br>
-					<textarea name="consulta" cols=50 rows=10>Buenos d&iacute;as/tardes...</textarea>
+					<textarea name="consulta" cols=50 rows=10>Buenos días/tardes...</textarea>
 					<br>
 				<input type="submit" value="Enviar">
 			</form>
 		</p>
-	</BODY>	
-</HTML>
+	</body>	
+</html>
