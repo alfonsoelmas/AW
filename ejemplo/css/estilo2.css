@@ -106,3 +106,9 @@
     .jumbotron .h1, .jumbotron h1 {
     font-size: 63px;
 }
+
+   .well {
+           min-height: 20px;
+           padding: 5px;
+           margin-bottom: 20px;
+       }
