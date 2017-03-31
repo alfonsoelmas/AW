@@ -61,7 +61,7 @@
       font-weight: 13px;
     }
 
-    #par-bloque-inicio{
+    #par-bloque-inicio, #par-bloque-valorados{
       font-size: 17px;
     }
   
@@ -105,10 +105,27 @@
 
     .jumbotron .h1, .jumbotron h1 {
     font-size: 63px;
-}
-
+    }
+    
    .well {
            min-height: 20px;
            padding: 5px;
            margin-bottom: 20px;
        }
+
+ul.valorados {
+  float: left;
+  list-style: none;
+}
+
+ul.valordaos li{
+  display: inline;
+
+}
+
+ul.valorados img{
+  height: 50px;
+  width: 50px;
+  max-width: 100%;
+  border-radius: 1px;
+}
