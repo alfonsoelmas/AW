@@ -78,17 +78,45 @@
 
       <div class="panel panel-default" id="opcionesBusq">
         <div class="panel-heading">
-          <h3 class="panel-title">Opciones de búsqueda</h3>
+          <h3 class="panel-title">Opciones de búsqueda (aun estoy verde y tengo que terminarme)</h3>
         </div>
         <div class="panel-body">
           <p>Filtrar por:
-          <input type="checkbox" aria-label="...">Imagenes
+          <input type="checkbox" aria-label="...">Libros
           <input type="checkbox" aria-label="...">Diseños
           </p>
           <p>Si libros activo:</p>
-          <p>genero de libro:</p>
-          <p>Número de resultados por página:
-
+          <p>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="restultadosPorPagina" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Género de libro
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Genero 1</a></li>
+                  <li><a href="#">Genero 2</a></li>
+                  <li><a href="#">Genero 3</a></li>
+                  <li><a href="#">Genero 4</a></li>
+                  <li><a href="#">Genero 5</a></li>
+                  <li><a href="#">Genero 6</a></li>
+                </ul>
+              </div>
+          </p>
+          <p>
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="restultadosPorPagina" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Resultados por página
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">4</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">12</a></li>
+                <li><a href="#">16</a></li>
+                <li><a href="#">20</a></li>
+                <li><a href="#">24</a></li>
+              </ul>
+            </div>
           </p>
         </div>  
       </div>
