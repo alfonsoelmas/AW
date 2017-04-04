@@ -67,7 +67,7 @@ $(document).ready(function() {
             },
             "password":{
                 required: true,
-                minlength: "7"
+                minlength: "8"
             },
             "confirm_password":{
                 required: true,
@@ -80,29 +80,29 @@ $(document).ready(function() {
         },
         messages: {
             "name": {
-                required: "Introduce tu nombre"
+                required: "Introduce tu nombre."
             },
             "user": {
-                required: "Introduce tu nombre de usuario",
+                required: "Introduce tu nombre de usuario.",
             },
             "email": {
                 required: "Introduce tu correo.",
-                email: ""
+                email: "Introduce un email válido."
             },
             "country":{
                 required: false
             },
             "password":{
-                required: "Introduce la contraseña",
-                minlength: "Tiene que tener una longitud minima de 8 caracteres"
+                required: "Introduce la contraseña.",
+                minlength: "La contraseña debe tener una longitud minima de 8 caracteres."
             },
             "confirm_password":{
-                required: "Introduce la contraseña de nuevo",
-                equalTo:"Tiene que ser igual que la contraseña indicada anteiormente"
+                required: "Introduce la contraseña de nuevo.",
+                equalTo:"La contraseña debe ser igual a la contraseña indicada anteriormente."
             },
             "age":{
-                required: "Introduce tu edad",
-                number: "Debe ser un numero"
+                required: "Introduce tu edad.",
+                number: "La edad debe ser un numero."
             }
         },
     });
