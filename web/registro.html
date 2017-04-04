@@ -26,9 +26,10 @@
 				</div>
 			</div>
 			<div id="breadcum-div">
-				<ol class="breadcrumb" id="breadcum" >
-					<li class="active">Inicio</li>
-				</ol>
+		    	<ol class="breadcrumb" id="breadcum" >
+		      		<li><a href="index.html">inicio</a></li>
+		          	<li class="active">registro</li>
+		   		</ol>
 			</div>
 		</div>
 
@@ -40,7 +41,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>                        
 					</button>
-					<a class="navbar-brand actual" href="#">Inicio</a>
+					<a class="navbar-brand" href="index.html">Inicio</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
@@ -49,24 +50,25 @@
 						<li><a href="#">Contacto</a></li>
 						<li><a href="#">About Us</a></li>
 					</ul>
-					<div class="nav navbar-nav navbar-right">
-						<form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Search">
-							</div>
-							<button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"> Buscar</span></button>
-						</form>
-					</div>
+					
+		      		<ul class="nav navbar-nav navbar-right">
+		          <!--li><a href="#"><span class="glyphicon glyphicon-search"></span> Buscar</a></li--> 
+			          <form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
+			            <div class="form-group">
+			              <input type="text" class="form-control" placeholder="Search">
+			            </div>
+			            <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</a></button>
+			          </form>
+		      		</ul>
 				</div>
 			</div>
 		</nav>
 
-		<br>
-
 		<div class="container-fluid text-center">    
 			<div class="row content">
-				<div class="col-sm-10 text-left"> 
-					<div class="panel panel-default">
+				<div class="col-sm-3"></div> 
+				<div class="col-sm-6 text-left"> 
+					<div class="panel panel-default" id="logPanel">
 						<div class="panel-heading">
 							<h3 class="panel-title">Crear una cuenta nueva</h3>
 						</div>
@@ -76,7 +78,7 @@
 									<div class="login">
 										<div class="login-form">
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-user" id="icon_user"></span>
+												<span class="input-group-addon glyphicon glyphicon-font" id="icon_user"></span>
 												<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" aria-describedby="icon_user"/>
 											</div>
 											<br>
@@ -86,22 +88,22 @@
 											</div>
 											<br>
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-user" id="sizing-addon1"></span>
+												<span class="input-group-addon glyphicon glyphicon-plus" id="sizing-addon1"></span>
 												<input type="text" class="form-control" id="age" name="age" placeholder="Edad" aria-describedby="sizing-addon1"/>
 											</div>
 											<br>
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-user" id="icon_mail"></span>
+												<span class="input-group-addon" id="icon_mail">@</span>
 												<input type="text" class="form-control" id="email" name="email" placeholder="Email" aria-describedby="icon_mail"/>
 											</div>
 											<br>
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-user" id="icon_pass"></span>
+												<span class="input-group-addon glyphicon glyphicon-lock" id="icon_pass"></span>
 												<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" aria-describedby="icon_pass"/>
 											</div>
 											<br>
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-user" id="icon_pass2"></span>
+												<span class="input-group-addon  glyphicon glyphicon-lock" id="icon_pass2"></span>
 												<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Repetir Contraseña" aria-describedby="icon_pass2"/>
 											</div>
 											<br>
@@ -110,8 +112,7 @@
 												<span>He leído y acepto las condiciones legales y acepto recibir comunicaciones electrónicas</span>
 											</div>
 											<br>
-											<div class="text-left">
-												<br>
+											<div class="text-center">
 												<input id='registro' class="btn btn-default dropdown-toggle" type="submit" value="Registrar"/>
 											</div>                    
 										</div>
@@ -123,13 +124,14 @@
 									<span>O si ya tienes una cuenta: </span>
 									<br><br>
 									<div class="row">   
-										<input class="btn btn-default dropdown-toggle" type="button" value="Iniciar Sesión"/>
+										<button class="btn btn-default dropdown-toggle" type="button" onClick=" window.location.href='login.html' ">Iniciar sesión</button>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<div class="col-sm-3"></div>
 			</div>
 		</div>
 
