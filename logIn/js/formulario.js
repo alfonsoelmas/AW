@@ -28,12 +28,10 @@ function validate_password(string pass){
     else
         document.getElementById("mail").style.borderColor="green";
 }
-
 */
 
-window.onload=function(){alert("hola")};
+/*document.getElementById("logInButton").onclick=function(){
 
-document.getElementById("logInButton").onclick= function(){
     var elemento = document.getElementById("panel");
     elemento.style.width = "1080px";
     var elemento = document.getElementById("captcha");
@@ -42,16 +40,21 @@ document.getElementById("logInButton").onclick= function(){
     elemento.value="";
     elemento = document.getElementById("pass");
     elemento.value="";
-};
+}*/
 
 
+$(document).ready(function() {
 
-$( document ).ready(function() {
-    $(‘#register’).submit(function(e) { e.preventDefault(); }).validate(
+    //$("#registro").click(function(a){alert("entra");});
+    
+    $('#register').submit(function(e) { e.preventDefault(); }).validate(
     { 
 
-        debug: false,
+        debug: true,
         rules: {
+            "name": {
+                required: true
+            },
             "user": {
                 required: true
             },
@@ -71,16 +74,20 @@ $( document ).ready(function() {
                 equalTo:"#password"
             },
             "age":{
+                required: true,
                 number: true
             }
         },
         messages: {
+            "name": {
+                required: "Introduce tu nombre"
+            },
             "user": {
-            required: "Introduce tu nombre."
+                required: "Introduce tu nombre de usuario",
             },
             "email": {
-            required: "Introduce tu correo.",
-            email: ""
+                required: "Introduce tu correo.",
+                email: ""
             },
             "country":{
                 required: false
@@ -93,9 +100,10 @@ $( document ).ready(function() {
                 required: "Introduce la contraseña de nuevo",
                 equalTo:"Tiene que ser igual que la contraseña indicada anteiormente"
             },
-            "edad":{
+            "age":{
+                required: "Introduce tu edad",
                 number: "Debe ser un numero"
             }
-        }
+        },
     });
 });
