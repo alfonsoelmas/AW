@@ -5,6 +5,8 @@ $(document).ready(function() {
     { 
 
         debug: true,
+        errorClass: "my-error-class",
+        validClass: "my-valid-class",
         rules: {
             "name": {
                 required: true
