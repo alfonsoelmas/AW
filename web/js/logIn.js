@@ -6,8 +6,6 @@ $(document).ready(function() {
     
     document.getElementById("logInButton").onclick=function(){
 
-        var elemento = document.getElementById("panel");        
-        elemento.style.width = "1080px";
         var elemento = document.getElementById("captcha");
         elemento.style.display = "block";       
         elemento = document.getElementById("user");
