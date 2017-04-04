@@ -1,0 +1,15 @@
+#captcha{
+	padding-top: 50px;
+	margin: auto;
+	display: none;
+}
+
+#panel{
+	width: 800px;
+	height: 400px;
+}
+
+#inicio_sesion{
+	padding-top: 100px;
+	margin: auto;
+}

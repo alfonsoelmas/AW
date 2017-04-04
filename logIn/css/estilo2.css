@@ -1,0 +1,131 @@
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+        /* Remove the jumbotron's default bottom margin */
+
+    .jumbotron{
+
+
+    }  
+    
+    #banner, #breadcum {
+      padding-bottom: 0;
+      margin-bottom: 0px;
+      padding-top: 0;
+      margin-bottom: 0;
+      
+      background-image: url("../img/fondo.jpg");
+
+    }
+
+    #breadcum-div{
+      text-align: right;
+    }
+
+    #bloque-inicio{
+      margin-top: 10px;
+    }
+
+  
+    #text-bloque-inicio{
+      font-size: 34px;
+      font-weight: 13px;
+    }
+
+    #par-bloque-inicio, #par-bloque-valorados{
+      font-size: 17px;
+    }
+  
+
+
+    .actual{
+      background-color: #3C3B3B;
+    }
+    /*
+    .actual .navbar-inverse .navbar-brand:hover {
+    color: #fff;
+    background-color: #3C3B3B;
+  }*/
+
+    #buscador{
+      background-color: #3C3B3B;
+      border-color: #3C3B3B;
+      color: white;
+    }
+
+
+    button:hover #buscador{
+      background-color:646363;
+      border-color: #3C3B3B;
+    }
+
+    #color-defecto{
+      color: #A29F9F;
+    }
+
+    #color-defecto:hover{
+      color: white;
+
+    }
+
+    #logo{
+      padding-top: 20px;
+      max-height:135px;
+      max-width: 135px;
+    }
+
+    .jumbotron .h1, .jumbotron h1 {
+    font-size: 63px;
+    }
+    
+   .well {
+           min-height: 20px;
+           padding: 5px;
+           margin-bottom: 20px;
+       }
+
+ul.valorados {
+  float: left;
+  list-style: none;
+}
+
+ul.valordaos li{
+  display: inline;
+
+}
+
+ul.valorados img{
+  height: 50px;
+  width: 50px;
+  max-width: 100%;
+  border-radius: 1px;
+}
