@@ -1,15 +1,10 @@
 #captcha{
-	padding-top: 50px;
+	/*padding-top: 50px;
 	margin: auto;
-	display: none;
+	display: none;*/
 }
 
-#panel{
-	width: 800px;
-	height: 400px;
-}
 
-#inicio_sesion{
-	padding-top: 100px;
-	margin: auto;
+#panelLog{
+	margin-top:15px;
 }
