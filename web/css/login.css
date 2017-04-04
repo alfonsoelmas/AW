@@ -13,3 +13,10 @@
 	padding-top: 100px;
 	margin: auto;
 }
+
+.my-error-class {
+    border-color: red;
+}
+.my-valid-class {
+    border-color: green;
+}

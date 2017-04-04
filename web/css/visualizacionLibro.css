@@ -1,4 +1,4 @@
-/* Remove the navbar's default margin-bottom and rounded borders */ 
+ /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
@@ -61,12 +61,6 @@
       font-weight: 13px;
     }
 
-    #par-bloque-inicio, #par-bloque-valorados{
-      font-size: 17px;
-    }
-  
-
-
     .actual{
       background-color: #3C3B3B;
     }
@@ -113,19 +107,11 @@
            margin-bottom: 20px;
        }
 
-ul.valorados {
-  float: left;
-  list-style: none;
-}
-
-ul.valordaos li{
-  display: inline;
-
-}
-
-ul.valorados img{
-  height: 50px;
-  width: 50px;
-  max-width: 100%;
-  border-radius: 1px;
-}
+   #portada {
+      padding-top: 10px;
+      padding-right: 20px;
+      padding-left: 20px;
+      padding-bottom: 10px;
+      height: 500px;
+      width: 350px;
+   }
