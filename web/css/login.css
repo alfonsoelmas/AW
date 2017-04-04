@@ -12,3 +12,7 @@
 #logPanel{
 	margin-top: 15px;
 }
+
+div.input-group, div.margin-normal{
+	margin-top:15px;
+}
