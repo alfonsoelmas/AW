@@ -1,0 +1,23 @@
+#captcha{
+	/*padding-top: 50px;
+	margin: auto;
+	display: none;*/
+}
+
+
+<<<<<<< HEAD:logIn/css/login.css
+#panelLog{
+	margin-top:15px;
+=======
+#inicio_sesion{
+	padding-top: 100px;
+	margin: auto;
+}
+
+.my-error-class {
+    border-color: red;
+}
+.my-valid-class {
+    border-color: green;
+>>>>>>> refs/remotes/origin/master:web/css/login.css
+}
