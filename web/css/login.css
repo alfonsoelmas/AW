@@ -3,9 +3,11 @@
 }
 
 .my-error-class {
+	box-shadow: 0px 0px 2px #FD4D4D;
     border-color: red;
 }
 .my-valid-class {
+    box-shadow: 0px 0px 2px #55A455;
     border-color: green;
 }
 
