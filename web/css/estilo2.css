@@ -129,3 +129,32 @@ ul.valorados img{
   max-width: 100%;
   border-radius: 1px;
 }
+
+
+
+img.imgP{
+  width: 50%;
+}
+
+.efecto-redondo:hover{
+  border-radius: 25px;
+  border-color: green;
+}
+
+/*Para engordar de alto botones u otras cosas...*/
+button.engordar{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+button.redondear{
+  border-radius: 25px;
+}
+
+#login-button:hover{
+  background-color: #C5D6DB;
+}
+
+#reg-button:hover{
+  background-color: #BDDAAA;
+}
