@@ -5,3 +5,8 @@ document.getElementById("logInButton").onclick = function(){
 document.getElementById("registerButton").onclick = function(){
   location.href="registro.html";
 };
+
+document.getElementById("leer").onclick = function(){
+  location.href="visualizacionContenidoLibro.html";
+};
+

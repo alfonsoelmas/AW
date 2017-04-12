@@ -7,6 +7,25 @@
       width: 350px;
    }
 
+  @media screen and (min-width: 480px){
+      #capituloSiguiente{
+        position: relative;
+        margin-left: 150px;
+     }
+
+      #comenta{
+      position: relative;
+      margin: auto;
+    }
+  }
+
+    #comenta{
+      position: relative;
+      margin-top: 15px;
+      margin-left: -80px;
+      margin-bottom: 15px;
+   }
+
    #sipnopsis{
       padding:  20px;
    }
@@ -15,6 +34,12 @@
     padding-top: 80px;
     margin:auto;
    }
+
+   .tab-pane{
+    height:300px;
+    overflow-y:scroll;
+    width:100%;
+  }
 
  * {
      margin: 0;
