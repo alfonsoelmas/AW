@@ -69,19 +69,16 @@
 
 <div class="container col-sm-10 text-left">    
 	<div class="row">
-  		<img class="col-sm-6 text-left img-responsive center-block" id="portada" alt="" src="img/portadas/portada.png"> </img>
+  		<img class="col-sm-6 text-left img-responsive center-block" data-toggle="modal" data-target="#myModal2" id="portada" alt="" src="img/portadas/portada.png"> </img>
   		<div class="text-center">
     		<p class="h3"> En el corazón de los que lloran</p>
-    		<div id="sipnopsis">
+    		<div id="Sipnopsis">
     			<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo? </p>
     		</div>
-  		</div> 
+  		</div>
   		<div id="opciones">
 	  		<div class="col-sm-2 text-left"> 
 	  			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
-	  		</div>
-	  		<div class="col-sm-2 text-left">
-	  			<button type="button"  class="btn btn-primary btn-lg opciones">Leer</button> 
 	  		</div>
 	  		<div id="estrellas" class="text-center">
 				<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-size="xs">
@@ -225,6 +222,15 @@
 	        		<button type="submit" class="btn btn-success green"><span class="fa fa-share"></span>Comentar</button>
 	      		</div>
 	   		</form>
+    	</div><!-- /.modal-content -->
+  	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+    	<div class="modal-content widget-area ">
+      		<img class="img-responsive" src="img/portadas/portada.png"></img>
     	</div><!-- /.modal-content -->
   	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
