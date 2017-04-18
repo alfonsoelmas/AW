@@ -1,0 +1,21 @@
+#captcha{
+	display: none;
+}
+
+.my-error-class {
+	box-shadow: 0px 0px 2px #FD4D4D;
+    border-color: red;
+}
+.my-valid-class {
+    box-shadow: 0px 0px 2px #55A455;
+    border-color: green;
+}
+
+#logPanel{
+	margin-top: 15px;
+}
+
+div.input-group, div.margin-normal{
+	margin-top:15px;
+}
+
