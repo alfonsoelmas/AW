@@ -1,165 +1,158 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <title>Paper Dreams</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/estilo2.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+  <head>
+    <title>Paper Dreams</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
 
 
-<div class="jumbotron" id="banner">
+    <div class="jumbotron" id="banner">
+        <div class="text-left">
+          <div class="col-sm-2">
+            <img id="logo" src="img/logo1.png">
+          </div>
 
-
-  <!--div class="left">
-
-  </div-->
-
-
-  <div class="text-left">
-    <div class="col-sm-2">
-      <img id="logo" src="img/logo1.png">
-      </div>
-
-    <!--AQUI METER DIVS Y VER SI LO PUEDO SEPARAR EN DOS COLUMNAS-->
-    <div class="col-sm-10">
-        <h1>Paper Dreams</h1>      
-    <p>De tus sueños al papel</p>
+          <!--AQUI METER DIVS Y VER SI LO PUEDO SEPARAR EN DOS COLUMNAS-->
+          <div class="col-sm-10">
+            <h1>Paper Dreams</h1>      
+            <p>De tus sueños al papel</p>
+          </div>
+        </div>
+        <div id="breadcum-div">
+          <ol class="breadcrumb" id="breadcum" >
+            <li class="active">Inicio</li>
+          </ol>
+        </div>
     </div>
-  </div>
-  <div id="breadcum-div">
-    <ol class="breadcrumb" id="breadcum" >
-      <li class="active">Inicio</li>
-    </ol>
-  </div>
-</div>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand actual" href="#">Inicio</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+        </button>
+        <a class="navbar-brand actual" href="#">Inicio</a>
+        </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Categorias</a></li>
-        <li><a href="#">Usuarios</a></li>
-        <li><a href="MiPerfil.html">Mi Perfil</a></li>
-        <li><a href="#">About Us</a></li>
+      <li><a href="#">Categorias</a></li>
+      <li><a href="#">Usuarios</a></li>
+      <li><a href="MiPerfil.html">Mi Perfil</a></li>
+      <li><a href="#">About Us</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <!--li><a href="#"><span class="glyphicon glyphicon-search"></span> Buscar</a></li--> 
+      <!--li><a href="#"><span class="glyphicon glyphicon-search"></span> Buscar</a></li--> 
 
-          <form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</a></button>
-          </form>
+      <form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
+      <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</a></button>
+      </form>
 
       </ul>
-    </div>
-  </div>
-</nav>
-  
-<div class="container-fluid text-center">    
-  <div class="row content">
+      </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid text-center">    
+    <div class="row content">
     <div class="col-sm-10 text-left"> 
-      <div class="jumbotron" id="bloque-inicio">
-        <h1 id="text-bloque-inicio">Escritores, Diseñadores!</h1>
-        <p id="par-bloque-inicio">Empieza a escribir desde ahora mismo. Sube tus creaciones y demuestra a la comunidad lo que vales</p>
-        <p>
-          <a class="btn btn-primary btn-lg" href="escribe.html" role="button">Escribe</a>
-          <a class="btn btn-primary btn-lg" href="Dibuja.html" role="button">Dibuja</a>
-        </p>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Más valorados</h3>
-        </div>
-        <div class="panel-body">
-           <div class="row">
-            <div class="col-sm-6 col-md-3">
-              <div class="thumbnail efecto-redondo">
-                <a href="">
-                  <img src="img/logo2.png" class="imgP">
-                  <div class="caption">
-                    <p>Valorado1</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="thumbnail efecto-redondo">
-                <a href="">
-                  <img src="img/logo2.png" class="imgP">
-                  <div class="caption">
-                    <p>Valorado2</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="thumbnail efecto-redondo">
-                <a href="">
-                  <img class="imgP" src="img/logo2.png">
-                  <div class="caption">
-                    <p>valorado3</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="thumbnail efecto-redondo">
-                <a href="">
-                  <img src="img/logo2.png" class="imgP">
-                  <div class="caption">
-                    <p>valorado4</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 text-center">
-              <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Prev</button>
-                <button type="button" class="btn btn-default">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
-              </div>
-            </div>
-          </div>
-        </div>  
-      </div>
+    <div class="jumbotron" id="bloque-inicio">
+    <h1 id="text-bloque-inicio">Escritores, Diseñadores!</h1>
+    <p id="par-bloque-inicio">Empieza a escribir desde ahora mismo. Sube tus creaciones y demuestra a la comunidad lo que vales</p>
+    <p>
+    <a class="btn btn-primary btn-lg" href="escribe.html" role="button">Escribe</a>
+    <a class="btn btn-primary btn-lg" href="Dibuja.html" role="button">Dibuja</a>
+    </p>
+    </div>
+    <div class="panel panel-default">
+    <div class="panel-heading">
+    <h3 class="panel-title">Más valorados</h3>
+    </div>
+    <div class="panel-body">
+    <div class="row">
+    <div class="col-sm-6 col-md-3">
+    <div class="thumbnail efecto-redondo">
+    <a href="">
+    <img src="img/logo2.png" class="imgP">
+    <div class="caption">
+    <p>Valorado1</p>
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+    <div class="thumbnail efecto-redondo">
+    <a href="">
+    <img src="img/logo2.png" class="imgP">
+    <div class="caption">
+    <p>Valorado2</p>
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+    <div class="thumbnail efecto-redondo">
+    <a href="">
+    <img class="imgP" src="img/logo2.png">
+    <div class="caption">
+    <p>valorado3</p>
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+    <div class="thumbnail efecto-redondo">
+    <a href="">
+    <img src="img/logo2.png" class="imgP">
+    <div class="caption">
+    <p>valorado4</p>
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-12 text-center">
+    <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Prev</button>
+    <button type="button" class="btn btn-default">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+    </div>
+    </div>
+    </div>
+    </div>  
+    </div>
     </div>
     <div class="col-sm-2 sidenav">
-          <div class="well">
-            <div class="dropdown">
-              <button id="login-button" class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton" onClick=" window.location.href='login.html' ">
-                Inicia sesión
-              </button>
-            </div>
-          </div>
-          <div class="well">
-            <button id="reg-button" class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton" onClick=" window.location.href='registro.html' ">
-              Regístrarse
-            </button>
-          </div>
-        </div>
-      </div>
+    <div class="well">
+    <div class="dropdown">
+    <button id="login-button" class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton" onClick=" window.location.href='login.html' ">
+    Inicia sesión
+    </button>
     </div>
-</div>
+    </div>
+    <div class="well">
+    <button id="reg-button" class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton" onClick=" window.location.href='registro.html' ">
+    Regístrarse
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
-<footer class="container-fluid text-center">
-  <p><a id="color-defecto" href="#">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
-</footer>
+    <footer class="container-fluid text-center">
+    <p><a id="color-defecto" href="#">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
+    </footer>
 
-</body>
+  </body>
 </html>
