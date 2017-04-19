@@ -60,7 +60,7 @@
       <ul class="nav navbar-nav navbar-right">
           <!--li><a href="#"><span class="glyphicon glyphicon-search"></span> Buscar</a></li--> 
 
-          <form class="navbar-form navbar-left input-group-btn role="search">
+          <form class="navbar-form navbar-left input-group-btn" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
@@ -78,9 +78,16 @@
 
       <div class="panel panel-default" id="opcionesBusq">
         <div class="panel-heading">
+          <div class="row">
+          <div class="col-sm-11">
           <h3 class="panel-title">Opciones de búsqueda (aun estoy verde y tengo que terminarme)</h3>
+          </div>
+          <div class="col-sm-1 text-center">
+          <button type="button" class="btn btn-default margen-top" data-toggle="collapse" data-target="#opcionesBusqBody">-/+</button>
+          </div>
+          </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" id="opcionesBusqBody">
           <p>Filtrar por:
           <input type="checkbox" aria-label="...">Libros
           <input type="checkbox" aria-label="...">Diseños
