@@ -7,9 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilo2.css">
     <link rel="stylesheet" href="css/aboutUs.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head >
+</head>
 <body>
 
 
@@ -26,7 +24,7 @@
   	<div id="breadcum-div">
     	<ol class="breadcrumb" id="breadcum" >
       		<li><a href="index.html">Inicio</a></li>
-          <li class="active">About Us</li>
+          	<li class="active">About Us</li>
    		</ol>
   	</div>
 </div>
@@ -49,14 +47,13 @@
         		<li class="active"><a href="#">About Us</a></li>
       		</ul>
       		<ul class="nav navbar-nav navbar-right">
-          <!--li><a href="#"><span class="glyphicon glyphicon-search"></span> Buscar</a></li--> 
-            <form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</a></button>
-            </form>
-          </ul>
+	            <form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
+	            	<div class="form-group">
+	            		<input type="text" class="form-control" placeholder="Search">
+	          		</div>
+	              	<button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</a></button>
+	            </form>
+          	</ul>
     	</div>
   	</div>
 </nav>
@@ -64,7 +61,7 @@
 
 <div class="row">
 	<div class="container-fluid col-sm-10 text-left">    
-		<h1>Miembros que conforman el proyecto</h1>
+		<p class="h1">Miembros que conforman el proyecto</p>
 		A continuación podrá consultar el perfil de los miembros de Bi-Inestables:
 		<ul>
 			<li> <a href="#juan"> Juan Mas Aguilar </a> </li>
@@ -74,7 +71,7 @@
 		</ul>
 	  
 		<!--JUAN-->
-		<h2 id="juan">Juan Mas Aguilar</h2>
+		<p id="juan" class="h2">Juan Mas Aguilar</p>
 		<p>Nombre: Juan Mas Aguilar </p>
 		<p>Dirección de Contacto: jumas@ucm.es </p>
 		<p>Descripción: Soy un chico que disfruta con la buena vida. Me gusta hacer deporte, viajar y escribir. Interesado especialmente
@@ -84,7 +81,7 @@
 		<img class="imag-responsive" src="img/juan.jpg" alt="Juan"/>
 
 		<!--ELI-->
-		<h2 id="eli">Elianni Agüero Selva</h2>
+		<p id="eli" class="h2">Elianni Agüero Selva</p>
 		<p> Nombre: Elianni Agüero Selva </p>
 		<p> Dirección de Contacto: eaguero@ucm.es </p>
 		<p> Descripción: Ingeniera Informática en potencia. Me gusta la música, escucharla solo porque cantar se me da muy mal.
@@ -94,7 +91,7 @@
 		<img src="img/eli.jpg" alt="Eli" class="img-responsive"/>
 
 		<!--ALFONSO-->
-		<h2 id="alfonso">Alfonso Soria Muñoz</h2>
+		<p id="alfonso" class="h2">Alfonso Soria Muñoz</p>
 		<p> Nombre: Alfonso Soria Muñoz </p>
 		<p> Dirección de Contacto: alfsoria@ucm.es </p>
 		<p> Descripción: Futuro ingeniero informático nacido en Madrid en 1996. Me gusta el deporte (especialmente el snowboard) y la lectura.</p>
@@ -102,17 +99,35 @@
 		<img src="img/alfonso.jpg" alt="Alfonso" class="img-responsive"/>
 
 		<!--GONZALO-->
-		<h2 id="gonzalo">Gonzalo Jiménez Corta</h2>
+		<p id="gonzalo" class="h2">Gonzalo Jiménez Corta</p>
 		<p> Nombre: Gonzalo Jiménez Corta </p>
 		<p> Dirección de Contacto: gonzajim@ucm.es </p>
 		<p> Descripción: Me gusta leer, jugar a videojuegos, escuchar música y quedar con amigos. Además de la Informática, estoy interesado en la Física y en algunos temas relacionados con la Biología. Adicto a Pokémon.</p>
 		<p> Lema: No dejes para mañana lo que puedes hacer hoy.</p>
 		<img  src="img/gonzalo.jpg" alt="Gonzalo" class="img-responsive"/>
 	</div>
+	<div class="col-sm-2 sidenav">
+		<div class="row">
+	    	<button id="logInButton" class="btn btn-default dropdown-toggle engordar redondear" type="button">
+				Inicia sesión
+	  		</button>
+		</div>
+		<div class="row">
+			<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton">
+			  Regístrarse
+			</button>
+		</div>
+	</div>
 </div>
+
 <footer class="footer text-center">
 	<p><a id="color-defecto" href="#">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
 </footer>
+
+<!--Scripts-->
+<script type="text/javascript" src="js/goTo.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>

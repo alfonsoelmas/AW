@@ -6,20 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/estilo2.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
   <div class="jumbotron" id="banner">
-    <!--div class="left">
-    </div-->
     <div class="text-left">
       <div class="col-sm-2">
-        <img id="logo" src="img/logo1.png">
+        <img id="logo" alt="logo" src="img/logo1.png">
       </div>
-      <!--AQUI METER DIVS Y VER SI LO PUEDO SEPARAR EN DOS COLUMNAS-->
       <div class="col-sm-10">
-        <h1>Paper Dreams</h1>      
+        <p class="h1">Paper Dreams</p>      
         <p>De tus sueños al papel</p>
       </div>
     </div>
@@ -42,13 +38,12 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="#">Categorias</a></li>
-          <li><a href="#">Usuarios</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="categorias.html">Categorias</a></li>
+          <li><a href="usuarios.html">Usuarios</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="aboutUs.html">About Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <!--li><a href="#"><span class="glyphicon glyphicon-search"></span> Buscar</a></li--> 
           <form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
@@ -65,17 +60,17 @@
       <div class="col-sm-10 text-left"> 
         <div class="panel panel-default" id="bloque-inicio">
           <div class="panel-heading">
-            <h3 class="panel-title">Siguiendo</h3>
+            <p class="h3 panel-title">Siguiendo</p>
           </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
                   <a href="">
-                    <img src="img/logo2.png" class="imgP">
+                    <img src="img/logo2.png" alt="logo" class="imgP">
                     <div class="caption">
                       <p>Nombre1</p>
-                      <button type="button" class="btn btn-default" onClick="window.location.href=''">Visita su perfil</button>
+                      <button type="button" class="btn btn-default visita_perfil">Visita su perfil</button>
                     </div>
                   </a>
                 </div>
@@ -83,10 +78,10 @@
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
                   <a href="">
-                    <img src="img/logo2.png" class="imgP">
+                    <img src="img/logo2.png" alt="" class="imgP">
                     <div class="caption">
                       <p>Nombre2</p>
-                      <button type="button" class="btn btn-default" onClick="window.location.href=''">Visita su perfil</button>
+                      <button type="button" class="btn btn-default visita_perfil">Visita su perfil</button>
                     </div>
                   </a>
                 </div>
@@ -94,10 +89,10 @@
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
                   <a href="">
-                    <img class="imgP" src="img/logo2.png">
+                    <img class="imgP"  alt="" src="img/logo2.png">
                     <div class="caption">
                       <p>Nombre3</p>
-                      <button type="button" class="btn btn-default" onClick="window.location.href=''">Visita su perfil</button>
+                      <button type="button" class="btn btn-default visita_perfil">Visita su perfil</button>
                     </div>
                   </a>
                 </div>
@@ -105,10 +100,10 @@
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
                   <a href="">
-                    <img src="img/logo2.png" class="imgP">
+                    <img src="img/logo2.png" alt="" class="imgP">
                     <div class="caption">
                       <p>Nombre4</p>
-                      <button type="button" class="btn btn-default" onClick="window.location.href=''">Visita su perfil</button>
+                      <button type="button" class="btn btn-default visita_perfil">Visita su perfil</button>
                     </div>
                   </a>
                 </div>
@@ -124,31 +119,25 @@
             </div>
           </div>  
         </div>
-      </div>
+	    </div>
       <div class="col-sm-2 sidenav">
-        <div class="well">
-          <div class="dropdown">
-            <button id="misObras-button" class="btn btn-default dropdown-toggle engordar redondear" type="button" id="misObrasButton" onClick="window.location.href='misObras.html'">
-              Mis obras
-            </button>
-          </div>
-        </div>
-        <div class="well">
-          <button id="misSeguidores-button" class="btn btn-default dropdown-toggle engordar redondear" type="button" id="misSeguidoresButton" onClick="window.location.href='misSeguidores.html'">
-            Mis seguidores
-          </button>
-        </div>
-        <div class="well">
-          <button id="miPerfil-button" class="btn btn-default dropdown-toggle engordar redondear" type="button" id="miPerfilButton" onClick="window.location.href='miPerfil.html'">
-            Mi perfil
-          </button>
-        </div>
-      </div>
+  			<div class="dropdown text-center">
+  			  <p><a href="misObras.html"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis obras</a></p>
+  			  <p><a href="misSeguidores.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Mis seguidores</a></p>
+  			  <p><a href="miPerfil.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mi perfil</a></p>
+  			</div>
+  		</div>
     </div>
   </div>
 
   <footer class="container-fluid text-center">
     <p><a id="color-defecto" href="#">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
   </footer>
+
+  <!--Scripts-->
+  <script type="text/javascript" src="js/goTo.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>

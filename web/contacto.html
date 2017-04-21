@@ -5,10 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/estilo2.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/estilo2.css">>
 </head>
+
 <body>
   <div class="jumbotron" id="banner">
     <!--div class="left">
@@ -43,10 +42,10 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="#">Categorias</a></li>
-          <li><a href="#">Usuarios</a></li>
+          <li><a href="categorias.html">Categorias</a></li>
+          <li><a href="usuarios.html">Usuarios</a></li>
           <li><a href="#">Contacto</a></li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="aboutUs.html">About Us</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <!--li><a href="#"><span class="glyphicon glyphicon-search"></span> Buscar</a></li--> 
@@ -61,68 +60,72 @@
     </div>
   </nav>
   
-  <div class="container-fluid text-center">    
-    <div class="row content">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-6 text-left" id="panel"> 
-        <div class="panel panel-default" id="contactoPanel">
-          <div class="panel-heading">
-            <h3 class="panel-title">Contacta con nosotros</h3>
-          </div>
-          <div class="panel-body" id="panel_body">
-            <div class="col-sm-6 text-center content">
-              <div class="contacto">
-                <form id="formulario" method="post" action="">
-                  <div class="input-group input-group-md">
-                    <input type="nombre" id="nombre" name='nombre' placeholder=" Nombre">
-                  </div>
-                  <br>
-                  <div class="input-group input-group-md">
-                    <input type="email" id="email" name='email' placeholder=" Email de contacto">
-                  </div>
-                  <br>
-                  <div class="input-group input-group-md">
-                    <input type="text" id="asunto" name='asunto' placeholder=" Asunto">
-                  </div>
-                  <br>
-                  <div class="input-group input-group-md">
-                    <input type="cuerpo" id="cuerpo" name='cuerpo' placeholder=" Cuerpo del mensaje">
-                  </div>
-                  <br>
-                  <div class="text-left">
-                    <input type="checkbox" id="aceptaCondiciones" name="aceptaCondiciones">
-                    <span>He leído y acepto los términos y las condiciones del servicio</span>
-                  </div>
-                  <br>
-                  <div class="text-left">
-                    <input class="btn btn-default dropdown-toggle" type="submit" id="enviarButton" value="Enviar"/>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3"></div>
-      <div class="col-sm-2 sidenav">
-        <div class="well">
-          <div class="dropdown">
-            <button id="login-button" class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton" onClick=" window.location.href='login.html' ">
-              Inicia sesión
-            </button>
-          </div>
-        </div>
-        <div class="well">
-          <button id="reg-button" class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton" onClick=" window.location.href='registro.html' ">
-            Regístrarse
-          </button>
-        </div>
-      </div>
-    </div>
+  <div class="row">
+    <div class="col-sm-10 container-fluid text-center">    
+   		<div class="row content">
+  		  <div class="col-sm-6 col-sm-offset-3 text-left" id="panel"> 
+    			<div class="panel panel-default" id="contactoPanel">
+    			  <div class="panel-heading">
+    				  <p class=" h3 panel-title">Contacta con nosotros</p>
+    			  </div>
+    			  <div class="panel-body" id="panel_body">
+      				<div class="text-center">
+      				  <div class="contacto">
+        					<form id="formulario" method="post" action="">
+        					  <div class="input-group input-group-md">
+        						  <input type="nombre" id="nombre" name='nombre' placeholder=" Nombre">
+        					  </div>
+        					  <br>
+        					  <div class="input-group input-group-md">
+        						  <input type="email" id="email" name='email' placeholder=" Email de contacto">
+        					  </div>
+        					  <br>
+        					  <div class="input-group input-group-md">
+        						  <input type="text" id="asunto" name='asunto' placeholder=" Asunto">
+        					  </div>
+        					  <br>
+        					  <div class="input-group input-group-md">
+        						  <textarea class="form-control" id="cuerpo" placeholder=" Cuerpo del mensaje"></textarea>
+        					  </div>
+        					  <br>
+        					  <div class="text-left">
+        						  <input type="checkbox" id="aceptaCondiciones" name="aceptaCondiciones">
+        						  <span>He leído y acepto los términos y las condiciones del servicio</span>
+        					  </div>
+        					  <br>
+        					  <div class="text-left">
+        						  <input class="btn btn-default dropdown-toggle" type="submit" id="enviarButton" value="Enviar"/>
+        					  </div>
+        					</form>
+      				  </div>
+      				</div>
+    			  </div>
+    			</div>
+  		  </div>
+    	</div>
+  	</div>
+  	<div class="col-sm-2 sidenav">
+  		<div class="row">
+  		  <button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton">
+  			 Inicia sesión
+  		  </button>
+  		</div>
+  		<div class="row">
+  			<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton">
+  			 Regístrarse
+  			</button>
+  		</div>
+  	</div>
   </div>
 
   <footer class="container-fluid text-center">
     <p><a id="color-defecto" href="#">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
   </footer>
+
+  <!--Scripts-->
+  <script type="text/javascript" src="js/goTo.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>
