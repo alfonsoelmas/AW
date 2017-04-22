@@ -13,21 +13,24 @@
 
 
     <div class="jumbotron" id="banner">
+        <!--div class="left">
+        </div-->
         <div class="text-left">
-          <div class="col-sm-2">
-            <img id="logo" src="img/logo1.png" alt="logo">
-          </div>
+            <div class="col-sm-2">
+             <img id="logo" src="img/logo1.png" alt="logo">
+            </div>
 
-          <!--AQUI METER DIVS Y VER SI LO PUEDO SEPARAR EN DOS COLUMNAS-->
-          <div class="col-sm-10">
-            <h1>Paper Dreams</h1>      
-            <p>De tus sueños al papel</p>
-          </div>
+            <!--AQUI METER DIVS Y VER SI LO PUEDO SEPARAR EN DOS COLUMNAS-->
+            <div class="col-sm-10">
+              <h1>Paper Dreams</h1>      
+              <p>De tus sueños al papel</p>
+            </div>
         </div>
+
         <div id="breadcum-div">
-          <ol class="breadcrumb" id="breadcum" >
-            <li class="active">Inicio</li>
-          </ol>
+            <ol class="breadcrumb" id="breadcum" >
+              <li class="active">Inicio</li>
+            </ol>
         </div>
     </div>
 
@@ -39,14 +42,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand actual" href="#">Inicio</a>
+            <a class="navbar-brand actual" href="index.html">Inicio</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li><a href="#">Categorias</a></li>
-              <li><a href="#">Usuarios</a></li>
-              <li><a href="#">Contacto</a></li>
-              <li><a href="#">About Us</a></li>
+              <li><a href="categorias.html">Categorias</a></li>
+              <li><a href="usuarios.html">Usuarios</a></li>
+              <li><a href="contacto.html">Contacto</a></li>
+              <li><a href="aboutUs.html">About Us</a></li>
             </ul>
             <div class="nav navbar-nav navbar-right">
               <form class="navbar-form navbar-left input-group-btn" role="search">
@@ -60,133 +63,143 @@
       </div>
     </nav>
 
+    <br>
+
+    <!--Perfil-->
     <div class="container-fluid text-center">    
         <div class="row content">
-          <div class="col-sm-10 text-left"> 
-            <div class="jumbotron" id="bloque-inicio">
-              	<a class="btn btn-primary btn-lg" href="#" role="button">Follow</a>
-              	<table class="usuario">
-                	<tr>
-                  		<td rowspan="2" class="foto">
-                      		<div class="avatar" style="background-image: url(img/mafalda.jpg)"></div>
-                  		</td>
-                  		<td rowspan="2" class="espacio"></td>
-                  		<td class="datos">
-                      		<h2 id="nombre">Alejandra López</h2>
-                      		<p id="datos_texto">alelo@domain.com<br>
-                      			Madrid <br>
-                      			España</p>
-                  		</td>
-                	</tr>
-
-                	<tr>
-                  		<td class="espacio2"></td>
-                	</tr>
-                	<tr>
-                  		<td colspan="3" class="descripcion"> Mi nombre es Alejandra López, tengo 19 años. Me considero una persona alegre, sociable y muy curiosa a la que la apasiona leer y sobre todo escribir. </td>
-                	</tr>
-              	</table>
-              
+            <div class="col-sm-10 text-left"> 
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="avatar" style="background-image: url(img/mafalda.jpg)"></div>
+                            </div>
+                            <div class="col-md-7">
+                                <h2 id="nombre">Alejandra López</h2>
+                                alelop@domain.com<br>
+                                Madrid <br>
+                                España
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary btn-lg">
+                                    <span class="glyphicon glyphicon-plus"></span> 
+                                    Follow 
+                                </button>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="descripcion">Mi nombre es Alejandra López, tengo 19 años. Me considero una persona alegre, sociable y muy curiosa a la que le apasiona leer y sobre todo escribir.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <div class="col-sm-2 sidenav">
+              <div class="text-center">
+                  <div class="dropdown text-left">
+                      <p><a><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis obras</a></p>
+                      <p><a><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Mis seguidores</a></p>
+                      <p><a><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Siguiendo</a></p>
+                      <p><a><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mi perfil</a></p>
+                  </div>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-sm-10">
             <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Más valorados</h3>
-              </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail efecto-redondo">
-                      <table class="obras">
-                        <tr>
-                          <td>
-                              <a href="">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Obras de Alejandra</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                      <div class="thumbnail efecto-redondo">
+                          <table class="obras">
+                            <tr>
+                              <td>
+                                <a href="">
                                   <img src="img/logo2.png" class="imgP" alt="logo">
-                              </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="caption">
-                                <p>Nombre Obra 1</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                              <div class="ec-stars-wrapper">
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="caption">
+                                  <p>Nombre Obra 1</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="ec-stars-wrapper">
                                   <a class="estrellas" href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
                                   <a class="estrellas" href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
                                   <a class="estrellas" href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
                                   <a class="estrellas" href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
                                   <a class="estrellas" href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-                              </div>
-                          </td>
-                        </tr>
-                      </table>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail efecto-redondo">
-                      <table class="obras">
-                        <tr>
-                          <td>
-                              <a href="">
+                    <div class="col-sm-6 col-md-3">
+                      <div class="thumbnail efecto-redondo">
+                          <table class="obras">
+                            <tr>
+                              <td>
+                                <a href="">
                                   <img src="img/logo2.png" class="imgP" alt="logo">
-                              </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="caption">
-                                <p>Nombre Obra 1</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                              <div class="ec-stars-wrapper">
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="caption">
+                                  <p>Nombre Obra 2</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="ec-stars-wrapper">
                                   <a class="estrellas" href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
                                   <a class="estrellas" href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
                                   <a class="estrellas" href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
                                   <a class="estrellas" href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
                                   <a class="estrellas" href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-                              </div>
-                          </td>
-                        </tr>
-                      </table>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="row">
-                  <div class="col-sm-12 text-center">
-                    <div class="btn-group" role="group" aria-label="...">
-                      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Prev</button>
-                      <button type="button" class="btn btn-default">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+                  <div class="row">
+                    <div class="col-sm-12 text-center">
+                      <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Prev</button>
+                        <button type="button" class="btn btn-default">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>  
-            </div>
-          </div>
-
-          <div class="col-sm-2 sidenav">
-            <div class="text-center">
-              <div class="dropdown text-left">
-                <p><a><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis obras</a></p>
-                <p><a><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Mis seguidores</a></p>
-                <p><a><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Siguiendo</a></p>
-                <p><a><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mi perfil</a></p>
-              </div>
+                </div>  
             </div>
           </div>
         </div>
     </div>
-    
+
+
     <footer class="container-fluid text-center">
       <p><a id="color-defecto" href="#">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
     </footer>
 
   </body>
 </html>
+
