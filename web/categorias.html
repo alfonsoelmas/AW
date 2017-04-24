@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Paper Dreams</title>
+  <title>Categorías - Paper Dreams</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
   <div class="jumbotron" id="banner">
     <div class="text-left">
       <div class="col-sm-2">
-        <img id="logo" alt="" src="img/logo1.png">
+        <img id="logo" alt="" src="img/logo1.png" class="img-responsive">
       </div>
       <div class="col-sm-10">
         <p class="h1">Paper Dreams</p>      
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div id="breadcum-div">
-      <ol class="breadcrumb" id="breadcum">
+      <ol class="breadcrumb" id="breadcum" >
         <li class="active">Inicio</li>
       </ol>
     </div>
@@ -33,79 +33,110 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
         </button>
-        <a class="navbar-brand actual" href="#">Inicio</a>
+        <a class="navbar-brand actual" href="index.html">Inicio</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="categorias.html">Categorias</a></li>
           <li><a href="contacto.html">Contacto</a></li>
           <li><a href="aboutUs.html">About Us</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <div class="nav navbar-nav navbar-right">
           <form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
-            <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</a></button>
+            <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</button>
           </form>
-        </ul>
+        </div>
       </div>
     </div>
   </nav>
-    
+  
   <div class="container-fluid text-center">    
     <div class="row content">
       <div class="col-sm-10 text-left"> 
-        <div class="jumbotron" id="bloque-inicio">
-          <p class="h1" id="text-bloque-inicio">Escritores, Diseñadores!</p>
-          <p id="par-bloque-inicio">Empieza a escribir desde ahora mismo. Sube tus creaciones y demuestra a la comunidad lo que vales</p>
-          <p>
-            <a class="btn btn-primary btn-lg" href="escribe.html" role="button">Escribe</a>
-            <a class="btn btn-primary btn-lg" href="Dibuja.html" role="button">Dibuja</a>
-          </p>
-        </div>
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="bloque-inicio">
           <div class="panel-heading">
-            <p class="panel-title h3">Más valorados</p>
+            <p class="panel-title h3">Mis obras</p>
           </div>
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <a href="visualizacionLibro.html">
-                    <img src="img/logo2.png" alt="" class="imgP">
+                  <a href="">
+                    <img id="novela" alt="" src="img/portadas/portada.png" class="img-responsive">
                     <div class="caption">
-                      <p>Valorado1</p>
+                      <p>Novela</p>
                     </div>
                   </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <a href="visualizacionLibro.html">
-                    <img src="img/logo2.png" alt="" class="imgP">
+                  <a href="">
+                    <img id="poesia" alt="" src="img/portadas/portada.png" class="img-responsive">
                     <div class="caption">
-                      <p>Valorado2</p>
+                      <p>Poesía</p>
                     </div>
                   </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <a href="visualizacionLibro.html">
-                    <img class="imgP" alt="" src="img/logo2.png">
+                  <a href="">
+                    <img id="fabula" alt="" src="img/portadas/portada.png" class="img-responsive">
                     <div class="caption">
-                      <p>valorado3</p>
+                      <p>Fábula</p>
                     </div>
                   </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <a href="visualizacionLibro.html">
-                    <img src="img/logo2.png" alt="" class="imgP">
+                  <a href="">
+                    <img id="cuento" alt="" src="img/portadas/portada.png" class="img-responsive">
                     <div class="caption">
-                      <p>valorado4</p>
+                      <p>Cuento</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="thumbnail efecto-redondo">
+                  <a href="">
+                    <img id="leyenda" alt="" src="img/portadas/portada.png" class="img-responsive">
+                    <div class="caption">
+                      <p>Leyenda</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="thumbnail efecto-redondo">
+                  <a href="">
+                    <img id="romance" alt="" src="img/portadas/portada.png" class="img-responsive">
+                    <div class="caption">
+                      <p>Romance</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="thumbnail efecto-redondo">
+                  <a href="">
+                    <img id="terror" alt="" src="img/portadas/portada.png" class="img-responsive">
+                    <div class="caption">
+                      <p>Terror</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="thumbnail efecto-redondo">
+                  <a href="">
+                    <img id="mito" alt="" src="img/portadas/portada.png" class="img-responsive">
+                    <div class="caption">
+                      <p>Mito</p>
                     </div>
                   </a>
                 </div>
@@ -121,21 +152,17 @@
             </div>
           </div>  
         </div>
-      </div>
-      <div class="col-sm-2 sidenav">
-        <div class="row">
-  			  <button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton">
-  				  Inicia sesión
-  			  </button>
-        </div>
-        <div class="row">
-          <button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton">
-            Regístrarse
-          </button>
-        </div>
-      </div>
+     </div>
+		<div class="col-sm-2 sidenav">
+			<div class="dropdown text-center">
+			  <p><a href="misObras.html"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis obras</a></p>
+			  <p><a href="misSeguidores.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Mis seguidores</a></p>
+			  <p><a href="miPerfil.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mi perfil</a></p>
+			</div>
+		</div>
     </div>
   </div>
+
 
   <footer class="container-fluid text-center">
     <p><a id="color-defecto" href="#">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
