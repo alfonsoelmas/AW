@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/estilo2.css">
   <link rel="stylesheet" href="css/estilobusq.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -16,7 +14,7 @@
   <div class="jumbotron" id="banner">
     <div class="text-left">
       <div class="col-sm-2">
-        <img id="logo" alt="" src="img/logo1.png">
+        <img id="logo" alt="" src="img/logo1.png" class="img-responsive">
       </div>
       <div class="col-sm-10">
         <p class="h1">Paper Dreams</p>      
@@ -66,18 +64,23 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-sm-11">
-                <p class="h3 panel-title">Opciones de búsqueda (aun estoy verde y tengo que terminarme)</p>
+                <p class="h3 panel-title">Opciones de búsqueda</p>
               </div>
               <div class="col-sm-1 text-center">
-                <button type="button" class="btn btn-default margen-top" data-toggle="collapse" data-target="#opcionesBusqBody">-/+</button>
+                <button type="button" class="btn btn-default margen-top" data-toggle="collapse" data-target="#opcionesBusqBody">+</button>
               </div>
             </div>
           </div>
           <div class="panel-body" id="opcionesBusqBody">
-            <p>Filtrar por:
-              <input type="checkbox" aria-label="...">Libros
-              <input type="checkbox" aria-label="...">Diseños
-            </p>
+            <span> Filtrar por: </span>
+            <div class="row">
+                <div class="checkbox">
+                  <input type="checkbox" aria-label="Libros"> Libros
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" aria-label="Diseños"> Diseños  
+                </div>
+            </div>
             <p>Si libros activo:</p>
             <p>
               <div class="dropdown">
@@ -280,7 +283,7 @@
   </div>
 
   <footer class="container-fluid text-center">
-    <p><a id="color-defecto" href="#">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
+    <p><a id="color-defecto" href="aboutUs.html">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
   </footer>
 
   <!--Scripts-->
