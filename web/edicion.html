@@ -46,23 +46,23 @@
           <li><a href="contacto.html">Contacto</a></li>
           <li><a href="aboutUs.html">About Us</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <div class="nav navbar-nav navbar-right">
           <form class="navbar-form navbar-left input-group-btn" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
-            <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</a></button>
+            <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</button>
           </form>
-        </ul>
+        </div>
       </div>
     </div>
   </nav>
     
   <div class="container-fluid text-center">    
     <div class="col-sm-10 text-left"> 
-      <div class="panel panel-default margen-top" id="edicion">
+      <div class="panel panel-default margen-top">
         <div class="panel-heading">
-          <p class="h3" class="panel-title">Edición</p>
+          <p class="h3 panel-title">Edición</p>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -71,7 +71,7 @@
               <button type="button" class="btn btn-info margen-top">Editar imagen</button>
             </div>
             <div class="col-sm-9 text-left"> 
-              <form id="edicion" method="post" action="">
+              <form method="post" action="">
                 <span class="input-group-addon glyphicon glyphicon-text-size">Título</span>
                 <input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título"/>
                 <br>

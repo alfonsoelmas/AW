@@ -45,14 +45,14 @@
           <li><a href="#">Contacto</a></li>
           <li><a href="#">About Us</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <div class="nav navbar-nav navbar-right">
           <form class="navbar-form navbar-left input-group-btn" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
-            <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</a></button>
+            <button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</button>
           </form>
-        </ul>
+        </div>
       </div>
     </div>
   </nav>
@@ -82,13 +82,12 @@
                 </div>
             </div>
             <p>Si libros activo:</p>
-            <p>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="restultadosPorPagina" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   Género de libro
                   <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <ul class="dropdown-menu">
                   <li><a href="#">Genero 1</a></li>
                   <li><a href="#">Genero 2</a></li>
                   <li><a href="#">Genero 3</a></li>
@@ -96,24 +95,21 @@
                   <li><a href="#">Genero 5</a></li>
                   <li><a href="#">Genero 6</a></li>
                 </ul>
-              </div>
-            </p>
-            <p>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="restultadosPorPagina" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Resultados por página
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">8</a></li>
-                  <li><a href="#">12</a></li>
-                  <li><a href="#">16</a></li>
-                  <li><a href="#">20</a></li>
-                  <li><a href="#">24</a></li>
-                </ul>
-              </div>
-            </p>
+            </div>
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Resultados por página
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">4</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">12</a></li>
+                <li><a href="#">16</a></li>
+                <li><a href="#">20</a></li>
+                <li><a href="#">24</a></li>
+              </ul>
+            </div>
           </div>  
         </div>
         <div class="panel panel-default" id="resultadosBusq">
@@ -124,7 +120,7 @@
             <div class="row">
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <img src="img/logo2.png" alt="logo" style="width:50%">
+                  <img src="img/logo2.png" alt="logo" class="img-responsive imgP">
                   <div class="caption text-center">
                     <p class="h3">Titulo 1</p>
                     <p>Autor</p>
@@ -138,7 +134,7 @@
               </div>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <img src="img/logo2.png" alt="logo" style="width:50%">
+                  <img src="img/logo2.png" alt="logo" class="img-responsive imgP">
                   <div class="caption text-center">
                     <p class="h3">Titulo 1</p>
                     <p>Autor</p>
@@ -152,7 +148,7 @@
               </div>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <img src="img/logo2.png" alt="logo" style="width:50%">
+                  <img src="img/logo2.png" alt="logo" class="img-responsive imgP">
                   <div class="caption text-center">
                     <p class="h3">Titulo 1</p>
                     <p>Autor</p>
@@ -166,7 +162,7 @@
               </div>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <img src="img/logo2.png" alt="logo" style="width:50%">
+                  <img src="img/logo2.png" alt="logo" class="img-responsive imgP">
                   <div class="caption text-center">
                     <p class="h3">Titulo 1</p>
                     <p>Autor</p>
@@ -182,7 +178,7 @@
             <div class="row">
               <div class="col-sm-6 col-md-3">
                <div class="thumbnail efecto-redondo">
-                  <img src="img/logo2.png" alt="logo" style="width:50%">
+                  <img src="img/logo2.png" alt="logo" class="img-responsive imgP">
                   <div class="caption text-center">
                     <p class="h3">Titulo 1</p>
                     <p>Autor</p>
@@ -196,7 +192,7 @@
               </div>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <img src="img/logo2.png" alt="logo" style="width:50%">
+                  <img src="img/logo2.png" alt="logo" class="img-responsive imgP">
                   <div class="caption text-center">
                     <p class="h3">Titulo 1</p>
                     <p>Autor</p>
@@ -210,7 +206,7 @@
               </div>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo efecto-redondo">
-                  <img src="img/logo2.png" alt="logo" style="width:50%">
+                  <img src="img/logo2.png" alt="logo" class="img-responsive imgP">
                   <div class="caption text-center">
                     <p class="h3">Titulo 1</p>
                     <p>Autor</p>
@@ -224,7 +220,7 @@
               </div>
               <div class="col-sm-6 col-md-3">
                 <div class="thumbnail efecto-redondo">
-                  <img src="img/logo2.png" alt="logo" style="width:50%">
+                  <img src="img/logo2.png" alt="logo" class="img-responsive imgP">
                   <div class="caption text-center">
                     <p class="h3">Titulo 1</p>
                     <p>Autor</p>
