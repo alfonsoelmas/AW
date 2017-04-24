@@ -7,10 +7,13 @@
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
     
+    .row{
+      padding: 15px;
+    }
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: #f1f1f1;
+      background-color: #fff;
       height: 100%;
     }
     
@@ -104,7 +107,7 @@
     }
 
     .jumbotron .h1, .jumbotron h1 {
-    font-size: 63px;
+      font-size: 63px;
     }
     
    .well {
@@ -157,4 +160,9 @@ button.redondear{
 
 #reg-button:hover{
   background-color: #BDDAAA;
+}
+
+div.botones{
+  padding: 10px;
+  margin:auto;
 }
