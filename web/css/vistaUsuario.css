@@ -46,8 +46,8 @@
         align-self: left;
     }
 
-    #datos{
-      font-size: 18px;
+    p.datos{
+      font-size: 15px;
     }
 
     p.descripcion{
@@ -56,6 +56,7 @@
       font-size: 20px;
       text-indent: 25px;
     }
+
 
   
 
