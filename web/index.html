@@ -141,10 +141,59 @@
 		<p><a id="color-defecto" href="aboutUs.html">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
 	</footer>
 
+	
+		<!--//BLOQUE COOKIES-->
+	<div id="barraaceptacion" style="display: block;">
+	    <div class="inner">
+	    	<a href="javascript:void(0);" class="ok" onclick="PonerCookie();"><b>OK</b></a> |  
+	        Solicitamos su permiso para obtener datos estadísticos de su navegación en esta web, en cumplimiento del Real 
+	        Decreto-ley 13/2012. Si continúa navegando consideramos que acepta el uso de cookies.
+	    </div>
+	</div>
+	 
+	<script>
+	function getCookie(c_name){
+	    var c_value = document.cookie;
+	    var c_start = c_value.indexOf(" " + c_name + "=");
+	    if (c_start == -1){
+	        c_start = c_value.indexOf(c_name + "=");
+	    }
+	    if (c_start == -1){
+	        c_value = null;
+	    }else{
+	        c_start = c_value.indexOf("=", c_start) + 1;
+	        var c_end = c_value.indexOf(";", c_start);
+	        if (c_end == -1){
+	            c_end = c_value.length;
+	        }
+	        c_value = unescape(c_value.substring(c_start,c_end));
+	    }
+	    return c_value;
+	}
+	 
+	function setCookie(c_name,value,exdays){
+	    var exdate=new Date();
+	    exdate.setDate(exdate.getDate() + exdays);
+	    var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+	    document.cookie=c_name + "=" + c_value;
+	}
+	 
+	if(getCookie('tiendaaviso')!="1"){
+	    document.getElementById("barraaceptacion").style.display="block";
+	}
+	function PonerCookie(){
+	    setCookie('tiendaaviso','1',365);
+	    document.getElementById("barraaceptacion").style.display="none";
+	}
+	</script>
+<!--//FIN BLOQUE COOKIES-->
+
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 
 </body>
 </html>

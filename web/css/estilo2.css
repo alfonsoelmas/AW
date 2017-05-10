@@ -166,3 +166,78 @@ div.botones{
   padding: 10px;
   margin:auto;
 }
+
+.colorAtonado{
+  background-color: #D6D6D6;
+}
+
+/*coockies*/
+
+#barraaceptacion {
+    display:none;
+    position:fixed;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    padding-bottom:20px;
+    width:100%;
+    text-align:center;
+    min-height:40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:#fff;
+    z-index:99999;
+}
+ 
+.inner {
+    width:100%;
+    position:absolute;
+    padding-left:5px;
+    font-family:verdana;
+    font-size:12px;
+    top:30%;
+}
+ 
+.inner a.ok {
+    padding:4px;
+    color:#00ff2e;
+    text-decoration:none;
+}
+
+ @media (min-width: 768px) and (max-width: 979px) {
+  #main-flexslider ul.slides li p {
+      font-size: 52px;
+      text-transform: uppercase;
+      position: relative;
+      margin-bottom: 0px;
+      text-align: center;
+      line-height: 1;
+      color: #fff;
+  }
+
+}
+
+ @media (max-width: 767px) {
+  #main-flexslider ul.slides li p {
+      font-size: 32px;
+      text-transform: uppercase;
+      position: relative;
+      margin-bottom: 0px;
+      text-align: center;
+      line-height: 1;
+      color: #fff;
+  }
+
+
+
+}
+
+@media (max-width: 371px) {
+    #header-wrapper {
+      padding-top: 80px;
+      margin-top: 1px;
+  }
+}
+
+.navbar .brand a:hover {
+    color: #E6ACEC;
+}
