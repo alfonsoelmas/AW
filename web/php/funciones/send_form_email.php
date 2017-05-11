@@ -1,16 +1,15 @@
-<!-- incluye aqui tu propio mensaje de Éxito-->
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <title>Procesado el formulario</title>
 <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=http://paperdreams.esy.es/index.html">
-<META charset="utf-8">
+  <meta charset="utf-8">
 </head>
 <body>
 <?php
 if(isset($_POST['email'])) {
  
-    // Edita las dos líneas siguientes con tu dirección de correo y asunto personalizados
- 
+
     $email_to = "paperdreams@gmail.com";
  
     $email_subject = "Nuevo correo contacto";   
@@ -69,19 +68,17 @@ if(isset($_POST['email'])) {
  
   }
 
-//En esta parte se validan las cadenas de texto
-
-    $string_exp = "required|min:2|max:150|regex:/^([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([0-9a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/";
-
-  if(!preg_match($string_exp,$first_name)) {
+//Estaría bien hacer la misma validación con JS que hacemos en el registro e inicio de sesión
  
-    $error_message .= 'El formato del nombre no es válido<br />';
+  if(strlen($first_name) < 2 || strlen($first_name) > 20) {
+ 
+    $error_message .= 'El nombre debe tener entre 2 y 20 caracteres<br />';
  
   }
+
+    if(strlen($last_name) < 2 || strlen($last_name) > 20) {
  
-  if(!preg_match($string_exp,$last_name)) {
- 
-    $error_message .= 'el formato del apellido no es válido.<br />';
+    $error_message .= 'El apellido debe tener entre 2 y 20 caracteres<br />';
  
   }
  
