@@ -69,6 +69,47 @@ session_start();
 					</div>
 					<div class="panel-body" id="panel_body">
 
+< ?php
+if(isset($_SESSION['nombre'])){
+echo "<p>Has iniciado sesion: " . $_SESSION['nombre'] . "";
+echo "<p><a href='pagina3.php'>Cerrar Sesion</a></p>"; //TODO 
+}else {
+?>		
+			<div class="col-sm-6 text-center content">
+				<div class="login">
+					<form id="formulario" method="post" action="">
+						<div class="input-group input-group-md">
+							<span class="input-group-addon glyphicon glyphicon-user" id="icon_user"></span>
+							<input type="text" class="form-control" id="user" name='user' placeholder="usuario" aria-describedby="icon_user">
+						</div>
+						<br>
+						<div class="input-group input-group-md">
+							<span class="input-group-addon glyphicon glyphicon-lock" id ="icon_pass"></span>
+							<input type="password" class="form-control" id="password" name='password' placeholder="contraseña" aria-describedby="icon_pass">
+						</div>
+						<div class="text-left row">
+							<input type="checkbox" aria-label="olvido" id="remember" name="remember">
+							<span>Recordar mi contraseña</span>
+						</div>
+						<div class="text-left">
+							<input class="btn btn-default dropdown-toggle" type="submit" id="logInButton" value="Iniciar Sesión"/>
+						</div>
+						<br>	
+					</form>
+					<div class="text-left">
+						<span>¿Has olvidado tus datos? Haz click <a>aquí</a> para recuperarlos</span>
+						<br>
+						<span>¿No tienes cuenta? Haz click <a href="registro.html">aquí</a>, solo tardarás un minuto</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 container-fluid" id="col2">
+				<div class="g-recaptcha" data-sitekey="6LdzkRsUAAAAAEFNfvtH7ahH_9-RJYbT-5tWabEQ" id="captcha"></div>
+			</div>
+
+< ?php
+}
+?>
 					</div> <!--panel-body-->
 				</div> <!--logPanel-->
 			</div> <!--panel-->
