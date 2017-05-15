@@ -2,15 +2,20 @@
 
 //Acceso a BD
 $servername = "localhost"; 	//Como sea
-$username = "username";		//Como sea
-$password = "password";		//Como sea
+$username = "root";		//Como sea
+$password = "";		//Como sea
+$nombreBD = "aw";
 
-$conn = mysqli_connect($servername, $username, $password);
+$conn = mysqli_connect($servername, $username, $password ,$nombreBD);
 
 if (!$conn) {
-die("Connection failed: " . mysqli_connect_error());
+	die("Conexión con la BBDD fallida. " . mysqli_connect_error());
 } 
 
-echo "Connected successfully";
+
+
+function cerrar_conexion(){
+	mysqli_close($conn);
+}
 
 ?>
