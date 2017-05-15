@@ -1,15 +1,14 @@
-//Acceso a BD
-
 <?php
 
 //Acceso a BD
 $servername = "localhost"; 	//Como sea
 $username = "username";		//Como sea
 $password = "password";		//Como sea
-$BD = new mysqli($servername, $username, $password);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$conn = mysqli_connect($servername, $username, $password);
+
+if (!$conn) {
+die("Connection failed: " . mysqli_connect_error());
 } 
 
 echo "Connected successfully";

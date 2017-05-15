@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-< ?php
-session_start();
-?>
+<?php session_start(); ?>
+
+<?php require_once("php/config/connection.php"); ?>
 <head>
 	<title>Login - Paper Dreams</title>
 	<meta charset="utf-8">
@@ -69,7 +69,7 @@ session_start();
 					</div>
 					<div class="panel-body" id="panel_body">
 
-< ?php
+<?php
 if(isset($_SESSION['nombre'])){
 echo "<p>Has iniciado sesion: " . $_SESSION['nombre'] . "";
 echo "<p><a href='pagina3.php'>Cerrar Sesion</a></p>"; //TODO 
@@ -107,7 +107,7 @@ echo "<p><a href='pagina3.php'>Cerrar Sesion</a></p>"; //TODO
 				<div class="g-recaptcha" data-sitekey="6LdzkRsUAAAAAEFNfvtH7ahH_9-RJYbT-5tWabEQ" id="captcha"></div>
 			</div>
 
-< ?php
+<?php
 }
 ?>
 					</div> <!--panel-body-->
