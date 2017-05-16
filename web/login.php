@@ -70,10 +70,13 @@
 					<div class="panel-body" id="panel_body">
 
 <?php
-if(isset($_SESSION['nombre'])){
-echo "<p>Has iniciado sesion: " . $_SESSION['nombre'] . "";
-echo "<p><a href='pagina3.php'>Cerrar Sesion</a></p>"; //TODO 
-}else {
+if(isset($_SESSION['nombre']))
+{
+	echo "<p>Has iniciado sesion: " . $_SESSION['nombre'] . "";
+	echo "<p><a href='pagina3.php'>Cerrar Sesion</a></p>"; //TODO 
+}
+else 
+{
 ?>		
 			<div class="col-sm-6 text-center content">
 				<div class="login">

@@ -43,6 +43,7 @@ if(isset($_POST['email'])) {
         died('Lo sentimos pero parece haber un problema con los datos enviados.');       
  
     }
+    */
  //En esta parte el valor "name" nos sirve para crear las variables que recolectaran la información de cada campo
     
     $first_name = $_POST['first_name']; // requerido
@@ -93,7 +94,8 @@ if(isset($_POST['email'])) {
     died($error_message);
  
   }
- 
+ */
+
 //A partir de aqui se contruye el cuerpo del mensaje tal y como llegará al correo
 
     $email_message = "Contenido del Mensaje.\n\n";
