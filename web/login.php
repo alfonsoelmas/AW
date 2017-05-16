@@ -69,32 +69,68 @@
 					</div>
 					<div class="panel-body" id="panel_body">
 
+
 <?php
-if(isset($_SESSION['nombre'])){
-echo "<p>Has iniciado sesion: " . $_SESSION['nombre'] . "";
-echo "<p><a href='pagina3.php'>Cerrar Sesion</a></p>"; //TODO 
-}else {
+	if(isset($_SESSION["session_username"])){
+		// echo "Session is set"; // for testing purposes
+		header("Location: intropage.php");
+	}
+ 
+	if(isset($_POST["login"])){
+ 
+		if(!empty($_POST['username']) && !empty($_POST['password'])) {
+	 		$username = $_POST['username'];
+	 		$password = $_POST['password'];
+	 
+			$query = mysql_query($GLOBALS['conn'],"SELECT * FROM usuarios WHERE usuario='".$username."' AND pass='".$password."'");
+			$numrows = mysql_num_rows($query);
+
+ 			if($numrows!=0) {
+ 				while($row=mysql_fetch_assoc($query)) {
+ 					$dbusername=$row['username'];
+ 					$dbpassword=$row['password'];
+ 				}
+ 
+				if($username == $dbusername && $password == $dbpassword) {
+		 			$_SESSION['session_username']=$username;
+		 
+					/* Redirect browser TODO REMEMBER PASSWORD + ENCRIPTAR DATOS*/
+					header("Location: intropage.php");
+				} else {
+					$message = "Nombre de usuario ó contraseña inválida!";
+				}
+			}
+		} else {
+			$message = "Todos los campos son requeridos!";
+		}
+
+	}else {
 ?>		
-			<div class="col-sm-6 text-center content">
-				<div class="login">
-					<form id="formulario" method="post" action="">
+			<div class="col-sm-6 text-center content" >
+				<div class="login" id="login">
+					<form id="formulario" method="post" action="login.php">
+						
 						<div class="input-group input-group-md">
 							<span class="input-group-addon glyphicon glyphicon-user" id="icon_user"></span>
-							<input type="text" class="form-control" id="user" name='user' placeholder="usuario" aria-describedby="icon_user">
+							<input type="text" class="form-control" id="username" name='username' placeholder="usuario" aria-describedby="icon_user">
 						</div>
 						<br>
+
 						<div class="input-group input-group-md">
 							<span class="input-group-addon glyphicon glyphicon-lock" id ="icon_pass"></span>
 							<input type="password" class="form-control" id="password" name='password' placeholder="contraseña" aria-describedby="icon_pass">
 						</div>
+
 						<div class="text-left row">
 							<input type="checkbox" aria-label="olvido" id="remember" name="remember">
 							<span>Recordar mi contraseña</span>
 						</div>
+
 						<div class="text-left">
-							<input class="btn btn-default dropdown-toggle" type="submit" id="logInButton" value="Iniciar Sesión"/>
+							<input type="submit" class="btn btn-default dropdown-toggle" name="login" value="Iniciar Sesión"/>
 						</div>
-						<br>	
+						<br>
+
 					</form>
 					<div class="text-left">
 						<span>¿Has olvidado tus datos? Haz click <a>aquí</a> para recuperarlos</span>
@@ -104,11 +140,13 @@ echo "<p><a href='pagina3.php'>Cerrar Sesion</a></p>"; //TODO
 				</div>
 			</div>
 			<div class="col-sm-6 container-fluid" id="col2">
-				<div class="g-recaptcha" data-sitekey="6LdzkRsUAAAAAEFNfvtH7ahH_9-RJYbT-5tWabEQ" id="captcha"></div>
+				<!--div class="g-recaptcha" data-sitekey="6LdzkRsUAAAAAEFNfvtH7ahH_9-RJYbT-5tWabEQ" id="captcha"></div-->
 			</div>
 
 <?php
 }
+
+//cerrar_conexion();
 ?>
 					</div> <!--panel-body-->
 				</div> <!--logPanel-->
