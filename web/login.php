@@ -71,6 +71,7 @@
 
 
 <?php
+<<<<<<< HEAD
 	if(isset($_SESSION["session_username"])){
 		// echo "Session is set"; // for testing purposes
 		header("Location: intropage.php");
@@ -105,6 +106,15 @@
 		}
 
 	}else {
+=======
+if(isset($_SESSION['nombre']))
+{
+	echo "<p>Has iniciado sesion: " . $_SESSION['nombre'] . "";
+	echo "<p><a href='pagina3.php'>Cerrar Sesion</a></p>"; //TODO 
+}
+else 
+{
+>>>>>>> origin/master
 ?>		
 			<div class="col-sm-6 text-center content" >
 				<div class="login" id="login">
