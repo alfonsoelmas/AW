@@ -2,9 +2,9 @@
 	function conectar()
 	{
 		//Acceso a BD
-		$servername = "localhost"; 	//Como sea
-		$username = "root";		//Como sea
-		$password = "";		//Como sea
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
 		$nombreBD = "aw";
 
 		//Hay que usar los métodos OO
