@@ -2,10 +2,10 @@
 	function conectar()
 	{
 		//Acceso a BD
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$nombreBD = "aw";
+		$servername = "mysql.hostinger.es";
+		$username = "u285194728_aw";
+		$password = "123456";
+		$nombreBD = "u285194728_aw";
 
 		//Hay que usar los métodos OO
 		$conn = new mysqli($servername, $username, $password, $nombreBD);
