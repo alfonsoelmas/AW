@@ -1,3 +1,21 @@
+<?php
+	session_start()
+
+	if(!isset($_SESSION['usuario']))
+	{
+		header("Location: login.php");	
+		exit();
+	}
+
+	$id_libro = $_GET['id_libro'];
+	$titulo = $_GET['titulo'];
+	$sinopsis = $_GET['sinopsis'];
+	$fecha = $_GET['fecha'];
+	$portada = $_GET['portada'];
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,7 +46,9 @@
 	    	<ol class="breadcrumb" id="breadcum" >
 		      	<li><a href="index.html">Inicio</a></li>
 		      	<li><a href="categorias.html">Obras</a></li>
-		      	<li class="active">En el corazón...</li>
+		      	<?php
+		      		echo "<li class='active'>$titulo</li>";
+		      	?>
 	    	</ol>
 	  	</div>
 	</div>
@@ -65,11 +85,11 @@
 		<div class="row">
 			<div class="col-sm-10 text-left">    
 				<div class="row">
-			  		<img class="col-sm-6 text-left img-responsive center-block" id="portada" alt="" src="img/portadas/portada.png">
+			  		<img class="col-sm-6 text-left img-responsive center-block" id="portada" alt="" src=<?php echo $portada ?> >
 			  		<div class="text-center">
-			    		<p class="h3"> En el corazón de los que lloran</p>
+			    		<p class="h3"><?php echo $titulo ?></p>
 			    		<div id="sipnopsis">
-			    			<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo? </p>
+			    			<?php echo $sinopsis?>
 			    		</div>
 			  		</div> 
 			  		<div id="opciones">
@@ -90,97 +110,101 @@
 						<p class="h1"> Comentarios </p>
 						<ul id="comments-list" class="comments-list">
 							<li>
-								<div class="comment-main-level">
-									<!-- Avatar -->
-									<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-									<!-- Contenedor del Comentario -->
-									<div class="comment-box">
-										<div class="comment-head">
-											<p class="comment-name by-author h6"><a href="http://miPerfil.html">Simpah_elEterno</a></p>
-											<span>hace 20 minutos</span>
-											<span class="fa fa-reply botones-comentario"> </span>
-											<span class="fa fa-heart botones-comentario"> </span>
-										</div>
-										<div class="comment-content">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-										</div>
-									</div>
-								</div>
-								<!-- Respuestas de los comentarios -->
-								<ul class="comments-list reply-list">
-									<li>
-										<!-- Avatar -->
-										<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-										<!-- Contenedor del Comentario -->
-										<div class="comment-box">
-											<div class="comment-head">
-												<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-												<span>hace 10 minutos</span>
-												<span class="fa fa-reply botones-comentario"> </span>
-												<span class="fa fa-heart botones-comentario"> </span>
-											</div>
-											<div class="comment-content">
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-											</div>
-										</div>
-									</li>
-									<li>
-										<!-- Avatar -->
-										<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-										<!-- Contenedor del Comentario -->
-										<div class="comment-box">
-											<div class="comment-head">
-												<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
-												<span>hace 10 minutos</span>
-												<span class="fa fa-reply botones-comentario"> </span>
-												<span class="fa fa-heart botones-comentario"> </span>
-											</div>
-											<div class="comment-content">
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-											</div>
-										</div>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<div class="comment-main-level">
-									<!-- Avatar -->
-									<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-									<!-- Contenedor del Comentario -->
-									<div class="comment-box">
-										<div class="comment-head">
-											<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
-											<span>hace 10 minutos</span>
-											<span class="fa fa-reply botones-comentario"> </span>
-											<span class="fa fa-heart botones-comentario"> </span>
-										</div>
-										<div class="comment-content">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
-										</div>
-									</div>
-								</div>
+								<?php
+									//Cogemos todos los comentarios que NO son respuesta de otro
+									$resultado = comentarios($id_libro);
+
+									foreach ($comentario = $resultado->fetch_object()) 
+									{
+										//Cogemos los datos del perfil del usuario que ha comentado
+										$resultado = usuario_comentario($comentario->id_usuario);
+										$comment_user = $resultado->fetch_object($resultado);
+										
+										//Imprimimos el comentario
+										echo "<div class='comment-main-level'>
+													<!-- Avatar -->
+													<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
+													<!-- Contenedor del Comentario -->
+													<div class='comment-box'>
+														<div class='comment-head'>
+															<p class='comment-name by-author h6'><a href='http://miPerfil.html'>$comment_user->usuario</a></p>
+															<span>$comentario->fecha</span>
+															<button class='fa fa-reply botones-comentario data-toggle='modal' data-target='#myModal'> </button>
+														</div>
+														<div class='comment-content'>
+															$comentario->cuerpo;
+														</div>
+													</div>
+												</div>";
+
+										//Buscamos las posibles respuestas
+										$resultado = respuestas($comentario->id_comentario);
+										$rows = $resultado->num_rows();
+
+										//Si hay respuestas
+										if($rows > 0)
+										{	
+											//Una por una
+											foreach ($comentario = $resultado->fetch_object()) 
+											{
+												//Cogemos los datos del perfil del usuario que ha comentado
+												$resultado = usuario_comentario($comentario->id_usuario);
+												$comment_user = $resultado->fetch_object($resultado);
+
+												//Imprimimos el comentario
+												echo "<ul class='comments-list reply-list'>
+													<li>
+														<!-- Avatar -->
+														<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
+														<!-- Contenedor del Comentario -->
+														<div class='comment-box'>
+															<div class='comment-head'>
+																<h6 class='comment-name'><a href='http://miPerfil.html'>$comment_user->usuario</a> </h6>
+																<span>$comentario->fecha</span>
+																<button class='fa fa-reply botones-comentario' data-toggle='modal' data-target='#myModal'> </button>
+															</div>
+															<div class='comment-content'>
+																$comentario->cuerpo;
+															</div>
+														</div>
+													</li>
+												</ul>";
+											}
+										}
+									}
+								?>
 							</li>
 						</ul>
 					</div>
-					<nav class="text-center" aria-label="Page navigation">
-					  	<ul class="pagination">
-					    	<li>
-					      		<a href="#" aria-label="Previous">
-					      	  		<span aria-hidden="true">&laquo;</span>
-					     	 	</a>
-					   	 	</li>
-					    	<li><a href="#">1</a></li>
-					    	<li><a href="#">2</a></li>
-					    	<li><a href="#">3</a></li>
-					    	<li><a href="#">4</a></li>
-					    	<li><a href="#">5</a></li>
-					    	<li>
-					      		<a href="#" aria-label="Next">
-					        		<span aria-hidden="true">&raquo;</span>
-					      		</a>
-					    	</li>
-					  	</ul>
-					</nav>
+		   	 		<?php
+
+		   	 			$resultado = comentarios($id_libro);
+		   	 			$num = $resultado->num_rows();
+
+		   	 			$numero_paginas = $num/8;
+
+		   	 			if($numero_paginas > 0)
+		   	 			{
+		   	 				echo"<nav class='text-center' aria-label='Page navigation'>
+									<ul class='pagination'>
+									<li>
+										<a href='#' aria-label='Previous'>
+											<span aria-hidden='true'>&laquo;</span>
+							     	 	</a>
+							   	 	</li>";
+
+			   	 			for($i = 0; $i < $numero_paginas; $i++)
+					    		echo "<li><a href='#''>$i</a></li>";
+
+					    	echo 	"<li>
+					    				<a href='#' aria-label='Next'
+			        						<span aria-hidden='true'>&raquo;</span>
+			      						</a>
+			    					</li>
+			  					</ul>
+							</nav>"
+					    }
+			    	?>
 				</div>
 			</div>
 
@@ -205,17 +229,18 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<p class=" h4 modal-title">Comenta</p>
 					</div>
-					<form class="form_comment">
+					<form class="form_comment" method="POST" action="php/funciones/nuevo_comentario.php">
 						<div class="modal-body">
 							<textarea id="edicion_comentario" placeholder="¿Qué piensas de la historia?"></textarea>
 						</div>
+						
 						<div class="modal-footer container-fluid">
-							<ul>
+							<!--<ul>
 								<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><span class="fa fa-music"></span></a></li>
 								<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><span class="fa fa-video-camera"></span></a></li>
 								<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><span class="fa fa-microphone"></span></a></li>
 								<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><span class="fa fa-picture-o"></span></a></li>
-							</ul>
+							</ul>-->
 							<button type="submit" class="btn btn-success green"><span class="fa fa-share"></span>Comentar</button>
 						</div>
 					</form>
