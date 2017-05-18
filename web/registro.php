@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -9,7 +10,10 @@
 		<link rel="stylesheet" href="css/login.css">
 	</head>
 	<body>
-		<?php include("php/funciones/genera_cabecera.php"); ?>
+		<?php
+			$pagina_actual="Registro";
+			include("php/funciones/genera_cabecera.php");
+		?>
 
 		<div class="container-fluid text-center">    
 			<div class="row content">
@@ -90,6 +94,5 @@
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="js/registro.js"></script>
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-
 	</body>
 </html>
