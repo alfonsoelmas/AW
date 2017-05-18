@@ -9,7 +9,7 @@ function genera_cabecera($pagina_actual) {
 	echo "<div class='jumbotron' id='banner'>";
 		echo "<div class='text-left'>";
 			echo "<div class='col-sm-2'>";
-				echo "<img id='logo' alt='logo' src='img/logo1.png'>";
+				echo "<img id='logo' alt='logo' src='/PaperDreams/img/logo1.png'>";
 			echo "</div>";
 			echo "<div class='col-sm-10'>";
 				echo "<p class='h1'>Paper Dreams</p>";      
@@ -20,10 +20,10 @@ function genera_cabecera($pagina_actual) {
 			// Mostrar usuario conectado en caso de haberlo.
 			if(isset($_SESSION["session_username"])) {
 				echo "¡Hola, ".$_SESSION["usuario"]."!";
-				echo "<a href='/php/funciones/logout.php'>Desconectar</a>";
+				echo "<a href='/PaperDreams/php/funciones/logout.php'>Desconectar</a>";
 			}
 	   		echo "<ol class='breadcrumb' id='breadcum' >";
-	   			echo "<li><a href='index.html'>Inicio</a></li>";
+	   			echo "<li><a href='/PaperDreams/index.php'>Inicio</a></li>";
 	       		echo "<li class='active'>".$pagina_actual."</li>";
 			echo "</ol>";
 		echo "</div>";
@@ -37,16 +37,16 @@ function genera_cabecera($pagina_actual) {
 					echo "<span class='icon-bar'></span>";
 					echo "<span class='icon-bar'></span>";                        
 				echo "</button>";
-				echo "<a class='navbar-brand' href='index.html'>Inicio</a>";
+				echo "<a class='navbar-brand' href='/PaperDreams/index.php'>Inicio</a>";
 			echo "</div>";
 			echo "<div class='collapse navbar-collapse' id='myNavbar'>";
 				echo "<ul class='nav navbar-nav'>";
-					echo "<li><a href='categorias.html'>Categorias</a></li>";
-					echo "<li><a href='contacto.html'>Contacto</a></li>";
-					echo "<li><a href='aboutUs.html'>About Us</a></li>";
+					echo "<li><a href='/PaperDreams/categorias.php'>Categorias</a></li>";
+					echo "<li><a href='/PaperDreams/contacto.php'>Contacto</a></li>";
+					echo "<li><a href='/PaperDreams/aboutUs.php'>About Us</a></li>";
 				echo "</ul>";
 				echo "<div class='nav navbar-nav navbar-right'>";
-	        		echo "<form class='navbar-form navbar-left input-group-btn' role='search' action='result-busqueda.html'>";
+	        		echo "<form class='navbar-form navbar-left input-group-btn' role='search' action='/PaperDreams/result-busqueda.php'>";
 	            		echo "<div class='form-group'>";
 	              			echo "<input type='text' class='form-control' placeholder='Search'>";
 	            		echo "</div>";
