@@ -5,14 +5,15 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/estilo2.css">
 	<link rel="stylesheet" href="css/visualizacion.css">
+	<link rel="stylesheet" href="css/estilo2.css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
 	<link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
 
 	<div class="jumbotron" id="banner">
 		<div class="text-left">
@@ -28,7 +29,7 @@
 	    	<ol class="breadcrumb" id="breadcum" >
 		      	<li><a href="index.html">Inicio</a></li>
 		      	<li><a href="categorias.html">Obras</a></li>
-		      	<li class="active">En el corazón...</li>
+		      	<li class="active">Boceto</li>
 	    	</ol>
 	  	</div>
 	</div>
@@ -63,30 +64,27 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-10 text-left">    
+			<div class="container col-sm-10 text-left">    
 				<div class="row">
-			  		<img class="col-sm-6 text-left img-responsive center-block" id="portada" alt="" src="img/portadas/portada.png">
-			  		<div class="text-center">
-			    		<p class="h3"> En el corazón de los que lloran</p>
-			    		<div id="sipnopsis">
-			    			<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo? </p>
-			    		</div>
-			  		</div> 
-			  		<div id="opciones">
-				  		<div class="col-sm-2 text-left"> 
-				  			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
-				  		</div>
-				  		<div class="col-sm-2 text-left">
-				  			<button type="button"  id="leer" class="btn btn-primary btn-lg opciones">Leer</button> 
-				  		</div>
-				  		<div id="estrellas" class="text-center">
+					<img class="col-sm-6 text-left img-responsive center-block" data-toggle="modal" data-target="#myModal2" id="portada" alt="" src="img/portadas/portada.png"/>
+					<div class="text-center">
+						<p class="h3"> En el corazón de los que lloran</p>
+						<div id="Sipnopsis">
+							<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo? </p>
+						</div>
+					</div>
+					<div id="opciones">
+						<div class="col-sm-2 text-left"> 
+							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
+						</div>
+						<div id="estrellas" class="text-center">
 							<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-size="xs">
-				  		</div>
-				  	</div>
-			    </div> 
+						</div>
+					</div>
+				</div> 
 				<div class="row">     
 					<!-- Contenedor Principal -->
-				    <div class="comments-container">
+					<div class="comments-container">
 						<p class="h1"> Comentarios </p>
 						<ul id="comments-list" class="comments-list">
 							<li>
@@ -114,7 +112,7 @@
 										<!-- Contenedor del Comentario -->
 										<div class="comment-box">
 											<div class="comment-head">
-												<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+												<p class="h6 comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></p>
 												<span>hace 10 minutos</span>
 												<span class="fa fa-reply botones-comentario"> </span>
 												<span class="fa fa-heart botones-comentario"> </span>
@@ -124,13 +122,14 @@
 											</div>
 										</div>
 									</li>
+
 									<li>
 										<!-- Avatar -->
 										<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
 										<!-- Contenedor del Comentario -->
 										<div class="comment-box">
 											<div class="comment-head">
-												<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+												<p class="h6 comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></p>
 												<span>hace 10 minutos</span>
 												<span class="fa fa-reply botones-comentario"> </span>
 												<span class="fa fa-heart botones-comentario"> </span>
@@ -142,6 +141,7 @@
 									</li>
 								</ul>
 							</li>
+
 							<li>
 								<div class="comment-main-level">
 									<!-- Avatar -->
@@ -149,7 +149,7 @@
 									<!-- Contenedor del Comentario -->
 									<div class="comment-box">
 										<div class="comment-head">
-											<h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+											<p class=" h6 comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></p>
 											<span>hace 10 minutos</span>
 											<span class="fa fa-reply botones-comentario"> </span>
 											<span class="fa fa-heart botones-comentario"> </span>
@@ -163,37 +163,36 @@
 						</ul>
 					</div>
 					<nav class="text-center" aria-label="Page navigation">
-					  	<ul class="pagination">
-					    	<li>
-					      		<a href="#" aria-label="Previous">
-					      	  		<span aria-hidden="true">&laquo;</span>
-					     	 	</a>
-					   	 	</li>
-					    	<li><a href="#">1</a></li>
-					    	<li><a href="#">2</a></li>
-					    	<li><a href="#">3</a></li>
-					    	<li><a href="#">4</a></li>
-					    	<li><a href="#">5</a></li>
-					    	<li>
-					      		<a href="#" aria-label="Next">
-					        		<span aria-hidden="true">&raquo;</span>
-					      		</a>
-					    	</li>
-					  	</ul>
+						<ul class="pagination">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
 					</nav>
 				</div>
 			</div>
-
-			<div class="sidenav col-sm-2 text- center">
+			<div class="sidenav col-sm-2 text-center">
 				<div class="botones">
-			    	<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton">
-			      		Inicia sesión
-			    	</button>
+					<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton">
+						Inicia sesión
+					</button>
 				</div>
 				<div class="botones">
-			    	<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton">
-			      		Registrarse
-			    	</button>
+					<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton">
+						Registrarse
+					</button>
 				</div>
 			</div>
 		</div>
@@ -203,7 +202,7 @@
 				<div class="modal-content widget-area ">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<p class=" h4 modal-title">Comenta</p>
+						<p class="h4 modal-title">Comenta</p>
 					</div>
 					<form class="form_comment">
 						<div class="modal-body">
@@ -222,6 +221,15 @@
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
+
+
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content widget-area ">
+					<img class="img-responsive" src="img/portadas/portada.png" alt="">
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</div>
 
 	<footer class="footer text-center">
@@ -234,5 +242,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
+
 </body>
 </html>
