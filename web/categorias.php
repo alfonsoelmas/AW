@@ -13,8 +13,8 @@
 
 <body>
 	<?php
-		$pagina_actual="categorias";
-		<?php require_once('php/funciones/genera_cabecera.php'); genera_cabecera('$pagina_actual');?>
+		$pagina_actual="Categorías";
+		include("php/funciones/genera_cabecera.php");
 		include("php/config/connection.php");
 	?>
 	
@@ -97,13 +97,10 @@
 
 							
 			
-			<div class="col-sm-2 sidenav">
-				<div class="dropdown text-left">
-					<p><a href="misObras.html"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis obras</a></p>
-					<p><a href="misSeguidores.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Mis seguidores</a></p>
-					<p><a href="miPerfil.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mi perfil</a></p>
-				</div>
-			</div>
+			<?php
+				$pagina_actual="Categorías";
+				include("php/funciones/genera_bloque_derecha.php");
+			?>
 		</div>
 	</div>
 
