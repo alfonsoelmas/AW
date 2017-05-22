@@ -1,8 +1,5 @@
 <?php
-
-if(!isset($_SESSION))
-	session_start();
-
+session_start();
 genera_cabecera($pagina_actual);
 
 function genera_cabecera($pagina_actual) {
@@ -18,14 +15,15 @@ function genera_cabecera($pagina_actual) {
 			echo "</div>";
 		echo "</div>";
 		echo "<div id='breadcum-div'>";
-			// Mostrar usuario conectado en caso de haberlo.
-			if(isset($_SESSION["session_username"])) {
-				echo "¡Hola, ".$_SESSION["usuario"]."!";
-				echo "<a href='php/funciones/logout.php'>Desconectar</a>";
-			}
 	   		echo "<ol class='breadcrumb' id='breadcum' >";
-	   			echo "<li><a href='index.php'>Inicio</a></li>";
-		       	echo "<li class='active'>".$pagina_actual."</li>";
+	   			// Mostrar usuario conectado en caso de haberlo.
+				if(isset($_SESSION["name"])) {
+					echo "¡Hola, ".$_SESSION["name"]."! ";
+					echo "<a href='php/funciones/logout.php'>Desconectar</a> | ";
+				}
+				if($pagina_actual != "Inicio")
+	   				echo "<li><a href='index.php'>Inicio</a></li>";
+	   			echo "<li class='active'>".$pagina_actual."</li>";
 			echo "</ol>";
 		echo "</div>";
 	echo "</div>";
@@ -38,7 +36,7 @@ function genera_cabecera($pagina_actual) {
 					echo "<span class='icon-bar'></span>";
 					echo "<span class='icon-bar'></span>";                        
 				echo "</button>";
-				echo "<a class='navbar-brand' href='/PaperDreams/index.php'>Inicio</a>";
+				echo "<a class='navbar-brand' href='index.php'>Inicio</a>";
 			echo "</div>";
 			echo "<div class='collapse navbar-collapse' id='myNavbar'>";
 				echo "<ul class='nav navbar-nav'>";
