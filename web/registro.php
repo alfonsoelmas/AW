@@ -30,7 +30,6 @@
 						</div>
 						<div class="panel-body">
 							<div class="col-sm-6 text-center content">
-								<!--<form id="register" method="post" action="php/funciones/registro_usuario.php">-->
 								<form id="register" method="post" action="php/funciones/registro_usuario.php">
 									<div class="login">
 										<div class="login-form">
