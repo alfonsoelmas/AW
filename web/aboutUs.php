@@ -10,7 +10,7 @@
 </head>
 <body>
 	<?php
-		$pagina_actual="AboutUs";
+		$pagina_actual="About us";
 		include("php/funciones/genera_cabecera.php");
 	?>
 
@@ -64,7 +64,7 @@
 			</div>
 
 			<?php
-				$pagina_actual="AboutUs";
+				$pagina_actual="About us";
 				include("php/funciones/genera_bloque_derecha.php");
 			?>
 		</div>
