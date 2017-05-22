@@ -11,7 +11,7 @@
 
 <body>
 	<?php
-		$pagina_actual="ResultBúsqueda";
+		$pagina_actual="Resultado de búsqueda";
 		include("php/funciones/genera_cabecera.php");
 	?>
     
@@ -225,7 +225,7 @@
 			</div> <!--col-sm-10 text-left-->
 			
 			<?php
-				$pagina_actual="ResultBúsqueda";
+				$pagina_actual="Resultado de búsqueda";
 				include("php/funciones/genera_bloque_derecha.php");
 			?>
 		</div> <!--row content-->
