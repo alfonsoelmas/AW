@@ -29,8 +29,6 @@
 	}
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -126,7 +124,7 @@
 							<li>
 								<?php
 									//Cogemos todos los comentarios que NO son respuesta de otro
-									$resultado = comentarios($id_capitulo);
+									$resultado = comentarios($id_capitulo, "Capitulos");
 
 									while ($comentario = $resultado->fetch_object()) 
 									{
@@ -143,7 +141,7 @@
 														<div class='comment-head'>
 															<p class='comment-name by-author h6'><a href='http://miPerfil.html'>$comment_user->usuario</a></p>
 															<span>$comentario->fecha</span>
-															<button class='fa fa-reply botones-comentario data-toggle='modal' data-target='#myModal'> </button>
+															<button class='fa fa-reply botones-comentario data-toggle='modal' data-target='#myModal' data-id='$comentario->id'> </button>
 														</div>
 														<div class='comment-content'>
 															$comentario->cuerpo;
@@ -152,7 +150,7 @@
 												</div>";
 
 										//Buscamos las posibles respuestas
-										$resultado = respuestas($comentario->id_comentario);
+										$resultado = respuestas($comentario->id_comentario, "Capitulos");
 										$rows = $resultado->num_rows();
 
 										//Si hay respuestas
@@ -175,7 +173,7 @@
 															<div class='comment-head'>
 																<h6 class='comment-name'><a href='http://miPerfil.html'>$comment_user->usuario</a> </h6>
 																<span>$comentario->fecha</span>
-																<button class='fa fa-reply botones-comentario' data-toggle='modal' data-target='#myModal'> </button>
+																<button class='fa fa-reply botones-comentario' data-toggle='modal' data-target='#myModal' data-id='$comentario->id'> </button>
 															</div>
 															<div class='comment-content'>
 																$comentario->cuerpo;
@@ -237,25 +235,45 @@
 
 
 
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-			<div class="modal-dialog" role="document">
-		    	<div class="modal-content widget-area ">
-		      		<div class="modal-header">
-		      			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        		<h4 class="modal-title">Comenta</h4>
-		      		</div>
-					<form class="form_comment" method="POST" action="php/funciones/nuevo_comentario.php">
-						<div class="modal-body">
-							<textarea id="edicion_comentario" placeholder="¿Qué piensas de la historia?"></textarea>
-						</div>
-						
-						<div class="modal-footer container-fluid">
-							<button type="submit" class="btn btn-success green"><span class="fa fa-share"></span>Comentar</button>
-						</div>
-					</form>
-		    	</div><!-- /.modal-content -->
-		  	</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+	<?php
+		if(isset($_SESSION['usuario']))
+		{
+			echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
+					<div class='modal-dialog' role='document'>
+						<div class='modal-content widget-area'>
+							<div class='modal-header'>
+								<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+								<p class='h4 modal-title'>Comenta</p>
+							</div>
+							<form class='form_comment' method='POST' action='php/funciones/nuevo_comentario.php'>
+								<div class='modal-body'>
+									<textarea id='edicion_comentario' placeholder='¿Qué piensas de la historia?'></textarea>
+									<input type='hidden' name='padre' class='answerParent' value=''>
+									<input type='hidden' name='id_usuario' value=\"$_SESSION['usuario']\">
+									<input type='hidden' name='contenido' value=\"$id_capitulo\">
+									<input type='hidden' name='tipo_contenido' value='Capitulos'>
+								</div>
+								<div class='modal-footer container-fluid'>
+									<button type='submit' class='btn btn-success green'><span class='fa fa-share'></span>Comentar</button>
+								</div>
+							</form>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->";
+		}
+		else
+		{
+			echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
+					<div class='modal-dialog' role='document'>
+						<div class='modal-content widget-area'>
+							<div class='modal-header'>
+								<span class='h3'>Upsss... parece que no estás registrado. No podrás comentar hasta que lo hagas. Te esperamos :)</span>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->";
+		}
+	?>
 	</div>
 
 	<?php include("php/funciones/genera_pie.php"); ?>
@@ -266,6 +284,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
+	<script src="js/respuestaComentario.js"</script>
 
 </body>
 </html>

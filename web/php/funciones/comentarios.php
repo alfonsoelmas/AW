@@ -2,9 +2,31 @@
 	require_once("consulta.php");
 
 	//Construye la sql que busca los comentarios de un libro
-	function comentarios($id_libro)
+	function comentarios($id, $contenido)
 	{
-		$sql = "SELECT * FROM comenta WHERE id_libro='$id_libro';";
+		$sql = ""; 
+
+		switch($contenido)
+		{
+			case "Libros":
+			{
+				$sql = "SELECT * FROM comentario_libro WHERE id_libro='$id';";
+			}
+				break;
+
+			case "Bocetos":
+			{
+				$sql = "SELECT * FROM comentario_boceto WHERE id_boceto='$id';";
+			}
+				break;
+
+			case "Capitulos":
+			{
+				$sql = "SELECT * FROM comentario_capitulo WHERE id_capitulo='$id';";
+			}
+				break;
+		}
+
 		$comentarios = consulta($sql);
 
 		return $comentarios;
@@ -19,18 +41,65 @@
 		return $usuario;
 	}
 
-	//Construye la sql que busca todas las respuestas de un usuario
-	function respuestas($id_comentario)
+	//Construye la sql que busca todas las respuestas de un comentario
+	function respuestas($id_comentario, $contenido)
 	{
-		$sql = "SELECT * FROM comenta WHERE id_respuesta='$id_comentario';";
+		
+		$sql = ""; 
+
+		switch($contenido)
+		{
+			case "Libros":
+			{
+				$sql = "SELECT * FROM comenta WHERE id_padre='$id_comentario';";
+			}
+				break;
+
+			case "Bocetos":
+			{
+				$sql = "SELECT * FROM comenta WHERE id_padre='$id_comentario';";
+			}
+				break;
+
+			case "Capitulos":
+			{
+				$sql = "SELECT * FROM comenta WHERE id_padre='$id_comentario';";
+			}
+				break;
+		}
+
 		$respuestas = consulta($sql);
 
 		return $respuestas;
 	}
 
-	function nuevo_comentario($id_usuario, $cuerpo, $es_libro, $id_respuesta, $id_libro)
+	//id_comentario	cuerpo	fecha	id_usuario	id_padre  id_libro
+
+	function nuevo_comentario($cuerpo, $id_usuario, $id_padre, $id_contenido, $contenido)
 	{
-		$sql = "INSERT INTO comenta(id_usuario, cuerpo, es_libro, id_respuesta, id_libro) VALUES ('$id_usuario', '$cuerpo', '$es_libro', '$id_respuesta', '$id_libro');";
+		$sql = "";
+
+		switch($contenido)
+		{
+			case "Libros":
+			{
+				$sql = "INSERT INTO comentario_libro(cuerpo, id_usuario, id_padre, id_libro) VALUES ('$cuerpo', '$id_usuario', '$id_padre',    '$id_contenido');";
+			}
+				break;
+
+			case "Bocetos":
+			{
+				$sql = "INSERT INTO comentario_boceto(cuerpo, id_usuario, id_padre, id_boceto) VALUES ('$cuerpo', '$id_usuario', '$id_padre',  '$id_contenido');";
+			}
+				break;
+
+			case "Capitulos":
+			{
+				$sql = "INSERT INTO comentario_capitulo(cuerpo, id_usuario, id_padre, id_capitulo) VALUES ('$cuerpo', '$id_usuario', '$id_padre', '$id_contenido');";
+			}
+				break;
+		}
+
 		$exito = consulta($sql);
 
 		return $exito;
