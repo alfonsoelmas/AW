@@ -32,26 +32,29 @@
 
 
 						$consulta 	= 	realiza_consulta($conn, $query);
-						$filas 		= 	mysqli_num_rows($consulta);
+						$filas 		= 	$consulta->num_rows;
+						$datosConsulta = $consulta->fetch_array(MYSQL_NUM);
 
 						//Hacemos un for del numero de categorias
 						for($i = 0; $i<$filas; $i++){
 
-
-							//TODO
 							//Pintamos titulo
+						?>
+							<div class="panel-heading">
+								<p class="panel-title h3"><?php echo $datosConsulta[i]; ?></p>
+							</div>
+						<?php 
 							//Lanzamos query de esa categoria ordenados por votos
+							$query = "SELECT titulo, portada FROM libros WHERE categoria=$jugos[0]".PHP_EOL;
+							$nResultados = 	$consulta->num_rows;//numero de resultados
+							$datosResultados =  $consulta->fetch_array(MYSQL_NUM);
+
 							//Las pintamos y hacemos el scroll de alguna forma TODO
 
 
 						}
 
 					?>
-
-					<div class="panel-heading">
-						<p class="panel-title h3">Terror</p>
-					</div>
-
 
 					<div class="panel-body">
 						<div class="row">
