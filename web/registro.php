@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php  
+	if(isset($_SESSION['name']))
+	{
+		header("Location: index.php");
+	}	
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -26,7 +31,7 @@
 						<div class="panel-body">
 							<div class="col-sm-6 text-center content">
 								<!--<form id="register" method="post" action="php/funciones/registro_usuario.php">-->
-								<form method="post" action="php/funciones/registro_usuario.php">
+								<form id="register" method="post" action="php/funciones/registro_usuario.php">
 									<div class="login">
 										<div class="login-form">
 											<div class="input-group input-group-md">
@@ -60,7 +65,7 @@
 											</div>
 											
 											<div class="text-left margin-normal">
-												<input type="checkbox" aria-label="condiciones"/>
+												<input name="condiciones" id="condiciones" type="checkbox" aria-label="condiciones"/>
 												<span>He leído y acepto las condiciones legales y acepto recibir comunicaciones electrónicas</span>
 											</div>
 											
