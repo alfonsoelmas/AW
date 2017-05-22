@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 genera_cabecera($pagina_actual);
 
 function genera_cabecera($pagina_actual) {
