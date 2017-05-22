@@ -9,58 +9,14 @@
     <link rel="stylesheet" href="css/aboutUs.css">
 </head>
 <body>
-
-
-	<div class="jumbotron" id="banner">
-		<div class="text-left">
-			<div class="col-sm-2">
-				<img id="logo" alt="logo" src="img/logo1.png" class="img-responsive">
-			</div>
-			<div class="col-sm-10">
-				<p class="h1">Paper Dreams</p>      
-				<p>De tus sueños al papel</p>
-			</div>
-		</div>
-		<div id="breadcum-div">
-			<ol class="breadcrumb" id="breadcum" >
-				<li><a href="index.html">Inicio</a></li>
-				<li class="active">About Us</li>
-			</ol>
-		</div>
-	</div> <!--jumbotron-->
-
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>                        
-				</button>
-				<a class="navbar-brand" href="index.html">Inicio</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li><a href="categorias.html">Categorías</a></li>
-					<li><a href="contacto.html">Contacto</a></li>
-					<li><a class="actual" href="#">About Us</a></li>
-				</ul>
-				<div class="nav navbar-nav navbar-right">
-					<form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
-						</div>
-						<button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</button>
-					</form>
-				</div>
-			</div>
-		</div> <!--container-->
-	</nav>
-
+	<?php
+		$pagina_actual="AboutUs";
+		include("php/funciones/genera_cabecera.php");
+	?>
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-10">    
+			<div class="col-sm-10">
 				<p class="h1">Miembros que conforman el proyecto</p>
 				A continuación podrá consultar el perfil de los miembros de Bi-Inestables:
 				<ul>
@@ -102,29 +58,19 @@
 				<p id="gonzalo" class="h2">Gonzalo Jiménez Corta</p>
 				<p> Nombre: Gonzalo Jiménez Corta </p>
 				<p> Dirección de Contacto: gonzajim@ucm.es </p>
-				<p> Descripción: Me gusta leer, jugar a videojuegos, escuchar música y quedar con amigos. Además de la Informática, estoy interesado en la Física y en algunos temas relacionados con la Biología. Adicto a Pokémon.</p>
+				<p> Descripción: Me gusta leer, jugar a videojuegos, escuchar música y quedar con amigos. Además de la Informática, estoy interesado en la Física y en algunos temas relacionados con la Biología.</p>
 				<p> Lema: No dejes para mañana lo que puedes hacer hoy.</p>
 				<img src="img/gonzalo.jpg" alt="Gonzalo" class="img-responsive foto" width="110" height="110"/>
 			</div>
 
-			<div class="col-sm-2 sidenav">
-				<div class="row">
-					<button id="logInButton" class="btn btn-default dropdown-toggle engordar redondear" type="button">
-						Inicia sesión
-					</button>
-				</div>
-				<div class="row">
-					<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton">
-					  Regístrarse
-					</button>
-				</div>
-			</div>
+			<?php
+				$pagina_actual="AboutUs";
+				include("php/funciones/genera_bloque_derecha.php");
+			?>
 		</div>
 	</div>
 
-	<footer class="footer text-center">
-		<p><a id="color-defecto" href="#">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
-	</footer>
+	<?php include("php/funciones/genera_pie.php"); ?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
