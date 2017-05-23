@@ -12,13 +12,17 @@
 </head>
 
 <body>
+
+
 	<?php
+		//generamos cabecera
+
 		$pagina_actual="Categorías";
 		include("php/funciones/genera_cabecera.php");
 		include("php/config/connection.php");
 	?>
 	
-
+	<!--Creamos el contenido-->
 	<div class="container-fluid text-center">    
 		<div class="row content">
 			<div class="col-sm-10 text-left"> 
@@ -82,7 +86,9 @@
 										<div class="row">
 										<div class="col-sm-12 text-center">
 											<div class="btn-group" role="group" aria-label="...">
-												<button type="button" class="btn btn-default">Ver más<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+												<form method="get" action=<?php echo '"result-busqueda.php?categoria='.$datosConsulta["categoria"].'"'?>>
+												<input type="submit" class="btn btn-default">Ver más<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></input>
+												</form>
 											</div>
 										</div>
 									</div>
@@ -94,21 +100,12 @@
 
 					?>
 
-							
-			<!--TODO, esto debería hacerse con php-->
-			<div class="col-sm-2 sidenav">
-				<div class="dropdown text-left">
-					<p><a href="misObras.html"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis obras</a></p>
-					<p><a href="misSeguidores.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Mis seguidores</a></p>
-					<p><a href="miPerfil.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mi perfil</a></p>
-				</div>
-			</div>
 			
 			<?php
 				$pagina_actual="Categorías";
 				include("php/funciones/genera_bloque_derecha.php");
 			?>
-			
+
 		</div>
 	</div>
 
@@ -118,12 +115,6 @@
 	<script type="text/javascript" src="js/goTo.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script>
-		function siguiente(){
-
-		}
-
-	</script>
 
 </body>
 </html>
