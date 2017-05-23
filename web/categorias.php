@@ -51,8 +51,8 @@
 							<div class="panel-body">
 								<div class="row">
 						<?php 
-							//Lanzamos query de esa categoria ordenados por votos
-							$query = "SELECT id_libro, titulo, portada FROM libros WHERE categoria=$jugos[0]".PHP_EOL;
+							//Lanzamos query de esa categoria recientemente TODO, no sé a qué altura va el LIMIT
+							$query = "SELECT id_libro, titulo, portada FROM libros WHERE categoria=$datosConsulta[0] ORDER BY fecha DESC LIMIT 4".PHP_EOL;
 
 
 							$consulta 	= 	realiza_consulta($conn, $query);
@@ -60,7 +60,7 @@
 
 
 
-							//Las pintamos pero dejamos ocultas? TODO HACERLO ASI: http://lineadecodigo.com/jquery/cargar-contenido-con-el-scroll-usando-jquery/
+							//Pintamos las 4 obras que hemos cargado
 							while($row = $consulta->fetch_assoc()){
 								?>
 								<div class="col-sm-6 col-md-3">
@@ -82,8 +82,7 @@
 										<div class="row">
 										<div class="col-sm-12 text-center">
 											<div class="btn-group" role="group" aria-label="...">
-												<button id=<?php echo 'bn'.$i ?> type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Prev</button>
-												<button id=<?php echo 'bn'.$i ?> type="button" class="btn btn-default">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+												<button type="button" class="btn btn-default">Ver más<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
 											</div>
 										</div>
 									</div>
@@ -96,7 +95,7 @@
 					?>
 
 							
-			
+			<!--TODO, esto debería hacerse con php-->
 			<div class="col-sm-2 sidenav">
 				<div class="dropdown text-left">
 					<p><a href="misObras.html"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Mis obras</a></p>
