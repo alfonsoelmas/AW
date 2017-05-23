@@ -32,6 +32,9 @@ $(document).ready(function() {
             "age":{
                 required: true,
                 number: true
+            },
+            "condiciones":{
+                required: true
             }
         },
         messages: {
@@ -59,7 +62,16 @@ $(document).ready(function() {
             "age":{
                 required: "Introduce tu edad.",
                 number: "La edad debe ser un numero."
+            },
+            "condiciones":{
+                required: "Debe aceptar las condiciones."
             }
+        },
+
+        submitHandler: function(form)
+        {
+            form.submit();
         }
+
     });
 });
