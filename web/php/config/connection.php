@@ -2,6 +2,7 @@
 	function conectar()
 	{
 		//Acceso a BD
+
 		/*$servername = "mysql.hostinger.es";
 		$username = "u285194728_aw";
 		$password = "123456";
@@ -12,6 +13,7 @@
 		$password = "";
 		$nombreBD = "aw"; 
 
+
 		//Hay que usar los métodos OO
 		$conn = new mysqli($servername, $username, $password, $nombreBD);
 		//$conn = mysqli_connect($servername, $username, $password ,$nombreBD);
@@ -20,7 +22,7 @@
 			die("Conexión con la BBDD fallida. " . mysqli_connect_error());
 		} 
 
-		return $conn;
+		return $conn;	
 	}
 
 	function realiza_consulta($conn, $query)
