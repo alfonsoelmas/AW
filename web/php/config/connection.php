@@ -2,10 +2,18 @@
 	function conectar()
 	{
 		//Acceso a BD
+		/*En hostinger
 		$servername = "mysql.hostinger.es";
 		$username = "u285194728_aw";
 		$password = "123456";
 		$nombreBD = "u285194728_aw";
+		*/
+
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$nombreBD = "aw";		
+
 
 		//Hay que usar los métodos OO
 		$conn = new mysqli($servername, $username, $password, $nombreBD);
@@ -15,7 +23,7 @@
 			die("Conexión con la BBDD fallida. " . mysqli_connect_error());
 		} 
 
-		return $conn;
+		return $conn;	
 	}
 
 	function realiza_consulta($conn, $query)

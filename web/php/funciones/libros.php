@@ -28,4 +28,14 @@
 
 		return $resultado;
 	}
+
+	function mejores_obras($n)
+	{
+		$sql = "SELECT id_libro, portada, AVG(puntuacion) AS punt_final FROM (libros NATURAL JOIN valora) GROUP BY id_libro ORDER BY punt_final DESC LIMIT '$n';";
+
+		$resultado = consulta($sql);
+
+		return $resultado;
+	}
+
 ?>
