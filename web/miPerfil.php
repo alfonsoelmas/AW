@@ -22,19 +22,28 @@
                    <div class="container">
                         <div class="row">
                             <div class="col-sm-3">
-								<img class="img-responsive img-circle" src="img/perfil.jpg" width="200" height="200" alt="Foto de Perfil"/>
+                             <?php
+                                $id = $_SESSION['usuario_actual'];
+                                include("perfil_usuario.php");
+                                $user = buscar_usuario_datos($id);
+
+                                $fila = $user->fetch_object()
+
+                                // Imagen
+							    echo "<img class='img-responsive img-circle' src='img/perfil.jpg' width='200' height='200'  alt='Foto de Perfil'/>
                             </div>
-                            <div class="col-sm-7">
-                                <p class="h2" id="nombre">Paco Pérez</p>
-                                <p id="datos">pacop@domain.com <br>
-                                Barcelona<br>
-                                España</p>
+                            <div class='col-sm-7'>
+                                <p class='h2' id='nombre'>$fila->nombre</p>
+                                <p id='datos'>$fila->email <br>
+                                $fila->ciudad<br>
+                                $fila->pais</p>
                             </div>
                         </div>
                         <br>
-                        <div class="row">
-                            <p class="descripcion">Mi nombre es Paco, tengo 30 años. Me encanta leer y cuidar de mi gato.</p>
-                        </div>
+                        <div class='row'>
+                            <p class='descripcion'>$fila->descripcion.</p>
+                        </div> ";
+                        ?>
                     </div>
                 </div>
             </div>
