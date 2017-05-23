@@ -46,7 +46,7 @@
 							//Pintamos titulo
 							?>
 							<div class="panel-heading">
-								<?php 	echo '<a href="result-busqueda.php?categoria='.$datosConsulta["categoria"].'">'?>
+								<?php 	echo '<a href="result-busqueda.php?categoria='.$datosConsulta["categoria"].'&type=dibujo">'?>
 									<p class="panel-title h3"><?php echo $datosConsulta["categoria"]; ?></p> 
 								</a>
 								<span class="badge"><?php echo $filas?></span></p>
@@ -83,10 +83,10 @@
 							}
 
 							?>
-										<div class="row">
+									<div class="row">
 										<div class="col-sm-12 text-center">
 											<div class="btn-group" role="group" aria-label="...">
-												<form method="get" action=<?php echo '"result-busqueda.php?categoria='.$datosConsulta["categoria"].'"'?>>
+												<form method="get" action=<?php echo '"result-busqueda.php?categoria='.$datosConsulta["categoria"].'type=dibujo"'?>>
 												<input type="submit" class="btn btn-default">Ver más<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></input>
 												</form>
 											</div>
@@ -99,7 +99,35 @@
 						}
 
 					?>
-
+					<div class="panel panel-default">
+					<div class="panel-heading">
+						<p class="panel-title h3">Bocetos</p>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-6 col-md-3">
+								<div class="thumbnail efecto-redondo">
+								<a href="">
+								<img alt="" src="img/logo2.png" class="img-responsive imgP">
+								<div class="caption">
+								<p>Title 1</p>
+								</div>
+								</a>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<div class="btn-group" role="group" aria-label="...">
+									<form method="get" action=<?php echo '"result-busqueda.php?type=dibujo"'?>>
+									<input type="submit" class="btn btn-default">Ver más<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></input>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>  
+				</div>
+			</div>
 			
 			<?php
 				$pagina_actual="Categorías";
@@ -115,6 +143,7 @@
 	<script type="text/javascript" src="js/goTo.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<?php cerrar_conexion($conn);?>
 
 </body>
 </html>

@@ -1,5 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
+
+<?php
+/*
+type=libro/dibujo (default ambos)
+categoria=categoriaquesea (default todas)
+clave=claveBusqueda	(default todo)
+orden=fecha,valoracion (default fecha)
+
+miro si es libro/dibujo
+	si es libro:
+		miro categoria
+			si !categoria:
+				miro busqueda
+				miro orden
+					si !orden o orden=fecha:
+						select from libros where title like "busqueda" or contenido like "busqueda" order by fecha desc
+					else
+						select from libros where title like "busqueda" or contenido like "busqueda" order by valoracion (CONSULTA MAL HECHA, YA Q VALORACIONES HAY Q SACARLA DE OTRA TABLA)
+			else
+				miro busqueda
+				miro orden
+					si !orden o orden=fecha:
+						select from libros where (title like "busqueda" or contenido like "busqueda") and categoria="categoria" order by fecha desc
+					else
+						select from libros where (title like "busqueda" or contenido like "busqueda") and categoria="categoria" order by valoracion (CONSULTA MAL HECHA, YA Q VALORACIONES HAY Q SACARLA DE OTRA TABLA)
+
+		consulta en libros con esa categoria y busqueda ordenado por orden(default) fecha.
+	si es dibujo:
+		miro busqueda
+		miro orden
+			si !orden o orden=fecha:
+				select from dibujos where title like "busqueda" order by fecha desc
+			else
+				select from dibujos where title like "busqueda" order by valoracion (CONSULTA MAL HECHA, YA Q VALORACIONES HAY Q SACARLA DE OTRA TABLA)
+
+	caso ambos, realizar ambas consultas
+	
+*/
+?>
+
 <head>
 	<title>Búsqueda - Paper Dreams</title>
 	<meta charset="utf-8">
@@ -13,6 +53,7 @@
 	<?php
 		$pagina_actual="Resultado de búsqueda";
 		include("php/funciones/genera_cabecera.php");
+		include("php/config/connection.php");
 	?>
     
 	<div class="container-fluid text-center">    
@@ -33,10 +74,10 @@
 						<span> Filtrar por: </span>
 						<div class="row">
 							<div class="checkbox">
-								<input type="checkbox" aria-label="Libros"> Libros
+								<input type="checkbox" name="libroActivo" aria-label="Libros"> Libros
 							</div>
 							<div class="checkbox">
-								<input type="checkbox" aria-label="Diseños"> Diseños  
+								<input type="checkbox" name="dibujoActivo" aria-label="Diseños"> Diseños  
 							</div>
 						</div>
 						<p>Si libros activo:</p>
@@ -46,15 +87,24 @@
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-							  <li><a href="#">Genero 1</a></li>
-							  <li><a href="#">Genero 2</a></li>
-							  <li><a href="#">Genero 3</a></li>
-							  <li><a href="#">Genero 4</a></li>
-							  <li><a href="#">Genero 5</a></li>
-							  <li><a href="#">Genero 6</a></li>
+							  <li><a href="#">todos</a></li>
+							  <?php 
+							  	$conn = conectar();
+							  	$query = "SELECT DISTINCT categoria FROM libros";
+
+							  	$consulta 	= 	realiza_consulta($conn, $query);
+								$filas 		= 	$consulta->num_rows;
+								$datosConsulta = $consulta->fetch_assoc();
+
+								for($i = 0; $i<$filas; $i++){
+									echo '<li><a href="#">'.$datosConsulta["categoria"].'</a></li>'
+								}
+
+							  ?>
+
 							</ul>
 						</div>
-						<div class="dropdown">
+						<!--div class="dropdown">
 							<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								Resultados por página
 								<span class="caret"></span>
@@ -67,9 +117,21 @@
 								<li><a href="#">20</a></li>
 								<li><a href="#">24</a></li>
 							</ul>
-						</div>
+						</div-->
 					</div> <!--panel-body--> 
 				</div>
+				<?php 
+
+					
+					if($_GET){
+						 $busqueda = trim($_GET['clave']);
+						 $categoria = $_GET['categoria'];
+						 $libroActivo = $_GET['esLibro'];
+						 $dibujoActivo = $_GET['esDibujo'];
+
+					}
+
+				?>
 				<div class="panel panel-default" id="resultadosBusq">
 					<div class="panel-heading">
 						<p class=" h3 panel-title">Resultados de búsqueda <span class="badge">134</span></p>
