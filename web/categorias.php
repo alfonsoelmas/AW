@@ -13,8 +13,8 @@
 
 <body>
 	<?php
-		$pagina_actual="categorias";
-		<?php require_once('php/funciones/genera_cabecera.php'); genera_cabecera('$pagina_actual');?>
+		$pagina_actual="Categorías";
+		include("php/funciones/genera_cabecera.php");
 		include("php/config/connection.php");
 	?>
 	
@@ -95,6 +95,7 @@
 					?>
 
 							
+<<<<<<< HEAD
 			<!--TODO, esto debería hacerse con php-->
 			<div class="col-sm-2 sidenav">
 				<div class="dropdown text-left">
@@ -103,6 +104,13 @@
 					<p><a href="miPerfil.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Mi perfil</a></p>
 				</div>
 			</div>
+=======
+			
+			<?php
+				$pagina_actual="Categorías";
+				include("php/funciones/genera_bloque_derecha.php");
+			?>
+>>>>>>> origin/master
 		</div>
 	</div>
 

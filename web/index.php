@@ -82,18 +82,10 @@
 					</div> <!--panel-body-->
 				</div> <!--panel panel-default-->
 			</div> <!--col-sm-10 text-left-->
-			<div class="col-sm-2 sidenav">
-				<div class="row">
-					<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton">
-						Inicia sesión
-					</button>
-				</div>
-				<div class="row">
-					<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton">
-						Regístrarse
-					</button>
-				</div>
-			</div> <!--col-sm-2 sidenav-->
+		<?php
+			$pagina_actual="Inicio";
+			include("php/funciones/genera_bloque_derecha.php");
+		?>
 		</div> <!--row-->
 	</div> <!--container-fluid-->
 

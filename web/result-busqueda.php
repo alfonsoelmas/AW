@@ -10,52 +10,10 @@
 </head>
 
 <body>
-
-  <div class="jumbotron" id="banner">
-		<div class="text-left">
-			<div class="col-sm-2">
-				<img id="logo" alt="logo" class="img-responsive"   src="img/logo1.png">
-			</div>
-			<div class="col-sm-10">
-			<p class="h1">Paper Dreams</p>      
-				<p>De tus sueños al papel</p>
-			</div>
-		</div>
-		<div id="breadcum-div">
-			<ol class="breadcrumb" id="breadcum" >
-				<li><a href="index.html">Inicio</a></li>
-				<li class="active">Resultado de búsqueda</li>
-			</ol>
-		</div>
-	</div>
-
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>                        
-				</button>
-				<a class="navbar-brand" href="index.html">Inicio</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li><a href="categorias.html">Categorías</a></li>
-					<li><a href="contacto.html">Contacto</a></li>
-					<li><a href="aboutUs.html">About Us</a></li>
-				</ul>
-				<div class="nav navbar-nav navbar-right">
-					<form class="navbar-form navbar-left input-group-btn" role="search" action="result-busqueda.html">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
-						</div>
-						<button id="buscador" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Buscar</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</nav>
+	<?php
+		$pagina_actual="Resultado de búsqueda";
+		include("php/funciones/genera_cabecera.php");
+	?>
     
 	<div class="container-fluid text-center">    
 		<div class="row content">
@@ -266,24 +224,14 @@
 				</div>
 			</div> <!--col-sm-10 text-left-->
 			
-			<div class="col-sm-2 sidenav">
-				<div class="row">
-					  <button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton">
-						  Inicia sesión
-					  </button>
-				</div>
-				<div class="row">
-				  <button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton">
-					Regístrarse
-				  </button>
-				</div>
-			</div>
+			<?php
+				$pagina_actual="Resultado de búsqueda";
+				include("php/funciones/genera_bloque_derecha.php");
+			?>
 		</div> <!--row content-->
 	</div> <!--container-fluid-->
 
-	<footer class="container-fluid text-center">
-		<p><a id="color-defecto" href="aboutUs.html">Paper Dreams 2017 - Un proyecto realizado por el grupo Bi-Inestables</a></p>
-	</footer>
+	<?php include("php/funciones/genera_pie.php"); ?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>

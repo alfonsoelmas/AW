@@ -172,18 +172,10 @@
 				</div>
 			</div>
 
-			<div class="sidenav col-sm-2 text- center">
-				<div class="botones">
-			    	<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="logInButton">
-			      		Inicia sesión
-			    	</button>
-				</div>
-				<div class="botones">
-			    	<button class="btn btn-default dropdown-toggle engordar redondear" type="button" id="registerButton">
-			      		Registrarse
-			    	</button>
-				</div>
-			</div>
+			<?php
+				$pagina_actual=$titulo;
+				include("php/funciones/genera_bloque_derecha.php");
+			?>
 		</div>
 		<?php
 			if(isset($_SESSION['usuario']))
@@ -234,7 +226,7 @@
 	</div>
 
 
-	<?php require_once('php/funciones/genera_pie.php');?>
+	<?php require_once('php/funciones/genera_pie.php'); ?>
 
 	<!-- scripts -->
 	<script src="js/goTo.js"></script>
