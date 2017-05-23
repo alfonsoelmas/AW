@@ -29,16 +29,16 @@ function genera_bloque_derecha($pagina_actual) {
 			echo "<div class='dropdown text-left'>";
 
 				if($pagina_actual != "Mi perfil")
-					echo "<p><a href='../../miPerfil.php'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> Mi perfil</a></p>";
+					echo "<p><a href='miPerfil.php'><span class='glyphicon glyphicon-user' aria-hidden='true'></span> Mi perfil</a></p>";
 
 				if($pagina_actual != "Mis obras")
-					echo "<p><a href='../../misObras.php'><span class='glyphicon glyphicon-folder-open' aria-hidden='true'></span> Mis obras</a></p>";
+					echo "<p><a href='misObras.php'><span class='glyphicon glyphicon-folder-open' aria-hidden='true'></span> Mis obras</a></p>";
 
 				if($pagina_actual != "Mis seguidores")
-					echo "<p><a href='../../misSeguidores.php'><span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Mis seguidores</a></p>";
+					echo "<p><a href='misSeguidores.php'><span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Mis seguidores</a></p>";
 
 				if($pagina_actual != "Siguiendo")
-					echo "<p><a href='../../siguiendo.php'><span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Siguiendo</a></p>";
+					echo "<p><a href='siguiendo.php'><span class='glyphicon glyphicon-list-alt' aria-hidden='true'></span> Siguiendo</a></p>";
 
 			echo "</div>";
 		echo "</div>";
