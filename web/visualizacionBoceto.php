@@ -123,7 +123,7 @@
 														<!-- Contenedor del Comentario -->
 														<div class='comment-box'>
 															<div class='comment-head'>
-																<h6 class='comment-name'><a href='http://miPerfil.html'>$comment_user->usuario</a> </h6>
+																<h6 class='comment-name'><a href='http://miPerfil.php'>$comment_user->usuario</a> </h6>
 																<span>$comentario->fecha</span>
 																<button class='fa fa-reply botones-comentario' data-toggle='modal' data-target='#myModal' data-id='$comentario->id'> </button>
 															</div>

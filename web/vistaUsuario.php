@@ -18,7 +18,8 @@
 	<!--Perfil-->
 	<div class="container-fluid text-center">    
 		<div class="row content">
-			<div class="col-sm-10 text-left"> 
+			<div class="col-sm-1"></div>
+			<div class="col-sm-9 text-left"> 
 				<div class="jumbotron">
 					<div class="container">
 						<div class="row">
@@ -65,7 +66,7 @@
 									<table class="obras">
 										<tr>
 											<td>
-												<a href="visualizacionLibro.html">
+												<a href="visualizacionLibro.php">
 													<img src="img/logo2.png" class="imgP" alt="logo">
 												</a>
 											</td>
@@ -96,7 +97,7 @@
 									<table class="obras">
 										<tr>
 											<td>
-												<a href="visualizacionBoceto.html">
+												<a href="visualizacionBoceto.php">
 													<img src="img/logo2.png" class="imgP" alt="logo">
 												</a>
 											</td>

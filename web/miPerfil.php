@@ -17,17 +17,18 @@
     <!--Perfil-->
     <div class="container-fluid text-center">    
         <div class="row content">
-            <div class="col-sm-10 text-left"> 
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9 text-left"> 
                 <div class="jumbotron" id="bloque-inicio">
                    <div class="container">
                         <div class="row">
                             <div class="col-sm-3">
                              <?php
                                 $id = $_SESSION['usuario_actual'];
-                                include("perfil_usuario.php");
-                                $user = buscar_usuario_datos($id);
+                                require_once($_SERVER['DOCUMENT_ROOT'] ."/AW/php/funciones/perfil_usuario.php");
+                                $user = buscar_datos_usuario($id);
 
-                                $fila = $user->fetch_object()
+                                $fila = $user->fetch_object();
 
                                 // Imagen
 							    echo "<img class='img-responsive img-circle' src='img/perfil.jpg' width='200' height='200'  alt='Foto de Perfil'/>
@@ -49,7 +50,7 @@
             </div>
             <?php
 				$pagina_actual="Mi perfil";
-				include("php/funciones/genera_bloque_derecha.php");
+				require_once($_SERVER['DOCUMENT_ROOT'] ."/AW/php/funciones/genera_bloque_derecha.php");
 			?>
         </div>
     </div>

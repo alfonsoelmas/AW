@@ -24,7 +24,7 @@
 						<div class="row">
 							<div class="col-sm-6 col-md-3">
 								<div class="thumbnail efecto-redondo">
-									<a href="vistaUsuario.html">
+									<a href="vistaUsuario.php">
 										<img src="img/logo2.png" alt="logo" class="imgP">
 										<div class="caption text-center">
 											<p>Nombre1</p>

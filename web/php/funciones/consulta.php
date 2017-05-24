@@ -1,5 +1,5 @@
 <?php
-	require_once("../config/connection.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/AW/php/config/connection.php");
 	//Función que realiza una consulta en la base de datos
 	function consulta($sql)
 	{

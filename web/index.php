@@ -38,7 +38,7 @@
 							  				require_once("php/funciones/libros.php");
 
 							  				try{
-							  					$resultado = mejores_obras('1');
+							  					/*$resultado = mejores_obras('1');
 								  				$obra = $resultado->fetch_object();
 
 
@@ -51,7 +51,7 @@
 													echo "<div class='item'>
 								            					<div class='col-xs-4'><a href='#1'><img src='img/portadas/portada.png' class='img-responsive img-carousel'></a></div>
 								          					</div>";
-								  				}
+								  				}*/
 							  				}
 							  				catch(Exception $e)
 							  				{
@@ -59,6 +59,7 @@
 							  				}
 
 							        	?>
+							        	</div>
 							        	<a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
 							        	<a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
 							      	</div>

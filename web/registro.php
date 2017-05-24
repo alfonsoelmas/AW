@@ -29,7 +29,7 @@
 							<p class="h3 panel-title">Crear una cuenta nueva</p>
 						</div>
 						<div class="panel-body">
-							<div class="col-sm-6 text-center content">
+							<div class="col-sm-7 text-center content">
 								<form id="register" method="post" action="php/funciones/registro_usuario.php">
 									<div class="login">
 										<div class="login-form">
@@ -49,11 +49,25 @@
 											</div>
 
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-plus" id="sizing-addon1"></span>
-												<input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" aria-describedby="sizing-addon1"/>
+												<span class="input-group-addon glyphicon glyphicon-map-marker" id="icon_user"></span>
+												<input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" aria-describedby="icon_user"/>
+											</div>
+
+											<div class="input-group input-group-md">
+												<span class="input-group-addon glyphicon glyphicon-globe"></span>
+												<input type="text" class="form-control" id="pais" name="pais" placeholder="País"/>
 											</div>
 											
-											<!--HOLAAAAA-->
+											<div class="input-group input-group-md">
+												<label for="imagen_perfil">Selecciona una foto de perfil:</label>
+											    <input type="file" name="imagen_perfil" id="imagen_perfil">
+											</div>
+											
+											<br>
+												<span class="input-group-addon glyphicon glyphicon-pencil"> Descripción</span>
+												<textarea class="form-control" id='desc' name='desc' rows="5" placeholder="Escribe una breve descripcion de ti..."></textarea>
+												<!--<textarea class="form-control" id="desc" name="desc" rows="5" placeholder=""></textarea>-->
+											
 											<div class="input-group input-group-md">
 												<span class="input-group-addon" id="icon_mail">@</span>
 												<input type="text" class="form-control" id="email" name="email" placeholder="Email" aria-describedby="icon_mail"/>
@@ -81,7 +95,7 @@
 									</div>
 								</form>
 							</div>
-							<div class="col-sm-6 text-center content">
+							<div class="col-sm-5 text-center content">
 								<div id="inicio_sesion">
 									<span>O si ya tienes una cuenta: </span>
 									<div class="row margin-normal">   

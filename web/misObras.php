@@ -24,7 +24,7 @@
 						<div class="row">
 							<div class="col-sm-6 col-md-3">
 								<div class="thumbnail efecto-redondo">
-									<a href="edicion.html">
+									<a href="edicion.php">
 										<img src="img/logo2.png" alt="" class="imgP">
 										<div class="caption">
 											<p>TítuloObra1</p>
@@ -36,7 +36,7 @@
 							</div>
 							<div class="col-sm-6 col-md-3">
 								<div class="thumbnail efecto-redondo">
-									<a href="edicion.html">
+									<a href="edicion.php">
 										<img src="img/logo2.png" alt="" class="imgP">
 										<div class="caption">
 											<p>TítuloObra2</p>
@@ -48,7 +48,7 @@
 							</div>
 							<div class="col-sm-6 col-md-3">
 								<div class="thumbnail efecto-redondo">
-									<a href="edicion.html">
+									<a href="edicion.php">
 										<img class="imgP" alt="" src="img/logo2.png">
 										<div class="caption">
 											<p>TítuloObra3</p>
@@ -60,7 +60,7 @@
 							</div>
 							<div class="col-sm-6 col-md-3">
 								<div class="thumbnail efecto-redondo">
-									<a href="edicionFoto.html">
+									<a href="edicionFoto.php">
 										<img src="img/logo2.png" alt="" class="imgP">
 										<div class="caption">
 											<p>TítuloObra4</p>

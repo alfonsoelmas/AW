@@ -38,15 +38,15 @@
 							<script type='text/javascript'>
 								CKEDITOR.replace ('editor1');
 							</script> 
-							<button type="button" onclick="window.location.href='edicionCap.html'" class="btn btn-info margen-top"> Añadir capítulo</button>
+							<button type="button" onclick="window.location.href='edicionCap.php'" class="btn btn-info margen-top"> Añadir capítulo</button>
 							<button type="button" class="btn btn-info margen-top" data-toggle="collapse" data-target="#lCap">Desplegar lista de capitulos</button>
 							<div id="lCap" class="collapse margen-top">
 								<div class="list-group">
-									<a href="edicionCap.html" class="list-group-item">
+									<a href="edicionCap.php" class="list-group-item">
 										<p class="h4 list-group-item-heading">Capitulo 1</p>
 										<p class="list-group-item-text">Erase una vez que se era... la historia comienza y empieza la aventura.</p>
 									</a>
-									<a href="edicionCap.html" class="list-group-item">
+									<a href="edicionCap.php" class="list-group-item">
 										<p class="h4 list-group-item-heading">Capitulo 2</p>
 										<p class="list-group-item-text">Nuestro viandante llega a Asturias, donde pasará un fin de semana de locura.</p>
 									</a>
