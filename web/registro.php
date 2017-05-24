@@ -53,6 +53,7 @@
 												<input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" aria-describedby="sizing-addon1"/>
 											</div>
 											
+											<!--HOLAAAAA-->
 											<div class="input-group input-group-md">
 												<span class="input-group-addon" id="icon_mail">@</span>
 												<input type="text" class="form-control" id="email" name="email" placeholder="Email" aria-describedby="icon_mail"/>
