@@ -100,6 +100,14 @@ miro si es libro/dibujo
 								<div class="checkbox">
 									<input type="checkbox" name="dibujoActivo" aria-label="Diseños"> Diseños  
 								</div>
+
+								<div>
+									ordenar:<br>
+									<input type="radio" name="tipoOrden" value="fecha"> Fecha
+  									<input type="radio" name="tipoOrden" value="valoraciones"> Valoraciones<br>
+  									<input type="radio" name="valorOrden" value="ascendente"> ascendente
+  									<input type="radio" name="valorOrden" value="descendente"> descendente
+								</div>
 							</div>
 							<input type="submit" name="filtro" value="filtro">
 						</form>
@@ -111,11 +119,117 @@ miro si es libro/dibujo
 					if($_GET){
 						 $busqueda = trim($_GET['clave']);
 						 $categoria = $_GET['categoria'];
-						 $libroActivo = $_GET['esLibro'];
-						 $dibujoActivo = $_GET['esDibujo'];
+						 $libroActivo = isset($_GET['esLibro']);
+						 $dibujoActivo = isset($_GET['esDibujo']);
+
+						 $tipoOrden;
+
+						 if(isset($_GET['tipoOrden'])){
+						 	$tipoOrden = $_GET['tipoOrden'];
+						 } else {
+						 	$tipoOrden = "fecha";
+						 }
+
+						 if(isset($_GET['tipoOrden'])){
+						 	$valorOrden = $_GET['valorOrden'];
+						 } else {
+						 	$valorOrden = "descendente";
+						 }
+
+						 $miroBusqueda = isset($_GET['clave'])
+
+						 $query;
+
+						 if($libroActivo){
+					 		//Miramos categoría:
+					 		//En el caso de que la categoría sea todas, o no halla categoría... la consulta alos libros será más simple
+					 		if( !isset($_GET['categoria']) || strcmp($categoria,"todas")){
+					 			
+					 			if($miroBusqueda){
+					 				//La consulta filtrara por la busqueda también
+
+					 				//Ahora filtramos x orden...
+					 				if(strcmp($tipoOrden,"fecha")){
+					 					if(strcmp($valorOrden,"descendente")){
+
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha descendiente 
+					 						//TODO
+					 						$query = 'SELECT * FROM libros where titulo LIKE '/*TODO*/ ' OR contenido LIKE '/*TODO  */' ORDER BY fecha DESC'
+
+					 					} else {
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha ascendiente
+
+					 					}
+
+					 				} else {
+					 					if(strcmp($valorOrden,"descendente")){
+
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por valoraciones descendiente
+
+					 					} else {
+
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por valoraciones descendiente
+					 						
+					 					}
+
+					 				}
+
+					 			} else {
+					 				//No filtramos por el contenido de busqueda
+
+					 				//Ahora filtramos x orden...
+					 				//Ahora filtramos x orden...
+					 				if(strcmp($tipoOrden,"fecha")){
+					 					if(strcmp($valorOrden,"descendente")){
+
+					 						//Necesito los libros ordenados por fecha descendiente 
+
+					 						$query = 'SELECT * FROM libros  ORDER BY fecha DESC';
+
+					 					} else {
+					 						//Necesito los libros ordenados fecha ascendiente
+
+					 						$query = 'SELECT * FROM libros  ORDER BY fecha ASC';
+
+					 					}
+
+					 				} else {
+					 					if(strcmp($valorOrden,"descendente")){
+
+					 						//Necesito los libros ordenados por valoraciones descendiente 
+					 						//TODO
+
+					 					} else {
+
+					 						//Necesito los libros ordenados por valoraciones descendiente 
+					 						//TODO
+					 						
+					 					}
+
+					 				}
+
+					 			}
+
+					 		} else {	//En otro caso tenemos que filtrar la consulta por la categoría
+
+					 			if($miroBusqueda){
+					 				//La consulta filtrara por la busqueda también
+
+					 			} else {
+					 				//No filtramos
+					 				
+					 			}
+
+					 		}
+						 }
+
+						 if($dibujoAtivo){
+
+						 }
+
 
 					} else {
-						//PAGINA DE ERROR
+						header("Location: 404Error.php");
 					}
 
 				?>
