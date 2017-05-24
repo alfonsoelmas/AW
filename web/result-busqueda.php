@@ -71,54 +71,39 @@ miro si es libro/dibujo
 						</div>
 					</div>
 					<div class="panel-body" id="opcionesBusqBody">
-						<span> Filtrar por: </span>
-						<div class="row">
-							<div class="checkbox">
-								<input type="checkbox" name="libroActivo" aria-label="Libros"> Libros
+						<form method="get" action="result-busqueda.php">
+							<!--TODO falta busqueda avanzada, un input de esta busqueda, etcq-->
+							<span> Filtrar por: </span>
+							<div class="row">
+								<div class="checkbox">
+									<input type="checkbox" name="libroActivo" aria-label="Libros"> Libros
+								</div>
+								<!--Mostramos todas las categorias-->
+								Categoría del libro: 
+								<select name="categoria">
+								  <option value="todas">todas</option>
+
+								  <?php 
+								  	$conn = conectar();
+								  	$query = "SELECT DISTINCT categoria FROM libros";
+
+								  	$consulta 	= 	realiza_consulta($conn, $query);
+									$filas 		= 	$consulta->num_rows;
+									$datosConsulta = $consulta->fetch_assoc();
+
+									for($i = 0; $i<$filas; $i++){
+										echo '<option value="'.$datosConsulta["categoria"].'">'.$datosConsulta["categoria"].'</option>'
+									}
+
+								  ?>
+								</select> 
+								<div class="checkbox">
+									<input type="checkbox" name="dibujoActivo" aria-label="Diseños"> Diseños  
+								</div>
 							</div>
-							<div class="checkbox">
-								<input type="checkbox" name="dibujoActivo" aria-label="Diseños"> Diseños  
-							</div>
-						</div>
-						<p>Si libros activo:</p>
-						<div class="dropdown">
-							<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								Género de libro
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="#">todos</a></li>
-							  <?php 
-							  	$conn = conectar();
-							  	$query = "SELECT DISTINCT categoria FROM libros";
-
-							  	$consulta 	= 	realiza_consulta($conn, $query);
-								$filas 		= 	$consulta->num_rows;
-								$datosConsulta = $consulta->fetch_assoc();
-
-								for($i = 0; $i<$filas; $i++){
-									echo '<li><a href="#">'.$datosConsulta["categoria"].'</a></li>'
-								}
-
-							  ?>
-
-							</ul>
-						</div>
-						<!--div class="dropdown">
-							<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								Resultados por página
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<li><a href="#">4</a></li>
-								<li><a href="#">8</a></li>
-								<li><a href="#">12</a></li>
-								<li><a href="#">16</a></li>
-								<li><a href="#">20</a></li>
-								<li><a href="#">24</a></li>
-							</ul>
-						</div-->
-					</div> <!--panel-body--> 
+							<input type="submit" name="filtro" value="filtro">
+						</form>
+					</div>
 				</div>
 				<?php 
 
@@ -129,6 +114,8 @@ miro si es libro/dibujo
 						 $libroActivo = $_GET['esLibro'];
 						 $dibujoActivo = $_GET['esDibujo'];
 
+					} else {
+						//PAGINA DE ERROR
 					}
 
 				?>
