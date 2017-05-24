@@ -47,6 +47,11 @@
 												<span class="input-group-addon glyphicon glyphicon-plus" id="sizing-addon1"></span>
 												<input type="text" class="form-control" id="age" name="age" placeholder="Edad" aria-describedby="sizing-addon1"/>
 											</div>
+
+											<div class="input-group input-group-md">
+												<span class="input-group-addon glyphicon glyphicon-plus" id="sizing-addon1"></span>
+												<input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" aria-describedby="sizing-addon1"/>
+											</div>
 											
 											<div class="input-group input-group-md">
 												<span class="input-group-addon" id="icon_mail">@</span>
