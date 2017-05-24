@@ -1,6 +1,6 @@
 <?php
-	require_once('consulta.php');
-	require_once('filtrado_entrada.php');
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/filtrado_entrada.php");
 
 	registra_usuario();
 	

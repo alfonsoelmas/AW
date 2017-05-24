@@ -12,7 +12,7 @@
 <body>
 	<?php
 		$pagina_actual="EdiciónCap";
-		include("php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 
 	<div class="container-fluid text-center">    
@@ -46,11 +46,13 @@
 		</div>
 		<?php
 			$pagina_actual="EdiciónCap";
-			include("php/funciones/genera_bloque_derecha.php");
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 		?>
 	</div>
 
-	<?php include("php/funciones/genera_pie.php"); ?>
+	<?php 
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
+	?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>

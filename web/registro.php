@@ -1,9 +1,3 @@
-<?php  
-	if(isset($_SESSION['name']))
-	{
-		header("Location: index.php");
-	}	
-?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -17,7 +11,7 @@
 	<body>
 		<?php
 			$pagina_actual="Registro";
-			include("php/funciones/genera_cabecera.php");
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 		?>
 
 		<div class="container-fluid text-center">    
@@ -110,7 +104,9 @@
 			</div>
 		</div>
 
-		<?php include("php/funciones/genera_pie.php"); ?>
+		<?php 
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
+		?>
 
 		<!--Scripts-->
   		<script type="text/javascript" src="js/goTo.js"></script>

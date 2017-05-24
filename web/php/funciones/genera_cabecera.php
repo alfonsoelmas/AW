@@ -17,7 +17,7 @@ function genera_cabecera($pagina_actual) {
 		echo "<div id='breadcum-div'>";
 	   		echo "<ol class='breadcrumb' id='breadcum' >";
 	   			// Mostrar usuario conectado en caso de haberlo.
-				if(isset($_SESSION["name"])) {
+				if(isset($_SESSION["usuario_actual"])) {
 					echo "¡Hola, ".$_SESSION["name"]."! ";
 					echo "<a href='php/funciones/logout.php'>Desconectar</a> | ";
 				}
@@ -40,7 +40,7 @@ function genera_cabecera($pagina_actual) {
 			echo "</div>";
 			echo "<div class='collapse navbar-collapse' id='myNavbar'>";
 				echo "<ul class='nav navbar-nav'>";
-					echo "<li><a href='categorias.php'>Categorias</a></li>";
+					echo "<li><a href='categorias.php'>Categorías</a></li>";
 					echo "<li><a href='contacto.php'>Contacto</a></li>";
 					echo "<li><a href='aboutUs.php'>About Us</a></li>";
 				echo "</ul>";

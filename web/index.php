@@ -10,7 +10,7 @@
 <body>
 	<?php
 		$pagina_actual="Inicio";
-		include("php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 
 	<div class="container-fluid text-center">    
@@ -35,7 +35,7 @@
 							      	<div class="carousel slide multi-item-carousel" id="theCarousel">
 							        	<div class="carousel-inner">
 							        	<?php
-							  				require_once("php/funciones/libros.php");
+							  				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
 
 							  				try{
 							  					/*$resultado = mejores_obras('1');
@@ -71,12 +71,14 @@
 			</div> <!--col-sm-10 text-left-->
 		<?php
 			$pagina_actual="Inicio";
-			require_once("php/funciones/genera_bloque_derecha.php");
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 		?>
 		</div> <!--row-->
 	</div> <!--container-fluid-->
 
-	<?php require_once("php/funciones/genera_pie.php"); ?>
+	<?php 
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
+	?>
 	
 		<!--//BLOQUE COOKIES-->
 	<div id="barraaceptacion" class="container-fluid">

@@ -1,5 +1,5 @@
 <?php
-	require_once("consulta.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
 
 	//Construye la sql que busca los comentarios de un libro
 	function comentarios($id, $contenido)

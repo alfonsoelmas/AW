@@ -10,7 +10,7 @@
 <body>
 	<?php
 		$pagina_actual="Usuario";
-		include("php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 
 	<br>
@@ -24,6 +24,9 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-3">
+								<?php
+									$id = $_GET['id_usuario'];
+								?>
 								<img class="img-responsive img-circle" alt="" src="img/mafalda.jpg" width="200" height="200"/>
 							</div>
 							<div class="col-sm-7">
@@ -49,7 +52,7 @@
 
 			<?php
 				$pagina_actual="Usuario";
-				include("php/funciones/genera_bloque_derecha.php");
+				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 			?>
 		</div> <!--row content-->
 
@@ -139,7 +142,9 @@
 		</div> <!--row-->
 	</div> <!--container fluid-->
 
-	<?php include("php/funciones/genera_pie.php"); ?>
+	<?php 
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
+	?>
 	
 	<!--Script-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

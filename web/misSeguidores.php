@@ -12,7 +12,7 @@
 	<body>
 		<?php
 			$pagina_actual="Mis seguidores";
-			include("php/funciones/genera_cabecera.php");
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 		?>
  
 		<div class="container-fluid text-center">    
@@ -25,7 +25,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<?php
-									require_once("php/funciones/muestra_seguidores.php")
+									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/muestra_seguidores.php")
 								?>
 							</div>
 							<div class="row">
@@ -42,12 +42,14 @@
 			
 				<?php
 					$pagina_actual="Mis seguidores";
-					include("php/funciones/genera_bloque_derecha.php");
+					require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 				?>
 			</div> <!-- row content-->
 		</div> <!--container-fluid-->
 
-		<?php include("php/funciones/genera_pie.php"); ?>
+		<?php 
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
+		?>
 
 		<!--Scripts-->
 		<script type="text/javascript" src="js/goTo.js"></script>

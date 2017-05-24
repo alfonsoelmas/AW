@@ -11,7 +11,7 @@
 <body>
 	<?php
 		$pagina_actual="Mi perfil";
-		include("php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 
     <!--Perfil-->
@@ -55,7 +55,7 @@
         </div>
     </div>
 
-    <?php include("php/funciones/genera_pie.php"); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); ?>
 	
 	<!--Script-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
