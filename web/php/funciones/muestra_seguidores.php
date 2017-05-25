@@ -31,7 +31,6 @@
 	// El usuario tiene al menos un seguidor.
 	else {
 		while($id_seguidor != NULL) {
-		//foreach($id_seguidores as $valor) {
 			// Obtener los nombres de los usuarios a mostrar en esta página que siguen al usuario conectado.
 			$query = "SELECT foto FROM perfil WHERE id_usuario LIKE ".$id_seguidor;
 			$foto = mysqli_fetch_assoc(consulta($query))['foto'];
@@ -44,9 +43,9 @@
 			<div class='col-sm-6 col-md-3'>
 				<div class='thumbnail efecto-redondo'>
 					<a href='vistaUsuario.php?usuario=".$id_seguidor."'>
-						<img src='$foto' alt='' class='imgP'>
+						<img src=.".$foto." alt='' class='imgP'>
 						<div class='caption'>
-							<p>$nombre</p>
+							<p>".$nombre."</p>
 						</div>
 					</a>
 				</div>
