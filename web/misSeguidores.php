@@ -23,19 +23,9 @@
 							<p class="h3 panel-title">Mis seguidores</p>
 						</div>
 						<div class="panel-body">
-							<div class="row">
-								<?php
-									require_once("php/funciones/muestra_seguidores.php")
-								?>
-							</div>
-							<div class="row">
-								<div class="col-sm-12 text-center">
-									<div class="btn-group" role="group" aria-label="...">
-										<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Prev</button>
-										<button type="button" class="btn btn-default">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
-									</div>
-								</div>
-							</div>
+							<?php
+								require_once("php/funciones/muestra_seguidores.php");
+							?>
 						</div> <!--panel-body-->  
 					</div> <!--bloque inicio-->
 				</div> <!--col-sm-10-->
