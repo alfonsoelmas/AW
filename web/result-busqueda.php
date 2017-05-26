@@ -3,6 +3,8 @@
 
 <?php
 /*
+//TODO ANTES DE HACER LAS CONSULTAS PASAR POR CONTROL ANTI INYECCTION SQL 
+
 type=libro/dibujo (default ambos)
 categoria=categoriaquesea (default todas)
 clave=claveBusqueda	(default todo)
@@ -38,7 +40,27 @@ miro si es libro/dibujo
 	caso ambos, realizar ambas consultas
 	
 */
+function calculaValoracionToInt($valor){
+	//Redondeamos a la baja...
+	if($valor < 1){
+		return 0;
+	} else if ($valor < 2){
+		return 1;
+	} else if ($valor < 3){
+		return 2;
+	} else if ($valor < 4){
+		return 3;
+	} else if ($valor < 5){
+		return 4;
+	} else if ($valor < 6){
+		return 5;
+	} else {
+		return -1;
+	}
+}
+
 ?>
+
 
 <head>
 	<title>Búsqueda - Paper Dreams</title>
@@ -51,6 +73,7 @@ miro si es libro/dibujo
 
 <body>
 	<?php
+	//TODO - Sesion start?
 		$pagina_actual="Resultado de búsqueda";
 		include("php/funciones/genera_cabecera.php");
 		include("php/config/connection.php");
@@ -121,6 +144,23 @@ miro si es libro/dibujo
 						 $categoria = $_GET['categoria'];
 						 $libroActivo = isset($_GET['esLibro']);
 						 $dibujoActivo = isset($_GET['esDibujo']);
+						 $pagina_actual_l;
+						 $pagina_actual_d;
+
+
+						 if(!isset($_GET['pagina_l'])){
+						 	$pagina_actual_l=1;
+						 } else {
+						 	//COMPRUEBO QUE LA PÁGINA ES UN NUMERO
+						 	$pagina_actual_l=$_GET['pagina_l']);
+						 }
+
+						 if(!isset($_GET['pagina_d'])){
+						 	$pagina_actual_d=1;
+						 } else {
+						 	//COMPRUEBO QUE LA PÁGINA ES UN NUMERO
+						 	$pagina_actual_d=$_GET['pagina_d']);
+						 }
 
 						 $tipoOrden;
 
@@ -151,23 +191,24 @@ miro si es libro/dibujo
 					 				//Ahora filtramos x orden...
 					 				if(strcmp($tipoOrden,"fecha")){
 					 					if(strcmp($valorOrden,"descendente")){
-
+					 						//TODO
 					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha descendiente 
 					 						//TODO
 					 						$query = 'SELECT * FROM libros where titulo LIKE '/*TODO*/ ' OR contenido LIKE '/*TODO  */' ORDER BY fecha DESC'
 
 					 					} else {
+					 						//TODO
 					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha ascendiente
 
 					 					}
 
 					 				} else {
 					 					if(strcmp($valorOrden,"descendente")){
-
+											//TODO
 					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por valoraciones descendiente
 
 					 					} else {
-
+					 						//TODO
 					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por valoraciones descendiente
 					 						
 					 					}
@@ -177,7 +218,6 @@ miro si es libro/dibujo
 					 			} else {
 					 				//No filtramos por el contenido de busqueda
 
-					 				//Ahora filtramos x orden...
 					 				//Ahora filtramos x orden...
 					 				if(strcmp($tipoOrden,"fecha")){
 					 					if(strcmp($valorOrden,"descendente")){
@@ -198,6 +238,7 @@ miro si es libro/dibujo
 
 					 						//Necesito los libros ordenados por valoraciones descendiente 
 					 						//TODO
+					 						$query = 'SELECT * FROM libros  ORDER BY fecha DESC';
 
 					 					} else {
 
@@ -215,15 +256,213 @@ miro si es libro/dibujo
 					 			if($miroBusqueda){
 					 				//La consulta filtrara por la busqueda también
 
+					 				//Ahora filtramos x orden...
+					 				if(strcmp($tipoOrden,"fecha")){
+					 					if(strcmp($valorOrden,"descendente")){
+					 						//TODO
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha descendiente 
+					 						//TODO
+					 						$query = 'SELECT * FROM libros where categoria="'.$categoria.'" AND (titulo LIKE '/*TODO*/ ' OR contenido LIKE '/*TODO  */') ORDER BY fecha DESC'
+
+					 					} else {
+					 						//TODO
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha ascendiente + categoria
+
+					 					}
+
+					 				} else {
+					 					if(strcmp($valorOrden,"descendente")){
+											//TODO
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por valoraciones descendiente + categoria
+
+					 					} else {
+					 						//TODO
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por valoraciones descendiente + categoria
+					 						
+					 					}
+
+					 				}
+
 					 			} else {
-					 				//No filtramos
-					 				
+					 				//No filtramos por el contenido de busqueda
+
+					 				//Ahora filtramos x orden...
+					 				if(strcmp($tipoOrden,"fecha")){
+					 					if(strcmp($valorOrden,"descendente")){
+
+					 						//Necesito los libros ordenados por fecha descendiente 
+
+					 						$query = 'SELECT * FROM libros  where categoria="'.$categoria.'" ORDER BY fecha DESC';
+
+					 					} else {
+					 						//Necesito los libros ordenados fecha ascendiente
+
+					 						$query = 'SELECT * FROM libros where categoria="'.$categoria.'" ORDER BY fecha ASC';
+
+					 					}
+
+					 				} else {
+					 					if(strcmp($valorOrden,"descendente")){
+
+					 						//Necesito los libros ordenados por valoraciones descendiente 
+					 						//TODO
+					 						$query = 'SELECT * FROM libros where categoria="'.$categoria.'" ORDER BY fecha DESC';
+
+					 					} else {
+
+					 						//Necesito los libros ordenados por valoraciones descendiente 
+					 						//TODO
+					 						
+					 					}
+
+					 				}
+
 					 			}
 
+
 					 		}
+						 
+					 	//TODO NECESITO UNA CONSULTA QUE GUARDE EN $TOTALBUSQUEDA EL TOTAL DE RESULTADOS DE BUSQUEDA
+
+ 						$consulta 	= 	realiza_consulta($conn, $query);
+						$filas 		= 	$consulta->num_rows;
+						$datosConsulta = $consulta->fetch_assoc();
+
+						//construimos la busqueda de libros
+						//RECORDAR HACER LA CONSULTA CON DESPLAZAMIENTO Y LIMITE
+						//RECORDAR HACER UN GET DE UN PUNTERO DE LA PAGINA
+							?>
+							<div class="panel panel-default" id="resultadosBusq">
+							<div class="panel-heading">
+								<p class=" h3 panel-title">Resultados de búsqueda de Libros<span class="badge"><?php echo $totalBusqueda?></span></p>
+							</div>
+							<div class="panel-body">
+
+							<?php
+							//TODO $totalBusqueda = nº de resultados totales
+							//TODO $totalConsulta = nºResultados en la consulta
+							$maxFila=3;
+							$maxCol=4;
+
+							if($totalConsulta != 12){
+								$maxFila = $totalConsulta/4; 
+								//TODO maxCol???
+
+							}
+
+							for($i = 0; $i<$maxFila; $i++){
+								?>
+								<div class="row">
+
+
+								<?php
+
+								for($j = 0; $j<$maxCol; $j++){
+									//TODO aqui pintamos el resultado:
+									$titulo = ;//TODO $datosConsulta[i*4+j]->titulo;
+									$autor = ;//TODO $datosConsulta[i*4+j]->autor;
+									$valor = ;//TODO calculaValoracionToInt($datosConsulta[i*4+j]->valorMedio);
+
+									?>
+									<div class="col-sm-6 col-md-3">
+										<div class="thumbnail efecto-redondo">
+											<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
+											<div class="caption text-center">
+												<p class="h3"><?php echo $titulo ?></p>
+												<p><?php echo $autor ?>/p>
+												<p>
+
+												<!--valoraciones-->
+												<?php 
+													for($i=0; i<$valor; $i++) {
+														echo'<span class="glyphicon glyphicon-star" aria-hidden="true"></span>'
+													}
+													for($i=0; i<5-$valor; $i++) {
+														echo '<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>'
+													}
+
+												?>
+												</p>
+											</div>
+										</div>
+									</div>
+								<?php
+								}
+								echo '</div> <!--row-->'
+							}
+
+							echo '<div class="row">'
+							echo '<div class="col-sm-12 text-center">'
+								echo '<nav aria-label="Page navigation">'
+									echo '<ul class="pagination">'
+										if($pagina_l == 1)
+										{ 
+											echo '<li class="disabled">'
+											echo '<a  href="#" aria-label="Previous">'
+												echo '<span aria-hidden="true">&laquo;</span>'
+											echo '</a>'
+											echo '</li>'
+										}
+										else 
+										{
+						// $busqueda = trim($_GET['clave']);
+						// $categoria = $_GET['categoria'];
+						// $libroActivo = isset($_GET['esLibro']);
+						// $dibujoActivo = isset($_GET['esDibujo']);
+						// $pagina_actual_l;
+						// $pagina_actual_d;
+											echo '<li class="">'
+											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l-1.'&pagina_d='.$pagina_actual_d.'" aria-label="Previous">'
+												echo '<span aria-hidden="true">&laquo;</span>'
+											echo '</a>'
+											echo '</li>'
+										}
+										$ultimaPagina = $totalBusqueda/12;
+
+										if($pagina_actual_l < 5)
+											//TODO AQUI HACEMOS EL PAGINADOR, ME QUEDA POCO POR CUADRAR ESTO
+											/*
+										<li class="active"><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">6</a></li>
+										<li><a href="#">7</a></li>
+										<li><a href="#">8</a></li>
+										<li><a href="#">9</a></li>
+										<li>
+											<a href="#" aria-label="Next">
+												<span aria-hidden="true">&raquo;</span>
+											</a>
+										</li>
+									</ul>
+								</nav>
+							</div> <!--col-sm-12 text-center-->
+						</div> <!--row-->
+					</div> <!--panel-body-->
+				</div>
+			</div> <!--col-sm-10 text-left-->
+
+*/
 						 }
 
+
+
+
+
+
 						 if($dibujoAtivo){
+
+
+
+							$consulta 	= 	realiza_consulta($conn, $query);
+							$filas 		= 	$consulta->num_rows;
+							$datosConsulta = $consulta->fetch_assoc();
+
+							//construimos la busqueda de dibujos
+							//RECORDAR HACER LA CONSULTA CON DESPLAZAMIENTO Y LIMITE
+							//RECORDAR HACER UN GET DE UN PUNTERO DE LA PAGINA
 
 						 }
 
@@ -238,123 +477,6 @@ miro si es libro/dibujo
 						<p class=" h3 panel-title">Resultados de búsqueda <span class="badge">134</span></p>
 					</div>
 					<div class="panel-body">
-						<div class="row">
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo">
-									<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
-									<div class="caption text-center">
-										<p class="h3">Titulo 1</p>
-										<p>Autor</p>
-										<p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo">
-									<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
-									<div class="caption text-center">
-										<p class="h3">Titulo 1</p>
-										<p>Autor</p>
-										<p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo">
-									<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
-									<div class="caption text-center">
-										<p class="h3">Titulo 1</p>
-										<p>Autor</p>
-										<p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo">
-									<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
-									<div class="caption text-center">
-										<p class="h3">Titulo 1</p>
-										<p>Autor</p>
-										<p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
-									</div>
-								</div>
-							</div>
-						</div> <!--row-->
-						
-						<div class="row">
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo">
-									<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
-									<div class="caption text-center">
-										<p class="h3">Titulo 1</p>
-										<p>Autor</p>
-										<p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo">
-									<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
-									<div class="caption text-center">
-										<p class="h3">Titulo 1</p>
-										<p>Autor</p>
-										<p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo efecto-redondo">
-									<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
-									<div class="caption text-center">
-										<p class="h3">Titulo 1</p>
-										<p>Autor</p>
-										<p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo">
-									<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
-									<div class="caption text-center">
-										<p class="h3">Titulo 1</p>
-										<p>Autor</p>
-										<p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-										<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></p>
-									</div>
-								</div>
-							</div>
-						</div> <!--row-->
 						
 						<div class="row">
 							<div class="col-sm-12 text-center">
