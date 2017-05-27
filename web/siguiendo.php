@@ -35,7 +35,7 @@
 		</div> <!--container-fluid-->
 
 		<?php 
-			require_once($_SERVER['DOCUMENT_ ROOT'] ."/web/php/funciones/genera_pie.php"); 
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
 		?>
 
 		<!--Scripts-->
