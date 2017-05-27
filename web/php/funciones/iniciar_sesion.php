@@ -8,29 +8,51 @@
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 
-		//Esto hay que cogerlo de una consulta
-		$con = comprueba_usuario($username, $password);
+		// Comprobamos si el usuario existe
+		$con = comprueba_usuario($username);
 
 		$nFilas = n_filas($con);
-
+		
 		if($nFilas == 1){
-			
-			session_start();
-			
-			$filaUsuario = $con->fetch_object();
 
-			$_SESSION['usuario_actual'] = $filaUsuario->id;
-			$_SESSION['name'] = $filaUsuario->nombre;
-			header("Location: ../index.php");
+			// Comprobamos si la contraseña coincide
+			// Ver el ejemplo de password_hash() para ver de dónde viene este hash.
+			// $hash = '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq';
+			$pass = dame_pass($username);
+			$hash = $pass->fetch_object();
+
+			if (password_verify("$password", "$hash->pass")) {
+			    echo '¡La contraseña es válida!';
+				session_start();
+				
+				$filaUsuario = $con->fetch_object();
+
+				$_SESSION['usuario_actual'] = $filaUsuario->id;
+				$_SESSION['name'] = $filaUsuario->nombre;
+				header("Location: ../../index.php");
+			
+			} 
+			else {
+			    echo '<br>La contraseña no es válida.';
+			}
 		}
 		else{
 			echo "El usuario no existe o no coincide con la contraseña";
 		}
 	}	
 
-	function comprueba_usuario($email, $pass){
+	function comprueba_usuario($email){
 
-		$sql = "SELECT * FROM usuarios WHERE email='$email' AND pass='$pass'";
+		$sql = "SELECT * FROM usuarios WHERE email='$email'";
+
+		$resultado = consulta($sql);
+
+		return $resultado;
+	}
+
+	function dame_pass($email){
+
+		$sql = "SELECT U.pass FROM usuarios AS U WHERE email='$email'";
 
 		$resultado = consulta($sql);
 

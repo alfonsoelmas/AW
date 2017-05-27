@@ -1,7 +1,3 @@
-
-
-
-	
 $(document).ready(function() {
     
     document.getElementById("logInButton").onclick=function(){
@@ -19,6 +15,7 @@ $(document).ready(function() {
         debug: true,
         errorClass: "my-error-class",
         validClass: "my-valid-class",
+        
         rules: {
             "user": {
                 required: true
@@ -37,6 +34,12 @@ $(document).ready(function() {
                 minlength: "Tiene que tener una longitud minima de 8 caracteres"
             }
         },
+
+        submitHandler: function(form){
+            form.submit();
+        }
+        
+
     });
 });
 

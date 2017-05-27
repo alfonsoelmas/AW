@@ -11,22 +11,26 @@
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
 	$id_libro = $_GET['id_libro'];
 
-	//Esto hay que cogerlo de una consulta
-	$resultado = consulta_datos($id_libro);
+	//if($id_libro){
 
-	if($resultado)
-	{
-		$libro = $resultado->fetch_object();
+		//Esto hay que cogerlo de una consulta
+		$resultado = consulta_datos($id_libro);
 
-		$titulo = $libro->titulo;
-		$sinopsis = $libro->sinopsis;
-		$fecha = $libro->fecha;
-		$portada = $libro->portada;
-	}
-	else
-	{
-		header("Location: 404Error.php");
-	}
+		if($resultado)
+		{
+			$libro = $resultado->fetch_object();
+
+			$titulo = $libro->titulo;
+			$sinopsis = $libro->sinopsis;
+			$fecha = $libro->fecha;
+			$portada = $libro->portada;
+		}
+		else
+		{
+			header("Location: 404Error.php");
+		}
+	//}
+
 ?>
 
 

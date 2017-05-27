@@ -6,7 +6,7 @@ function genera_bloque_derecha($pagina_actual) {
 	// Genera el bloque de la derecha de la página web, con todas las opciones que debe haber en cada momento.
 	
 	// No hay una sesión iniciada
-	if(!isset($_SESSION["usuario_actual"])) {
+	if(!isset($_SESSION['usuario_actual'])) {
 		// Mostrar botones "Iniciar sesión" y "Resgistrarse".
 		echo
 		"<div class='col-sm-2 sidenav'>
@@ -17,9 +17,9 @@ function genera_bloque_derecha($pagina_actual) {
 			</div>
 			<div class='row'>
 				<button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='registerButton'>
-					Registrarse
+					Registro
 				</button>
-			</div>
+			</div>	
 		</div>";
 	}
 	// Hay una sesión iniciada

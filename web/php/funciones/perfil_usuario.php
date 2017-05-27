@@ -10,4 +10,8 @@
 
 		return $resultado;
 	}
+
+	function buscar_obras_usuario($id){
+
+	}
 ?>

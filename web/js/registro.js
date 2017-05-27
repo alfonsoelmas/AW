@@ -1,12 +1,11 @@
-
 $(document).ready(function() {
 
     $('#register').submit(function(e) { e.preventDefault(); }).validate(
     { 
-
         debug: true,
         errorClass: "my-error-class",
         validClass: "my-valid-class",
+        
         rules: {
             "name": {
                 required: true
@@ -37,12 +36,13 @@ $(document).ready(function() {
                 required: true
             }
         },
+
         messages: {
             "name": {
                 required: "Introduce tu nombre."
             },
             "user": {
-                required: "Introduce tu nombre de usuario.",
+                required: "Introduce tu nombre de usuario."
             },
             "email": {
                 required: "Introduce tu correo.",
@@ -57,7 +57,7 @@ $(document).ready(function() {
             },
             "confirm_password":{
                 required: "Introduce la contraseña de nuevo.",
-                equalTo:"La contraseña debe ser igual a la contraseña indicada anteriormente."
+                equalTo: "La contraseña debe ser igual a la contraseña indicada anteriormente."
             },
             "age":{
                 required: "Introduce tu edad.",
@@ -68,10 +68,8 @@ $(document).ready(function() {
             }
         },
 
-        submitHandler: function(form)
-        {
+        submitHandler: function(form){
             form.submit();
         }
-
     });
 });

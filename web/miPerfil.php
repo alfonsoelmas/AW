@@ -25,13 +25,13 @@
                             <div class="col-sm-3">
                              <?php
                                 $id = $_SESSION['usuario_actual'];
-                                require_once($_SERVER['DOCUMENT_ROOT'] ."/AW/php/funciones/perfil_usuario.php");
+                                require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/perfil_usuario.php");
                                 $user = buscar_datos_usuario($id);
 
                                 $fila = $user->fetch_object();
 
                                 // Imagen
-							    echo "<img class='img-responsive img-circle' src='img/perfil.jpg' width='200' height='200'  alt='Foto de Perfil'/>
+							    echo "<img class='img-responsive img-circle' src='$fila->foto' width='200' height='200'  alt='Foto de Perfil'/>
                             </div>
                             <div class='col-sm-7'>
                                 <p class='h2' id='nombre'>$fila->nombre</p>
@@ -50,7 +50,7 @@
             </div>
             <?php
 				$pagina_actual="Mi perfil";
-				require_once($_SERVER['DOCUMENT_ROOT'] ."/AW/php/funciones/genera_bloque_derecha.php");
+				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 			?>
         </div>
     </div>

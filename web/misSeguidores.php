@@ -12,7 +12,7 @@
 	<body>
 		<?php
 			$pagina_actual="Mis seguidores";
-			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+			require_once($_SERVER['DOCUMENT_ROOT']."/web/php/funciones/genera_cabecera.php");
 		?>
  
 		<div class="container-fluid text-center">    
@@ -23,33 +23,21 @@
 							<p class="h3 panel-title">Mis seguidores</p>
 						</div>
 						<div class="panel-body">
-							<div class="row">
-								<?php
-									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/muestra_seguidores.php")
-								?>
-							</div>
-							<div class="row">
-								<div class="col-sm-12 text-center">
-									<div class="btn-group" role="group" aria-label="...">
-										<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Prev</button>
-										<button type="button" class="btn btn-default">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
-									</div>
-								</div>
-							</div>
+							<?php
+								require_once($_SERVER['DOCUMENT_ROOT']."/web/php/funciones/muestra_seguidores.php");
+							?>
 						</div> <!--panel-body-->  
 					</div> <!--bloque inicio-->
 				</div> <!--col-sm-10-->
 			
 				<?php
 					$pagina_actual="Mis seguidores";
-					require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
+					require_once($_SERVER['DOCUMENT_ROOT']."/web/php/funciones/genera_bloque_derecha.php");
 				?>
 			</div> <!-- row content-->
 		</div> <!--container-fluid-->
 
-		<?php 
-			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
-		?>
+		<?php require_once($_SERVER['DOCUMENT_ROOT']."/web/php/funciones/genera_pie.php"); ?>
 
 		<!--Scripts-->
 		<script type="text/javascript" src="js/goTo.js"></script>

@@ -1,0 +1,31 @@
+<div class="col-sm-6 col-md-3">
+	<div class="thumbnail efecto-redondo">
+		<table class="obras">
+			<tr>
+				<td>
+					<a href="visualizacionBoceto.php">
+						<img src="img/logo2.png" class="imgP" alt="logo">
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="caption">
+						<p>Nombre Obra 2</p>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="ec-stars-wrapper">
+						<a class="estrellas" href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+						<a class="estrellas" href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+						<a class="estrellas" href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+						<a class="estrellas" href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+						<a class="estrellas" href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div> <!--col-sm-6 col-md-3-->

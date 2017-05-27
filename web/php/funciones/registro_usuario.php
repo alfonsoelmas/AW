@@ -18,12 +18,12 @@
 		$desc     = htmlspecialchars(trim(strip_tags($_REQUEST["desc"])));
 		$email    = htmlspecialchars(trim(strip_tags($_REQUEST["email"])));
 		$password = htmlspecialchars(trim(strip_tags($_REQUEST["password"])));
+
 		$confirm_password = htmlspecialchars(trim(strip_tags($_REQUEST["confirm_password"])));
 		
 		// HASH
 		$password_hased = password_hash($password, PASSWORD_DEFAULT);
-
-
+		
 		if(empty($nombre) || empty($usuario) || empty($edad) || empty($email) || empty($password) || empty($confirm_password) || empty($ciudad) || empty($pais) ||
 	   	   !preg_match('/^[^@\s]+@([a-z0-9]+\.)+[a-z]{2,}$/i', $email) ||
 	   	   !is_numeric($edad) ||
@@ -64,8 +64,25 @@
 						$_SESSION['usuario_actual'] = $filaUsuario->id;
 						$_SESSION['name'] = $filaUsuario->nombre;
 
+						//Subimos la imagen del usuario
+						$dir_relativo = "/web/img/usuarios/";
+						$dir_subida = $_SERVER['DOCUMENT_ROOT'] . $dir_relativo;
+						$fichero = $dir_subida . basename($_FILES['imagen_perfil']['name']);
+
+						// extension del fichero
+						$imageFileType = pathinfo($fichero,PATHINFO_EXTENSION);
+						$fichero = $dir_subida . $filaUsuario->id . "." . $imageFileType;
+						$path_img = $dir_relativo . $filaUsuario->id . "." . $imageFileType;
+
+
+						if (move_uploaded_file($_FILES['imagen_perfil']['tmp_name'], $fichero)) {
+						    echo "El fichero es válido y se subió con éxito.\n";
+						} else {
+						    echo "¡Posible ataque de subida de ficheros!\n";
+						}
+
 						// Finalmente añadimos los datos del usuario
-						annadir_datos($_SESSION['usuario_actual'], $desc, $ciudad, $pais);
+						annadir_datos($_SESSION['usuario_actual'], $path_img, $desc, $ciudad, $pais);
 
 						header('Location: ../../index.php');
 					}
@@ -100,9 +117,9 @@
 		$resultado = consulta($sql);
 	}
 
-	function annadir_datos($id, $desc, $ciudad, $pais){
+	function annadir_datos($id, $path_img, $desc, $ciudad, $pais){
 
-		$sql = "INSERT INTO perfil(id_usuario,descripcion,ciudad,pais) VALUES ('$id','$desc', '$ciudad', '$pais')";
+		$sql = "INSERT INTO perfil(id_usuario,foto,descripcion,ciudad,pais) VALUES ('$id','$path_img','$desc', '$ciudad', '$pais')";
 
 		$resultado = consulta($sql);
 
@@ -114,6 +131,40 @@
 
 		return $n;
 
+	}
+
+	function validar_imagen(){
+
+		$uploadOk = 1;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		// Check if image file is a actual image or fake image
+		if(isset($_POST["submit"])) {
+		    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+		    if($check !== false) {
+		        echo "File is an image - " . $check["mime"] . ".";
+		        $uploadOk = 1;
+		    } else {
+		        echo "File is not an image.";
+		        $uploadOk = 0;
+		    }
+		}
+		// Allow certain file formats
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+		&& $imageFileType != "gif" ) {
+		    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+		    $uploadOk = 0;
+		}
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+		    echo "Sorry, your file was not uploaded.";
+		// if everything is ok, try to upload file
+		} else {
+		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+		        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+		    } else {
+		        echo "Sorry, there was an error uploading your file.";
+		    }
+		}
 	}
 
 ?>

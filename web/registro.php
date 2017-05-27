@@ -24,7 +24,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="col-sm-7 text-center content">
-								<form id="register" method="post" action="php/funciones/registro_usuario.php">
+								<form id="register" enctype="multipart/form-data" method="post" action="php/funciones/registro_usuario.php">
 									<div class="login">
 										<div class="login-form">
 											<div class="input-group input-group-md">
@@ -83,7 +83,7 @@
 											</div>
 											
 											<div class="text-center margin-normal">
-												<input id='registro' class="btn btn-default dropdown-toggle" type="submit" value="Registrar"/>
+												<input id="registro" class="btn btn-default dropdown-toggle" type="submit" value="Registrar"/>
 											</div>                    
 										</div>
 									</div>
