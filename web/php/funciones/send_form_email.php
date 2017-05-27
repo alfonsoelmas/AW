@@ -5,7 +5,7 @@
 <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=http://paperdreams.esy.es/index.php">
   <meta charset="utf-8">
 </head>
-<body>
+<body>  
 <?php
 if(isset($_POST['email'])) {
  
