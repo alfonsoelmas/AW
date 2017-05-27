@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php  sesion_start(); ?>
-
 <head>
-  <title>Categorías - Paper Dreams</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/estilo2.css">
-
+	<title>Categorías - Paper Dreams</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilo2.css">
 </head>
-
 <body>
 
 
 	<?php
-		//generamos cabecera
-
+		// Generamos cabecera
 		$pagina_actual="Categorías";
-		include("php/funciones/genera_cabecera.php");
-		include("php/config/connection.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/config/connection.php");
 	?>
 	
 	<!--Creamos el contenido-->

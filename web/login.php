@@ -1,33 +1,3 @@
-<?php
-
-	require_once("php/funciones/iniciar_sesion.php");
-	
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-
-	//Esto hay que cogerlo de una consulta
-	$con = comprueba_usuario($username, $password);
-
-	if($con)
-	{
-		$filaUsuario = $con->fetch_object();
-
-		$_SESSION['usuario_actual'] = $filaUsuario->id;
-	}
-	else{
-		echo "El usuario no existe o no coincide con la contraseña";
-	}
-
-
-
-
-?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,7 +11,7 @@
 <body>
 	<?php
 		$pagina_actual="LogIn";
-		require_once('php/funciones/genera_cabecera.php');
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 
 	<div class="container-fluid text-center">    
@@ -55,7 +25,7 @@
 					<div class="panel-body">
 						<div class="col-sm-6 text-center content" >
 							<div class="login" id="login">
-								<form id="formulario" method="post" action="login.php">
+								<form id="formulario" method="post" action="php/funciones/iniciar_sesion.php">
 									
 									<div class="input-group input-group-md">
 										<span class="input-group-addon glyphicon glyphicon-user" id="icon_user"></span>
@@ -82,7 +52,7 @@
 								<div class="text-left">
 									<span>¿Has olvidado tus datos? Haz click <a>aquí</a> para recuperarlos</span>
 									<br>
-									<span>¿No tienes cuenta? Haz click <a href="registro.html">aquí</a>, solo tardarás un minuto</span>
+									<span>¿No tienes cuenta? Haz click <a href="registro.php">aquí</a>, solo tardarás un minuto</span>
 								</div>
 							</div>
 						</div>
@@ -96,16 +66,18 @@
 		</div>
 	</div>
 
-	<?php include("php/funciones/genera_pie.php"); ?>
+	<?php 
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
+	?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="js/logIn.js"></script>
 	<script src="js/jquery.validate.min.js"	type="text/javascript"></script>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+	<script src="js/logIn.js"></script>
 
 </body>
 </html>

@@ -8,7 +8,7 @@
 		exit();
 	}
 	*/
-	require_once("php/funciones/bocetos.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/bocetos.php");
 	$id_boceto = $_GET['id_boceto'];
 
 	$resultado = consulta_datos($id_boceto);
@@ -46,7 +46,7 @@
 <body>
 	<?php
 		$pagina_actual="$titulo";
-		include("php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 	<div class="container-fluid">
 		<div class="row">
@@ -123,7 +123,7 @@
 														<!-- Contenedor del Comentario -->
 														<div class='comment-box'>
 															<div class='comment-head'>
-																<h6 class='comment-name'><a href='http://miPerfil.html'>$comment_user->usuario</a> </h6>
+																<h6 class='comment-name'><a href='http://miPerfil.php'>$comment_user->usuario</a> </h6>
 																<span>$comentario->fecha</span>
 																<button class='fa fa-reply botones-comentario' data-toggle='modal' data-target='#myModal' data-id='$comentario->id'> </button>
 															</div>
@@ -174,11 +174,12 @@
 
 			<?php
 				$pagina_actual=$titulo;
-				include("php/funciones/genera_bloque_derecha.php");
+				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 			?>
 		</div>
+
 		<?php
-			if(isset($_SESSION['usuario']))
+			if(isset($_SESSION['usuario_actual']))
 			{
 				echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
 						<div class='modal-dialog' role='document'>
@@ -191,7 +192,7 @@
 									<div class='modal-body'>
 										<textarea id='edicion_comentario' placeholder='¿Qué piensas de la imagen?'></textarea>
 										<input type='hidden' name='padre' class='answerParent' value=''>
-										<input type='hidden' name='id_usuario' value=\"$_SESSION['usuario']\">
+										<input type='hidden' name='id_usuario' value=\"$_SESSION['usuario_actual']\">
 										<input type='hidden' name='contenido' value=\"$id_boceto\">
 										<input type='hidden' name='tipo_contenido' value='Bocetos'>
 									</div>
@@ -226,7 +227,9 @@
 	</div>
 
 
-	<?php require_once('php/funciones/genera_pie.php'); ?>
+	<?php 
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
+	?>
 
 	<!-- scripts -->
 	<script src="js/goTo.js"></script>

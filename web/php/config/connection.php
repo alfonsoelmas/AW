@@ -28,8 +28,9 @@
 	function realiza_consulta($conn, $query)
 	{
 		$resultado = $conn->query($query);
-		if(!$resultado)
-			printf("Error %s\\n",$conn->error());
+		/*if(!$resultado){
+			printf("Error %s\\n", $conn->error());
+		}*/
 
 		return $resultado;
 	}

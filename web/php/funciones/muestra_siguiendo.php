@@ -13,7 +13,7 @@
 		$inicio = ($pagina - 1) * $tamanio_pagina;
 	}
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/web/php/funciones/consulta.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
 
 	// Obtener todos los identificadores de todos los usuarios a mostrar que sigue el usuario conectado.
 	$query = "SELECT id_seguido FROM seguidores WHERE id_seguidor LIKE ".$_SESSION['usuario_actual']." LIMIT ".$inicio.",".$tamanio_pagina;
@@ -32,11 +32,11 @@
 	else {
 		while($id_seguido != NULL) {
 			// Obtener los nombres de los usuarios a mostrar en esta página que sigue el usuario conectado.
-			$query = "SELECT foto FROM perfil WHERE id_usuario LIKE ".$id_seguido;
+			$query = "SELECT foto FROM perfil WHERE id_usuario LIKE '$id_seguido'";
 			$foto = mysqli_fetch_assoc(consulta($query))['foto'];
 
 			// Obtener las fotos de los usuarios a mostrar en esta página que sigue el usuario conectado.
-			$query = "SELECT nombre FROM usuarios WHERE id LIKE ".$id_seguido;
+			$query = "SELECT nombre FROM usuarios WHERE id LIKE '$id_seguido'";
 			$nombre = mysqli_fetch_assoc(consulta($query))['nombre'];
 
 			echo "
@@ -52,7 +52,7 @@
 			</div>";
 
 			// Ir al siguiente seguido.
-			$id_seguido = mysqli_fetch_assoc($id_seguidores)['id_seguido'];
+			$id_seguido = mysqli_fetch_assoc($id_seguidos)['id_seguido'];
 		}
 	}
 
@@ -60,7 +60,7 @@
 	$pagina_siguiente = $pagina + 1;
 
 	// Obtener todos los identificadores de todos los usuarios que sigue el usuario conectado.
-	$query = "SELECT id_seguido FROM seguidores WHERE id_seguidor LIKE ".$id_usuario;
+	$query = "SELECT id_seguido FROM seguidores WHERE id_seguidor LIKE ".$_SESSION['usuario_actual']."";
 	$id_seguidos = consulta($query);
 	$total_paginas = ceil(mysqli_num_rows($id_seguidos) / $tamanio_pagina);
 

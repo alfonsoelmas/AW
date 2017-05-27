@@ -8,25 +8,29 @@
 		exit();
 	}
 	*/
-	require_once("php/funciones/libros.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
 	$id_libro = $_GET['id_libro'];
 
-	//Esto hay que cogerlo de una consulta
-	$resultado = consulta_datos($id_libro);
+	//if($id_libro){
 
-	if($resultado)
-	{
-		$libro = $resultado->fetch_object();
+		//Esto hay que cogerlo de una consulta
+		$resultado = consulta_datos($id_libro);
 
-		$titulo = $libro->titulo;
-		$sinopsis = $libro->sinopsis;
-		$fecha = $libro->fecha;
-		$portada = $libro->portada;
-	}
-	else
-	{
-		header("Location: 404Error.php");
-	}
+		if($resultado)
+		{
+			$libro = $resultado->fetch_object();
+
+			$titulo = $libro->titulo;
+			$sinopsis = $libro->sinopsis;
+			$fecha = $libro->fecha;
+			$portada = $libro->portada;
+		}
+		else
+		{
+			header("Location: 404Error.php");
+		}
+	//}
+
 ?>
 
 
@@ -48,7 +52,7 @@
 <body>
 	<?php
 		$pagina_actual="$titulo";
-		require_once('php/funciones/genera_cabecera.php');
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 
 	<div class="container-fluid">
@@ -129,7 +133,7 @@
 														<!-- Contenedor del Comentario -->
 														<div class='comment-box'>
 															<div class='comment-head'>
-																<h6 class='comment-name'><a href='http://miPerfil.html'>$comment_user->usuario</a> </h6>
+																<h6 class='comment-name'><a href='http://miPerfil.php'>$comment_user->usuario</a> </h6>
 																<span>$comentario->fecha</span>
 																<button class='fa fa-reply botones-comentario' data-toggle='modal' data-target='#myModal' data-id='$comentario->id'> </button>
 															</div>
@@ -180,11 +184,11 @@
 
 			<?php
 				$pagina_actual=$titulo;
-				include("php/funciones/genera_bloque_derecha.php");
+				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 			?>
 		</div>
 		<?php
-			if(isset($_SESSION['usuario']))
+			if(isset($_SESSION['usuario_actual']))
 			{
 				echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
 						<div class='modal-dialog' role='document'>
@@ -196,9 +200,9 @@
 								<form class='form_comment' method='POST' action='php/funciones/nuevo_comentario.php'>
 									<div class='modal-body'>
 										<textarea id='edicion_comentario' placeholder='¿Qué piensas de la historia?'></textarea>
-										<input type='hidden' name='padre' class='answerParent' value=''>
-										<input type='hidden' name='id_usuario' value=\"$_SESSION['usuario']\">
-										<input type='hidden' name='contenido' value=\"$id_libro\">
+										<input type='hidden' name='padre' class='answerParent' value=''>";
+										/*<input type='hidden' name='id_usuario' value='$_SESSION['usuario_actual']'>*/
+										echo "<input type='hidden' name='contenido' value='$id_libro'>
 										<input type='hidden' name='tipo_contenido' value='Libros'>
 									</div>
 									<div class='modal-footer container-fluid'>
@@ -224,7 +228,9 @@
 		?>
 	</div>
 
-	<?php require_once('php/funciones/genera_pie.php'); ?>
+	<?php 
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
+	?>
 
 	<!-- scripts -->
 	<script src="js/goTo.js"></script>

@@ -1,10 +1,10 @@
 <?php
 
-	require_once("consulta.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
 
 	function consulta_datos($id)
 	{
-		$sql = "SELECT * FROM libros WHERE id_libro='$id';";
+		$sql = "SELECT * FROM libros WHERE id_libro='$id'";
 
 		$resultado = consulta($sql);
 
@@ -13,7 +13,7 @@
 
 	function consulta_capitulos($id)
 	{
-		$sql = "SELECT * FROM capitulos WHERE id_capitulo='$id';";
+		$sql = "SELECT * FROM capitulos WHERE id_capitulo='$id'";
 
 		$resultado = consulta($sql);
 
@@ -22,7 +22,7 @@
 
 	function capitulos_por_libro($id_libro)
 	{
-		$sql = "SELECT * FROM capitulos WHERE id_libro='$id' ORDER BY id_capitulo ASC;";
+		$sql = "SELECT * FROM capitulos WHERE id_libro='$id' ORDER BY id_capitulo ASC";
 
 		$resultado = consulta($sql);
 
@@ -31,7 +31,7 @@
 
 	function mejores_obras($n)
 	{
-		$sql = "SELECT id_libro, portada, AVG(puntuacion) AS punt_final FROM (libros NATURAL JOIN valora) GROUP BY id_libro ORDER BY punt_final DESC LIMIT '$n';";
+		$sql = "SELECT id_libro, portada, AVG(puntuacion) AS punt_final FROM (libros NATURAL JOIN valora) GROUP BY id_libro ORDER BY punt_final DESC LIMIT '$n'";
 
 		$resultado = consulta($sql);
 

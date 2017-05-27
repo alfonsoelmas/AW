@@ -13,7 +13,7 @@
 		$inicio = ($pagina - 1) * $tamanio_pagina;
 	}
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/web/php/funciones/consulta.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
 
 	// Obtener todos los identificadores de todos los usuarios a mostrar que siguen al usuario conectado.
 	$query = "SELECT id_seguidor FROM seguidores WHERE id_seguido LIKE ".$_SESSION['usuario_actual']." LIMIT ".$inicio.",".$tamanio_pagina;
@@ -43,7 +43,7 @@
 			<div class='col-sm-6 col-md-3'>
 				<div class='thumbnail efecto-redondo'>
 					<a href='vistaUsuario.php?usuario=".$id_seguidor."'>
-						<img src=.".$foto." alt='' class='imgP'>
+						<img src=".$foto." alt='' class='imgP'>
 						<div class='caption'>
 							<p>".$nombre."</p>
 						</div>
@@ -60,7 +60,7 @@
 	$pagina_siguiente = $pagina + 1;
 
 	// Obtener todos los identificadores de todos los usuarios que siguen al usuario conectado.
-	$query = "SELECT id_seguidor FROM seguidores WHERE id_seguido LIKE ".$id_usuario;
+	$query = "SELECT id_seguidor FROM seguidores WHERE id_seguido LIKE ".$_SESSION['usuario_actual'];
 	$id_seguidores = consulta($query);
 	$total_paginas = ceil(mysqli_num_rows($id_seguidores) / $tamanio_pagina);
 

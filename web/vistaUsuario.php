@@ -10,137 +10,208 @@
 <body>
 	<?php
 		$pagina_actual="Usuario";
-		include("php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 
 	<br>
 
 	<!--Perfil-->
 	<div class="container-fluid text-center">    
-		<div class="row content">
-			<div class="col-sm-10 text-left"> 
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-9 text-left"> 
 				<div class="jumbotron">
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-3">
-								<img class="img-responsive img-circle" alt="" src="img/mafalda.jpg" width="200" height="200"/>
-							</div>
-							<div class="col-sm-7">
-								<p class="h2" id="nombre">Alejandra López</p>
-								<p class="datos"> alelop@domain.com<br>
-								Madrid <br>
-								España</p>
-							</div>
-							<div class="col-sm-2">
-								<button class="btn btn-primary btn-lg">
-									<span class="glyphicon glyphicon-plus"></span> 
-									Follow 
-								</button>
-							</div>
-						</div>
+								<?php
+									// Pasamos el id del usuario al que visitamos. 
+									$id = $_GET['usuario'];
+									$usuario_actual = $_SESSION['usuario_actual'];
+
+									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/perfil_usuario.php");
+									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/seguir_usuario.php");
+                                	
+                                	// Buscamos los datos del perfil del usaurio al que visitamos. 
+                                	$user = buscar_datos_usuario($id);
+
+                                	$fila = $user->fetch_object();
+                                ?>
+								<img class='img-responsive img-circle' alt='' src='<?php echo $fila->foto ?>' width='200' height='200'/>
+							</div><!--col-sm-3-->
+							<div class='col-sm-7'>
+								<p class='h2' id='nombre'><?php echo $fila->nombre ?></p>
+								<p class='datos'> <?php echo $fila->email ?><br>
+								<?php echo $fila->ciudad ?> <br>
+								<?php echo $fila->pais ?></p>
+							</div><!--col-sm-7-->
+							<div class='col-sm-2'>
+								<?php
+								// BOTON	
+								echo "
+								<form action='php/funciones/seguir_usuario.php' method='POST'>
+									<input type='hidden' name='noSeguido' value='$id'/>
+									<input type='hidden' name='actual' value='$usuario_actual'/>";
+									
+									if (!sigo($usuario_actual, $id)){
+										echo "
+										<button class='btn btn-primary btn-md' type='submit' id='follow'>
+											<span class='glyphicon glyphicon-plus'></span>
+											Seguir 
+										</button>
+								</form>";
+									}
+									else{
+										echo "
+								<form action='php/funciones/seguir_usuario.php' method='POST'>
+									<input type='hidden' name='seguido' value='$id'/>
+									<input type='hidden' name='actual' value='$usuario_actual'/>
+									<input type='hidden' name='actual' value='$usuario_actual'/>
+										<button class='btn btn-primary btn-md' type='submit' id='unfollow'>
+											<span class='glyphicon glyphicon-minus'></span>
+											Dejar de seguir 
+										</button>";	
+									}
+									?> 
+								</form>
+							</div><!--col-sm-2-->
+						</div><!--row-->
 						<br>
-						<div class="row">
-							<p class="descripcion">Mi nombre es Alejandra López, tengo 19 años. Me considero una persona alegre, sociable y muy curiosa a la que le apasiona leer y sobre todo escribir.</p>
-						</div>
-					</div>
-				</div>
+						<div class='row'>
+							<p class='descripcion'><?php echo $fila->descripcion ?></p>
+						</div><!-- row-->
+					</div> <!--container-->
+				</div> <!--jumbotron-->
 			</div>
 
 			<?php
 				$pagina_actual="Usuario";
-				include("php/funciones/genera_bloque_derecha.php");
+				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 			?>
-		</div> <!--row content-->
+		</div> <!--row-->
 
+		<!--LIBROS-->
 		<div class="row">
-			<div class="col-sm-10">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-9">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-					  <h3 class="panel-title">Obras de Alejandra</h3>
+						<h3 class="panel-title">Libros de <?php echo $fila->nombre?></h3>
 					</div>
 					<div class="panel-body">
-						<div class="row">
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo">
-									<table class="obras">
-										<tr>
-											<td>
-												<a href="visualizacionLibro.html">
-													<img src="img/logo2.png" class="imgP" alt="logo">
-												</a>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="caption">
-													<p>Nombre Obra 1</p>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="ec-stars-wrapper">
-													<a class="estrellas" href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-													<a class="estrellas" href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-													<a class="estrellas" href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-													<a class="estrellas" href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-													<a class="estrellas" href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-												</div>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail efecto-redondo">
-									<table class="obras">
-										<tr>
-											<td>
-												<a href="visualizacionBoceto.html">
-													<img src="img/logo2.png" class="imgP" alt="logo">
-												</a>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="caption">
-													<p>Nombre Obra 2</p>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="ec-stars-wrapper">
-													<a class="estrellas" href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-													<a class="estrellas" href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-													<a class="estrellas" href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-													<a class="estrellas" href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-													<a class="estrellas" href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-												</div>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div> <!--col-sm-6 col-md-3-->
-						</div>
+						<div class="container">
+						  	<div class="row">
+								<div class="col-md-10"> 
+						        	<?php
+						  			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/mostrar_obras.php");
+				  					// buscamos las obras de los usuarios
+				  					$resultado = buscar_libros($id);
 
-						<div class="row">
-							<div class="col-sm-12 text-center">
-								<div class="btn-group" role="group" aria-label="...">
-									<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Prev</button>
-									<button type="button" class="btn btn-default">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
-								</div>
-							</div>
-						</div>
+					  				if ($resultado && n_filas($resultado) > 0){
+	            						echo "
+	            						<div class='carousel slide' id='theCarouselBocetos'>
+								        	<div class='carousel-inner'>";
+	 	          							$libro = $resultado->fetch_object();
+					  							echo "
+					  							<div class='item active'>
+					  								<div class='col-xs-4'>
+					  									<a href='visualizacionLibro.php'><img src=$libro->portada class='img-responsive img-carousel'></a>
+					  									<p>$libro->titulo</p>
+					  								</div>
+					  							</div> <!--acive-->";
+					  						while ($libro = $resultado->fetch_object()){
+					  							echo "
+					  							<div class='item'>
+					            					<div class='col-xs-4'>
+					            						<a href='#1'><img src='$libro->portada' class='img-responsive img-carousel'></a>
+					            						<p>$libro->titulo</p>
+					            					</div>
+					          					</div>";
+					  						}
+								        	echo "
+								        	</div><!--carousel-inner-->
+								        	<a class='left carousel-control' href='#theCarouselBocetos' data-slide='prev'><i class='glyphicon glyphicon-chevron-left'></i></a>
+								        	<a class='right carousel-control' href='#theCarouselBocetos' data-slide='next'><i class='glyphicon glyphicon-chevron-right'></i></a>
+								      	</div><!--carousel slide multi-item-carousel-->";
+	            					}
+	            					else{
+	            						echo "<div class='text-center'>Este usuario no tiene obras.</div>";
+	            					}
+
+						        	?>
+							    </div> <!--col-ms-12-->
+						  	</div> <!--row-->
+						</div> <!--container-->
 					</div> <!--panel body--> 
-				</div>
+				</div><!--panel panel-default-->
+			</div> <!--col-sm-10-->
+		</div> <!--row-->
+
+		<!--BOCETOS-->
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-9">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Bocetos de <?php echo $fila->nombre?></h3>
+					</div>
+					<div class="panel-body">
+						<div class="container">
+						  	<div class="row">
+								<div class="col-md-10"> 
+						        	<?php
+						  			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/mostrar_obras.php");
+				  					// buscamos las obras de los usuarios
+				  					$resultado = buscar_bocetos($id);
+
+					  				if ($resultado && n_filas($resultado) > 0){
+	            						echo "
+	            						<div class='carousel slide' id='theCarouselLibros'>
+								        	<div class='carousel-inner'>";
+	 	          							$boceto = $resultado->fetch_object();
+					  							echo "
+					  							<div class='item active'>
+					  								<div class='col-xs-4'>
+					  									<a href='#1'><img src=$boceto->foto class='img-responsive img-carousel'></a>
+					  									<p>$boceto->titulo</p>
+					  								</div>
+					  							</div> <!--acive-->";
+					  						while ($boceto = $resultado->fetch_object()){
+					  							echo "
+					  							<div class='item'>
+					            					<div class='col-xs-4'>
+					            						<a href='visualizacionBoceto.php'><img src='$boceto->foto' class='img-responsive img-carousel'></a>
+					            						<p>$boceto->titulo</p>
+					            					</div>
+					          					</div>";
+					  						}
+								        	echo "
+								        	</div><!--carousel-inner-->
+								        	<a class='left carousel-control' href='#theCarouselLibros' data-slide='prev'><i class='glyphicon glyphicon-chevron-left'></i></a>
+								        	<a class='right carousel-control' href='#theCarouselLibros' data-slide='next'><i class='glyphicon glyphicon-chevron-right'></i></a>
+								      	</div><!--carousel slide multi-item-carousel-->";
+	            					}
+	            					else{
+	            						echo "<div class='text-center'>Este usuario no tiene obras.</div>";
+	            					}
+
+						        	?>
+							    </div> <!--col-ms-12-->
+						  	</div> <!--row-->
+						</div> <!--container-->
+					</div> <!--panel body--> 
+				</div><!--panel panel-default-->
 			</div> <!--col-sm-10-->
 		</div> <!--row-->
 	</div> <!--container fluid-->
+	<br>
 
-	<?php include("php/funciones/genera_pie.php"); ?>
+	<?php 
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
+	?>
 	
 	<!--Script-->
+	<script type="text/javascript" src="js/goTo.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 

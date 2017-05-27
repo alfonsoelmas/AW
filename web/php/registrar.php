@@ -1,21 +1,21 @@
 <?php
 
-	require_once("funciones/iniciar_sesion.php");
+	/*require_once("funciones/iniciar_sesion.php");
 	require_once("funciones/registrarse.php");
 	
 	/**** Datos de la tabla usuarios ******/
-	$nombre   = $_POST['name'];
+	/*$nombre   = $_POST['name'];
 	$usuario  = $_POST['user'];
 	$edad     = $_POST['age'];
 	$email    = $_POST['email'];
 	$password = $_POST['password'];
 
 	/***** Datos de la tabla perfil******/
-	$ciudad = $_POST['ciudad'];
+	/*$ciudad = $_POST['ciudad'];
 	$pais   = $_POST['pais'];
-	$desc   = $_POST['desc'];
+	$desc   = $_POST['desc'];*/
 
-	// Vamos a añadir el usuario, pero antes
+	/*// Vamos a añadir el usuario, pero antes
 	// Comprobamos que el usuario o email no exista en la BD
 	$con = existe_usuario($usuario, $email);
 
@@ -96,7 +96,7 @@
 
 
 	// Volvemos al index una vez registrado		
-	header("Location: ../index.php");
+	header("Location: ../index.php");*/
 
 
 ?>
