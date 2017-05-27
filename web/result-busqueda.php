@@ -1,43 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php  sesion_start(); ?>
 
 <?php
 /*
 //TODO ANTES DE HACER LAS CONSULTAS PASAR POR CONTROL ANTI INYECCTION SQL 
-
-type=libro/dibujo (default ambos)
-categoria=categoriaquesea (default todas)
-clave=claveBusqueda	(default todo)
-orden=fecha,valoracion (default fecha)
-
-miro si es libro/dibujo
-	si es libro:
-		miro categoria
-			si !categoria:
-				miro busqueda
-				miro orden
-					si !orden o orden=fecha:
-						select from libros where title like "busqueda" or contenido like "busqueda" order by fecha desc
-					else
-						select from libros where title like "busqueda" or contenido like "busqueda" order by valoracion (CONSULTA MAL HECHA, YA Q VALORACIONES HAY Q SACARLA DE OTRA TABLA)
-			else
-				miro busqueda
-				miro orden
-					si !orden o orden=fecha:
-						select from libros where (title like "busqueda" or contenido like "busqueda") and categoria="categoria" order by fecha desc
-					else
-						select from libros where (title like "busqueda" or contenido like "busqueda") and categoria="categoria" order by valoracion (CONSULTA MAL HECHA, YA Q VALORACIONES HAY Q SACARLA DE OTRA TABLA)
-
-		consulta en libros con esa categoria y busqueda ordenado por orden(default) fecha.
-	si es dibujo:
-		miro busqueda
-		miro orden
-			si !orden o orden=fecha:
-				select from dibujos where title like "busqueda" order by fecha desc
-			else
-				select from dibujos where title like "busqueda" order by valoracion (CONSULTA MAL HECHA, YA Q VALORACIONES HAY Q SACARLA DE OTRA TABLA)
-
-	caso ambos, realizar ambas consultas
 	
 */
 function calculaValoracionToInt($valor){
@@ -73,8 +40,7 @@ function calculaValoracionToInt($valor){
 
 <body>
 	<?php
-	//TODO - Sesion start?
-		$pagina_actual="Resultado de búsqueda";
+		$pagina_actual="Resultados de búsqueda";
 		include("php/funciones/genera_cabecera.php");
 		include("php/config/connection.php");
 	?>
@@ -116,6 +82,7 @@ function calculaValoracionToInt($valor){
 
 									for($i = 0; $i<$filas; $i++){
 										echo '<option value="'.$datosConsulta["categoria"].'">'.$datosConsulta["categoria"].'</option>'
+										$datosConsulta = $consulta->fetch_assoc();
 									}
 
 								  ?>
@@ -146,6 +113,7 @@ function calculaValoracionToInt($valor){
 						 $dibujoActivo = isset($_GET['esDibujo']);
 						 $pagina_actual_l;
 						 $pagina_actual_d;
+
 
 
 						 if(!isset($_GET['pagina_l'])){
@@ -334,7 +302,7 @@ function calculaValoracionToInt($valor){
 							?>
 							<div class="panel panel-default" id="resultadosBusq">
 							<div class="panel-heading">
-								<p class=" h3 panel-title">Resultados de búsqueda de Libros<span class="badge"><?php echo $totalBusqueda?></span></p>
+								<p class=" h3 panel-title">Resultados de búsqueda de dibujos<span class="badge"><?php echo $totalBusqueda?></span></p>
 							</div>
 							<div class="panel-body">
 
@@ -362,11 +330,13 @@ function calculaValoracionToInt($valor){
 									$titulo = ;//TODO $datosConsulta[i*4+j]->titulo;
 									$autor = ;//TODO $datosConsulta[i*4+j]->autor;
 									$valor = ;//TODO calculaValoracionToInt($datosConsulta[i*4+j]->valorMedio);
+									$img = ; //TODO link a la imagen $datosConsulta[i*4+j]->img;
+									$link = ; //TODO link a el libro $etcetcetc....
 
 									?>
 									<div class="col-sm-6 col-md-3">
-										<div class="thumbnail efecto-redondo">
-											<img src="img/logo2.png" alt="logo" class="img-responsive imgP">
+										<div class="thumbnail efecto-redondo" onclick="location.href=<?php echo "'".$link."'"?>;">
+											<img src=<?php echo '"'.$img.'"'?> alt="logo" class="img-responsive imgP">
 											<div class="caption text-center">
 												<p class="h3"><?php echo $titulo ?></p>
 												<p><?php echo $autor ?>/p>
@@ -395,7 +365,7 @@ function calculaValoracionToInt($valor){
 							echo '<div class="col-sm-12 text-center">'
 								echo '<nav aria-label="Page navigation">'
 									echo '<ul class="pagination">'
-										if($pagina_l == 1)
+										if($pagina_actual_l == 1)
 										{ 
 											echo '<li class="disabled">'
 											echo '<a  href="#" aria-label="Previous">'
@@ -419,32 +389,48 @@ function calculaValoracionToInt($valor){
 										}
 										$ultimaPagina = $totalBusqueda/12;
 
-										if($pagina_actual_l < 5)
-											//TODO AQUI HACEMOS EL PAGINADOR, ME QUEDA POCO POR CUADRAR ESTO
-											/*
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">6</a></li>
-										<li><a href="#">7</a></li>
-										<li><a href="#">8</a></li>
-										<li><a href="#">9</a></li>
-										<li>
-											<a href="#" aria-label="Next">
-												<span aria-hidden="true">&raquo;</span>
-											</a>
-										</li>
-									</ul>
-								</nav>
-							</div> <!--col-sm-12 text-center-->
-						</div> <!--row-->
-					</div> <!--panel-body-->
-				</div>
-			</div> <!--col-sm-10 text-left-->
+										//Aqui pintamos los numeros
+										for($i=$pagina_actual_l-4; $i<=$pagina_actual_l+4; $i++){
+											if($i>=0 && $i<=$ultimaPagina){
+												if($i==$pagina_actual_l){
+													//TODO HEMOS HECHO SESION START?
+													echo '<li class="active"><a href="#">'.$i.'</a></li>'
+												} else {
+													echo '<li><a href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$i.'&pagina_d='.$pagina_actual_d.'" >'.$i.'</a></li>' //TODO EN LOS HREF ME FALTAN LOS ORDENES
 
-*/
+												}
+											}
+										}
+
+
+										//ahora pinto la flecha de ultima pagina:
+										if($pagina_l == $ultimaPagina)
+										{ 
+											echo '<li class="disabled">'
+											echo '<a  href="#" aria-label="Previous">'
+												echo '<span aria-hidden="true">&laquo;</span>'//todo mirando pal otro laoo... glihicon???
+											echo '</a>'
+											echo '</li>'
+										}
+										else 
+										{
+
+											echo '<li class="">'
+											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l-1.'&pagina_d='.$pagina_actual_d.'" aria-label="Previous">'
+												echo '<span aria-hidden="true">&laquo;</span>' // todo lo mismo q el todo de arriba
+											echo '</a>'
+											echo '</li>'
+										}
+											//cerramos el bloque de los resultados de libros
+											echo 							'</ul>'
+											echo						'</nav>'
+											echo					'</div> <!--col-sm-12 text-center-->'
+											echo				'</div> <!--row-->'
+											echo			'</div> <!--panel-body-->'
+											echo		'</div>'
+											echo	'</div> <!--col-sm-10 text-left-->'
+
+
 						 }
 
 
@@ -454,6 +440,71 @@ function calculaValoracionToInt($valor){
 
 						 if($dibujoAtivo){
 
+								if($miroBusqueda){
+					 				//La consulta filtrara por la busqueda también
+
+					 				//Ahora filtramos x orden...
+					 				if(strcmp($tipoOrden,"fecha")){
+					 					if(strcmp($valorOrden,"descendente")){
+					 						//TODO
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha descendiente 
+					 						//TODO
+					 						$query = 'SELECT * FROM dibujos where titulo LIKE '/*TODO*/ ' ORDER BY fecha DESC'
+
+					 					} else {
+					 						//TODO
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha ascendiente
+
+					 					}
+
+					 				} else {
+					 					if(strcmp($valorOrden,"descendente")){
+											//TODO
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por valoraciones descendiente
+
+					 					} else {
+					 						//TODO
+					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por valoraciones descendiente
+					 						
+					 					}
+
+					 				}
+
+					 			} else {
+					 				//No filtramos por el contenido de busqueda
+
+					 				//Ahora filtramos x orden...
+					 				if(strcmp($tipoOrden,"fecha")){
+					 					if(strcmp($valorOrden,"descendente")){
+
+					 						//Necesito los libros ordenados por fecha descendiente 
+
+					 						$query = 'SELECT * FROM libros  ORDER BY fecha DESC';
+
+					 					} else {
+					 						//Necesito los libros ordenados fecha ascendiente
+
+					 						$query = 'SELECT * FROM libros  ORDER BY fecha ASC';
+
+					 					}
+
+					 				} else {
+					 					if(strcmp($valorOrden,"descendente")){
+
+					 						//Necesito los libros ordenados por valoraciones descendiente 
+					 						//TODO
+					 						$query = 'SELECT * FROM libros  ORDER BY fecha DESC';
+
+					 					} else {
+
+					 						//Necesito los libros ordenados por valoraciones descendiente 
+					 						//TODO
+					 						
+					 					}
+
+					 				}
+
+					 			}
 
 
 							$consulta 	= 	realiza_consulta($conn, $query);
@@ -464,6 +515,140 @@ function calculaValoracionToInt($valor){
 							//RECORDAR HACER LA CONSULTA CON DESPLAZAMIENTO Y LIMITE
 							//RECORDAR HACER UN GET DE UN PUNTERO DE LA PAGINA
 
+							?>
+							<div class="panel panel-default" id="resultadosBusq">
+							<div class="panel-heading">
+								<p class=" h3 panel-title">Resultados de búsqueda de Libros<span class="badge"><?php echo $totalBusqueda?></span></p>
+							</div>
+							<div class="panel-body">
+
+							<?php
+							//TODO $totalBusqueda = nº de resultados totales
+							//TODO $totalConsulta = nºResultados en la consulta
+							$maxFila=3;
+							$maxCol=4;
+
+							if($totalConsulta != 12){
+								$maxFila = $totalConsulta/4; 
+								//TODO maxCol???
+
+							}
+
+							for($i = 0; $i<$maxFila; $i++){
+								?>
+								<div class="row">
+
+
+								<?php
+
+								for($j = 0; $j<$maxCol; $j++){
+									//TODO aqui pintamos el resultado:
+									$titulo = ;//TODO $datosConsulta[i*4+j]->titulo;
+									$autor = ;//TODO $datosConsulta[i*4+j]->autor;
+									$valor = ;//TODO calculaValoracionToInt($datosConsulta[i*4+j]->valorMedio);
+									$img = ; //TODO link a la imagen $datosConsulta[i*4+j]->img;
+									$link = ; //TODO link a el libro $etcetcetc....
+
+									?>
+									<div class="col-sm-6 col-md-3">
+										<div class="thumbnail efecto-redondo" onclick="location.href=<?php echo "'".$link."'"?>;">
+											<img src=<?php echo '"'.$img.'"'?> alt="logo" class="img-responsive imgP">
+											<div class="caption text-center">
+												<p class="h3"><?php echo $titulo ?></p>
+												<p><?php echo $autor ?>/p>
+												<p>
+
+												<!--valoraciones-->
+												<?php 
+													for($i=0; i<$valor; $i++) {
+														echo'<span class="glyphicon glyphicon-star" aria-hidden="true"></span>'
+													}
+													for($i=0; i<5-$valor; $i++) {
+														echo '<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>'
+													}
+
+												?>
+												</p>
+											</div>
+										</div>
+									</div>
+								<?php
+								}
+								echo '</div> <!--row-->'
+							}
+
+							echo '<div class="row">'
+							echo '<div class="col-sm-12 text-center">'
+								echo '<nav aria-label="Page navigation">'
+									echo '<ul class="pagination">'
+										if($pagina_actual_l == 1)
+										{ 
+											echo '<li class="disabled">'
+											echo '<a  href="#" aria-label="Previous">'
+												echo '<span aria-hidden="true">&laquo;</span>'
+											echo '</a>'
+											echo '</li>'
+										}
+										else 
+										{
+						// $busqueda = trim($_GET['clave']);
+						// $categoria = $_GET['categoria'];
+						// $libroActivo = isset($_GET['esLibro']);
+						// $dibujoActivo = isset($_GET['esDibujo']);
+						// $pagina_actual_l;
+						// $pagina_actual_d;
+											echo '<li class="">'
+											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l-1.'&pagina_d='.$pagina_actual_d.'" aria-label="Previous">'
+												echo '<span aria-hidden="true">&laquo;</span>'
+											echo '</a>'
+											echo '</li>'
+										}
+										$ultimaPagina = $totalBusqueda/12;
+
+										//Aqui pintamos los numeros
+										for($i=$pagina_actual_l-4; $i<=$pagina_actual_l+4; $i++){
+											if($i>=0 && $i<=$ultimaPagina){
+												if($i==$pagina_actual_l){
+													//TODO HEMOS HECHO SESION START?
+													echo '<li class="active"><a href="#">'.$i.'</a></li>'
+												} else {
+													echo '<li><a href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$i.'&pagina_d='.$pagina_actual_d.'" >'.$i.'</a></li>'
+
+												}
+											}
+										}
+
+
+										//ahora pinto la flecha de ultima pagina:
+										if($pagina_l == $ultimaPagina)
+										{ 
+											echo '<li class="disabled">'
+											echo '<a  href="#" aria-label="Previous">'
+												echo '<span aria-hidden="true">&laquo;</span>'//todo mirando pal otro laoo... glihicon???
+											echo '</a>'
+											echo '</li>'
+										}
+										else 
+										{
+
+											echo '<li class="">'
+											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l-1.'&pagina_d='.$pagina_actual_d.'" aria-label="Previous">'
+												echo '<span aria-hidden="true">&laquo;</span>' // todo lo mismo q el todo de arriba
+											echo '</a>'
+											echo '</li>'
+										}
+										//cerramos el bloque de los resultados de libros
+											echo 							'</ul>'
+											echo						'</nav>'
+											echo					'</div> <!--col-sm-12 text-center-->'
+											echo				'</div> <!--row-->'
+											echo			'</div> <!--panel-body-->'
+											echo		'</div>'
+											echo	'</div> <!--col-sm-10 text-left-->'
+
+
+
+
 						 }
 
 
@@ -472,42 +657,7 @@ function calculaValoracionToInt($valor){
 					}
 
 				?>
-				<div class="panel panel-default" id="resultadosBusq">
-					<div class="panel-heading">
-						<p class=" h3 panel-title">Resultados de búsqueda <span class="badge">134</span></p>
-					</div>
-					<div class="panel-body">
-						
-						<div class="row">
-							<div class="col-sm-12 text-center">
-								<nav aria-label="Page navigation">
-									<ul class="pagination">
-										<li class="disabled">
-											<a  href="#" aria-label="Previous">
-												<span aria-hidden="true">&laquo;</span>
-											</a>
-										</li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">6</a></li>
-										<li><a href="#">7</a></li>
-										<li><a href="#">8</a></li>
-										<li><a href="#">9</a></li>
-										<li>
-											<a href="#" aria-label="Next">
-												<span aria-hidden="true">&raquo;</span>
-											</a>
-										</li>
-									</ul>
-								</nav>
-							</div> <!--col-sm-12 text-center-->
-						</div> <!--row-->
-					</div> <!--panel-body-->
-				</div>
-			</div> <!--col-sm-10 text-left-->
+
 			
 			<?php
 				$pagina_actual="Resultado de búsqueda";
@@ -517,6 +667,7 @@ function calculaValoracionToInt($valor){
 	</div> <!--container-fluid-->
 
 	<?php include("php/funciones/genera_pie.php"); ?>
+	<?php cerrar_conexion($conn);?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
