@@ -13,7 +13,7 @@
 		$inicio = ($pagina - 1) * $tamanio_pagina;
 	}
 
-	require_once($_SERVER['DOCUMENT ROOT']."/web/php/funciones/consulta.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/web/php/funciones/consulta.php");
 
 	// Obtener todos los identificadores de todos los usuarios a mostrar que sigue el usuario conectado.
 	$query = "SELECT id_seguido FROM seguidores WHERE id_seguidor LIKE ".$_SESSION['usuario_actual']." LIMIT ".$inicio.",".$tamanio_pagina;
