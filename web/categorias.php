@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php  sesion_start(); ?>
+<?php  session_start(); ?>
 
 <head>
   <title>Categorías - Paper Dreams</title>
@@ -36,9 +36,9 @@
 						$query = "SELECT DISTINCT categoria FROM libros";
 
 
-						$consulta 	= 	realiza_consulta($conn, $query);
-						$filas 		= 	$consulta->num_rows;
-						$datosConsulta = $consulta->fetch_assoc();
+						$consulta1 	= 	realiza_consulta($conn, $query);
+						$filas 		= 	$consulta1->num_rows;
+						$datosConsulta = $consulta1->fetch_assoc();
 
 						//Hacemos un for del numero de categorias
 						for($i = 0; $i<$filas; $i++){
@@ -46,8 +46,8 @@
 							//Pintamos titulo
 							?>
 							<div class="panel-heading">
-								<?php 	echo '<a href="result-busqueda.php?categoria='.$datosConsulta["categoria"].'&type=dibujo">'?>
-									<p class="panel-title h3"><?php echo $datosConsulta["categoria"]; ?></p> 
+								<?php 	echo '<a href="result-busqueda.php?categoria='.$datosConsulta["categoria"].'&esLibro=1">'?>
+									<p class="panel-title h3"><?php echo $datosConsulta["categoria"]; ?>
 								</a>
 								<span class="badge"><?php echo $filas ?></span></p>
 
@@ -56,8 +56,7 @@
 							<div class="row">
 						<?php 
 							//Lanzamos query de esa categoria recientemente TODO, no sé a qué altura va el LIMIT
-							$query = "SELECT id_libro, titulo, portada FROM libros WHERE categoria=$datosConsulta[0] ORDER BY fecha DESC LIMIT 4".PHP_EOL;
-
+							$query = 'SELECT id_libro, titulo, portada FROM libros WHERE categoria="'.$datosConsulta["categoria"].'" ORDER BY fecha DESC LIMIT 4 OFFSET 0';
 
 							$consulta 	= 	realiza_consulta($conn, $query);
 							$nResultados = 	$consulta->num_rows;//numero de resultados
@@ -69,10 +68,10 @@
 								?>
 								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail efecto-redondo">
-										<?php 	echo '<a href="visualizacionLibro.php?id='.$row["id_libro"].'">'
-												echo '<img alt="" src="'.$row["portada"].'" class="img-responsive imgP">'
-												echo '<div class="caption">'
-												echo '<p>'.$row["titulo"].'</p>'
+										<?php 	echo '<a href="visualizacionLibro.php?id='.$row["id_libro"].'">';
+												echo '<img alt="" src="'.$row["portada"].'" class="img-responsive imgP">';
+												echo '<div class="caption">';
+												echo '<p>'.$row["titulo"].'</p>';
 										?>
 											</div>
 										</a>
@@ -80,48 +79,56 @@
 								</div>
 
 							<?php
+								$datosConsulta = $consulta1->fetch_assoc();
 							}
 
 							?>
 									<div class="row">
 										<div class="col-sm-12 text-center">
 											<div class="btn-group" role="group" aria-label="...">
-												<form method="get" action=<?php echo '"result-busqueda.php?categoria='.$datosConsulta["categoria"].'&esLibro='.1'"'?>>
-												<input type="submit" class="btn btn-default">Ver más<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></input>
+												<form method="get" action=<?php echo '"result-busqueda.php?categoria='.$datosConsulta["categoria"].'&esLibro=1"'; ?>>
+												<input type="submit" value="Ver más" class="btn btn-lg"></input>
 												</form>
 											</div>
 										</div>
 									</div>
 								</div>  
+							</div>
 							</div>
 							<?php
 
 						}
 
+						$query = "SELECT id_bocetos, titulo, foto FROM bocetos ORDER BY fecha DESC LIMIT 4".PHP_EOL;
+
+
+							$consulta 	= 	realiza_consulta($conn, $query);
+
+							$filas = $consulta->num_rows;
 					?>
 					<div class="panel panel-default">
 					<div class="panel-heading">
-						<p class="panel-title h3">Bocetos</p> <!--TODO falta terminar-->
+						<?php 	echo '<a href="result-busqueda.php?&esDibujo=1">'?>
+							<p class="panel-title h3">Bocetos </a>
+							<span class="badge"><?php echo $filas ?></span></p>
+
 					</div>
 					<div class="panel-body">
 						<div class="row">
 						<?php
 
-						//TODO
-						$query = "SELECT id_bocetos, titulo, foto FROM bocetos ORDER BY fecha DESC LIMIT 4".PHP_EOL;
-
-
-							$consulta 	= 	realiza_consulta($conn, $query);
+						
+						
 							$nResultados = 	$consulta->num_rows;//numero de resultados
 							//Pintamos las 4 obras que hemos cargado
 							while($row = $consulta->fetch_assoc()){
 								?>
 								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail efecto-redondo">
-										<?php 	echo '<a href="visualizacionLibro.php?id='.$row["id_bocetos"].'">'
-												echo '<img alt="" src="'.$row["foto"].'" class="img-responsive imgP">'
-												echo '<div class="caption">'
-												echo '<p>'.$row["titulo"].'</p>'
+										<?php 	echo '<a href="visualizacionLibro.php?id='.$row["id_bocetos"].'">';
+												echo '<img alt="" src="'.$row["foto"].'" class="img-responsive imgP">';
+												echo '<div class="caption">';
+												echo '<p>'.$row["titulo"].'</p>';
 										?>
 											</div>
 										</a>
@@ -132,18 +139,21 @@
 							}
 
 							?>
-									<div class="row">
-										<div class="col-sm-12 text-center">
-											<div class="btn-group" role="group" aria-label="...">
-												<form method="get" action=<?php echo '"/result-busqueda.php?&esDibujo='.1.'"'?>>
-												<input type="submit" class="btn btn-default">Ver más<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></input>
-												</form>
+										<div class="row">
+											<div class="col-sm-12 text-center">
+												<div class="btn-group" role="group" aria-label="...">
+													<form method="get" action=<?php echo '"result-busqueda.php?&esDibujo=1"';?>>
+													<input type="submit" value="Ver más" class="btn btn-lg"></input>
+													</form>
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>  
+									</div>  
+								</div>
 							</div>
 						</div>
+					
+
 
 			
 			<?php
