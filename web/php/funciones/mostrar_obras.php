@@ -1,5 +1,7 @@
 <?php
 	
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
+
 	function buscar_bocetos($id){
 
 		$sql = "SELECT * FROM bocetos WHERE id_usuario='$id'";
@@ -10,6 +12,7 @@
 	}
 
 	function buscar_libros($id){
+
 
 		$sql = "SELECT * FROM libros WHERE id_usuario='$id'";
 
@@ -25,5 +28,5 @@
 		return $n;
 
 	}
-
+	
 ?>

@@ -29,3 +29,8 @@
 		</table>
 	</div>
 </div> <!--col-sm-6 col-md-3-->
+
+
+
+<div class='col-xs-4'><a href='#1'><img src='$obra->foto' class='img-responsive img-carousel'></a>
+						            					</div>

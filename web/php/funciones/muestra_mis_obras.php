@@ -20,7 +20,7 @@
 	else
 		$a_mostrar = "Libros";
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/web/php/funciones/consulta.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
 
 	// Mostrar enlaces a los demás tipos de obras.
 	echo "

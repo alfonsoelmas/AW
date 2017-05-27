@@ -21,7 +21,7 @@
 		echo $seguido;
 		echo $seguidor;
 		
-		header("Location: ../../vistaUsuario.php?usuario=".$seguido);
+		//header("Location: ../../vistaUsuario.php?usuario=".$seguido);
 	}
 
 

@@ -42,7 +42,8 @@
 								  				$obra = $resultado->fetch_object();
 
 
-					  							echo "<div class='item active'>
+					  							echo "
+					  							<div class='item active'>
 					            					<div class='col-xs-4'><a href='#1'><img src=$obra->portada class='img-responsive img-carousel'></a></div>
 					          					</div>";
 
