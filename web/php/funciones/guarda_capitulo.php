@@ -2,11 +2,11 @@
 <?php
 
 if(_$POST){
+	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
 
 	$titulo = _$POST["title"];
 	$cuerpo = _$POST["editor1"];
-	
-	$conn = conectar();
+
 	//comprobamos que titulo < TANTOS caracteres y no este vacio
 	if(strlen($titulo) == 0 || strlen($titulo) > 100) {
 		header("Location: 404Error.php");
@@ -27,7 +27,7 @@ if(_$POST){
 
 
 		$query = 'UPDATE capitulos SET titulo="'.$titulo.'", cuerpo="'.$cuerpo.'" WHERE id_capitulo="'.$id.'"' ;
-		$consulta 	= 	realiza_consulta($conn, $query);
+		$consulta 	= 	consulta($query);
 
 	} else {				
 	//No existe capitulo y hay que CREAR
@@ -40,7 +40,7 @@ if(_$POST){
 		//Generamos creacion:
 
 		$query = 'INSERT INTO capitulos (titulo,cuerpo,fecha,id_libro) VALUES ('.$titulo.','.$cuerpo.','.$fecha.','.$idLibro.')';
-		$consulta 	= 	realiza_consulta($conn, $query);
+		$consulta 	= 	consulta($query);
 	}
 
 	//TODO desconectar

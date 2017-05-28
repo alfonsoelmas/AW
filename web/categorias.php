@@ -18,8 +18,8 @@
 		//generamos cabecera
 
 		$pagina_actual="Categorías";
-		include("php/funciones/genera_cabecera.php");
-		include("php/config/connection.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
 	?>
 	
 	<!--Creamos el contenido-->
@@ -31,12 +31,11 @@
 					<?php 
 						//Lanzamos una query para obtener las categorias
 
-						$conn = conectar();
 						//Necesito obtener las categorias existentes (sin repeticion).
 						$query = "SELECT DISTINCT categoria FROM libros";
 
 
-						$consulta1 	= 	realiza_consulta($conn, $query);
+						$consulta1 	= 	consulta($query);
 						$filas 		= 	$consulta1->num_rows;
 						$datosConsulta = $consulta1->fetch_assoc();
 
@@ -58,7 +57,7 @@
 							//Lanzamos query de esa categoria recientemente TODO, no sé a qué altura va el LIMIT
 							$query = 'SELECT id_libro, titulo, portada FROM libros WHERE categoria="'.$datosConsulta["categoria"].'" ORDER BY fecha DESC LIMIT 4 OFFSET 0';
 
-							$consulta 	= 	realiza_consulta($conn, $query);
+							$consulta 	= 	consulta($query);
 							$nResultados = 	$consulta->num_rows;//numero de resultados
 
 
@@ -102,7 +101,7 @@
 						$query = "SELECT id_bocetos, titulo, foto FROM bocetos ORDER BY fecha DESC LIMIT 4".PHP_EOL;
 
 
-							$consulta 	= 	realiza_consulta($conn, $query);
+							$consulta 	= 	consulta($query);
 
 							$filas = $consulta->num_rows;
 					?>
@@ -156,20 +155,17 @@
 
 
 			
-			<?php
-				include("php/funciones/genera_bloque_derecha.php");
-			?>
+			<?php require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_bloque_derecha.php"); ?>
 
 		</div>
 	</div>
 
-	<?php include("php/funciones/genera_pie.php"); ?>
+	<?php  require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_pie.php")?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<?php cerrar_conexion($conn);?>
 
 </body>
 </html>

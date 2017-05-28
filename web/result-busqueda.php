@@ -42,7 +42,7 @@ function calculaValoracionToInt($valor){
 	<?php
 		$pagina_actual="Resultados de búsqueda";
 		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
-		require_once($_SERVER['DOCUMENT_ROOT'] ."php/config/connection.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
 	?>
     
 	<div class="container-fluid text-center">    
@@ -73,10 +73,9 @@ function calculaValoracionToInt($valor){
 								  <option value="todas">todas</option>
 
 								  <?php 
-								  	$conn = conectar();
 								  	$query = "SELECT DISTINCT categoria FROM libros";
 
-								  	$consulta 	= 	realiza_consulta($conn, $query);
+								  	$consulta 	= 	consulta($query);
 									$filas 		= 	$consulta->num_rows;
 									$datosConsulta = $consulta->fetch_assoc();
 
@@ -348,8 +347,8 @@ function calculaValoracionToInt($valor){
 						 
 					 	//TODO consultaTot y consulta
 
- 						$consulta 	= 	realiza_consulta($conn, $query);
- 						$consultaTot = realiza_consulta($conn,$query2);
+ 						$consulta 	= 	consulta($query);
+ 						$consultaTot = consulta($query2);
  						$totalBusqueda = $consultaTot->num_rows;
 						$filas 		= 	$consulta->num_rows;
 						$totalConsulta = $filas;
@@ -581,8 +580,8 @@ function calculaValoracionToInt($valor){
 
 
 
-	 						$consulta 		= realiza_consulta($conn, $query);
-	 						$consultaTot 	= realiza_consulta($conn,$query2);
+	 						$consulta 		= consulta($query);
+	 						$consultaTot 	= consulta($query2);
 	 						$totalBusqueda 	= $consultaTot->num_rows;
 							$filas 			= $consulta->num_rows;
 							$totalConsulta	= $filas;
@@ -739,7 +738,6 @@ function calculaValoracionToInt($valor){
 	</div> <!--container-fluid-->
 
 	<?php require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_pie.php"); ?>
-	<?php cerrar_conexion($conn);?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>

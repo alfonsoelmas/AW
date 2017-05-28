@@ -15,11 +15,11 @@
 	<?php
 		$pagina_actual="Edición";
 		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
 		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/categorias.php");
 		//Si sesión iniciada
 
 		if(isset($_SESSION['usuario_actual']) ){
-		$conn = conectar();
 			
 			if(isset($_GET['libro'])){
 				//Editaremos un libro
@@ -35,10 +35,92 @@
 				*/
 				$query = 'SELECT titulo, sinopsis, portada FROM libros WHERE id_libro="'.$idLibro.'"';
 
-		  		$consulta 	= 	realiza_consulta($conn, $query);
+
+		  		$consulta 	= 	consulta($query);
 		  		$datosConsulta = $consulta->fetch_assoc();
 
 
+				?>
+
+				<div class="container-fluid text-center">
+					<form method="post" action="guardar_libro.php">	    
+					<div class="col-sm-10 text-left">
+						<div class="panel panel-default margen-top">
+							<div class="panel-heading">
+								<p class="h3 panel-title">Edición</p>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-3 text-center">
+										<img class="img-edicion" alt="" <?php echo 'src="img/portadas/'.$portada.''; ?>">
+										<input id="imagen" name="imagen" type="file" class="btn btn-info margen-top">
+										<input type="hidden" name="idLibro" value=<?php echo '"'.$idLibro.'"' ?>/>
+									</div>
+									<div class="col-sm-9 text-left"> 
+
+										<span class="input-group-addon glyphicon glyphicon-text-size">Título</span>
+										<input type="text" class="form-control" id="titulo" name="title" value=<?php echo '"'.$datosConsulta['titulo'].'"'?> />
+										<br>
+										<span class="input-group-addon glyphicon glyphicon-text-size ">Sinopsis</span>
+										<textarea  class="form-control" id='editor1' name='sinopsis' rows="10" value=<?php echo '"'.$datosConsulta['sinopsis'].'"'; ?> </textarea>
+
+										<?php 
+										$categorias = obtenerCategorias();
+										$tam = count($categorias);
+										
+										echo '<select name="categoria">'
+										for($i = 0; $i<$tam; $i++){
+											echo '<option value="'.$categorias[$i].'">'.$categorias[$i].'</option>';
+										}
+										echo '</select>';
+
+
+										//Ahora obtenemos los capitulos existentes para pintarlos:
+										$query = 'SELECT titulo, cuerpo, id_capitulo FROM capitulos WHERE id_libro="'.$idLibro.'"';
+								  		$consulta 	= 					consulta($query);
+								  		$datosConsulta = $consulta->fetch_assoc();
+								  		$tamDatos = $datosConsulta->num_rows;
+
+										?>
+
+										<!--script type='text/javascript'>
+											CKEDITOR.replace ('editor1');
+										</script--> 
+
+										<button type="button" <?php echo 'onclick="window.location.href="edicionCap.php?idLibro='.$idLibro.'""' ?> class="btn btn-info margen-top"> Añadir capítulo </button> 
+
+										<button type="button" class="btn btn-info margen-top" data-toggle="collapse" data-target="#lCap">Desplegar lista de capitulos</button>
+
+
+										<div id="lCap" class="collapse margen-top">
+										<div class="list-group">
+											<?php
+												for($i=1; $i<=$tamDatos; $i++){
+
+												 echo '<a href="edicionCap.php?idCap='.$datosConsulta["id_capitulo"].'" class="list-group-item">';
+												 echo '	<p class="h4 list-group-item-heading">Capitulo '.$i.'</p>';
+												 echo '	<p class="list-group-item-text">'.substr ($datosConsulta["cuerpo"] , 0, 70 ] ).'...</p>';
+												</a>
+
+													$datosConsulta = $consulta->fetch_assoc();
+												}
+											?>	
+											</div>
+										</div> 
+									</div>
+								</div>
+							</div>  
+						</div>
+			<div class="col-sm-12 text-center">
+			<button type="sumbit" class="btn btn-warning margen-bottom">Guardar cambios realizados</button>
+			</div>
+			</form>
+		</div>
+
+				<?php
+
+			} else {
+				//Creamos un libro
 				?>
 
 				<div class="container-fluid text-center">
@@ -57,10 +139,10 @@
 									<div class="col-sm-9 text-left"> 
 
 										<span class="input-group-addon glyphicon glyphicon-text-size">Título</span>
-										<input type="text" class="form-control" id="titulo" name="title" value=<?php echo '"'.$datosConsulta['titulo'].'"'?> />
+										<input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título" ?> />
 										<br>
 										<span class="input-group-addon glyphicon glyphicon-text-size ">Sinopsis</span>
-										<textarea  class="form-control" id='editor1' name='sinopsis' rows="10" value=<?php echo '"'.$datosConsulta['sinopsis'].'"'; ?> </textarea>
+										<textarea  class="form-control" id='editor1' name='sinopsis' rows="10" placeholder="Escribe aquí la sinopsis" ?> </textarea>
 
 										<!--TODO necesitamos cargar las categorias-->
 										<?php 
@@ -73,12 +155,6 @@
 										}
 										echo '</select>';
 
-
-										//Ahora obtenemos los capitulos existentes para pintarlos:
-										$query = 'SELECT titulo, sinopsis, portada FROM libros WHERE id_libro="'.$idLibro.'"';
-								  		$consulta 	= 	realiza_consulta($conn, $query);
-								  		$datosConsulta = $consulta->fetch_assoc();
-								  		
 										?>
 
 										<!--script type='text/javascript'>
@@ -87,80 +163,15 @@
 
 										<button type="button" <?php echo 'onclick="window.location.href="edicionCap.php?idLibro='.$idLibro.'""' ?> class="btn btn-info margen-top"> Añadir capítulo </button> 
 
-										<button type="button" class="btn btn-info margen-top" data-toggle="collapse" data-target="#lCap">Desplegar lista de capitulos</button>
-										<div id="lCap" class="collapse margen-top">
-											<div class="list-group">
-												<a href="edicionCap.php" class="list-group-item">
-													<p class="h4 list-group-item-heading">Capitulo 1</p>
-													<p class="list-group-item-text">Erase una vez que se era... la historia comienza y empieza la aventura.</p>
-												</a>
-												<a href="edicionCap.php" class="list-group-item">
-													<p class="h4 list-group-item-heading">Capitulo 2</p>
-													<p class="list-group-item-text">Nuestro viandante llega a Asturias, donde pasará un fin de semana de locura.</p>
-												</a>
-											</div>
-										</div> 
-									</div>
+									</div><!--todo puede que me sobre o falte algun div-->
 								</div>
 							</div>  
 						</div>
 			<div class="col-sm-12 text-center">
-			<button type="sumbit" class="btn btn-warning margen-bottom">Guardar cambios realizados</button>
+			<button type="sumbit" class="btn btn-warning margen-bottom">Guardar libro nuevo </button>
 			</div>
 			</form>
 		</div>
-
-				<?php
-
-			} else {
-				//Crearemos un libro
-				?>
-				<div class="container-fluid text-center">    
-					<div class="col-sm-10 text-left"> 
-						<div class="panel panel-default margen-top">
-							<div class="panel-heading">
-								<p class="h3 panel-title">Edición</p>
-								</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-3 text-center">
-							<img class="img-edicion" alt="" src="img/portadas/portada.png">
-							<button type="button" class="btn btn-info margen-top">Añadir imagen</button> <!--todo campo obligatorio-->
-						</div>
-						<div class="col-sm-9 text-left"> 
-							<form method="post" action="">
-								<span class="input-group-addon glyphicon glyphicon-text-size">Título</span>  <!--todo campo obligatorio-->
-								<input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título"/>
-								<br>
-								<span class="input-group-addon glyphicon glyphicon-text-size ">Sinopsis</span>
-								<textarea  class="form-control" id='editor1' name='editor1' rows="10" placeholder="Erase una vez que se era..."></textarea>
-							</form>
-							<!--script type='text/javascript'>
-								CKEDITOR.replace ('editor1');
-							</script--> 
-							<button type="button" onclick="window.location.href='edicionCap.php'" class="btn btn-info margen-top"> Añadir capítulo</button>
-							<button type="button" class="btn btn-info margen-top" data-toggle="collapse" data-target="#lCap">Desplegar lista de capitulos</button>
-							<div id="lCap" class="collapse margen-top">
-								<div class="list-group">
-									<a href="edicionCap.php" class="list-group-item">
-										<p class="h4 list-group-item-heading">Capitulo 1</p>
-										<p class="list-group-item-text">Erase una vez que se era... la historia comienza y empieza la aventura.</p>
-									</a>
-									<a href="edicionCap.php" class="list-group-item">
-										<p class="h4 list-group-item-heading">Capitulo 2</p>
-										<p class="list-group-item-text">Nuestro viandante llega a Asturias, donde pasará un fin de semana de locura.</p>
-									</a>
-								</div>
-							</div> 
-						</div>
-					</div>
-				</div>  
-			</div>
-			<div class="col-sm-12 text-center">
-			<button type="button" class="btn btn-warning margen-bottom">Guardar cambios realizados</button>
-			</div>
-		</div>
-
 		<?php
 			}
 

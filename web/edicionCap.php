@@ -17,6 +17,8 @@
 
 
 	$pagina_actual="EdiciónCap";
+
+	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
 	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
 
 	//Me tiene que venir el ID del libro correspondiente al capitulo
@@ -27,16 +29,15 @@
 
 		//Compruebo que ese idLibro corresponde al usuario 
 		//con una query...
-	  	$conn = conectar();
 
 
-		if(isset($_POST["idCap"])){
+		if(isset($_GET["idCap"])){
 			//No es nuevo
 
-			$idCap = $_POST["idCap"];
+			$idCap = $_GET["idCap"];
 		  	$query = 'SELECT usuarios.id FROM usuarios, libros WHERE usuarios.id="'.$_SESSION['usuario_actual'].'" AND id_libro="'.$idLibro.'"';
 
-		  	$consulta 	= 	realiza_consulta($conn, $query);
+		  	$consulta 	= 	consulta($query);
 			$filas 		= 	$consulta->num_rows;
 			
 			if($filas==0){
@@ -54,7 +55,7 @@
 					<?php 
 
 					$query = 'SELECT titulo FROM libros WHERE id_libro="'.$idLibro.'"';
-					$consulta = realiza_consulta($conn,$query);
+					$consulta = consulta($query);
 					//doy por supuesto que obtengo un resultado único
 					$datosConsulta = $consulta->fetch_assoc();
 
@@ -66,7 +67,7 @@
 					<?php 
 
 					$query = 'SELECT * FROM capitulos WHERE id_capitulo="'.$idCap.'"';
-					$consulta = realiza_consulta($conn,$query);
+					$consulta = consulta($query);
 					//doy por supuesto que obtengo un resultado único
 					$datosConsulta = $consulta->fetch_assoc();
 
@@ -105,7 +106,7 @@
 
 		  	$query = 'SELECT usuarios.id FROM usuarios, libros WHERE usuarios.id="'.$_SESSION['usuario_actual'].'" AND id_libro="'.$idLibro.'"';
 
-		  	$consulta 	= 	realiza_consulta($conn, $query);
+		  	$consulta 	= 	consulta($query);
 			$filas 		= 	$consulta->num_rows;
 			
 			if($filas==0){
@@ -121,7 +122,7 @@
 					<?php 
 
 					$query = 'SELECT titulo FROM libros WHERE id_libro="'.$idLibro.'"';
-					$consulta = realiza_consulta($conn,$query);
+					$consulta = consulta($query);
 					//doy por supuesto que obtengo un resultado único
 					$datosConsulta = $consulta->fetch_assoc();
 
@@ -186,6 +187,5 @@
 	<script type="text/javascript" src="Paper%20Dreams_files/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
 	<script type="text/javascript" src="Paper%20Dreams_files/config.js"></script><link rel="stylesheet" type="text/css" href="Paper%20Dreams_files/editor_gecko.css"><script type="text/javascript" src="Paper%20Dreams_files/es.js"></script><script type="text/javascript" src="Paper%20Dreams_files/styles.js"></script>
 
-<?php cerrar_conexion($conn);?>
 </body>
 </html>
