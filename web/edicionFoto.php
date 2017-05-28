@@ -27,6 +27,7 @@
 	<link rel="stylesheet" href="css/estilo2.css">
 	<link rel="stylesheet" href="css/estilobusq.css">
 	<link rel="stylesheet" href="css/edicionStyle.css">
+	<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 	<?php
@@ -35,7 +36,7 @@
 	?>
 
 	<div class="container-fluid text-center">    
-		<form action="php/funciones/editar_foto.php" method="POST" enctype="multipart/form-data">
+		<form id="boceto" action="php/funciones/editar_foto.php" method="POST" enctype="multipart/form-data">
 			<div class="col-sm-10 text-left"> 
 				<div class="panel panel-default margen-top">
 					<div class="panel-heading">
@@ -90,8 +91,10 @@
 	<!--Scripts-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/editarFoto.js"></script>
+	<script type="text/javascript" src="js/edicion_foto.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 </body>
 </html>
+
 
