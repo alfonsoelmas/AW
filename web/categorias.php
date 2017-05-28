@@ -24,7 +24,6 @@
 	<div class="container-fluid text-center">    
 		<div class="row content">
 			<div class="col-sm-10 text-left"> 
-				<div class="panel panel-default">
 
 					<?php 
 						//Lanzamos una query para obtener las categorias
@@ -40,13 +39,17 @@
 						//Hacemos un for del numero de categorias
 						for($i = 0; $i<$filas; $i++){
 
+							$query = 'SELECT id_libro, titulo, portada FROM libros WHERE categoria="'.$datosConsulta["categoria"].'" ORDER BY fecha DESC';
+							$consulta2 	= 	consulta($query);
+							$totRes		= 	$consulta2->num_rows;
 							//Pintamos titulo
 							?>
+							<div class="panel panel-default">
 							<div class="panel-heading">
 								<?php 	echo '<a href="result-busqueda.php?categoria='.$datosConsulta["categoria"].'&esLibro=1">'?>
 									<p class="panel-title h3"><?php echo $datosConsulta["categoria"]; ?>
 								</a>
-								<span class="badge"><?php echo $filas ?></span></p>
+								<span class="badge"><?php echo $totRes ?></span></p>
 
 							</div>					
 							<div class="panel-body">
@@ -97,11 +100,13 @@
 						}
 
 						$query = "SELECT id_bocetos, titulo, foto FROM bocetos ORDER BY fecha DESC LIMIT 4".PHP_EOL;
+						$queryTot = "SELECT id_bocetos, titulo, foto FROM bocetos ORDER BY fecha DESC".PHP_EOL;
 
 
-							$consulta 	= 	consulta($query);
+						$consulta 		= 	consulta($query);
+						$consultaTot 	= 	consulta($queryTot);
 
-							$filas = $consulta->num_rows;
+							$filas = $consultaTot->num_rows;
 					?>
 					<div class="panel panel-default">
 					<div class="panel-heading">

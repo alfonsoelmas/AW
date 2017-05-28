@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php session_start() ?>
 <head>
 	<title>Paper Dreams</title>
 	<meta charset="utf-8">
@@ -18,8 +17,8 @@
 
 	$pagina_actual="EdiciónCap";
 
-	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
-	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 
 	//Me tiene que venir el ID del libro correspondiente al capitulo
 	if(isset($_GET["idLibro"])){
@@ -134,7 +133,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-sm-12 text-left"> 
-								<form method="post" action=<?php echo '"php/funciones/guarda_capitulo.php'; ?> >
+								<form method="post" action=<?php echo '"php/funciones/guarda_capitulo.php"'; ?>>
 									<span class="input-group-addon glyphicon glyphicon-text-size">Título del capítulo</span>
 									<input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título"/>
 									<br>
@@ -170,12 +169,12 @@
 		<?php
 			$pagina_actual="EdiciónCap";
 
-			require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_bloque_derecha.php");
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 		?>
 	</div>
 
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_pie.php");?>
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php");?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
