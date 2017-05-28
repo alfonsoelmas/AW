@@ -14,6 +14,7 @@
 		$descripcion = $boceto->descripcion;
 		$fecha = $boceto->fecha;
 		$imagen = $boceto->foto;
+		$autor = $boceto->id_usuario;
 	}
 	else
 	{
@@ -54,7 +55,8 @@
 						<div id="sipnopsis">
 							<?php echo $descripcion ?>
 						</div>
-					</div>
+				    	<a href=<?php echo "vistaUsuario.php?usuario=" . $autor;?>>Visita el perfil del autor</a>
+				    </div>
 				</div> 
 				<div class="row">     
 					<!-- Contenedor Principal -->
@@ -91,7 +93,7 @@
 														<!-- Contenedor del Comentario -->
 														<div class='comment-box'>
 															<div class='comment-head'>
-																<p class='comment-name h6'><a href='http://vistaUsuario.php?id=$comment_user->id'>$comment_user->usuario</a></p>
+																<p class='comment-name h6'><a href='vistaUsuario.php?usuario=$comment_user->id'>$comment_user->usuario</a></p>
 																<span>$comentario->fecha</span>
 																<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$comentario->id_comentario><i class='fa fa-reply'></i></a>
 															</div>
@@ -127,7 +129,7 @@
 																<!-- Contenedor del Comentario -->
 																<div class='comment-box'>
 																	<div class='comment-head'>
-																		<h6 class='comment-name'><a href='http://miPerfil.php'>$comment_user->usuario</a> </h6>
+																		<h6 class='comment-name'><a href='vistaUsuario.php?usuario=$comment_user->id'>$comment_user->usuario</a> </h6>
 																		<span>$respuesta->fecha</span>
 																		<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$respuesta->id_comentario><i class='fa fa-reply'></i></a>
 																	</div>
