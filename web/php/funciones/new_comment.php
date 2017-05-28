@@ -11,6 +11,9 @@
 	$tipo_contenido = $_POST['tipo_contenido'];
 
 	nuevo_comentario($cuerpo, $id_usuario, $id_padre, $id_contenido, $tipo_contenido);
+
+	header("Location:".$_SERVER['HTTP_REFERER']);  
+	exit();
 ?>
 
 

@@ -1,5 +1,7 @@
-
-$('.botones-comentarios').click(function(){
-	var id = $(this).attr('data-id');
-	$('#answerParent').val(id);
+$(document).ready(function (){
+	$('.botones-comentario').click(function(){
+		var id = $(this).attr('data-id');
+		console.log(id);	
+		$('#answerParent').val(id);
+	});
 });

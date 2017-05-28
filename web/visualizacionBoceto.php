@@ -45,29 +45,28 @@
 		<div class="row">
 			<div class="container col-sm-10 text-left">    
 				<div class="row">
-					<img class="col-sm-6 text-left img-responsive center-block" data-toggle="modal" data-target="#myModal2" id="portada" alt="" src=<?php
-													$ruta = $imagen;
-													echo $ruta 
-											?> />
-					<div class="text-center">
+					<img class="col-sm-6 text-left img-responsive center-block" data-toggle="modal" data-target="	#myModal2" id="portada" alt="" src=<?php
+												$ruta = $imagen;
+												echo $ruta 
+										?> />
+					<div class="container text-center col-sm-4">
 						<p class="h3"><?php echo $titulo ?></p>
 						<div id="sipnopsis">
 							<?php echo $descripcion ?>
-						</div>
-					</div>
-					<div id="opciones">
-						<div class="col-sm-2 text-left"> 
-							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
-						</div>
-						<div id="estrellas" class="text-center">
-							<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-size="xs">
 						</div>
 					</div>
 				</div> 
 				<div class="row">     
 					<!-- Contenedor Principal -->
 				    <div class="comments-container">
-						<p class="h1"> Comentarios </p>
+				    	<div class="row">
+						    <div class="col-xs-4 offset-xs-4">
+						      	<span class="h1"> Comentarios </span>
+						    </div>
+						    <div class="col-xs-4 offset-xs-4">
+						    	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
+						    </div>
+						</div>
 						<ul id="comments-list" class="comments-list">
 							<li>
 								<?php
@@ -84,7 +83,7 @@
 										{
 
 											$comment_user = $usuario_comentario->fetch_object();
-											
+
 											//Imprimimos el comentario
 											echo "<div class='comment-main-level'>
 														<!-- Avatar -->
@@ -92,48 +91,53 @@
 														<!-- Contenedor del Comentario -->
 														<div class='comment-box'>
 															<div class='comment-head'>
-																<p class='comment-name by-author h6'><a href='http://miPerfil.php'>$comment_user->usuario</a></p>
+																<p class='comment-name h6'><a href='http://vistaUsuario.php?id=$comment_user->id'>$comment_user->usuario</a></p>
 																<span>$comentario->fecha</span>
-																<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=0><i class='fa fa-reply'></i></a>
+																<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$comentario->id_comentario><i class='fa fa-reply'></i></a>
 															</div>
 															<div class='comment-content'>
 																$comentario->cuerpo
 															</div>
 														</div>
-													</div>";
+													</div>
+													<br>";
 
 											//Buscamos las posibles respuestas
 											$respuestas = respuestas($comentario->id_comentario, "Bocetos");
-											$rows = $respuestas->num_rows;
 
-											//Si hay respuestas	
-											if($rows > 0)
-											{	
-												//Una por una
-												while ($respuesta = $respuestas->fetch_object()) 
-												{
-													//Cogemos los datos del perfil del usuario que ha comentado
-													$resultado = usuario_comentario($respuesta->id_usuario);
-													$comment_user = $resultado->fetch_object();
+											if($respuestas)
+											{
+												$rows = $respuestas->num_rows;
 
-													//Imprimimos el comentario
-													echo "<ul class='comments-list reply-list'>
-														<li>
-															<!-- Avatar -->
-															<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
-															<!-- Contenedor del Comentario -->
-															<div class='comment-box'>
-																<div class='comment-head'>
-																	<h6 class='comment-name'><a href='http://miPerfil.php'>$comment_user->usuario</a> </h6>
-																	<span>$comentario->fecha</span>
-																	<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$comentario->id_comentario><i class='fa fa-reply'></i></a>
-																</div>
-																<div class='comment-content'>
-																	$comentario->cuerpo;
-																</div>
-															</div>
-														</li>
-													</ul>";
+												//Si hay respuestas	
+												if($rows > 0)
+												{	
+													//Una por una
+													while ($respuesta = $respuestas->fetch_object()) 
+													{
+														//Cogemos los datos del perfil del usuario que ha respondido
+														$usuario_comentario = usuario_comentario($respuesta->id_usuario);
+														$comment_user = $usuario_comentario->fetch_object();
+
+														//Imprimimos el comentario
+														echo "<ul class='comments-list reply-list'>
+															<li>
+																<!-- Avatar -->
+																<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
+																<!-- Contenedor del Comentario -->
+																<div class='comment-box'>
+																	<div class='comment-head'>
+																		<h6 class='comment-name'><a href='http://miPerfil.php'>$comment_user->usuario</a> </h6>
+																		<span>$respuesta->fecha</span>
+																		<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$respuesta->id_comentario><i class='fa fa-reply'></i></a>
+																	</div>
+																	<div class='comment-content'>
+																		$respuesta->cuerpo
+																	</div>
+																</div><br>
+															</li>
+														</ul>";
+													}
 												}
 											}
 										}
@@ -142,42 +146,6 @@
 							</li>
 						</ul>
 					</div>
-		   	 		<?php
-
-		   	 			$resultado = comentarios($id_boceto, "Bocetos");
-		   	 			$num = $resultado->num_rows;
-
-		   	 			if($num > 0)
-		   	 			{
-			   	 			$numero_paginas = $num/8;
-
-			   	 			if($numero_paginas > 0)
-			   	 			{
-			   	 				echo"<nav class='text-center' aria-label='Page navigation'>
-										<ul class='pagination'>
-										<li>
-											<a href='#' aria-label='Previous'>
-												<span aria-hidden='true'>&laquo;</span>
-								     	 	</a>
-								   	 	</li>";
-
-				   	 			for($i = 1; $i <= $numero_paginas + 1; $i++)
-						    		echo "<li><a href='#''>$i</a></li>";
-
-						    	echo 	"<li>
-						    				<a href='#' aria-label='Next'
-				        						<span aria-hidden='true'>&raquo;</span>
-				      						</a>
-				    					</li>
-				  					</ul>
-								</nav>";
-						    }
-						}
-						else
-						{
-							echo "<span> Parece que no tienes comentarios </span>";
-						}
-			    	?>
 				</div>
 			</div>
 
@@ -245,7 +213,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script src="js/respuestaComentarios.js" type="text/javascript"></script>
 
 </body>
