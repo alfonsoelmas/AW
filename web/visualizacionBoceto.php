@@ -105,43 +105,10 @@
 													<br>";
 
 											//Buscamos las posibles respuestas
-											$respuestas = respuestas($comentario->id_comentario, "Bocetos");
-
-											if($respuestas)
-											{
-												$rows = $respuestas->num_rows;
-
-												//Si hay respuestas	
-												if($rows > 0)
-												{	
-													//Una por una
-													while ($respuesta = $respuestas->fetch_object()) 
-													{
-														//Cogemos los datos del perfil del usuario que ha respondido
-														$usuario_comentario = usuario_comentario($respuesta->id_usuario);
-														$comment_user = $usuario_comentario->fetch_object();
-
-														//Imprimimos el comentario
-														echo "<ul class='comments-list reply-list'>
-															<li>
-																<!-- Avatar -->
-																<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
-																<!-- Contenedor del Comentario -->
-																<div class='comment-box'>
-																	<div class='comment-head'>
-																		<h6 class='comment-name'><a href='vistaUsuario.php?usuario=$comment_user->id'>$comment_user->usuario</a> </h6>
-																		<span>$respuesta->fecha</span>
-																		<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$respuesta->id_comentario><i class='fa fa-reply'></i></a>
-																	</div>
-																	<div class='comment-content'>
-																		$respuesta->cuerpo
-																	</div>
-																</div><br>
-															</li>
-														</ul>";
-													}
-												}
-											}
+											
+											$id = $comentario->id_comentario;
+											$respuestas = respuestas($id, "Bocetos");
+											imprimir_respuestas($respuestas);
 										}
 									}
 								?>

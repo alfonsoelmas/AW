@@ -1,13 +1,4 @@
 <?php
-	session_start();
-
-	/*
-	if(!isset($_SESSION['usuario']))
-	{
-		header("Location: login.php");	
-		exit();
-	}
-	*/
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
 	$id_libro = $_GET['id_libro'];
 	$id_capitulo = $_GET['id_capitulo'];

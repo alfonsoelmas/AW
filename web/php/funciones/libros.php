@@ -22,7 +22,7 @@
 
 	function capitulos_por_libro($id_libro)
 	{
-		$sql = "SELECT * FROM capitulos WHERE id_libro='$id' ORDER BY id_capitulo ASC";
+		$sql = "SELECT * FROM capitulos WHERE id_libro='$id_libro' ORDER BY id_capitulo ASC";
 
 		$resultado = consulta($sql);
 
