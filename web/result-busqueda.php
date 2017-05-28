@@ -41,8 +41,8 @@ function calculaValoracionToInt($valor){
 <body>
 	<?php
 		$pagina_actual="Resultados de búsqueda";
-		include("php/funciones/genera_cabecera.php");
-		include("php/config/connection.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."php/config/connection.php");
 	?>
     
 	<div class="container-fluid text-center">    
@@ -731,12 +731,13 @@ function calculaValoracionToInt($valor){
 			
 			<?php
 				$pagina_actual="Resultado de búsqueda";
-				include("php/funciones/genera_bloque_derecha.php");
+				require_once($_SERVER['DOCUMENT_ROOT'] ."web/php/funciones/genera_bloque_derecha.php");
+		
 			?>
 		</div> <!--row content-->
 	</div> <!--container-fluid-->
 
-	<?php include("php/funciones/genera_pie.php"); ?>
+	<?php require_once($_SERVER['DOCUMENT_ROOT'] ."web/php/funciones/genera_pie.php"); ?>
 	<?php cerrar_conexion($conn);?>
 
 	<!--Scripts-->
