@@ -198,7 +198,7 @@
 					  							echo "
 					  							<div class='item active'>
 					  								<div class='col-xs-4'>
-					  									<a href='#1'><img src=$boceto->foto class='img-responsive img-carousel'></a>
+					  									<a href='visualizacionBoceto.php?id=$boceto->id_bocetos'><img src=$boceto->foto class='img-responsive img-carousel'></a>
 					  									<p>$boceto->titulo</p>
 					  								</div>
 					  							</div> <!--acive-->";
@@ -206,7 +206,7 @@
 					  							echo "
 					  							<div class='item'>
 					            					<div class='col-xs-4'>
-					            						<a href='visualizacionBoceto.php'><img src='$boceto->foto' class='img-responsive img-carousel'></a>
+					            						<a href='visualizacionBoceto.php?id=$boceto->id_bocetos'><img src='$boceto->foto' class='img-responsive img-carousel'></a>
 					            						<p>$boceto->titulo</p>
 					            					</div>
 					          					</div>";

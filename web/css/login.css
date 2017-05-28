@@ -1,5 +1,5 @@
-#captcha{
-	display: none;
+.captcha{
+	margin-top: 30px;
 }
 
 .my-error-class {

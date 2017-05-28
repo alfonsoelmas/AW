@@ -6,7 +6,7 @@
 
 	annadir_boceto();
 	
-	// Registro de un usuario en la BD.
+	// Registro de un boceto en la BD.
 	function annadir_boceto() {
 
 		$titulo = $_POST['titulo'];
@@ -46,6 +46,7 @@
 				else {
 					// Saber cual será la id del boceto que se va a añadir
 					$num = n();
+					$num += 1;
 					echo "<br>"; 
 					echo $num;
 
@@ -59,9 +60,9 @@
 					// Extenxion del fichero
 					$tipo = pathinfo($fichero,PATHINFO_EXTENSION);
 					// Cambiamos el nombre al fichero para guardarlo en el servidor
-					$fichero = $dir_absoluta . $num++ . "." . $tipo;
+					$fichero = $dir_absoluta . $num . "." . $tipo;
 					// ruta que se guardara en la bd
-					$fich_bd = $dir_relativa . $num++ . "." . $tipo;
+					$fich_bd = $dir_relativa . $num . "." . $tipo;
 					//Si la imagen es correcta en tamaño y tipo
 					//Se intenta subir al servidor
 					if (move_uploaded_file($temp, $fichero)) {

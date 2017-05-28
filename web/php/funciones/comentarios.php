@@ -1,7 +1,7 @@
 <?php
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
 
-	//Construye la sql que busca los comentarios de un libro
+	//Construye la sql que busca los comentarios de un libro que son comentarios raiz
 	function comentarios($id, $contenido)
 	{
 		$sql = ""; 
@@ -10,19 +10,19 @@
 		{
 			case "Libros":
 			{
-				$sql = "SELECT * FROM comentario_libro WHERE id_libro='$id';";
+				$sql = "SELECT * FROM comentario_libro WHERE id_libro='$id' AND id_padre=0;";
 			}
 				break;
 
 			case "Bocetos":
 			{
-				$sql = "SELECT * FROM comentario_boceto WHERE id_boceto='$id';";
+				$sql = "SELECT * FROM comentario_boceto WHERE id_boceto='$id' AND id_padre=0;";
 			}
 				break;
 
 			case "Capitulos":
 			{
-				$sql = "SELECT * FROM comentario_capitulo WHERE id_capitulo='$id';";
+				$sql = "SELECT * FROM comentario_capitulo WHERE id_capitulo='$id' AND id_padre=0;";
 			}
 				break;
 		}
@@ -35,7 +35,7 @@
 	//Construye la sql que busca los datos del usuario que ha comentado
 	function usuario_comentario($id_usuario)
 	{
-		$sql =  "SELECT * FROM usuarios NATURAL JOIN perfil WHERE id_usuario='$id_usuario';";
+		$sql =  "SELECT * FROM usuarios AS u JOIN perfil AS p ON u.id=p.id_usuario WHERE id_usuario=$id_usuario;";
 		$usuario = consulta($sql);
 
 		return $usuario;
@@ -51,19 +51,19 @@
 		{
 			case "Libros":
 			{
-				$sql = "SELECT * FROM comenta WHERE id_padre='$id_comentario';";
+				$sql = "SELECT * FROM comentario_libro WHERE id_padre='$id_comentario';";
 			}
 				break;
 
 			case "Bocetos":
 			{
-				$sql = "SELECT * FROM comenta WHERE id_padre='$id_comentario';";
+				$sql = "SELECT * FROM comentario_boceto WHERE id_padre='$id_comentario';";
 			}
 				break;
 
 			case "Capitulos":
 			{
-				$sql = "SELECT * FROM comenta WHERE id_padre='$id_comentario';";
+				$sql = "SELECT * FROM comentario_capitulo WHERE id_padre='$id_comentario';";
 			}
 				break;
 		}
