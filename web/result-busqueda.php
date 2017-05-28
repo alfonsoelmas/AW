@@ -98,7 +98,7 @@ function calculaValoracionToInt($valor){
   									<input type="radio" name="valorOrden" value="descendente"> descendente
 								</div>
 							</div>
-							<input type="hidden" name="clave" value=<?php echo '"'.trim($_GET['clave'])p.'"'; ?>/>
+							<input type="hidden" name="clave" value=<?php echo '"'.trim($_GET['clave']).'"'; ?>/>
 							<input type="submit" name="filtro" value="filtro">
 						</form>
 					</div>
@@ -121,14 +121,14 @@ function calculaValoracionToInt($valor){
 						 	$pagina_actual_l=1;
 						 } else {
 						 	//COMPRUEBO QUE LA PÁGINA ES UN NUMERO
-						 	$pagina_actual_l=$_GET['pagina_l']);
+						 	$pagina_actual_l=$_GET['pagina_l'];
 						 }
 
 						 if(!isset($_GET['pagina_d'])){
 						 	$pagina_actual_d=1;
 						 } else {
 						 	//COMPRUEBO QUE LA PÁGINA ES UN NUMERO
-						 	$pagina_actual_d=$_GET['pagina_d']);
+						 	$pagina_actual_d=$_GET['pagina_d'];
 						 }
 
 						 $tipoOrden;
@@ -146,7 +146,7 @@ function calculaValoracionToInt($valor){
 						 	$valorOrden = "descendente";
 						 }
 
-						 $miroBusqueda = isset($_GET['clave'])
+						 $miroBusqueda = isset($_GET['clave']);
 
 						 $query;
 
@@ -166,14 +166,14 @@ function calculaValoracionToInt($valor){
 
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha DESC';
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 					 						//TODO
 					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha ascendiente
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha ASC';
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					}
 
@@ -184,7 +184,7 @@ function calculaValoracionToInt($valor){
 
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio DESC';
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 
 					 					} else {
@@ -194,7 +194,7 @@ function calculaValoracionToInt($valor){
 
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio ASC';
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 					 						
 					 					}
 
@@ -212,7 +212,7 @@ function calculaValoracionToInt($valor){
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.fecha DESC';
 
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 					 						//Necesito los libros ordenados fecha ascendiente
@@ -220,7 +220,7 @@ function calculaValoracionToInt($valor){
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.fecha ASC';
 
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					}
 
@@ -232,7 +232,7 @@ function calculaValoracionToInt($valor){
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.valoraciones DESC';
 
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.valoraciones DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.valoraciones DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 
@@ -240,7 +240,7 @@ function calculaValoracionToInt($valor){
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.valoraciones ASC';
 
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.valoraciones ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos ORDER BY libros.valoraciones ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 					 						
 					 					}
 
@@ -261,14 +261,14 @@ function calculaValoracionToInt($valor){
 
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'%) ORDER BY libros.fecha DESC';
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 					 						//TODO
 					 						//Necesito los libros cuyo titulo de capitulo o titulo de libro o contenido de capitulo contenga "param" ordenado por fecha ascendiente
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha ASC';
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY libros.fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					}
 
@@ -279,7 +279,7 @@ function calculaValoracionToInt($valor){
 
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio DESC';
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 
 					 					} else {
@@ -289,7 +289,7 @@ function calculaValoracionToInt($valor){
 
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio ASC';
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" AND (libros.titulo LIKE %'.$busqueda.'% OR cuerpo LIKE %'.$busqueda.'% OR capitulos.titulo LIKE %'.$busqueda.'% ORDER BY valorMedio ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 					 						
 					 					}
 
@@ -307,7 +307,7 @@ function calculaValoracionToInt($valor){
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.fecha DESC';
 
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 					 						//Necesito los libros ordenados fecha ascendiente
@@ -315,7 +315,7 @@ function calculaValoracionToInt($valor){
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.fecha ASC';
 
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					}
 
@@ -327,7 +327,7 @@ function calculaValoracionToInt($valor){
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.valoraciones DESC';
 
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.valoraciones DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.valoraciones DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 
@@ -335,7 +335,7 @@ function calculaValoracionToInt($valor){
 					 						$query = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.valoraciones ASC';
 
 
-					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.valoraciones ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT libros.titulo, libros.autor, valorMedio, portada AS img, id_libro AS link FROM libros, capitulos WHERE categoria="'.$categoria.'" ORDER BY libros.valoraciones ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 					 						
 					 					}
 
@@ -434,8 +434,9 @@ function calculaValoracionToInt($valor){
 										}
 										else 
 										{
+
 											echo '<li class="">';
-											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l-1.'&pagina_d='.$pagina_actual_d.'" aria-label="Previous">';
+											echo '<a  href="result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.($pagina_actual_l-1). '&pagina_d='.$pagina_actual_d.'" aria-label="Previous">';
 												echo '<span aria-hidden="true">&laquo;</span>';
 											echo '</a>';
 											echo '</li>';
@@ -467,7 +468,7 @@ function calculaValoracionToInt($valor){
 										{
 
 											echo '<li class="">';
-											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l+1.'&pagina_d='.$pagina_actual_d.'&tipoOrden='.$tipoOrden.'&valorOrden='.$valorOrden.'" aria-label="Previous">'
+											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.($pagina_actual_l+1).'&pagina_d='.$pagina_actual_d.'&tipoOrden='.$tipoOrden.'&valorOrden='.$valorOrden.'" aria-label="Previous">';
 												echo '<span aria-hidden="true">&laquo;</span>'; // todo lo mismo q el todo de arriba
 											echo '</a>';
 											echo '</li>';
@@ -501,14 +502,14 @@ function calculaValoracionToInt($valor){
 					 						//Necesito los bocetos cuyo titulo o contenido de capitulo contenga "param" ordenado por fecha descendiente 
 					 						$query = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY fecha DESC';
 
-					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 					 						//TODO
 					 						//Necesito los bocetos cuyo titulo o contenido de capitulo contenga "param" ordenado por fecha ascendiente
 					 						$query = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY fecha ASC';
 
-					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					}
 
@@ -518,14 +519,14 @@ function calculaValoracionToInt($valor){
 					 						//Necesito los bocetos cuyo titulo o contenido de capitulo contenga "param" ordenado por valoracion descendiente 
 					 						$query = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY valorMedio DESC';
 
-					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY valorMedio DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY valorMedio DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 					 						//TODO
 					 						//Necesito los bocetos cuyo titulo o contenido de capitulo contenga "param" ordenado por valoracion ascendiente
 					 						$query = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY valorMedio ASC';
 
-					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY valorMedio ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos WHERE titulo LIKE %'.$busqueda.'% OR descripcion LIKE %'.$busqueda.'% ORDER BY valorMedio ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					}
 
@@ -546,14 +547,14 @@ function calculaValoracionToInt($valor){
 					 						//Necesito los bocetos ordenado por fecha descendiente 
 					 						$query = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY fecha DESC';
 
-					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY fecha DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 					 						//TODO
 					 						//Necesito los bocetos ordenado por fecha ascendiente
 					 						$query = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY fecha ASC';
 
-					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY fecha ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					}
 
@@ -563,14 +564,14 @@ function calculaValoracionToInt($valor){
 					 						//Necesito los bocetos ordenado por valoracion descendiente 
 					 						$query = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY valorMedio DESC';
 
-					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY valorMedio DESC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY valorMedio DESC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					} else {
 					 						//TODO
 					 						//Necesito los bocetos ordenado por valoracion ascendiente
 					 						$query = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY valorMedio ASC';
 
-					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY valorMedio ASC LIMIT 12 OFFSET '.$pagina_actual_l-1.'';
+					 						$query2 = 'SELECT titulo, autor, valorMedio, foto AS img, id_boceto AS link FROM bocetos ORDER BY valorMedio ASC LIMIT 12 OFFSET '.$pagina_actual_l-1;
 
 					 					}
 
@@ -669,7 +670,7 @@ function calculaValoracionToInt($valor){
 										else 
 										{
 											echo '<li class="">';
-											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l.'&pagina_d='.$pagina_actual_d-1.'" aria-label="Previous">';
+											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l.'&pagina_d='.($pagina_actual_d-1).'" aria-label="Previous">';
 											echo '<span aria-hidden="true">&laquo;</span>';
 											echo '</a>';
 											echo '</li>';
@@ -702,7 +703,7 @@ function calculaValoracionToInt($valor){
 										{
 
 											echo '<li class="">';
-											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l.'&pagina_d='.$pagina_actual_d+1.'&tipoOrden='.$tipoOrden.'&valorOrden='.$valorOrden.'" aria-label="Previous">';
+											echo '<a  href="/result-busqueda.php?clave='.$busqueda.'&categoria='.$categoria.'&esLibro='.$libroActivo.'&esDibujo='.$dibujoActivo.'&pagina_l='.$pagina_actual_l.'&pagina_d='.($pagina_actual_d+1).'&tipoOrden='.$tipoOrden.'&valorOrden='.$valorOrden.'" aria-label="Previous">';
 												echo '<span aria-hidden="true">&laquo;</span>'; // todo lo mismo q el todo de arriba
 											echo '</a>';
 											echo '</li>';
