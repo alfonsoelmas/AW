@@ -1,6 +1,7 @@
-
-
-$('#myModal').on('show.bs.modal', function (e) {
-    var idAnswer = $(e.relatedTarget).attr('data-id');
-    $('.answerParent').attr('value', idAnswer);
+$(document).ready(function (){
+	$('.botones-comentario').click(function(){
+		var id = $(this).attr('data-id');
+		console.log(id);	
+		$('#answerParent').val(id);
+	});
 });

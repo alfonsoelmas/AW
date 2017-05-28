@@ -25,17 +25,39 @@
 						<div class="row">
 							<div class="col-sm-3">
 								<?php
-									// Pasamos el id del usuario al que visitamos. 
-									$id = $_GET['usuario'];
-									$usuario_actual = $_SESSION['usuario_actual'];
-
-									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/perfil_usuario.php");
+									// Pasamos el id del usuario al que visitamos.
+ 									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/perfil_usuario.php");
 									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/seguir_usuario.php");
-                                	
-                                	// Buscamos los datos del perfil del usaurio al que visitamos. 
-                                	$user = buscar_datos_usuario($id);
 
-                                	$fila = $user->fetch_object();
+									if(isset($_GET['usuario']))
+									{
+										$id =  $_GET['usuario'];
+
+										if(isset($_SESSION['usuario_actual']))
+										{
+											$usuario_actual = $_SESSION['usuario_actual'];
+
+											if($id == $usuario_actual)
+	                                		{	
+		                                		header("Location: miPerfil.php");
+	                                			exit();
+	                                		}
+										}
+
+	                                	// Buscamos los datos del perfil del usaurio al que visitamos. 
+	                                	$user = buscar_datos_usuario($id);
+
+	                                	if(!($fila = $user->fetch_object()))
+	                                	{
+	                                		header("Location: 404error.php");
+                                			exit();
+	                                	}
+                                	}
+                                	else
+                                	{
+                                		header("Location: 404error.php");
+                                		exit();
+                                	}
                                 ?>
 								<img class='img-responsive img-circle' alt='' src='<?php echo $fila->foto ?>' width='200' height='200'/>
 							</div><!--col-sm-3-->
@@ -47,32 +69,36 @@
 							</div><!--col-sm-7-->
 							<div class='col-sm-2'>
 								<?php
-								// BOTON	
-								echo "
-								<form action='php/funciones/seguir_usuario.php' method='POST'>
-									<input type='hidden' name='noSeguido' value='$id'/>
-									<input type='hidden' name='actual' value='$usuario_actual'/>";
-									
-									if (!sigo($usuario_actual, $id)){
+									// BOTON
+
+									if(isset($_SESSION['usuario_actual']))
+									{
 										echo "
-										<button class='btn btn-primary btn-md' type='submit' id='follow'>
-											<span class='glyphicon glyphicon-plus'></span>
-											Seguir 
-										</button>
-								</form>";
+										<form action='php/funciones/seguir_usuario.php' method='POST'>
+											<input type='hidden' name='noSeguido' value='$id'/>
+											<input type='hidden' name='actual' value='$usuario_actual'/>";
+											
+											if (!sigo($usuario_actual, $id)){
+												echo "
+												<button class='btn btn-primary btn-md' type='submit' id='follow'>
+													<span class='glyphicon glyphicon-plus'></span>
+													Seguir 
+												</button>
+										</form>";
+											}
+											else{
+												echo "
+										<form action='php/funciones/seguir_usuario.php' method='POST'>
+											<input type='hidden' name='seguido' value='$id'/>
+											<input type='hidden' name='actual' value='$usuario_actual'/>
+											<input type='hidden' name='actual' value='$usuario_actual'/>
+												<button class='btn btn-primary btn-md' type='submit' id='unfollow'>
+													<span class='glyphicon glyphicon-minus'></span>
+													Dejar de seguir 
+												</button>";	
+											}
 									}
-									else{
-										echo "
-								<form action='php/funciones/seguir_usuario.php' method='POST'>
-									<input type='hidden' name='seguido' value='$id'/>
-									<input type='hidden' name='actual' value='$usuario_actual'/>
-									<input type='hidden' name='actual' value='$usuario_actual'/>
-										<button class='btn btn-primary btn-md' type='submit' id='unfollow'>
-											<span class='glyphicon glyphicon-minus'></span>
-											Dejar de seguir 
-										</button>";	
-									}
-									?> 
+								?> 
 								</form>
 							</div><!--col-sm-2-->
 						</div><!--row-->
@@ -172,7 +198,7 @@
 					  							echo "
 					  							<div class='item active'>
 					  								<div class='col-xs-4'>
-					  									<a href='#1'><img src=$boceto->foto class='img-responsive img-carousel'></a>
+					  									<a href='visualizacionBoceto.php?id=$boceto->id_bocetos'><img src=$boceto->foto class='img-responsive img-carousel'></a>
 					  									<p>$boceto->titulo</p>
 					  								</div>
 					  							</div> <!--acive-->";
@@ -180,7 +206,7 @@
 					  							echo "
 					  							<div class='item'>
 					            					<div class='col-xs-4'>
-					            						<a href='visualizacionBoceto.php'><img src='$boceto->foto' class='img-responsive img-carousel'></a>
+					            						<a href='visualizacionBoceto.php?id=$boceto->id_bocetos'><img src='$boceto->foto' class='img-responsive img-carousel'></a>
 					            						<p>$boceto->titulo</p>
 					            					</div>
 					          					</div>";

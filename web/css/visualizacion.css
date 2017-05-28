@@ -28,6 +28,7 @@
 
    #sipnopsis{
       padding:  20px;
+      height: 100px;
    }
 
    #opciones{
@@ -54,6 +55,9 @@
   padding-bottom: 10px;
 }
 
+.botones-comentario{
+  margin-left: 10px;
+}
 /** ====================
  * Lista de Comentarios
  =======================*/

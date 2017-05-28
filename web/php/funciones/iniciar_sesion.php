@@ -1,13 +1,8 @@
 <?php
 
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
-	login();
 
-	function login(){
-		// usuario y pass
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-
+	function login($username, $password){
 		// Comprobamos si el usuario existe
 		$con = comprueba_usuario($username);
 
@@ -29,15 +24,17 @@
 
 				$_SESSION['usuario_actual'] = $filaUsuario->id;
 				$_SESSION['name'] = $filaUsuario->nombre;
-				header("Location: ../../index.php");
-			
+				header("Location: index.php");
+				return '1';
 			} 
 			else {
-			    echo '<br>La contraseña no es válida.';
+			    echo '<br><span>La contraseña no es válida.</span>';
+			    return '0';
 			}
 		}
 		else{
-			echo "El usuario no existe o no coincide con la contraseña";
+			echo "<span>El usuario no existe o no coincide con la contraseña</span>";
+			return '0';
 		}
 	}	
 

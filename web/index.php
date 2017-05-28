@@ -20,8 +20,19 @@
 					<p class="h1" id="text-bloque-inicio">Escritores, Diseñadores!</p>
 					<p id="par-bloque-inicio">Empieza a escribir desde ahora mismo. Sube tus creaciones y demuestra a la comunidad lo que vales</p>
 					<p>
-						<a class="btn btn-primary btn-lg" href="edicion.php" role="button">Escribe</a>
-						<a class="btn btn-primary btn-lg" href="edicionFoto.php" role="button">Dibuja</a>
+					<?php
+
+						if(isset($_SESSION['usuario_actual']))
+						{
+							echo "<a class='btn btn-primary btn-lg' href='edicion.php' role='button'>Escribe</a>
+							<a class='btn btn-primary btn-lg' href='edicionFoto.php' role='button'>Dibuja</a>";
+						}
+						else
+						{
+							echo "<a class='btn btn-primary btn-lg' href='login.php' role='button'>Escribe</a>
+							<a class='btn btn-primary btn-lg' href='login.php' role='button'>Dibuja</a>";
+						}
+					?>
 					</p>
 				</div>
 				<div class="panel panel-default">
