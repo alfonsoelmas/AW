@@ -8,7 +8,7 @@
 	$id_usuario     = $_POST['user'];
 	$id_padre       = $_POST['padre'];
 	$id_contenido   = $_POST['contenido'];
-	$tipo_contenido = $_['tipo_contenido'];
+	$tipo_contenido = $_POST['tipo_contenido'];
 
 	nuevo_comentario($cuerpo, $id_usuario, $id_padre, $id_contenido, $tipo_contenido);
 ?>
