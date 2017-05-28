@@ -46,7 +46,7 @@
 							?>
 							<div class="panel panel-default">
 							<div class="panel-heading">
-								<?php 	echo '<a href="result-busqueda.php?categoria='.$datosConsulta["categoria"].'&esLibro=1">'?>
+								<?php 	echo '<a href="result-busqueda.php?categoria='.$datosConsulta["categoria"].'">'?>
 									<p class="panel-title h3"><?php echo $datosConsulta["categoria"]; ?>
 								</a>
 								<span class="badge"><?php echo $totRes ?></span></p>
@@ -127,7 +127,7 @@
 								?>
 								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail efecto-redondo">
-										<?php 	echo '<a href="visualizacionLibro.php?id='.$row["id_bocetos"].'">';
+										<?php 	echo '<a href="visualizacionLibro.php?id='.$row["id_bocetos"].'&tipo=libro">';
 												echo '<img alt="" src="'.$row["foto"].'" class="img-responsive imgP">';
 												echo '<div class="caption">';
 												echo '<p>'.$row["titulo"].'</p>';
@@ -144,7 +144,7 @@
 										<div class="row">
 											<div class="col-sm-12 text-center">
 												<div class="btn-group" role="group" aria-label="...">
-													<form method="get" action=<?php echo '"result-busqueda.php?&esDibujo=1"';?>>
+													<form method="get" action=<?php echo '"result-busqueda.php?&tipo=dibujo&busq="a"';?>>
 													<input type="submit" value="Ver más" class="btn btn-lg"></input>
 													</form>
 												</div>
