@@ -22,12 +22,9 @@
 				<p>
 					 ¿Tienes algún problema o duda que transmitirnos?¿Quieres solicitar algún servicio que ofrecemos o simplemente obtener más información? Rellena el siguiente formulario y nos pondremos en contacto con vosotros lo más rápido posible.
 				</p>
-				<div class="blankdivider30">
-				</div>
+				<div class="blankdivider30"></div>
 				<div class="row text-left">
-									
-
-						<form name="contactform" method="post" action="php/funciones/send_form_email.php"> 
+					<form name="contactform" method="post" action="php/funciones/send_form_email.php"> 
 						<div class="col-sm-6">
 
 						  <label for="first_name">Nombre *</label>
@@ -45,14 +42,14 @@
 						</div>
 						<div class="col-sm-6">
 						  <label for="message">Mensaje *</label>
+						  <br>
 						  <textarea  name="message" maxlength="1000" cols="50" rows="6"></textarea>
+						  <br><br>
 						  <input type="submit" class="btn" value="Enviar">
 						</div>
-						</form>
-
-	</div>
+					</form>
+				</div>
 			</div>
-
 			<?php
 				$pagina_actual="Contacto";
 				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
