@@ -12,7 +12,7 @@
 
 	<?php
 		$pagina_actual="Contacto";
-		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 
 	<div class="container-fluid">
@@ -52,12 +52,12 @@
 			</div>
 			<?php
 				$pagina_actual="Contacto";
-				require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_bloque_derecha.php");
+				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 			?>
 		</div> <!--row-->
 	</div> <!--container-->
 
-	<?php require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_pie.php"); ?>
+	<?php require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); ?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
