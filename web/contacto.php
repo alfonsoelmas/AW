@@ -12,7 +12,7 @@
 
 	<?php
 		$pagina_actual="Contacto";
-		require_once($_SERVER['DOCUMENT_ROOT'] ."web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
 	?>
 
 	<div class="container-fluid">

@@ -41,7 +41,7 @@ function calculaValoracionToInt($valor){
 <body>
 	<?php
 		$pagina_actual="Resultados de búsqueda";
-		require_once($_SERVER['DOCUMENT_ROOT'] ."web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
 		require_once($_SERVER['DOCUMENT_ROOT'] ."php/config/connection.php");
 	?>
     
@@ -60,7 +60,7 @@ function calculaValoracionToInt($valor){
 						</div>
 					</div>
 					<div class="panel-body" id="opcionesBusqBody">
-						<form method="get" action=<?php echo '"result-busqueda.php?clave='.trim($_GET['clave']);.'&"' ?>>
+						<form method="get" action=<?php echo '"result-busqueda.php"' ?>>
 							<!--TODO Mirar si el action del form está bien, o mejor poner una "busqueda avanzada" o algo asi-->
 							<span> Filtrar por: </span>
 							<div class="row">
@@ -99,6 +99,7 @@ function calculaValoracionToInt($valor){
   									<input type="radio" name="valorOrden" value="descendente"> descendente
 								</div>
 							</div>
+							<input type="hidden" name="clave" value=<?php echo '"'.trim($_GET['clave'])p.'"' ?>/>
 							<input type="submit" name="filtro" value="filtro">
 						</form>
 					</div>
@@ -731,13 +732,13 @@ function calculaValoracionToInt($valor){
 			
 			<?php
 				$pagina_actual="Resultado de búsqueda";
-				require_once($_SERVER['DOCUMENT_ROOT'] ."web/php/funciones/genera_bloque_derecha.php");
+				require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_bloque_derecha.php");
 		
 			?>
 		</div> <!--row content-->
 	</div> <!--container-fluid-->
 
-	<?php require_once($_SERVER['DOCUMENT_ROOT'] ."web/php/funciones/genera_pie.php"); ?>
+	<?php require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_pie.php"); ?>
 	<?php cerrar_conexion($conn);?>
 
 	<!--Scripts-->

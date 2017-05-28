@@ -27,7 +27,6 @@
 		//Compruebo que ese idLibro corresponde al usuario 
 		//con una query...
 	  	$conn = conectar();
-		//TODO comprobar si es capitulo nuevo
 
 
 		if(isset($_GET["idCap"])){
@@ -40,9 +39,9 @@
 			$filas 		= 	$consulta->num_rows;
 			
 			if($filas==0){
-				//TODO MUESTRO ERROR
+				header("Location: 404Error.php");
 			} else {
-				//TODO PUEDO EDITAR
+
 
 				?>
 
@@ -55,7 +54,7 @@
 					$query = 'SELECT titulo FROM libros WHERE id_libro="'.$idLibro.'"';
 					$consulta = realiza_consulta($conn,$query);
 					//doy por supuesto que obtengo un resultado único
-					$datosConsulta = consulta->consulta->fetch_assoc();
+					$datosConsulta = $consulta->fetch_assoc();
 
 
 
@@ -67,7 +66,7 @@
 					$query = 'SELECT * FROM capitulos WHERE id_capitulo="'.$idCap.'"';
 					$consulta = realiza_consulta($conn,$query);
 					//doy por supuesto que obtengo un resultado único
-					$datosConsulta = consulta->consulta->fetch_assoc();
+					$datosConsulta = $consulta->fetch_assoc();
 
 
 
@@ -76,18 +75,20 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-sm-12 text-left"> 
-								<form method="post" action=<?php echo '"php/funciones/guarda_capitulo.php?id='.$idCap.'&'; ?> > <!--comprobar eso del &...TODO-->
+								<form method="post" action=<?php echo '"php/funciones/guarda_capitulo.php?'; ?> > <!--comprobar eso del &...TODO-->
 									<span class="input-group-addon glyphicon glyphicon-text-size">Título del capítulo</span>
 									<input type="text" class="form-control" id="titulo" name="title" value=<?php echo '"'.$datosConsulta["titulo"].'"'; ?>/>
 									<br>
 									<span class="input-group-addon glyphicon glyphicon-text-size ">Contenido del capítulo</span>
 									<textarea class="form-control" id='editor1' name='editor1' rows="10" value=<?php echo '"'.$datosConsulta["cuerpo"].'"'; ?> ></textarea>
+									<input type="hidden" name="id" value=<?php echo '"'.$idCap.'"' ?>/>
+									<button type="submit" class="btn btn-warning margen-top">Guardar cambios</button>
 								</form>
 								<!--Se que esto deberia estar en un .js>
 								<script type='text/javascript'>
 									CKEDITOR.replace ('editor1');
 								</script--> 
-								<button type="button" class="btn btn-warning margen-top">Guardar cambios</button>
+
 							</div>
 						</div>
 					</div>  
@@ -106,9 +107,8 @@
 			$filas 		= 	$consulta->num_rows;
 			
 			if($filas==0){
-				//TODO MUESTRO ERROR
+				header("Location: 404Error.php");
 			} else {
-				//TODO PUEDO EDITAR
 
 				?>
 
@@ -121,7 +121,7 @@
 					$query = 'SELECT titulo FROM libros WHERE id_libro="'.$idLibro.'"';
 					$consulta = realiza_consulta($conn,$query);
 					//doy por supuesto que obtengo un resultado único
-					$datosConsulta = consulta->consulta->fetch_assoc();
+					$datosConsulta = $consulta->fetch_assoc();
 
 
 					?>
@@ -131,18 +131,20 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-sm-12 text-left"> 
-								<form method="post" action=<?php echo '"php/funciones/guarda_capitulo.php?idLibro='.$idLibro.'&'; ?> >
+								<form method="post" action=<?php echo '"php/funciones/guarda_capitulo.php'; ?> >
 									<span class="input-group-addon glyphicon glyphicon-text-size">Título del capítulo</span>
 									<input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título"/>
 									<br>
 									<span class="input-group-addon glyphicon glyphicon-text-size ">Contenido del capítulo</span>
 									<textarea class="form-control" id='editor2' name='editor1' rows="10" placeholder="Erase una vez que se era..."></textarea>
+									<input type="hidden" name="idLibro" value=<?php echo '"'.$idLibro.'"' ?>/>
+									<button type="submit" class="btn btn-warning margen-top">Añadir capitulo</button>
 								</form>
 								<!--Se que esto deberia estar en un .js-->
 								<!--script type='text/javascript'>
 									CKEDITOR.replace ('editor2');
 								</script--> 
-								<button type="button" class="btn btn-warning margen-top">Añadir capitulo</button>
+
 							</div>
 						</div>
 					</div>  
@@ -154,7 +156,7 @@
 
 		}
 	} else {
-		//TODO MUESTRO ERROR
+		header("Location: 404Error.php");
 	}
 
 	?>
@@ -164,12 +166,13 @@
 				
 		<?php
 			$pagina_actual="EdiciónCap";
-			//TODO require once
-			include("php/funciones/genera_bloque_derecha.php");
+
+			require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_bloque_derecha.php");
 		?>
 	</div>
 
-	<?php include("php/funciones/genera_pie.php"); ?>
+	<?php include("php/funciones/genera_pie.php"); 
+	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_pie.php");?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
