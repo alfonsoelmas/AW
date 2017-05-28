@@ -68,6 +68,11 @@
 								<p>".$obra['fecha']."</p>
 							</div>
 						</a>
+						<a href='edicionCap.php?libro=$obra[id_libro]'>
+							<button type='button' class='btn btn-primary bmd-btn-fab'>
+  								<i class='glyphicon glyphicon-plus'></i>
+							</button>
+						</a>
 					</div>
 				</div>";
 
