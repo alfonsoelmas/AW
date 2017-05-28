@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php  session_start(); ?>
-
 <head>
   <title>Categorías - Paper Dreams</title>
   <meta charset="utf-8">
@@ -18,8 +16,8 @@
 		//generamos cabecera
 
 		$pagina_actual="Categorías";
-		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
-		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
 	?>
 	
 	<!--Creamos el contenido-->
@@ -155,12 +153,12 @@
 
 
 			
-			<?php require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_bloque_derecha.php"); ?>
+			<?php require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php"); ?>
 
 		</div>
 	</div>
 
-	<?php  require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_pie.php")?>
+	<?php  require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php")?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
