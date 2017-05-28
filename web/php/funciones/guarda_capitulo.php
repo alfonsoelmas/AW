@@ -29,8 +29,8 @@ if(_$POST){
 		$query = 'UPDATE capitulos SET titulo="'.$titulo.'", cuerpo="'.$cuerpo.'" WHERE id_capitulo="'.$id.'"' ;
 		$consulta 	= 	realiza_consulta($conn, $query);
 
-	} else {				//No existe capitulo y hay que CREAR
-		//evitamos HTML inyection
+	} else {				
+	//No existe capitulo y hay que CREAR
 
 		$fecha = date('Y/m/d H:i');
 		$idLibro = _$POST["idLibro"];
@@ -43,7 +43,8 @@ if(_$POST){
 		$consulta 	= 	realiza_consulta($conn, $query);
 	}
 
-//TODO desconectar
+	//TODO desconectar
+	header("Location: edicion.php?id="._$POST["idLibro"]);
 
 } else {
 	header("Location: 404Error.php");
