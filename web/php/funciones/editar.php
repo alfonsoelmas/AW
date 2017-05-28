@@ -71,7 +71,7 @@
 						// Finalmente añadimos los datos
 						annadir($titulo, $sinopsis, $genero, $fich_bd, $usuario_actual);
 
-						// header('Location: ../../misObras.php');
+						header('Location: ../../misObras.php');
 					}
 					else {
 						//Si no se ha podido subir la imagen, mostramos un mensaje de error
