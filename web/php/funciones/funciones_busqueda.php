@@ -15,14 +15,14 @@ function dameAutor($idAutor){
 
 //Devuelve la media de un contenido dado por id
 function dameMedia($id){
-	$query = 'SELECT AVG(puntuacion) FROM valora WHERE id='.$id;
+	$query = 'SELECT AVG(puntuacion) AS media FROM valora WHERE id='.$id;
 	$resultado = consulta($query);
 	$nombre = $resultado->fetch_assoc();
 
-	return $nombre["usuario"];
+	return $nombre["media"];
 }
 
-function rendondea($valor){
+function redondea($valor){
 	return round($valor);
 }
 

@@ -40,8 +40,8 @@
 
 						//Busca solo libros
 						$resultado = buscaLibros($busqueda);
-
-					} else if(isset($_GET["busq"]) || strcmp($_GET["tipo"],"libro")){
+						
+					} else{
 						//Busqueda avanzada
 
 						$busqueda = $_GET["busq"];
@@ -50,34 +50,23 @@
 							$busqueda="";
 
 						$tipo = $_GET["tipo"];
+				
 						$categoria = $_GET["categoria"];
 
 						//Busca o libros o dibujos
 
-						if(strcmp($tipo,"libro")){
+						if($tipo=="libro"){
 							//Buscamos libros con categoria
 							$resultado = buscaLibrosCat($busqueda,$categoria);
+						
 						} else {
 							//Buscamos bocetos
 							$resultado = buscaDibujos($busqueda);
+					
 						}
 
 						$totBusqueda = $resultado->num_rows;
-						$dato = $resultado->fetch_assoc();
-					} else {
-
-						//Mostramos error:
-						?>
-						<div class="container-fluid text-center">    
-							<div class="row content">
-								<div class="col-sm-6 text-left"> 
-									<p class="h1">Introduce algo en tu búsqueda</p>
-									<span class="h3">Upssss... parece que el recurso que estás buscando no se encuentra disponible. Lamentamos el inconveniente :(</span>
-								</div>
-							</div>
-						</div>
-						<?php
-						exit;
+						$dato=true;
 					}
 
 
@@ -90,7 +79,7 @@
 					<div class="panel-body">
 						<?php 
 
-						while($dato){
+						while($dato && $resultado){
 							echo '<div class="row">';
 							for($j=0; $j<4 && $dato = $resultado->fetch_assoc(); $j++){
 

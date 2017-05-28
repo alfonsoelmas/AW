@@ -43,6 +43,7 @@
 							$consulta2 	= 	consulta($query);
 							$totRes		= 	$consulta2->num_rows;
 							//Pintamos titulo
+							$categoria = $datosConsulta["categoria"];
 							?>
 							<div class="panel panel-default">
 							<div class="panel-heading">
@@ -87,8 +88,9 @@
 										<div class="col-sm-12 text-center">
 											<div class="btn-group" role="group" aria-label="...">
 												<form method="get" action="result-busqueda.php" >
-												<input type="hidden" name="categoria" value=<?php echo '"'.$datosConsulta["categoria"].'"' ?>>
+												<input type="hidden" name="categoria" value=<?php echo '"'.$categoria.'"' ?>>
 												<input type="hidden" name="tipo" value="libro">
+												<input type="hidden" name="busq" value="">
 												<input type="submit" value="Ver más" class="btn btn-lg"></input>
 												</form>
 											</div>
