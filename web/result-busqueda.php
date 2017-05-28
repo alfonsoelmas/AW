@@ -31,7 +31,8 @@
 
 					$busqueda;
 					$resultado;
-					$totBusqueda;
+					$totBusqueda=0;
+					$dato=false;
 
 					if(isset($_GET["busqFacil"])){
 						//Busqueda fácil

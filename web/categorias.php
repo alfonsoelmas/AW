@@ -86,7 +86,9 @@
 									<div class="row">
 										<div class="col-sm-12 text-center">
 											<div class="btn-group" role="group" aria-label="...">
-												<form method="get" action=<?php echo '"result-busqueda.php?categoria='.$datosConsulta["categoria"].'&esLibro=1"'; ?>>
+												<form method="get" action="result-busqueda.php" >
+												<input type="hidden" name="categoria" value=<?php echo '"'.$datosConsulta["categoria"].'"' ?>>
+												<input type="hidden" name="tipo" value="libro">
 												<input type="submit" value="Ver más" class="btn btn-lg"></input>
 												</form>
 											</div>
@@ -144,7 +146,10 @@
 										<div class="row">
 											<div class="col-sm-12 text-center">
 												<div class="btn-group" role="group" aria-label="...">
-													<form method="get" action=<?php echo '"result-busqueda.php?&tipo=dibujo&busq="a"';?>>
+													<form method="get" action=<?php echo '"result-busqueda.php"';?> >
+													<input type="hidden" name="tipo" value="dibujo">
+													<input type="hidden" name="busq" value=" ">
+													<input type="hidden" name="categoria" value=" ">
 													<input type="submit" value="Ver más" class="btn btn-lg"></input>
 													</form>
 												</div>
