@@ -2,13 +2,13 @@
 
 session_start();
 
-if(_$POST){
+if($_POST){
 
-	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
 
-	$titulo = _$POST["titulo"];
-	$sinopsis = _$POST["sinopsis"];
-	$categoria = _$POST["categoria"];
+	$titulo = $_POST["titulo"];
+	$sinopsis = $_POST["sinopsis"];
+	$categoria =$_POST["categoria"];
 	$imagen = $_FILES['imagen']['name'];
 	$usuario = $_SESSION['usuario_actual'];
 
@@ -62,13 +62,13 @@ if(_$POST){
 							$idLibro = $_POST["idLibro"];
 							//Update
 
-							$query = 'UPDATE libros SET titulo="'.$titulo.'", sinopsis="'.$sinopsis.', portada="'.$fich_bd.'", fecha="'.$fecha.'", categoria="'.$categoria.'", id_usuario="'$usuario..'" WHERE id_libro="'.$idLibro.'"';
+							$query = 'UPDATE libros SET titulo="'.$titulo.'", sinopsis="'.$sinopsis.', portada="'.$fich_bd.'", fecha="'.$fecha.'", categoria="'.$categoria.'", id_usuario="'.$usuario.'" WHERE id_libro="'.$idLibro.'"';
 
 						} else {
 							//Insert..
 
 
-							$query = 'INSERT INTO libros(titulo,sinopsis,portada,fecha,categoria,id_usuario) VALUES ('.$titulo.', '.$sinopsis.', '.$fich_bd.','.$fecha.','.$categoria.','$usuario')';
+							$query = 'INSERT INTO libros(titulo,sinopsis,portada,fecha,categoria,id_usuario) VALUES ('.$titulo.', '.$sinopsis.', '.$fich_bd.','.$fecha.','.$categoria.','.$usuario.')';
 
 						}
 						
@@ -87,7 +87,7 @@ if(_$POST){
 
 
 	//TODO desconectar
-	header("Location: edicion.php?id="._$POST["idLibro"]);
+	header("Location: edicion.php?id=".$_POST["idLibro"]);
 
 } else {
 	header("Location: 404Error.php");

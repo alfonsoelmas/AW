@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php session_start() ?>
 <head>
 	<title>Paper Dreams</title>
 	<meta charset="utf-8">
@@ -14,9 +13,9 @@
 
 	<?php
 		$pagina_actual="Edición";
-		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
-		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
-		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/categorias.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/categorias.php");
 		//Si sesión iniciada
 
 		if(isset($_SESSION['usuario_actual']) ){
@@ -43,7 +42,7 @@
 				?>
 
 				<div class="container-fluid text-center">
-					<form method="post" action="guardar_libro.php">	    
+					<form method="post" action="php/funciones/guardar_libro.php">	    
 					<div class="col-sm-10 text-left">
 						<div class="panel panel-default margen-top">
 							<div class="panel-heading">
@@ -68,7 +67,7 @@
 										$categorias = obtenerCategorias();
 										$tam = count($categorias);
 										
-										echo '<select name="categoria">'
+										echo '<select name="categoria">';
 										for($i = 0; $i<$tam; $i++){
 											echo '<option value="'.$categorias[$i].'">'.$categorias[$i].'</option>';
 										}
@@ -99,8 +98,8 @@
 
 												 echo '<a href="edicionCap.php?idCap='.$datosConsulta["id_capitulo"].'" class="list-group-item">';
 												 echo '	<p class="h4 list-group-item-heading">Capitulo '.$i.'</p>';
-												 echo '	<p class="list-group-item-text">'.substr ($datosConsulta["cuerpo"] , 0, 70 ] ).'...</p>';
-												</a>
+												 echo '	<p class="list-group-item-text">'.substr($datosConsulta["cuerpo"], 0, 70).'...</p>';
+												 echo '</a>';
 
 													$datosConsulta = $consulta->fetch_assoc();
 												}
@@ -124,7 +123,7 @@
 				?>
 
 				<div class="container-fluid text-center">
-					<form method="post" action="guardar_libro.php">	    
+					<form method="post" action="php/funciones/guardar_libro.php">	    
 					<div class="col-sm-10 text-left">
 						<div class="panel panel-default margen-top">
 							<div class="panel-heading">
@@ -133,13 +132,13 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-sm-3 text-center">
-										<img class="img-edicion" alt="" src="img/portadas/portada.png">
+										<img class="img-edicion" alt="" src="img/logo2.png">
 										<input id="imagen" name="imagen" type="file" class="btn btn-info margen-top">
 									</div>
 									<div class="col-sm-9 text-left"> 
 
 										<span class="input-group-addon glyphicon glyphicon-text-size">Título</span>
-										<input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título" ?> />
+										<input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título" ?>
 										<br>
 										<span class="input-group-addon glyphicon glyphicon-text-size ">Sinopsis</span>
 										<textarea  class="form-control" id='editor1' name='sinopsis' rows="10" placeholder="Escribe aquí la sinopsis" ?> </textarea>
@@ -149,7 +148,7 @@
 										$categorias = obtenerCategorias();
 										$tam = count($categorias);
 										
-										echo '<select name="categoria">'
+										echo '<select name="categoria">';
 										for($i = 0; $i<$tam; $i++){
 											echo '<option value="'.$categorias[$i].'">'.$categorias[$i].'</option>';
 										}
@@ -160,8 +159,9 @@
 										<!--script type='text/javascript'>
 											CKEDITOR.replace ('editor1');
 										</script--> 
-
-										<button type="button" <?php echo 'onclick="window.location.href="edicionCap.php?idLibro='.$idLibro.'""' ?> class="btn btn-info margen-top"> Añadir capítulo </button> 
+										<p>
+											Cuando guardes los cambios del libro, podrás añadir capítulos.
+										</p>
 
 									</div><!--todo puede que me sobre o falte algun div-->
 								</div>
@@ -186,12 +186,12 @@
 				
 		<?php
 			$pagina_actual="Edición";
-			require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_bloque_derecha.php");
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 		?>
 	</div>
 
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_pie.php");?>
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php");?>
 
 	<!--Scripts-->
 	<script type="text/javascript" src="js/goTo.js"></script>
