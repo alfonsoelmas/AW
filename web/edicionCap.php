@@ -16,23 +16,24 @@
 	<?php
 
 
-	//Me tiene que venir el ID del libro correspondiente al capitulo
-	if(isset($_GET["idLibro"])){
+	$pagina_actual="EdiciónCap";
+	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
 
-		$pagina_actual="EdiciónCap";
-		include("php/funciones/genera_cabecera.php");
+	//Me tiene que venir el ID del libro correspondiente al capitulo
+	if(isset($_POST["idLibro"])){
+
 		
-		$idLibro = $_GET["idLibro"];
+		$idLibro = $_POST["idLibro"];
 
 		//Compruebo que ese idLibro corresponde al usuario 
 		//con una query...
 	  	$conn = conectar();
 
 
-		if(isset($_GET["idCap"])){
+		if(isset($_POST["idCap"])){
 			//No es nuevo
 
-			$idCap = $_GET["idCap"];
+			$idCap = $_POST["idCap"];
 		  	$query = 'SELECT usuarios.id FROM usuarios, libros WHERE usuarios.id="'.$_SESSION['usuario_actual'].'" AND id_libro="'.$idLibro.'"';
 
 		  	$consulta 	= 	realiza_consulta($conn, $query);
@@ -40,6 +41,7 @@
 			
 			if($filas==0){
 				header("Location: 404Error.php");
+				exit;
 			} else {
 
 
@@ -77,7 +79,7 @@
 							<div class="col-sm-12 text-left"> 
 								<form method="post" action=<?php echo '"php/funciones/guarda_capitulo.php?'; ?> > <!--comprobar eso del &...TODO-->
 									<span class="input-group-addon glyphicon glyphicon-text-size">Título del capítulo</span>
-									<input type="text" class="form-control" id="titulo" name="title" value=<?php echo '"'.$datosConsulta["titulo"].'"'; ?>/>
+									<input type="text" class="form-control" id="titulo" name="title" value=<?php echo '"'.$datosConsulta["titulo"].'"'; ?>/> <!--TODO hacerlo campo obligatorio-->
 									<br>
 									<span class="input-group-addon glyphicon glyphicon-text-size ">Contenido del capítulo</span>
 									<textarea class="form-control" id='editor1' name='editor1' rows="10" value=<?php echo '"'.$datosConsulta["cuerpo"].'"'; ?> ></textarea>
@@ -171,7 +173,7 @@
 		?>
 	</div>
 
-	<?php include("php/funciones/genera_pie.php"); 
+	<?php 
 	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_pie.php");?>
 
 	<!--Scripts-->
