@@ -31,7 +31,7 @@
 
 	function mejores_obras($n)
 	{
-		$sql = "SELECT id_libro, portada, AVG(puntuacion) AS punt_final FROM (libros NATURAL JOIN valora) GROUP BY id_libro ORDER BY punt_final DESC LIMIT $n";
+		$sql = "SELECT l.id_libro, portada, AVG(puntuacion) AS punt_final FROM (libros l JOIN valora v ON l.id_usuario=v.id_usuario) GROUP BY id_libro ORDER BY punt_final DESC LIMIT 20";
 
 		$resultado = consulta($sql);
 

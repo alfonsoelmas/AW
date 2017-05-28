@@ -64,7 +64,7 @@
 								  				while($obra = $resultado->fetch_object())
 								  				{
 													echo "<div class='item'>
-								            					<div class='col-xs-4'><a href='#1'><img src='img/portadas/portada.png' class='img-responsive img-carousel'></a></div>
+								            					<div class='col-xs-4'><a href='#1'><img src=$obra->portada class='img-responsive img-carousel'></a></div>
 								          					</div>";
 								  				}
 								  			}
