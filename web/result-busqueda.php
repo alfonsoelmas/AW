@@ -40,6 +40,8 @@
 
 						//Busca solo libros
 						$resultado = buscaLibros($busqueda);
+						$totBusqueda = $resultado->num_rows;
+						$dato=true;
 						
 					} else{
 						//Busqueda avanzada
