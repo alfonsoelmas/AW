@@ -1,10 +1,12 @@
 <?php
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/comentarios.php");
+
 	$id_libro = $_GET['id_libro'];
 	$id_capitulo = $_GET['id_capitulo'];
 
 	//Esto hay que cogerlo de una consulta
-	$resultado = consulta_datos($id_libro);
+	$resultado = consulta_capitulos($id_libro);
 
 	if($resultado)
 	{
@@ -12,7 +14,6 @@
 		$titulo = $libro->titulo;
 		$cuerpo = $libro->cuerpo;
 		$fecha = $libro->fecha;
-		$portada = $libro->portada;
 	}
 	else
 	{
@@ -69,40 +70,61 @@
 
 							//Vamos verificando el inmediatamente anterior al actual
 							$capituloAnterior="";
+							$capituloSiguiente="";
 							
 							//Incializamos los parámetros
 							$capitulo = $resultado->fetch_object();
+							//Id del primer capitulo
 							$current_id = $capitulo->id_capitulo;
 
+							//Mientras que no sea igual al id de la página
 							while ($current_id != $id_capitulo)
 							{
+								//Guardamos el capitulo actual como el anterior
 								$capituloAnterior = $capitulo;
-								$current_id = $capitulo->id_capitulo;
+								//Avanzamos al siguiente capitulo
 								$capitulo = $resultado->fetch_object();
+								$current_id = $capitulo->id_capitulo;
 							}
+
+							$resultado = capitulos_por_libro($id_libro);
+
+							//Incializamos los parámetros
+							$capitulo = $resultado->fetch_object();
+							//Id del primer capitulo
+							$current_id = $capitulo->id_capitulo;
 
 							//Vamos a verificar el inmediato posterior
-							while ($current_id <= $id_capitulo)
+							//Mientras el id actual sea menor o igual al de la página
+							while ($current_id < $id_capitulo)
 							{
+								//Avanzamos un capitulo
 								$capitulo = $resultado->fetch_object();
 								$current_id = $capitulo->id_capitulo;
 							}
 
-							$capituloSiguiente = $capitulo;
+							//Cuando salimos es porque current_id = id_capitulo. A partir de aquí vamos a ver si hay más capitulos con otra consulta
+							$resultado = capitulos_mayores($id_libro, $current_id);
+							$num = $resultado->num_rows;
 
-							echo " <a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior'>
-									  			<button type="button" class="btn btn-primary btn-lg" id="capituloAnterior">Capitulo Anterior
+							if($num > 0)
+							{
+								$capituloSiguiente = $resultado->fetch_object();
+							}
+
+							//Si el capituloAnterior está vacio, significa que no hemos entrado al bucle y, por tanto, estamos en el primero
+							if($capituloAnterior != "")
+								echo " <a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior->id_capitulo'>
+									  			<button type='button' class='btn btn-primary btn-lg' id='capituloAnterior'>Capitulo Anterior
 									  			</button>
 									</a>";
 					?> 
 			  		</div>
-			  		<div class="col-sm-4 text-center">
-			  			<button type="button"  class="btn btn-primary btn-lg opciones" data-toggle="modal" id="comenta" data-target="#myModal">Comenta</button> 
-			  		</div>
 			  		<div class="col-sm-4">
 			  			<?php
-			  				echo " <a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente'>
-									  			<button type="button" class="btn btn-primary btn-lg" id="capituloAnterior">Capitulo Siguiente
+			  				if($capituloSiguiente != "")
+				  				echo " <a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente->id_capitulo'>
+									  			<button type='button' class='btn btn-primary btn-lg' id='capituloAnterior'>Capitulo Siguiente
 									  			</button>
 									</a>";
 			  			?>
@@ -110,7 +132,14 @@
 				<div class="row">     
 					<!-- Contenedor Principal -->
 				    <div class="comments-container">
-						<p class="h1"> Comentarios </p>
+				    	<div class="row">
+						    <div class="col-xs-4 offset-xs-4">
+						      	<span class="h1"> Comentarios </span>
+						    </div>
+						    <div class="col-xs-4 offset-xs-4">
+						    	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
+						    </div>
+						</div>
 						<ul id="comments-list" class="comments-list">
 							<li>
 								<?php
@@ -120,144 +149,88 @@
 									while ($comentario = $resultado->fetch_object()) 
 									{
 										//Cogemos los datos del perfil del usuario que ha comentado
-										$resultado = usuario_comentario($comentario->id_usuario);
-										$comment_user = $resultado->fetch_object($resultado);
-										
-										//Imprimimos el comentario
-										echo "<div class='comment-main-level'>
-													<!-- Avatar -->
-													<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
-													<!-- Contenedor del Comentario -->
-													<div class='comment-box'>
-														<div class='comment-head'>
-															<p class='comment-name by-author h6'><a href='http://miPerfil.php'>$comment_user->usuario</a></p>
-															<span>$comentario->fecha</span>
-															<button class='fa fa-reply botones-comentario data-toggle='modal' data-target='#myModal' data-id='$comentario->id'> </button>
-														</div>
-														<div class='comment-content'>
-															$comentario->cuerpo;
-														</div>
-													</div>
-												</div>";
+										$usuario_comentario = usuario_comentario($comentario->id_usuario);
+										$rows = $usuario_comentario->num_rows;
 
-										//Buscamos las posibles respuestas
-										$resultado = respuestas($comentario->id_comentario, "Capitulos");
-										$rows = $resultado->num_rows();
-
-										//Si hay respuestas
 										if($rows > 0)
-										{	
-											//Una por una
-											while ($comentario = $resultado->fetch_object()) 
-											{
-												//Cogemos los datos del perfil del usuario que ha comentado
-												$resultado = usuario_comentario($comentario->id_usuario);
-												$comment_user = $resultado->fetch_object($resultado);
+										{
 
-												//Imprimimos el comentario
-												echo "<ul class='comments-list reply-list'>
-													<li>
+											$comment_user = $usuario_comentario->fetch_object();
+
+											//Imprimimos el comentario
+											echo "<div class='comment-main-level'>
 														<!-- Avatar -->
 														<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
 														<!-- Contenedor del Comentario -->
 														<div class='comment-box'>
 															<div class='comment-head'>
-																<h6 class='comment-name'><a href='http://miPerfil.php'>$comment_user->usuario</a> </h6>
+																<p class='comment-name h6'><a href='vistaUsuario.php?usuario=$comment_user->id'>$comment_user->usuario</a></p>
 																<span>$comentario->fecha</span>
-																<button class='fa fa-reply botones-comentario' data-toggle='modal' data-target='#myModal' data-id='$comentario->id'> </button>
+																<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$comentario->id_comentario><i class='fa fa-reply'></i></a>
 															</div>
 															<div class='comment-content'>
-																$comentario->cuerpo;
+																$comentario->cuerpo
 															</div>
 														</div>
-													</li>
-												</ul>";
-											}
+													</div>
+													<br>";
+
+											$id = $comentario->id_comentario;
+											$respuestas = respuestas($id, "Capitulos");
+											imprimir_respuestas($respuestas, "Capitulos");
 										}
 									}
 								?>
 							</li>
 						</ul>
 					</div>
-
-		   	 		<?php
-
-		   	 			$resultado = comentarios($id_libro);
-		   	 			$num = $resultado->num_rows();
-
-		   	 			$numero_paginas = $num/8;
-
-		   	 			if($numero_paginas > 0)
-		   	 			{
-		   	 				echo"<nav class='text-center' aria-label='Page navigation'>
-									<ul class='pagination'>
-									<li>
-										<a href='#' aria-label='Previous'>
-											<span aria-hidden='true'>&laquo;</span>
-							     	 	</a>
-							   	 	</li>";
-
-			   	 			for($i = 0; $i < $numero_paginas; $i++)
-					    		echo "<li><a href='#''>$i</a></li>";
-
-					    	echo 	"<li>
-					    				<a href='#' aria-label='Next'
-			        						<span aria-hidden='true'>&raquo;</span>
-			      						</a>
-			    					</li>
-			  					</ul>
-							</nav>";
-					    }
-			    	?>
 				</div>
 			</div>
-			<?php
-				$pagina_actual=$titulo;
-				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
-			?>
 		</div>
-
-
-
-	<?php
-		if(isset($_SESSION['usuario_actual']))
-		{
-			echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
-					<div class='modal-dialog' role='document'>
-						<div class='modal-content widget-area'>
-							<div class='modal-header'>
-								<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-								<p class='h4 modal-title'>Comenta</p>
-							</div>
-							<form class='form_comment' method='POST' action='php/funciones/nuevo_comentario.php'>
-								<div class='modal-body'>
-									<textarea id='edicion_comentario' placeholder='¿Qué piensas de la historia?'></textarea>
-									<input type='hidden' name='padre' class='answerParent' value=''>
-									<input type='hidden' name='id_usuario' value=\"$_SESSION['usuario_actual']\">
-									<input type='hidden' name='contenido' value=\"$id_capitulo\">
-									<input type='hidden' name='tipo_contenido' value='Capitulos'>
+		<?php
+			if(isset($_SESSION['usuario_actual']))
+			{
+				echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
+						<div class='modal-dialog' role='document'>
+							<div class='modal-content widget-area'>
+								<div class='modal-header'>
+									<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+									<p class='h4 modal-title'>Comenta</p>
 								</div>
-								<div class='modal-footer container-fluid'>
-									<button type='submit' class='btn btn-success green'><span class='fa fa-share'></span>Comentar</button>
+								<form class='form_comment' method='POST' action='php/funciones/new_comment.php'>
+									<div class='modal-body'>
+										<textarea id='edicion_comentario' name ='cuerpo' placeholder='¿Qué piensas de la historia?'></textarea>
+										<input type='hidden' name='padre' class='answerParent' id='answerParent' value='' />
+										<input type='hidden' name='user' value=$_SESSION[usuario_actual]  />
+										<input type='hidden' name='contenido' value= '$id_capitulo'/>
+										<input type='hidden' name='tipo_contenido' value='Capitulos' />
+									</div>
+									<div class='modal-footer container-fluid'>
+										<button type='submit' class='btn btn-success green'><span class='fa fa-share'></span>Comentar</button>
+									</div>
+								</form>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->";
+			}
+			else
+			{
+				echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
+						<div class='modal-dialog' role='document'>
+							<div class='modal-content widget-area'>
+								<div class='modal-header'>
+									<span class='h3'>Upsss... parece que no estás registrado. No podrás comentar hasta que lo hagas. Te esperamos :)</span>
 								</div>
-							</form>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->";
-		}
-		else
-		{
-			echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
-					<div class='modal-dialog' role='document'>
-						<div class='modal-content widget-area'>
-							<div class='modal-header'>
-								<span class='h3'>Upsss... parece que no estás registrado. No podrás comentar hasta que lo hagas. Te esperamos :)</span>
-							</div>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->";
-		}
-	?>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->";
+			}
+		?>
+
+		<?php
+			$pagina_actual=$titulo;
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
+		?>
 	</div>
 
 	<?php 
@@ -270,7 +243,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
-	<script src="js/respuestaComentario.js"</script>
+	<script src="js/respuestaComentarios.js" type="text/javascript"></script>
 
 </body>
 </html>

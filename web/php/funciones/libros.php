@@ -31,7 +31,16 @@
 
 	function mejores_obras($n)
 	{
-		$sql = "SELECT id_libro, portada, AVG(puntuacion) AS punt_final FROM (libros NATURAL JOIN valora) GROUP BY id_libro ORDER BY punt_final DESC LIMIT '$n'";
+		$sql = "SELECT id_libro, portada, AVG(puntuacion) AS punt_final FROM (libros NATURAL JOIN valora) GROUP BY id_libro ORDER BY punt_final DESC LIMIT $n";
+
+		$resultado = consulta($sql);
+
+		return $resultado;
+	}
+
+	function capitulos_mayores($id_libro, $id_capitulo)
+	{
+		$sql = "SELECT * FROM capitulos WHERE id_libro='$id_libro' AND id_capitulo >'$id_capitulo' ORDER BY id_capitulo ASC";
 
 		$resultado = consulta($sql);
 

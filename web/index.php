@@ -48,8 +48,11 @@
 							        	<?php
 							  				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
 
-							  				try{
-							  					/*$resultado = mejores_obras('1');
+						  					$resultado = mejores_obras('20');
+						  					$num = $resultado->num_rows;
+
+						  					if($num > 0)
+						  					{
 								  				$obra = $resultado->fetch_object();
 
 
@@ -63,12 +66,8 @@
 													echo "<div class='item'>
 								            					<div class='col-xs-4'><a href='#1'><img src='img/portadas/portada.png' class='img-responsive img-carousel'></a></div>
 								          					</div>";
-								  				}*/
-							  				}
-							  				catch(Exception $e)
-							  				{
-							  					echo "Error";
-							  				}
+								  				}
+								  			}
 
 							        	?>
 							        	</div>

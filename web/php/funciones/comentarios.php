@@ -106,7 +106,7 @@
 	}
 
 
-	function imprimir_respuestas($respuestas)
+	function imprimir_respuestas($respuestas, $contenido)
 	{
 		if($respuestas)
 		{
@@ -141,8 +141,30 @@
 							</li>";
 
 					$id = $respuesta->id_comentario;
-					$respuestas_aux = respuestas($id, "Libros");
-					imprimir_respuestas($respuestas_aux);
+					switch($contenido)
+					{
+						case "Libros":
+						{
+							$respuestas_aux = respuestas($id, "Libros");
+						}
+							break;
+
+						case "Bocetos":
+						{
+							$respuestas_aux = respuestas($id, "Bocetos");
+
+						}
+							break;
+
+						case "Capitulos":
+						{
+							$respuestas_aux = respuestas($id, "Capitulos");
+
+						}
+							break;
+					}
+
+					imprimir_respuestas($respuestas_aux, "Capitulos");
 				}
 				echo "</ul>";
 			}

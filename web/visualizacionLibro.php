@@ -65,7 +65,7 @@
 				  				if($num > 0)
 				  				{
 				  					$capitulo = $res->fetch_object();
-				  					echo "<a href='visualizacionContenidoLibro?id_libro=$id_libro&id_capitulo=$capitulo->id_capitulo'><button type='button'  id='leer' class='btn btn-primary btn-lg opciones'>Leer</button>"; 
+				  					echo "<a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capitulo->id_capitulo'><button type='button'  id='leer' class='btn btn-primary btn-lg opciones'>Leer</button></a>"; 
 				  				}
 				  			?>
 				  		</div>
@@ -76,13 +76,17 @@
 						  			<form action='php/funciones/rating.php' method='post'>";
 
 						  		$res = consulta_rate($_SESSION['usuario_actual']);
+						  		$num = $res->num_rows;
 
-						  		if($res)
+						  		if($num > 0)
+						  		{
 						  			$value = $res->fetch_object();
+						  			$valor = $value->puntuacion;
+						  		}
 						  		else
-						  			$value = 0;
+						  			$valor = 0;
 
-								echo "<input id='input-1' name='voto' class='rating rating-loading' data-min='0' data-max='5' data-step='1' data-size='xs' value=$value->puntuacion />
+								echo "<input id='input-1' name='voto' class='rating rating-loading' data-min='0' data-max='5' data-step='1' data-size='xs' value=$valor />
 										<input type='hidden' name='id_libro' value=$id_libro />
 										<input type='hidden' name='id_user' value=$_SESSION[usuario_actual] />
 										<button type='submit' class='btn btn-success green'>Vota</button>
