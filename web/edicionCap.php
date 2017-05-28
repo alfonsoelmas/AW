@@ -20,10 +20,10 @@
 	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
 
 	//Me tiene que venir el ID del libro correspondiente al capitulo
-	if(isset($_POST["idLibro"])){
+	if(isset($_GET["idLibro"])){
 
 		
-		$idLibro = $_POST["idLibro"];
+		$idLibro = $_GET["idLibro"];
 
 		//Compruebo que ese idLibro corresponde al usuario 
 		//con una query...

@@ -15,7 +15,7 @@
 	<?php
 		$pagina_actual="Edición";
 		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/genera_cabecera.php");
-
+		require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/categorias.php");
 		//Si sesión iniciada
 
 		if(isset($_SESSION['usuario_actual']) ){
@@ -52,7 +52,7 @@
 								<div class="row">
 									<div class="col-sm-3 text-center">
 										<img class="img-edicion" alt="" src="img/portadas/portada.png">
-										<button type="button" class="btn btn-info margen-top">Editar imagen</button>
+										<input id="imagen" name="imagen" type="file" class="btn btn-info margen-top">
 									</div>
 									<div class="col-sm-9 text-left"> 
 
@@ -60,11 +60,33 @@
 										<input type="text" class="form-control" id="titulo" name="title" value=<?php echo '"'.$datosConsulta['titulo'].'"'?> />
 										<br>
 										<span class="input-group-addon glyphicon glyphicon-text-size ">Sinopsis</span>
-										<textarea  class="form-control" id='editor1' name='editor1' rows="10" value=<?php echo '"'.$datosConsulta['sinopsis'].'"'; ?> </textarea>
+										<textarea  class="form-control" id='editor1' name='sinopsis' rows="10" value=<?php echo '"'.$datosConsulta['sinopsis'].'"'; ?> </textarea>
+
+										<!--TODO necesitamos cargar las categorias-->
+										<?php 
+										$categorias = obtenerCategorias();
+										$tam = count($categorias);
+										
+										echo '<select name="categoria">'
+										for($i = 0; $i<$tam; $i++){
+											echo '<option value="'.$categorias[$i].'">'.$categorias[$i].'</option>';
+										}
+										echo '</select>';
+
+
+										//Ahora obtenemos los capitulos existentes para pintarlos:
+										$query = 'SELECT titulo, sinopsis, portada FROM libros WHERE id_libro="'.$idLibro.'"';
+								  		$consulta 	= 	realiza_consulta($conn, $query);
+								  		$datosConsulta = $consulta->fetch_assoc();
+								  		
+										?>
+
 										<!--script type='text/javascript'>
 											CKEDITOR.replace ('editor1');
 										</script--> 
-										<button type="button" onclick="window.location.href='edicionCap.html'" class="btn btn-info margen-top"> Añadir capítulo       </button> <!--TODO campo obligatorio-->
+
+										<button type="button" <?php echo 'onclick="window.location.href="edicionCap.php?idLibro='.$idLibro.'""' ?> class="btn btn-info margen-top"> Añadir capítulo </button> 
+
 										<button type="button" class="btn btn-info margen-top" data-toggle="collapse" data-target="#lCap">Desplegar lista de capitulos</button>
 										<div id="lCap" class="collapse margen-top">
 											<div class="list-group">

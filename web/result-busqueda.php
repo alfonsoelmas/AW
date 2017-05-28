@@ -81,7 +81,7 @@ function calculaValoracionToInt($valor){
 									$datosConsulta = $consulta->fetch_assoc();
 
 									for($i = 0; $i<$filas; $i++){
-										echo '<option value="'.$datosConsulta["categoria"].'">'.$datosConsulta["categoria"].'</option>'
+										echo '<option value="'.$datosConsulta["categoria"].'">'.$datosConsulta["categoria"].'</option>';
 										$datosConsulta = $consulta->fetch_assoc();
 									}
 
@@ -99,7 +99,7 @@ function calculaValoracionToInt($valor){
   									<input type="radio" name="valorOrden" value="descendente"> descendente
 								</div>
 							</div>
-							<input type="hidden" name="clave" value=<?php echo '"'.trim($_GET['clave'])p.'"' ?>/>
+							<input type="hidden" name="clave" value=<?php echo '"'.trim($_GET['clave'])p.'"'; ?>/>
 							<input type="submit" name="filtro" value="filtro">
 						</form>
 					</div>
