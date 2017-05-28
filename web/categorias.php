@@ -54,7 +54,7 @@
 							{
 								echo "<div class='col-sm-6 col-md-3'>
 										<div class='thumbnail efecto-redondo'>
-											<a href='visualizacionLibro.php?id=$row[id_libro]'>
+											<a href='visualizacionLibro.php?id_libro=$row[id_libro]'>
 												<img alt='' src=$row[portada] class='img-responsive imgP' />
 												<div class='caption'>
 													<p>$row[titulo]</p>
@@ -97,7 +97,7 @@
 		
 										echo "<div class='col-sm-6 col-md-3'>
 												<div class='thumbnail efecto-redondo'>
-													<a href='visualizacionLibro.php?id=$row[id_bocetos]'>
+													<a href='visualizacionBoceto.php?id=$row[id_bocetos]'>
 														<img alt='' src=$row[foto] class='img-responsive imgP'>
 														<div class='caption'>
 															<p>$row[titulo]</p>
