@@ -31,23 +31,26 @@
 						$consulta1 = categorias();
 						$filas = $consulta1->num_rows;
 						$datosConsulta = $consulta1->fetch_assoc();
+						
 
 						//Hacemos un for del numero de categorias
 						for($i = 0; $i<$filas; $i++)
 						{
+							$consulta = libros_categoria($datosConsulta['categoria']);
+							$nResultados = 	$consulta->num_rows;//numero de resultados
+							$categoria = $datosConsulta['categoria'];
 							echo"<div class='panel-heading'>
 									<p class='panel-title h3'>
 										<a href='result-busqueda.php?categoria=$datosConsulta[categoria]&esLibro=1'>
 											$datosConsulta[categoria]
 										</a>
-										<span class='badge'>$filas</span>
+										<span class='badge'>$nResultados</span>
 									</p>
 								</div>					
 								<div class='panel-body'>
 									<div class='row'>";
 							
-							$consulta = libros_categoria($datosConsulta['categoria']);
-							$nResultados = 	$consulta->num_rows;//numero de resultados
+							
 
 							//Pintamos las 4 obras que hemos cargado
 							while($row = $consulta->fetch_assoc())
@@ -67,7 +70,10 @@
 							echo "<div class='row'>
 									<div class='col-sm-12 text-center'>
 										<div class='btn-group' role='group' aria-label='...'>
-											<form method='get' action='result-busqueda.php?categoria=$datosConsulta[categoria]&esLibro=1'>
+											<form method='get' action='result-busqueda.php'>
+												<input type='hidden' name='categoria' value='".$categoria."' class='btn btn-lg'></input>
+												<input type='hidden' name='tipo' value='libro'>
+												<input type='hidden' name='busq' value=''>
 												<input type='submit' value='Ver más' class='btn btn-lg'></input>
 											</form>
 										</div>
@@ -110,7 +116,10 @@
 								<div class="row">
 									<div class="col-sm-12 text-center">
 										<div class="btn-group" role="group" aria-label="...">
-											<form method="get" action=<?php echo "result-busqueda.php?&esDibujo=1";?>>
+											<form method="get" action=<?php echo "result-busqueda.php";?>>
+												<input type="hidden" name="tipo" value="dibujo">
+												<input type="hidden" name="categoria" value="terror">
+												<input type="hidden" name="busq" value="">
 												<input type="submit" value="Ver más" class="btn btn-lg"></input>
 											</form>
 										</div>
