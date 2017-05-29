@@ -99,8 +99,8 @@
 									<div class="thumbnail efecto-redondo">
 									<a href=<?php 
 
-									if($tipo=="libro"){
-										echo '"visualizacionLibro.php?id='.$dato["id"].'"';
+									if(isset($_GET["busqFacil"]) || $tipo=="libro"){
+										echo '"visualizacionLibro.php?id_libro='.$dato["id"].'"';
 									}else{
 										echo '"visualizacionBoceto.php?id='.$dato["id"].'"';
 									}
