@@ -1,0 +1,281 @@
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+.row{
+  padding: 15px;
+}
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #fff;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;} 
+}
+
+/*Cookies*/
+#barraaceptacion {
+  display:block;
+  position:fixed;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  padding-bottom:20px;
+  width:100%;
+  text-align:center;
+  min-height:40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color:#fff;
+  z-index:99999;
+}
+
+.inner {
+  width:100%;
+  padding-left:5px;
+  font-family:verdana;
+  font-size:12px;
+}
+
+.inner a.ok {
+  padding:4px;
+  color:#00ff2e;
+  text-decoration:none;
+}
+
+#ok{
+  background-color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.5);
+
+} 
+.inner a.info {
+  padding-left:5px;
+  text-decoration:none;
+  color:#faff00;
+}
+
+#banner, #breadcum {
+  padding-bottom: 0;
+  margin-bottom: 0px;
+  padding-top: 0;
+  margin-bottom: 0;
+
+  background-image: url("../img/fondo.jpg");
+
+}
+
+#breadcum-div{
+  text-align: right;
+}
+
+#bloque-inicio{
+  margin-top: 10px;
+}
+
+
+#text-bloque-inicio{
+  font-size: 34px;
+  font-weight: 13px;
+}
+
+#par-bloque-inicio, #par-bloque-valorados{
+  font-size: 17px;
+}
+
+.actual{
+  background-color: #3C3B3B;
+}
+
+#buscador{
+  background-color: #3C3B3B;
+  border-color: #3C3B3B;
+  color: white;
+}
+
+
+button:hover #buscador{
+  background-color:646363;
+  border-color: #3C3B3B;
+}
+
+#color-defecto{
+  color: #A29F9F;
+}
+
+#color-defecto:hover{
+  color: white;
+
+}
+
+#logo{
+  padding-top: 20px;
+  max-height:135px;
+  max-width: 135px;
+}
+
+.jumbotron .h1, .jumbotron h1 {
+  font-size: 63px;
+}
+
+.well {
+ min-height: 20px;
+ padding: 5px;
+ margin-bottom: 20px;
+}
+
+ul.valorados {
+  float: left;
+  list-style: none;
+}
+
+ul.valordaos li{
+  display: inline;
+
+}
+
+ul.valorados img{
+  height: 50px;
+  width: 50px;
+  max-width: 100%;
+  border-radius: 1px;
+}
+
+
+
+img.imgP{
+  width: 50%;
+}
+
+.efecto-redondo:hover{
+  border-radius: 25px;
+  border-color: green;
+}
+
+/*Para engordar de alto botones u otras cosas...*/
+button.engordar{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+button.redondear{
+  border-radius: 25px;
+}
+
+#login-button:hover{
+  background-color: #C5D6DB;
+}
+
+#reg-button:hover{
+  background-color: #BDDAAA;
+}
+
+div.botones{
+  padding: 10px;
+  margin:auto;
+}
+
+.colorAtonado{
+  background-color: #D6D6D6;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  #main-flexslider ul.slides li p {
+    font-size: 52px;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 0px;
+    text-align: center;
+    line-height: 1;
+    color: #fff;
+  }
+
+}
+
+@media (max-width: 767px) {
+  #main-flexslider ul.slides li p {
+    font-size: 32px;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 0px;
+    text-align: center;
+    line-height: 1;
+    color: #fff;
+  }
+}
+
+@media (max-width: 371px) {
+  #header-wrapper {
+    padding-top: 80px;
+    margin-top: 1px;
+  }
+}
+
+.navbar .brand a:hover {
+  color: #E6ACEC;
+}
+
+/*Carousel settings*/
+
+.multi-item-carousel .carousel-inner > .item {
+  -webkit-transition: 500ms ease-in-out left;
+  transition: 500ms ease-in-out left;
+}
+.multi-item-carousel .carousel-inner .active.left {
+  left: -33%;
+}
+.multi-item-carousel .carousel-inner .active.right {
+  left: 33%;
+}
+.multi-item-carousel .carousel-inner .next {
+  left: 33%;
+}
+.multi-item-carousel .carousel-inner .prev {
+  left: -33%;
+}
+
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .multi-item-carousel .carousel-inner > .item {
+    -webkit-transition: 500ms ease-in-out left;
+    transition: 500ms ease-in-out left;
+    -webkit-transition: 500ms ease-in-out all;
+    transition: 500ms ease-in-out all;
+    -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+    -webkit-transform: none!important;
+            transform: none!important;
+  }
+}
+.multi-item-carousel .carouse-control.left,
+.multi-item-carousel .carouse-control.right {
+  background-image: none;
+}
+
+.col-xs-12{
+  width: 90%;
+}
+
+@media (max-width: 700px) {
+  .img-carousel{
+    height: 300px;
+    width: 200px;
+  }
+}

@@ -38,6 +38,8 @@
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-8 text-left">
+								<label>Selecciona una imagen para la portada</label> 
+								<input id='imagen' name='imagen' type='file' class='file'>
 								
 								<?php
 									if($id_libro){
@@ -51,12 +53,9 @@
 										<input type='text' class='form-control' id='titulo' name='titulo' value='$fila->titulo'/>
 										<br>
 										<span class='input-group-addon glyphicon glyphicon-text-size'>Sinópsis</span>
-										<input type='hidden' name='id_libro' value='$id_libro'/>
-										<textarea class='form-control' id='sinopsis' name='sinopsis'>$fila->sinopsis</textarea>";
+										<textarea class='form-control' id='sinopsis' name='sinopsis' value='$fila->sinopsis'></textarea>";
 									}else{
 										echo "
-										<label>Selecciona una imagen para la portada</label> 
-										<input id='imagen' name='imagen' type='file' class='file'>
 										<br>
 										<span class='input-group-addon glyphicon glyphicon-text-size'>Título</span>
 										<input type='text' class='form-control' id='titulo' name='titulo' placeholder='Escribe aquí el título'/>
@@ -71,21 +70,16 @@
 						<div class="row">
 							<div class="col-sm-5"></div>
 							<div class="col-sm-4">
-							<?php
-								if(!$id_libro){
-									echo "
-									<div class='form-group'>
-										<select class='form-control' name='genero'>
-											<option value=''>Elige el género</option>
-											<option value='Comedia'>Comedia</option>
-											<option value='Novela'>Novela</option>
-											<option value='Drama'>Drama</option>
-											<option value='Terror'>Terror</option>
-											<option value='Historica'>Histórica</option>
-										</select>
-									</div>";
-								}
-							?>
+								<div class="form-group">
+									<select class='form-control' name='genero'>
+										<option value=''>Elige el género</option>
+										<option value='Comedia'>Comedia</option>
+										<option value='Novela'>Novela</option>
+										<option value='Drama'>Drama</option>
+										<option value='Terror'>Terror</option>
+										<option value='Historica'>Histórica</option>
+									</select>
+								</div>	
 							</div>
 							<div class="col-sm-3">
 								<?php

@@ -1,11 +1,11 @@
 
 <?php
 
-if($_POST){
-	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
+if(_$POST){
+	require_once($_SERVER['DOCUMENT_ROOT'] ."php/funciones/consulta.php");
 
-	$titulo = $_POST["title"];
-	$cuerpo = $_POST["editor1"];
+	$titulo = _$POST["title"];
+	$cuerpo = _$POST["editor1"];
 
 	//comprobamos que titulo < TANTOS caracteres y no este vacio
 	if(strlen($titulo) == 0 || strlen($titulo) > 100) {
@@ -15,10 +15,10 @@ if($_POST){
 	//evitamos SQL inyection y HTML inyection TODO 
 
 
-	if(isset($_POST["id"])){ //Existe capitulo y hay que MODIFICAR
+	if(isset(_$POST["id"])){ //Existe capitulo y hay que MODIFICAR
 
 
-		$id = $_POST["id"];
+		$id = _$POST["id"];
 
 
 
@@ -33,7 +33,7 @@ if($_POST){
 	//No existe capitulo y hay que CREAR
 
 		$fecha = date('Y/m/d H:i');
-		$idLibro = $_POST["idLibro"];
+		$idLibro = _$POST["idLibro"];
 
 
 
@@ -44,7 +44,7 @@ if($_POST){
 	}
 
 	//TODO desconectar
-	header("Location: /web/edicion.php?libro=".$_POST["idLibro"]);
+	header("Location: edicion.php?id="._$POST["idLibro"]);
 
 } else {
 	header("Location: 404Error.php");

@@ -34,44 +34,45 @@
 					$totBusqueda=0;
 					$dato=false;
 
-					if(isset($_GET["busqFacil"])){
-						//Busqueda fácil
-						$busqueda = $_GET["busqFacil"];
+					if(isset($_GET["busqFacil"]) || isset($_GET['busq']))
+					{
+						if(isset($_GET["busqFacil"])){
+							//Busqueda fácil
+							$busqueda = $_GET["busqFacil"];
 
-						//Busca solo libros
-						$resultado = buscaLibros($busqueda);
-						$totBusqueda = $resultado->num_rows;
-						$dato=true;
-						
-					} else{
-						//Busqueda avanzada
+							//Busca solo libros
+							$resultado = buscaLibros($busqueda);
+							$totBusqueda = $resultado->num_rows;
+							$dato=true;
+							
+						} else{
+							//Busqueda avanzada
 
-						$busqueda = $_GET["busq"];
-						
-						if(!isset($_GET["busq"]))
-							$busqueda="";
+							$busqueda = $_GET["busq"];
+							
+							if(!isset($_GET["busq"]))
+								$busqueda="";
 
-						$tipo = $_GET["tipo"];
-				
-						$categoria = $_GET["categoria"];
-
-						//Busca o libros o dibujos
-
-						if($tipo=="libro"){
-							//Buscamos libros con categoria
-							$resultado = buscaLibrosCat($busqueda,$categoria);
-						
-						} else {
-							//Buscamos bocetos
-							$resultado = buscaDibujos($busqueda);
+							$tipo = $_GET["tipo"];
 					
+							$categoria = $_GET["categoria"];
+
+							//Busca o libros o dibujos
+
+							if(isset($_GET['busqFacil']) || $tipo=="libro"){
+								//Buscamos libros con categoria
+								$resultado = buscaLibrosCat($busqueda,$categoria);
+							
+							} else {
+								//Buscamos bocetos
+								$resultado = buscaDibujos($busqueda);
+						
+							}
+
+							$totBusqueda = $resultado->num_rows;
+							$dato=true;
 						}
-
-						$totBusqueda = $resultado->num_rows;
-						$dato=true;
 					}
-
-
 				?>
 
 				<div class="panel panel-default" id="resultadosBusq">
@@ -98,7 +99,7 @@
 									<div class="thumbnail efecto-redondo">
 									<a href=<?php 
 
-									if(isset($_GET["busqFacil"]) || $tipo=="libro"){
+									if($tipo=="libro"){
 										echo '"visualizacionLibro.php?id='.$dato["id"].'"';
 									}else{
 										echo '"visualizacionBoceto.php?id='.$dato["id"].'"';
