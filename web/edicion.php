@@ -42,7 +42,7 @@
 				?>
 
 				<div class="container-fluid text-center">
-					<form method="post" action="php/funciones/guardar_libro.php">	    
+					<form method="post" action="php/funciones/guardar_libro.php" enctype="multipart/form-data">	    
 					<div class="col-sm-10 text-left">
 						<div class="panel panel-default margen-top">
 							<div class="panel-heading">
@@ -52,7 +52,7 @@
 								<div class="row">
 									<div class="col-sm-3 text-center">
 										<img class="img-edicion" alt="" <?php echo 'src="img/portadas/'.$portada.''; ?>">
-										<input id="imagen" name="imagen" type="file" class="btn btn-info margen-top">
+										<input id="imagen" name="img" type="file" class="btn btn-info margen-top">
 										<input type="hidden" name="idLibro" value=<?php echo '"'.$idLibro.'"' ?>/>
 									</div>
 									<div class="col-sm-9 text-left"> 
@@ -61,8 +61,9 @@
 										<input type="text" class="form-control" id="titulo" name="title" value=<?php echo '"'.$datosConsulta['titulo'].'"'?> />
 										<br>
 										<span class="input-group-addon glyphicon glyphicon-text-size ">Sinopsis</span>
-										<textarea  class="form-control" id='editor1' name='sinopsis' rows="10" value=<?php echo '"'.$datosConsulta['sinopsis'].'"'; ?> </textarea>
-
+										<textarea  class="form-control" id='editor1' name='sinopsis' rows="10" value=<?php echo '"'.$datosConsulta['sinopsis'].'"'; ?>> 
+										</textarea>
+										<p>categoría: </p>
 										<?php 
 										$categorias = obtenerCategorias();
 										$tam = count($categorias);
@@ -77,8 +78,13 @@
 										//Ahora obtenemos los capitulos existentes para pintarlos:
 										$query = 'SELECT titulo, cuerpo, id_capitulo FROM capitulos WHERE id_libro="'.$idLibro.'"';
 								  		$consulta 	= 					consulta($query);
+								  		$tamDatos;
+
 								  		$datosConsulta = $consulta->fetch_assoc();
-								  		$tamDatos = $datosConsulta->num_rows;
+								  		if($datosConsulta){
+								  			$tamDatos = $datosConsulta->num_rows;
+								  		}
+								  		else $tamDatos=0;
 
 										?>
 
@@ -86,7 +92,7 @@
 											CKEDITOR.replace ('editor1');
 										</script--> 
 
-										<button type="button" <?php echo 'onclick="window.location.href="edicionCap.php?idLibro='.$idLibro.'""' ?> class="btn btn-info margen-top"> Añadir capítulo </button> 
+										<a href=<?php echo '"edicionCap.php?idLibro='.$idLibro.'"';?>><button type="button" class="btn btn-info margen-top"> Añadir capítulo </button> </a>
 
 										<button type="button" class="btn btn-info margen-top" data-toggle="collapse" data-target="#lCap">Desplegar lista de capitulos</button>
 
@@ -123,53 +129,54 @@
 				?>
 
 				<div class="container-fluid text-center">
-					<form method="post" action="php/funciones/guardar_libro.php">	    
-					<div class="col-sm-10 text-left">
-						<div class="panel panel-default margen-top">
-							<div class="panel-heading">
-								<p class="h3 panel-title">Edición</p>
-							</div>
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-sm-3 text-center">
-										<img class="img-edicion" alt="" src="img/logo2.png">
-										<input id="imagen" name="imagen" type="file" class="btn btn-info margen-top">
-									</div>
-									<div class="col-sm-9 text-left"> 
-
-										<span class="input-group-addon glyphicon glyphicon-text-size">Título</span>
-										<input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título" ?>
-										<br>
-										<span class="input-group-addon glyphicon glyphicon-text-size ">Sinopsis</span>
-										<textarea  class="form-control" id='editor1' name='sinopsis' rows="10" placeholder="Escribe aquí la sinopsis" ?> </textarea>
-
-										<!--TODO necesitamos cargar las categorias-->
-										<?php 
-										$categorias = obtenerCategorias();
-										$tam = count($categorias);
-										
-										echo '<select name="categoria">';
-										for($i = 0; $i<$tam; $i++){
-											echo '<option value="'.$categorias[$i].'">'.$categorias[$i].'</option>';
-										}
-										echo '</select>';
-
-										?>
-
-										<!--script type='text/javascript'>
-											CKEDITOR.replace ('editor1');
-										</script--> 
-										<p>
-											Cuando guardes los cambios del libro, podrás añadir capítulos.
-										</p>
-
-									</div><!--todo puede que me sobre o falte algun div-->
+					<form method="post" action="php/funciones/guardar_libro.php" enctype="multipart/form-data">	    
+						<div class="col-sm-10 text-left">
+							<div class="panel panel-default margen-top">
+								<div class="panel-heading">
+									<p class="h3 panel-title">Edición</p>
 								</div>
-							</div>  
-						</div>
-			<div class="col-sm-12 text-center">
-			<button type="sumbit" class="btn btn-warning margen-bottom">Guardar libro nuevo </button>
-			</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-sm-3 text-center">
+											<img class="img-edicion" alt="" src="img/logo2.png">
+											<input id="img" name="img" type="file" class="btn btn-info margen-top">
+										</div>
+										<div class="col-sm-9 text-left"> 
+
+											<span class="input-group-addon glyphicon glyphicon-text-size">Título</span>
+											<input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título" ?>
+											<br>
+											<span class="input-group-addon glyphicon glyphicon-text-size ">Sinopsis</span>
+											<textarea  class="form-control" id='editor1' name='sinopsis' rows="10" placeholder="Escribe aquí la sinopsis" ?> </textarea>
+
+											<!--TODO necesitamos cargar las categorias-->
+											<p>Categoría: </p>
+											<?php 
+											$categorias = obtenerCategorias();
+											$tam = count($categorias);
+											
+											echo '<select name="categoria">';
+											for($i = 0; $i<$tam; $i++){
+												echo '<option value="'.$categorias[$i].'">'.$categorias[$i].'</option>';
+											}
+											echo '</select>';
+
+											?>
+
+											<!--script type='text/javascript'>
+												CKEDITOR.replace ('editor1');
+											</script--> 
+											<p>
+												Cuando guardes los cambios del libro, podrás añadir capítulos.
+											</p>
+
+										</div><!--todo puede que me sobre o falte algun div-->
+									</div>
+								</div>  
+							</div>
+				<div class="col-sm-12 text-center">
+				<button type="sumbit" class="btn btn-warning margen-bottom">Guardar libro nuevo </button>
+				</div>
 			</form>
 		</div>
 		<?php

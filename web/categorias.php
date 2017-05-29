@@ -24,7 +24,6 @@
 	<div class="container-fluid text-center">    
 		<div class="row content">
 			<div class="col-sm-10 text-left"> 
-				<div class="panel panel-default">
 
 					<?php 
 						//Lanzamos una query para obtener las categorias
@@ -40,13 +39,18 @@
 						//Hacemos un for del numero de categorias
 						for($i = 0; $i<$filas; $i++){
 
+							$query = 'SELECT id_libro, titulo, portada FROM libros WHERE categoria="'.$datosConsulta["categoria"].'" ORDER BY fecha DESC';
+							$consulta2 	= 	consulta($query);
+							$totRes		= 	$consulta2->num_rows;
 							//Pintamos titulo
+							$categoria = $datosConsulta["categoria"];
 							?>
+							<div class="panel panel-default">
 							<div class="panel-heading">
-								<?php 	echo '<a href="result-busqueda.php?categoria='.$datosConsulta["categoria"].'&esLibro=1">'?>
+								<?php 	echo '<a href="result-busqueda.php?categoria='.$datosConsulta["categoria"].'">'?>
 									<p class="panel-title h3"><?php echo $datosConsulta["categoria"]; ?>
 								</a>
-								<span class="badge"><?php echo $filas ?></span></p>
+								<span class="badge"><?php echo $totRes ?></span></p>
 
 							</div>					
 							<div class="panel-body">
@@ -83,7 +87,10 @@
 									<div class="row">
 										<div class="col-sm-12 text-center">
 											<div class="btn-group" role="group" aria-label="...">
-												<form method="get" action=<?php echo '"result-busqueda.php?categoria='.$datosConsulta["categoria"].'&esLibro=1"'; ?>>
+												<form method="get" action="result-busqueda.php" >
+												<input type="hidden" name="categoria" value=<?php echo '"'.$categoria.'"' ?>>
+												<input type="hidden" name="tipo" value="libro">
+												<input type="hidden" name="busq" value="">
 												<input type="submit" value="Ver más" class="btn btn-lg"></input>
 												</form>
 											</div>
@@ -97,11 +104,13 @@
 						}
 
 						$query = "SELECT id_bocetos, titulo, foto FROM bocetos ORDER BY fecha DESC LIMIT 4".PHP_EOL;
+						$queryTot = "SELECT id_bocetos, titulo, foto FROM bocetos ORDER BY fecha DESC".PHP_EOL;
 
 
-							$consulta 	= 	consulta($query);
+						$consulta 		= 	consulta($query);
+						$consultaTot 	= 	consulta($queryTot);
 
-							$filas = $consulta->num_rows;
+							$filas = $consultaTot->num_rows;
 					?>
 					<div class="panel panel-default">
 					<div class="panel-heading">
@@ -122,7 +131,7 @@
 								?>
 								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail efecto-redondo">
-										<?php 	echo '<a href="visualizacionLibro.php?id='.$row["id_bocetos"].'">';
+										<?php 	echo '<a href="visualizacionBoceto.php?id='.$row["id_bocetos"].'&tipo=libro">';
 												echo '<img alt="" src="'.$row["foto"].'" class="img-responsive imgP">';
 												echo '<div class="caption">';
 												echo '<p>'.$row["titulo"].'</p>';
@@ -139,7 +148,10 @@
 										<div class="row">
 											<div class="col-sm-12 text-center">
 												<div class="btn-group" role="group" aria-label="...">
-													<form method="get" action=<?php echo '"result-busqueda.php?&esDibujo=1"';?>>
+													<form method="get" action=<?php echo '"result-busqueda.php"';?> >
+													<input type="hidden" name="tipo" value="dibujo">
+													<input type="hidden" name="busq" value=" ">
+													<input type="hidden" name="categoria" value=" ">
 													<input type="submit" value="Ver más" class="btn btn-lg"></input>
 													</form>
 												</div>
