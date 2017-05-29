@@ -131,7 +131,7 @@
 								?>
 								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail efecto-redondo">
-										<?php 	echo '<a href="visualizacionLibro.php?id='.$row["id_bocetos"].'&tipo=libro">';
+										<?php 	echo '<a href="visualizacionBoceto.php?id='.$row["id_bocetos"].'&tipo=libro">';
 												echo '<img alt="" src="'.$row["foto"].'" class="img-responsive imgP">';
 												echo '<div class="caption">';
 												echo '<p>'.$row["titulo"].'</p>';

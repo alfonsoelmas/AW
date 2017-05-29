@@ -96,6 +96,15 @@
 
 								<div class="col-sm-6 col-md-3">
 									<div class="thumbnail efecto-redondo">
+									<a href=<?php 
+
+									if($tipo=="libro"){
+										echo '"visualizacionLibro.php?id='.$dato["id"].'"';
+									}else{
+										echo '"visualizacionBoceto.php?id='.$dato["id"].'"';
+									}
+
+									 ?>>
 										<img src=<?php echo '"'.$img.'"'; ?> alt="logo" class="img-responsive imgP">
 										<div class="caption text-center">
 											<p class="h3"><?php echo $titulo; ?></p>
@@ -117,6 +126,7 @@
 
 											</p>
 										</div>
+									</a>
 									</div>
 								</div>
 
