@@ -1,3 +1,12 @@
+<?php
+	
+	if(isset($_GET['libro'])){
+		$id_libro = $_GET['libro'];
+	}
+	
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,12 +17,14 @@
 	<link rel="stylesheet" href="css/estilo2.css">
 	<link rel="stylesheet" href="css/estilobusq.css">
 	<link rel="stylesheet" href="css/edicionStyle.css">
-
-
 </head>
 <body>
 	<?php
+		$pagina_actual="EdiciónCap";
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+	?>
 
+<<<<<<< HEAD
 
 	$pagina_actual="EdiciónCap";
 
@@ -115,24 +126,26 @@
 				?>
 
 			<div class="container-fluid text-center">    
+=======
+	<br>
+	<div class="container-fluid text-center">    
+		<form id="cap" action="php/funciones/editar_cap.php" method="POST">
+>>>>>>> Juan
 			<div class="col-sm-10 text-left"> 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-					<?php 
-
-					$query = 'SELECT titulo FROM libros WHERE id_libro="'.$idLibro.'"';
-					$consulta = consulta($query);
-					//doy por supuesto que obtengo un resultado único
-					$datosConsulta = $consulta->fetch_assoc();
-
-
-					?>
-					<p class="h3 panel-title">Capitulo de <?php echo $datosConsulta["titulo"]?></p>
-
+						<?php 
+							require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/editar_cap.php");
+							// Buscamos el nombre del libro
+							$nombre = buscar_nombre_libro($id_libro);
+							$fila = $nombre->fetch_object();
+						?>
+						<p class="h3 panel-title">Libro: <?php echo $fila->titulo;?></p>
 					</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-sm-12 text-left"> 
+<<<<<<< HEAD
 								<form method="post" action=<?php echo '"php/funciones/guarda_capitulo.php"'; ?>>
 									<span class="input-group-addon glyphicon glyphicon-text-size">Título del capítulo</span>
 									<input type="text" class="form-control" id="titulo" name="title" placeholder="Escribe aquí el título"/>
@@ -147,44 +160,36 @@
 									CKEDITOR.replace ('editor2');
 								</script--> 
 
+=======
+								<span class="input-group-addon glyphicon glyphicon-text-size">Título del capítulo</span>
+								<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe aquí el título"/>
+								<br>
+								<span class="input-group-addon glyphicon glyphicon-text-size ">Contenido del capítulo</span>
+								<textarea class="form-control" id='cuerpo' name='cuerpo' rows="10" placeholder="Erase una vez que se era..."></textarea>
+								<input type="hidden" id="id_libro" name="id_libro" value="<?php echo $id_libro?>">
+								<button type="submit" class="btn btn-warning margen-top">Guardar cambios</button>
+>>>>>>> Juan
 							</div>
 						</div>
 					</div>  
 				</div>
 			</div>
-				<?php
-
-			}
-
-		}
-	} else {
-		header("Location: 404Error.php");
-	}
-
-	?>
-
-	
-					
-				
+		</form>
 		<?php
-			$pagina_actual="EdiciónCap";
-
 			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
 		?>
 	</div>
 
 	<?php 
-	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php");?>
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php");
+	?>
+
 
 	<!--Scripts-->
-	<script type="text/javascript" src="js/goTo.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-	<!--cargamos el CKeditor TODO sobra-->
-
-	<script type="text/javascript" src="Paper%20Dreams_files/ckeditor.js"></script><style>.cke{visibility:hidden;}</style>
-	<script type="text/javascript" src="Paper%20Dreams_files/config.js"></script><link rel="stylesheet" type="text/css" href="Paper%20Dreams_files/editor_gecko.css"><script type="text/javascript" src="Paper%20Dreams_files/es.js"></script><script type="text/javascript" src="Paper%20Dreams_files/styles.js"></script>
+	<script type="text/javascript" src="js/editarCap.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 </body>
 </html>

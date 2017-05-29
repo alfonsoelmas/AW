@@ -83,7 +83,7 @@
 		{
 			case "Libros":
 			{
-				$sql = "INSERT INTO comentario_libro(cuerpo, id_usuario, id_padre, id_libro) VALUES ('$cuerpo', '$id_usuario', '$id_padre',    '$id_contenido');";
+				$sql = "INSERT INTO comentario_libro(cuerpo, id_usuario, id_padre, id_libro) VALUES ('$cuerpo', '$id_usuario', '$id_padre', '$id_contenido');";
 			}
 				break;
 
@@ -103,5 +103,71 @@
 		$exito = consulta($sql);
 
 		return $exito;
+	}
+
+
+	function imprimir_respuestas($respuestas, $contenido)
+	{
+		if($respuestas)
+		{
+			$rows = $respuestas->num_rows;
+
+			//Si hay respuestas	
+			if($rows > 0)
+			{	
+				//Una por una
+				echo "<ul class='comments-list reply-list'>";
+				while ($respuesta = $respuestas->fetch_object()) 
+				{
+					//Cogemos los datos del perfil del usuario que ha respondido
+					$usuario_comentario = usuario_comentario($respuesta->id_usuario);
+					$comment_user = $usuario_comentario->fetch_object();
+
+					//Imprimimos el comentario
+					echo "<li>
+							<!-- Avatar -->
+							<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
+							<!-- Contenedor del Comentario -->
+							<div class='comment-box'>
+								<div class='comment-head'>
+									<h6 class='comment-name'><a href='vistaUsuario.php?usuario=$comment_user->id'>$comment_user->usuario</a> </h6>
+									<span>$respuesta->fecha</span>
+									<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$respuesta->id_comentario><i class='fa fa-reply'></i></a>
+								</div>
+								<div class='comment-content'>
+									$respuesta->cuerpo
+								</div>
+							</div><br>
+							</li>";
+
+					$id = $respuesta->id_comentario;
+					switch($contenido)
+					{
+						case "Libros":
+						{
+							$respuestas_aux = respuestas($id, "Libros");
+						}
+							break;
+
+						case "Bocetos":
+						{
+							$respuestas_aux = respuestas($id, "Bocetos");
+
+						}
+							break;
+
+						case "Capitulos":
+						{
+							$respuestas_aux = respuestas($id, "Capitulos");
+
+						}
+							break;
+					}
+
+					imprimir_respuestas($respuestas_aux, "Capitulos");
+				}
+				echo "</ul>";
+			}
+		}
 	}
 ?>

@@ -1,36 +1,26 @@
 <?php
-	session_start();
-
-	/*
-	if(!isset($_SESSION['usuario']))
-	{
-		header("Location: login.php");	
-		exit();
-	}
-	*/
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/comentarios.php");
+	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/rating_value.php");
+
 	$id_libro = $_GET['id_libro'];
 
-	//if($id_libro){
+	//Esto hay que cogerlo de una consulta
+	$resultado = consulta_datos($id_libro);
 
-		//Esto hay que cogerlo de una consulta
-		$resultado = consulta_datos($id_libro);
+	if($resultado)
+	{
+		$libro = $resultado->fetch_object();
 
-		if($resultado)
-		{
-			$libro = $resultado->fetch_object();
-
-			$titulo = $libro->titulo;
-			$sinopsis = $libro->sinopsis;
-			$fecha = $libro->fecha;
-			$portada = $libro->portada;
-		}
-		else
-		{
-			header("Location: 404Error.php");
-		}
-	//}
-
+		$titulo = $libro->titulo;
+		$sinopsis = $libro->sinopsis;
+		$fecha = $libro->fecha;
+		$portada = $libro->portada;
+	}
+	else
+	{
+		header("Location: 404Error.php");
+	}
 ?>
 
 
@@ -60,28 +50,63 @@
 			<div class="col-sm-10 text-left">    
 				<div class="row">
 			  		<img class="col-sm-6 text-left img-responsive center-block" id="portada" alt="" src=<?php echo $portada ?> >
-			  		<div class="text-center">
-			    		<p class="h3"><?php echo $titulo ?></p>
+			  		<div class="text-center" id="texto">
+			    		<p class="h1"><?php echo $titulo ?></p>
 			    		<div id="sipnopsis">
 			    			<?php echo $sinopsis?>
 			    		</div>
 			  		</div> 
 			  		<div id="opciones">
-				  		<div class="col-sm-2 text-left"> 
-				  			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
-				  		</div>
 				  		<div class="col-sm-2 text-left">
-				  			<button type="button"  id="leer" class="btn btn-primary btn-lg opciones">Leer</button> 
+				  			<?php
+				  				$res = capitulos_por_libro($id_libro);
+				  				$num = $res->num_rows;
+
+				  				if($num > 0)
+				  				{
+				  					$capitulo = $res->fetch_object();
+				  					echo "<a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capitulo->id_capitulo'><button type='button'  id='leer' class='btn btn-primary btn-lg opciones'>Leer</button></a>"; 
+				  				}
+				  			?>
 				  		</div>
-				  		<div id="estrellas" class="text-center">
-							<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1" data-size="xs">
-				  		</div>
+				  		<?php
+				  			if(isset($_SESSION['usuario_actual']))
+				  			{
+						  		echo "<div id='estrellas' class='text-center'>
+						  			<form action='php/funciones/rating.php' method='post'>";
+
+						  		$res = consulta_rate($_SESSION['usuario_actual']);
+						  		$num = $res->num_rows;
+
+						  		if($num > 0)
+						  		{
+						  			$value = $res->fetch_object();
+						  			$valor = $value->puntuacion;
+						  		}
+						  		else
+						  			$valor = 0;
+
+								echo "<input id='input-1' name='voto' class='rating rating-loading' data-min='0' data-max='5' data-step='1' data-size='xs' value=$valor />
+										<input type='hidden' name='id_libro' value=$id_libro />
+										<input type='hidden' name='id_user' value=$_SESSION[usuario_actual] />
+										<button type='submit' class='btn btn-success green'>Vota</button>
+									</form>
+						  		</div>";
+						  	}
+				  		?>
 				  	</div>
 			    </div> 
 				<div class="row">     
 					<!-- Contenedor Principal -->
 				    <div class="comments-container">
-						<p class="h1"> Comentarios </p>
+				    	<div class="row">
+						    <div class="col-xs-4 offset-xs-4">
+						      	<span class="h1"> Comentarios </span>
+						    </div>
+						    <div class="col-xs-4 offset-xs-4">
+						    	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
+						    </div>
+						</div>
 						<ul id="comments-list" class="comments-list">
 							<li>
 								<?php
@@ -91,94 +116,41 @@
 									while ($comentario = $resultado->fetch_object()) 
 									{
 										//Cogemos los datos del perfil del usuario que ha comentado
-										$resultado = usuario_comentario($comentario->id_usuario);
-										$comment_user = $resultado->fetch_object($resultado);
-										
-										//Imprimimos el comentario
-										echo "<div class='comment-main-level'>
-													<!-- Avatar -->
-													<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
-													<!-- Contenedor del Comentario -->
-													<div class='comment-box'>
-														<div class='comment-head'>
-															<p class='comment-name by-author h6'><a href='http://miPerfil.php'>$comment_user->usuario</a></p>
-															<span>$comentario->fecha</span>
-															<button class='fa fa-reply botones-comentario data-toggle='modal' data-target='#myModal' data-id='$comentario->id'> </button>
-														</div>
-														<div class='comment-content'>
-															$comentario->cuerpo;
-														</div>
-													</div>
-												</div>";
+										$usuario_comentario = usuario_comentario($comentario->id_usuario);
+										$rows = $usuario_comentario->num_rows;
 
-										//Buscamos las posibles respuestas
-										$resultado = respuestas($comentario->id_comentario, "Libros");
-										$rows = $resultado->num_rows();
-
-										//Si hay respuestas
 										if($rows > 0)
-										{	
-											//Una por una
-											while ($comentario = $resultado->fetch_object()) 
-											{
-												//Cogemos los datos del perfil del usuario que ha comentado
-												$resultado = usuario_comentario($comentario->id_usuario);
-												$comment_user = $resultado->fetch_object($resultado);
+										{
 
-												//Imprimimos el comentario
-												echo "<ul class='comments-list reply-list'>
-													<li>
+											$comment_user = $usuario_comentario->fetch_object();
+
+											//Imprimimos el comentario
+											echo "<div class='comment-main-level'>
 														<!-- Avatar -->
 														<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
 														<!-- Contenedor del Comentario -->
 														<div class='comment-box'>
 															<div class='comment-head'>
-																<h6 class='comment-name'><a href='http://miPerfil.php'>$comment_user->usuario</a> </h6>
+																<p class='comment-name h6'><a href='vistaUsuario.php?usuario=$comment_user->id'>$comment_user->usuario</a></p>
 																<span>$comentario->fecha</span>
-																<button class='fa fa-reply botones-comentario' data-toggle='modal' data-target='#myModal' data-id='$comentario->id'> </button>
+																<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$comentario->id_comentario><i class='fa fa-reply'></i></a>
 															</div>
 															<div class='comment-content'>
-																$comentario->cuerpo;
+																$comentario->cuerpo
 															</div>
 														</div>
-													</li>
-												</ul>";
-											}
+													</div>
+													<br>";
+
+											$id = $comentario->id_comentario;
+											$respuestas = respuestas($id, "Libros");
+											imprimir_respuestas($respuestas, "Libros");
 										}
 									}
 								?>
 							</li>
 						</ul>
 					</div>
-		   	 		<?php
-
-		   	 			$resultado = comentarios($id_libro);
-		   	 			$num = $resultado->num_rows();
-
-		   	 			$numero_paginas = $num/8;
-
-		   	 			if($numero_paginas > 0)
-		   	 			{
-		   	 				echo"<nav class='text-center' aria-label='Page navigation'>
-									<ul class='pagination'>
-									<li>
-										<a href='#' aria-label='Previous'>
-											<span aria-hidden='true'>&laquo;</span>
-							     	 	</a>
-							   	 	</li>";
-
-			   	 			for($i = 0; $i < $numero_paginas; $i++)
-					    		echo "<li><a href='#''>$i</a></li>";
-
-					    	echo 	"<li>
-					    				<a href='#' aria-label='Next'
-			        						<span aria-hidden='true'>&raquo;</span>
-			      						</a>
-			    					</li>
-			  					</ul>
-							</nav>";
-					    }
-			    	?>
 				</div>
 			</div>
 
@@ -197,13 +169,13 @@
 									<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 									<p class='h4 modal-title'>Comenta</p>
 								</div>
-								<form class='form_comment' method='POST' action='php/funciones/nuevo_comentario.php'>
+								<form class='form_comment' method='POST' action='php/funciones/new_comment.php'>
 									<div class='modal-body'>
-										<textarea id='edicion_comentario' placeholder='¿Qué piensas de la historia?'></textarea>
-										<input type='hidden' name='padre' class='answerParent' value=''>";
-										/*<input type='hidden' name='id_usuario' value='$_SESSION['usuario_actual']'>*/
-										echo "<input type='hidden' name='contenido' value='$id_libro'>
-										<input type='hidden' name='tipo_contenido' value='Libros'>
+										<textarea id='edicion_comentario' name ='cuerpo' placeholder='¿Qué piensas de la historia?'></textarea>
+										<input type='hidden' name='padre' class='answerParent' id='answerParent' value='' />
+										<input type='hidden' name='user' value=$_SESSION[usuario_actual]  />
+										<input type='hidden' name='contenido' value= '$id_libro'/>
+										<input type='hidden' name='tipo_contenido' value='Libros' />
 									</div>
 									<div class='modal-footer container-fluid'>
 										<button type='submit' class='btn btn-success green'><span class='fa fa-share'></span>Comentar</button>
@@ -238,7 +210,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/star-rating.js" type="text/javascript"></script>
-	<script src="js/respuestaComentario.js"</script>
+	<script src="js/respuestaComentarios.js" type="text/javascript"></script>
+	<script src="js/rating.js"></script>	
 
 </body>
 </html>

@@ -1,6 +1,0 @@
-//Acceso a BD
-
-<?php
-
-
-?>

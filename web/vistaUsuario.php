@@ -141,7 +141,7 @@
 					  							echo "
 					  							<div class='item active'>
 					  								<div class='col-xs-4'>
-					  									<a href='visualizacionLibro.php'><img src=$libro->portada class='img-responsive img-carousel'></a>
+					  									<a href='visualizacionLibro.php?id_libro=$libro->id_libro'><img src=$libro->portada class='img-responsive img-carousel'></a>
 					  									<p>$libro->titulo</p>
 					  								</div>
 					  							</div> <!--acive-->";

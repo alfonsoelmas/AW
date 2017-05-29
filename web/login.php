@@ -29,7 +29,7 @@
 									
 									<div class="input-group input-group-md">
 										<span class="input-group-addon glyphicon glyphicon-user" id="icon_user"></span>
-										<input type="text" class="form-control" id="username" name='username' placeholder="Usuario" aria-describedby="icon_user">
+										<input type="text" class="form-control" id="username" name='username' placeholder="Email" aria-describedby="icon_mail">
 									</div>
 									<br>
 

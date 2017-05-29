@@ -24,7 +24,7 @@
 
 				$_SESSION['usuario_actual'] = $filaUsuario->id;
 				$_SESSION['name'] = $filaUsuario->nombre;
-				header("Location: ../../index.php");
+				header("Location: index.php");
 				return '1';
 			} 
 			else {

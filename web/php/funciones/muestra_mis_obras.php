@@ -68,6 +68,11 @@
 								<p>".$obra['fecha']."</p>
 							</div>
 						</a>
+						<a href='edicionCap.php?libro=$obra[id_libro]'>
+							<button type='button' class='btn btn-primary bmd-btn-fab'>
+  								<i class='glyphicon glyphicon-plus'></i>
+							</button>
+						</a>
 					</div>
 				</div>";
 
@@ -89,7 +94,7 @@
 				echo "
 				<div class='col-sm-6 col-md-3'>
 					<div class='thumbnail efecto-redondo'>
-						<a href='edicion.php?libro=".$obra['id_bocetos']."'>
+						<a href='edicionFoto.php?foto=".$obra['id_bocetos']."'>
 							<img src='".$obra['foto']."' alt='' class='imgP'>
 							<div class='caption'>
 								<p>".$obra['titulo']."</p>
