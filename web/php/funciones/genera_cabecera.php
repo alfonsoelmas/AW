@@ -45,9 +45,9 @@ function genera_cabecera($pagina_actual) {
 					echo "<li><a href='aboutUs.php'>About Us</a></li>";
 				echo "</ul>";
 				echo "<div class='nav navbar-nav navbar-right'>";
-	        		echo "<form class='navbar-form navbar-left input-group-btn' role='search' action='result-busqueda.php'>";
+	        		echo "<form class='navbar-form navbar-left input-group-btn' method='get' role='search' action='result-busqueda.php'>";
 	            		echo "<div class='form-group'>";
-	              			echo "<input type='text' class='form-control' placeholder='Search'>";
+	              			echo "<input type='text' class='form-control' name='busqFacil' placeholder='Search'>";
 	            		echo "</div>";
 	            		echo "<button id='buscador' type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span>Buscar</button>";
 	          		echo "</form>";
