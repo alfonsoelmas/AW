@@ -9,14 +9,27 @@
 			
 			$titulo   = $_POST['titulo'];
 			$sinopsis = $_POST['sinopsis'];
+			session_start();
+			$usuario_actual = $_SESSION['usuario_actual'];
+			echo $usuario_actual;
+			
+			// Para modificar el libro 
+			if(isset($_POST['id_libro'])){
+				$libro = $_POST['id_libro'];
+				echo $libro;
+				echo "<br>";
+				echo "entro en el if";
+				modificar($libro, $titulo, $sinopsis, $usuario_actual);
+				header("Location: ../../misObras.php");
+				
+			}
+			
 			$genero   = $_POST['genero'];
 			$fich_bd  = "";
 			echo $titulo;
 			echo $sinopsis;
-			session_start();
-			$usuario_actual = $_SESSION['usuario_actual'];
-			echo $usuario_actual;
-			if(empty($titulo) && empty($genero)) {
+			
+			if(empty($titulo) && empty($sinopsis)) {
 				echo "<p> Se ha producido un error al enviar los datos del formulario.</p>";
 				echo "<a href='../../edicionFoto.php'><button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='button'>Volver al formulario de registro</button></a>";
 			}
@@ -77,16 +90,26 @@
 			}
 		}
 	}
+	
 	function annadir($titulo, $sinopsis, $genero, $fich_bd, $usuario_actual){
 		$sql = "INSERT INTO libros(titulo,sinopsis,categoria,portada,id_usuario) VALUES ('$titulo', '$sinopsis', '$genero', '$fich_bd', '$usuario_actual')";
 		$resultado = consulta($sql);
 	}
+	
+	function modificar($id_libro, $titulo, $sinopsis, $usuario_actual){
+		$sql = "UPDATE libros SET titulo = '$titulo', sinopsis='$sinopsis' WHERE id_libro = '$id_libro';";
+		$resultado = consulta($sql);
+		
+	}
+
+	
 	function n(){
 		$sql = "SELECT * FROM libros";
 		$resultado = consulta($sql);
 		$num = mysqli_num_rows($resultado);
 		return $num;
 	}
+	
 	function buscar_datos_libro($id_libro){
 		$sql = "SELECT * FROM libros WHERE id_libro='$id_libro'";
 		$resultado = consulta($sql);
