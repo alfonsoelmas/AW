@@ -57,7 +57,7 @@
 
 						//Busca o libros o dibujos
 
-						if($tipo=="libro"){
+						if(isser($_GET['busqFacil']) || $tipo=="libro"){
 							//Buscamos libros con categoria
 							$resultado = buscaLibrosCat($busqueda,$categoria);
 						
@@ -70,8 +70,6 @@
 						$totBusqueda = $resultado->num_rows;
 						$dato=true;
 					}
-
-
 				?>
 
 				<div class="panel panel-default" id="resultadosBusq">

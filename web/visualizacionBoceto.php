@@ -108,7 +108,7 @@
 											
 											$id = $comentario->id_comentario;
 											$respuestas = respuestas($id, "Bocetos");
-											imprimir_respuestas($respuestas);
+											imprimir_respuestas($respuestas, "Bocetos");
 										}
 									}
 								?>

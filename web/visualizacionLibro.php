@@ -144,7 +144,7 @@
 
 											$id = $comentario->id_comentario;
 											$respuestas = respuestas($id, "Libros");
-											imprimir_respuestas($respuestas);
+											imprimir_respuestas($respuestas, "Libros");
 										}
 									}
 								?>
