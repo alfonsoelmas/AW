@@ -22,7 +22,7 @@
 	<div class="container-fluid text-center">    
 		<div class="row content">
 			<div class="col-sm-10 text-left"> 
-				<div class="panel panel-default">
+				
 					<?php 
 						//Lanzamos una query para obtener las categorias
 						require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/categoriasFunctions.php");
@@ -39,15 +39,16 @@
 							$consulta = libros_categoria($datosConsulta['categoria']);
 							$nResultados = 	$consulta->num_rows;//numero de resultados
 							$categoria = $datosConsulta['categoria'];
-							echo"<div class='panel-heading'>
-									<p class='panel-title h3'>
-										<a href='result-busqueda.php?categoria=$datosConsulta[categoria]&esLibro=1'>
-											$datosConsulta[categoria]
-										</a>
-										<span class='badge'>$nResultados</span>
-									</p>
-								</div>					
-								<div class='panel-body'>
+							echo"<div class='panel panel-default'>
+									<div class='panel-heading'>
+										<p class='panel-title h3'>
+											<a href='result-busqueda.php?categoria=$datosConsulta[categoria]&tipo='libro'>
+												$datosConsulta[categoria]
+											</a>
+											<span class='badge'>$nResultados</span>
+										</p>
+									</div>					
+									<div class='panel-body'>
 									<div class='row'>";
 							
 							
@@ -67,7 +68,8 @@
 									</div>";
 								$datosConsulta = $consulta1->fetch_assoc();
 							}
-							echo "<div class='row'>
+							echo "	
+									<div class='row'>
 									<div class='col-sm-12 text-center'>
 										<div class='btn-group' role='group' aria-label='...'>
 											<form method='get' action='result-busqueda.php'>
@@ -124,8 +126,7 @@
 											</form>
 										</div>
 									</div>
-								</div>
-							</div>  
+							</div>
 						</div>
 					</div>
 				</div>
