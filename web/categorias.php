@@ -66,7 +66,7 @@
 											</a>
 										</div>
 									</div>";
-								$datosConsulta = $consulta1->fetch_assoc();
+
 							}
 							echo "	
 									<div class='row'>
@@ -84,6 +84,7 @@
 										</div>  
 										</div>
 										</div>";
+							$datosConsulta = $consulta1->fetch_assoc();
 						}
 
 						$consulta 	= 	bocetos_categoria();
