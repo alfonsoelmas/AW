@@ -24,7 +24,14 @@
 						</div>
 						<div class="panel-body">
 							<div class="col-sm-7 text-center content">
-								<form id="register" enctype="multipart/form-data" method="post" action="php/funciones/registro_usuario.php">
+								<?php
+									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/registro_usuario.php");
+
+									if(isset($_POST['user'])) {
+										registra_usuario();
+									}
+								?>
+								<form id="register" enctype="multipart/form-data" method="post" action="registro.php">
 									<div class="login">
 										<div class="login-form">
 											<div class="input-group input-group-md">
