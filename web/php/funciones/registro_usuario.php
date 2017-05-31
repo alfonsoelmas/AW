@@ -1,8 +1,6 @@
 <?php
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/consulta.php");
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/filtrado_entrada.php");
-
-	registra_usuario();
 	
 	// Registro de un usuario en la BD.
 	function registra_usuario() {
@@ -18,35 +16,29 @@
 		$desc     = htmlspecialchars(trim(strip_tags($_REQUEST["desc"])));
 		$email    = htmlspecialchars(trim(strip_tags($_REQUEST["email"])));
 		$password = htmlspecialchars(trim(strip_tags($_REQUEST["password"])));
-
 		$confirm_password = htmlspecialchars(trim(strip_tags($_REQUEST["confirm_password"])));
 		
 		// HASH
 		$password_hased = password_hash($password, PASSWORD_DEFAULT);
 		
-		if(empty($nombre) || empty($usuario) || empty($edad) || empty($email) || empty($password) || empty($confirm_password) || empty($ciudad) || empty($pais) ||
+		if(empty($nombre) || empty($usuario) || empty($edad) || empty($email) || empty($password) || empty($confirm_password) || empty($ciudad) || empty($pais) || empty($descripcion) ||
 	   	   !preg_match('/^[^@\s]+@([a-z0-9]+\.)+[a-z]{2,}$/i', $email) ||
 	   	   !is_numeric($edad) ||
 	   	   strlen($password) < 8 ||
 	   	   $password != $confirm_password) {
-			echo "<p> Se ha producido un error al enviar los datos del formulario.</p>";
-			echo "<a href='../../registro.php'><button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='button'>Volver al formulario de registro</button></a>";
+			echo "<p> Se ha producido un error al enviar los datos del formulario. ¡Inténtalo de nuevo!</p>";
 		}
 		else {
 			// Comprobar si el usuario ya está registrado en la BD.
 			$resultado = existe_usuario($usuario);	
 
-			if($resultado->num_rows != 0) {
+			if($resultado->num_rows != 0)
 				echo "<p>El nombre de usuario ya existe. Prueba con otro.</p>";
-				echo "<a href='../../registro.php'><button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='button'>Volver al formulario de registro</button></a>";
-			}
 			else {
 				// Comprobar si el email ya está registrado en la BD.
 				$resultado = existe_email($email);
-				if($resultado->num_rows != 0) {
+				if($resultado->num_rows != 0)
 					echo "<p>El email introducido ya está registrado. Prueba con otro.</p>";
-					echo "<a href='../../registro.php'><button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='button'>Volver al formulario de registro</button></a>";
-				}
 				else {
 					// Registrar el nuevo usuario en la BD.
 					annadir_usuario($usuario, $nombre, $email, $password_hased, $edad);
@@ -73,7 +65,6 @@
 						$imageFileType = pathinfo($fichero,PATHINFO_EXTENSION);
 						$fichero = $dir_subida . $filaUsuario->id . "." . $imageFileType;
 						$path_img = $dir_relativo . $filaUsuario->id . "." . $imageFileType;
-
 
 						if (move_uploaded_file($_FILES['imagen_perfil']['tmp_name'], $fichero)) {
 						    echo "El fichero es válido y se subió con éxito.\n";
