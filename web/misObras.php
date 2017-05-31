@@ -11,6 +11,9 @@
 		<?php
 			$pagina_actual="Mis obras";
 			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/control_accesos.php");
+
+		$comp = controlaSesion();
 		?>
   
 		<div class="container-fluid text-center">    

@@ -24,6 +24,10 @@
 	<?php
 		$pagina_actual="Edición";
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/control_accesos.php");
+
+		controlaSesion();
+
 	?>
 
 	<div class="container-fluid text-center">    

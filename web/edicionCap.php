@@ -22,6 +22,10 @@
 	<?php
 		$pagina_actual="EdiciónCap";
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/control_accesos.php");
+
+		$comp = controlaSesion();
+		if($comp) controlaAcceso();
 	?>
 
 	<br>

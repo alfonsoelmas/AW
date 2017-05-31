@@ -32,6 +32,10 @@
 	<?php
 		$pagina_actual="EdiciónFoto";
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/control_accesos.php");
+
+		$comp = controlaSesion();
+		if($comp) controlaAcceso();
 	?>
 
 	<div class="container-fluid text-center">    

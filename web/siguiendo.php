@@ -11,6 +11,10 @@
 		<?php
 			$pagina_actual="Siguiendo";
 			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/control_accesos.php");
+
+		$comp = controlaSesion();
+
 		?>
   
 		<div class="container-fluid text-center">    

@@ -11,6 +11,8 @@
 	<?php
 		$pagina_actual="Usuario";
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
+		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/control_accesos.php");
+		controlaAcceso();
 	?>
 
 	<br>
@@ -28,6 +30,8 @@
 									// Pasamos el id del usuario al que visitamos.
  									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/perfil_usuario.php");
 									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/seguir_usuario.php");
+									require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/control_accesos.php");
+									controlaAcceso();
 
 									if(isset($_GET['usuario']))
 									{
