@@ -27,21 +27,21 @@ function redondea($valor){
 }
 
 function buscaDibujos($valor){
-	$query = 'SELECT id_bocetos AS id, titulo, foto AS portada, id_usuario FROM bocetos WHERE titulo OR descripcion LIKE "%'.$valor.'%"';
+	$query = 'SELECT id_bocetos AS id, titulo, foto AS portada, id_usuario FROM bocetos WHERE titulo LIKE "%'.$valor.'%" OR descripcion LIKE "%'.$valor.'%"';
 	return $resultado = consulta($query);
 
 
 }
 
 function buscaLibros($valor){
-	$query = 'SELECT id_libro AS id, titulo, portada, id_usuario FROM libros WHERE titulo LIKE "%'.$valor.'%"';
+	$query = 'SELECT id_libro AS id, titulo, portada, id_usuario FROM libros WHERE titulo LIKE "%'.$valor.'%" OR sinopsis LIKE "%'.$valor.'%"';
 	return $resultado = consulta($query);
 
 
 }
 
 function buscaLibrosCat($valor,$categoria){
-	$query = 'SELECT id_libro AS id, titulo, portada, id_usuario FROM libros WHERE titulo LIKE "%'.$valor.'%" AND categoria="'.$categoria.'"';
+	$query = 'SELECT id_libro AS id, titulo, portada, id_usuario FROM libros WHERE (titulo LIKE "%'.$valor.'%" OR sinopsis LIKE "%'.$valor.'%") AND categoria="'.$categoria.'"';
 	return $resultado = consulta($query);
 
 }
