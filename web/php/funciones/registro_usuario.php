@@ -17,16 +17,33 @@
 		$email    = htmlspecialchars(trim(strip_tags($_REQUEST["email"])));
 		$password = htmlspecialchars(trim(strip_tags($_REQUEST["password"])));
 		$confirm_password = htmlspecialchars(trim(strip_tags($_REQUEST["confirm_password"])));
-		
 		// HASH
 		$password_hased = password_hash($password, PASSWORD_DEFAULT);
-		
-		if(empty($nombre) || empty($usuario) || empty($edad) || empty($email) || empty($password) || empty($confirm_password) || empty($ciudad) || empty($pais) || empty($descripcion) ||
+
+		// VERIFICAR IMAGEN //
+		//Recogemos el archivo enviado por el formulario
+		$imagen = $_FILES['imagen_perfil']['name'];
+		//Si el archivo contiene algo y es diferente de vacio
+		if (isset($imagen) && $imagen != "") {
+			$tipo   = $_FILES['imagen_perfil']['type'];
+			//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+			if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")))) {
+				$imagen_correcta = false;
+			}
+			else {
+				$imagen_correcta = true;
+			}
+		}
+
+		// COMPROBAR DATOS //
+		if(empty($nombre) || empty($usuario) || empty($edad) || empty($email) || empty($password) || empty($confirm_password) || empty($ciudad) || empty($pais) || empty($desc) ||
 	   	   !preg_match('/^[^@\s]+@([a-z0-9]+\.)+[a-z]{2,}$/i', $email) ||
 	   	   !is_numeric($edad) ||
 	   	   strlen($password) < 8 ||
 	   	   $password != $confirm_password) {
 			echo "<p> Se ha producido un error al enviar los datos del formulario. ¡Inténtalo de nuevo!</p>";
+		} elseif (!$imagen_correcta) {
+			echo "<p> La imagen debe tener formato PNG, GIF, JPG o JPEG.</p>";
 		}
 		else {
 			// Comprobar si el usuario ya está registrado en la BD.
@@ -75,7 +92,7 @@
 						// Finalmente añadimos los datos del usuario
 						annadir_datos($_SESSION['usuario_actual'], $path_img, $desc, $ciudad, $pais);
 
-						header('Location: ../../index.php');
+						header('Location: index.php');
 					}
 				}
 			}
