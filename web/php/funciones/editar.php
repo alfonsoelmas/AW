@@ -11,19 +11,15 @@
 			$sinopsis = $_POST['sinopsis'];
 			$genero   = $_POST['genero'];
 			$fich_bd  = "";
-			echo $titulo;
-			echo $sinopsis;
 			session_start();
 			$usuario_actual = $_SESSION['usuario_actual'];
-			echo $usuario_actual;
 			if(empty($titulo) && empty($genero)) {
-				echo "<p> Se ha producido un error al enviar los datos del formulario.</p>";
-				echo "<a href='../../edicionFoto.php'><button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='button'>Volver al formulario de registro</button></a>";
+				echo "<p> Se ha producido un error al enviar los datos.</p>";
+				echo "<a href='../../edicionFoto.php'><button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='button'>Volver</button></a>";
 			}
 			else {
 				//Recogemos el archivo enviado por el formulario
 				$imagen = $_FILES['imagen']['name'];
-				print_r($imagen);
 				//Si el archivo contiene algo y es diferente de vacio
 				if (isset($imagen) && $imagen != "") {
 					//Obtenemos algunos datos necesarios sobre el archivo
@@ -32,9 +28,9 @@
 					$tamano = $_FILES['imagen']['size'];
 					//Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
 					if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")))) {
-						echo "MAL";
-						echo '<div><b> Error. La extensión o el tamaño de los archivos no es correcta.<br/>
-					- Se permiten archivos .gif, .jpg, .png.</b></div>';
+						echo '<div> Error. La extensión o el tamaño de los archivos no es correcta.<br/>
+						- Sólo se permiten archivos .gif, .jpg, .png.</div>';
+						echo "<a href='../../edicionFoto.php'><button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='button'>Volver</button></a>";
 					}
 					else {
 						// Saber cual será la id del boceto que se va a añadir
@@ -57,8 +53,6 @@
 						if (move_uploaded_file($temp, $fichero)) {
 							//Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
 							chmod($fichero, 0777);
-							//Mostramos el mensaje de que se ha subido co éxito
-							echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
 						
 							// Finalmente añadimos los datos
 							annadir($titulo, $sinopsis, $genero, $fich_bd, $usuario_actual);
@@ -67,12 +61,15 @@
 						}
 						else {
 							//Si no se ha podido subir la imagen, mostramos un mensaje de error
-							echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
+							echo '<div>Ocurrió algún error al subir el fichero. No pudo guardarse.</div>';
+							echo "<a href='../../edicionFoto.php'><button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='button'>Volver</button></a>";
 						}
 					}
 				}
 				else{
-					echo "mal";
+					//Si no se ha podido subir la imagen, mostramos un mensaje de error
+					echo '<div>Ocurrió algún error al subir el fichero. No pudo guardarse.</div>';
+					echo "<a href='../../edicionFoto.php'><button class='btn btn-default dropdown-toggle engordar redondear' type='button' id='button'>Volver</button></a>";
 				}
 			}
 		}
