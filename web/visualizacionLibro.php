@@ -16,6 +16,7 @@
 		$sinopsis = $libro->sinopsis;
 		$fecha = $libro->fecha;
 		$portada = $libro->portada;
+		$autor = $libro->id_usuario;
 	}
 	else
 	{
@@ -54,9 +55,17 @@
 			  		<img class="col-sm-6 text-left img-responsive center-block" id="portada" alt="" src=<?php echo $portada ?> >
 			  		<div class="text-center" id="texto">
 			    		<p class="h1"><?php echo $titulo ?></p>
+
 			    		<div id="sipnopsis">
 			    			<?php echo $sinopsis?>
 			    		</div>
+			    		<?php 
+
+			    		if(!$_SESSION || $_SESSION['usuario_actual'] != $autor){
+			    			?><a href=<?php echo "vistaUsuario.php?usuario=" . $autor;?>>Visita el perfil del autor</a><?php
+			    		}
+
+			    		?>
 			  		</div> 
 			  		<div id="opciones">
 				  		<div class="col-sm-2 text-left">
