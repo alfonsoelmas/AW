@@ -45,7 +45,7 @@
                         </div>
                         <br>
                         <div class='row'>
-                            <p class='descripcion'>$fila->descripcion.</p>
+                            <p class='descripcion'>$fila->descripcion</p>
                         </div> ";
                         ?>
                     </div>
