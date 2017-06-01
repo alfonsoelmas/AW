@@ -20,6 +20,15 @@
 		return $resultado;
 	}
 
+	function consulta_capitulos_avz($id,$idLibro)
+	{
+		$sql = "SELECT * FROM capitulos WHERE id_capitulo='$id' AND id_libro='$idLibro'";
+
+		$resultado = consulta($sql);
+
+		return $resultado;
+	}
+
 	function capitulos_por_libro($id_libro)
 	{
 		$sql = "SELECT * FROM capitulos WHERE id_libro='$id_libro' ORDER BY id_capitulo ASC";

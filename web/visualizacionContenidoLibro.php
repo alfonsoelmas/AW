@@ -2,15 +2,16 @@
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/comentarios.php");
 
+
 	$id_libro = $_GET['id_libro'];
 	$id_capitulo = $_GET['id_capitulo'];
 
 	//Esto hay que cogerlo de una consulta
-	$resultado = consulta_capitulos($id_libro);
-
-	if($resultado)
+	$resultado = consulta_capitulos_avz($id_capitulo,$id_libro);
+	$libro = $resultado->fetch_object();
+	if($libro)
 	{
-		$libro = $resultado->fetch_object();
+
 		$titulo = $libro->titulo;
 		$cuerpo = $libro->cuerpo;
 		$fecha = $libro->fecha;
