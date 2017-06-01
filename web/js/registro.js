@@ -13,12 +13,25 @@ $(document).ready(function() {
             "user": {
                 required: true
             },
+            "age":{
+                required: true,
+                number: true
+            },
+            "ciudad":{
+                required: true
+            },
+            "pais":{
+                required: true
+            },
+            "imagen_perfil":{
+                required: true
+            },
+            "desc":{
+                required: true
+            },
             "email": {
                 required: true,
                 email: true
-            },
-            "country":{
-                required: false
             },
             "password":{
                 required: true,
@@ -27,10 +40,6 @@ $(document).ready(function() {
             "confirm_password":{
                 required: true,
                 equalTo:"#password"
-            },
-            "age":{
-                required: true,
-                number: true
             },
             "condiciones":{
                 required: true
@@ -44,12 +53,25 @@ $(document).ready(function() {
             "user": {
                 required: "Introduce tu nombre de usuario."
             },
+            "age":{
+                required: "Introduce tu edad.",
+                number: "La edad debe ser un numero."
+            },
+            "ciudad":{
+                required: "Introduce tu ciudad."
+            },
+            "pais":{
+                required: "Introduce tu país."
+            },
+            "imagen_perfil":{
+                required: "Introduce una foto de perfil."
+            },
+            "desc":{
+                required: "Introduce una descripción."
+            },
             "email": {
                 required: "Introduce tu correo.",
                 email: "Introduce un email válido."
-            },
-            "country":{
-                required: false
             },
             "password":{
                 required: "Introduce la contraseña.",
@@ -58,10 +80,6 @@ $(document).ready(function() {
             "confirm_password":{
                 required: "Introduce la contraseña de nuevo.",
                 equalTo: "La contraseña debe ser igual a la contraseña indicada anteriormente."
-            },
-            "age":{
-                required: "Introduce tu edad.",
-                number: "La edad debe ser un numero."
             },
             "condiciones":{
                 required: "Debe aceptar las condiciones."
