@@ -76,9 +76,33 @@
 				  				if($num > 0)
 				  				{
 				  					$capitulo = $res->fetch_object();
-				  					echo "<a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capitulo->id_capitulo'><button type='button'  id='leer' class='btn btn-primary btn-lg opciones'>Leer</button></a>"; 
+				  					echo "
+				  					<div class='row'>
+				  						<a href='visualizacionContenidoLibro.php?id_libro=".$id_libro."&id_capitulo=".$capitulo->id_capitulo."'>
+				  							<button type='button' id='leer' class='btn btn-primary btn-lg opciones'>
+				  								Leer
+				  							</button>
+				  						</a>
+				  					</div>"; 
 				  				}
-				  			?>
+
+				  				if($_SESSION['usuario_actual'] == $autor) {
+				  					echo "
+				  					<div class='row'>
+				  						<a href='edicionCap.php?libro=".$id_libro."'>
+											<button type='button' class='btn btn-primary bmd-btn-fab'>
+  												Añadir capítulo
+											</button>
+										</a>
+								
+										<a href='edicion.php?libro=".$id_libro."'>
+											<button type='button' class='btn btn-primary bmd-btn-fab'>
+  												Editar libro
+											</button>
+										</a>
+									</div>";
+								}
+							?>
 				  		</div>
 				  		<?php
 				  			if(isset($_SESSION['usuario_actual']))
