@@ -40,7 +40,6 @@
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/control_accesos.php");
 		controlaAcceso();
-
 	?>
 
 	<div class="container-fluid">
@@ -63,10 +62,12 @@
 				                </div>
 				            </div>
 				        </div>
-				    </div>
+				    </div> <!--panel-->
 				</div>
-				<div>
-					<div class="col-sm-4 text-left">
+
+				<!-- BOTONES ANTERIOR Y SIGUIENTE-->
+				<div class="row">
+					<div class="col-sm-1 text-left">
 						<?php 
 							$resultado = capitulos_por_libro($id_libro);
 							//Vamos verificando el inmediatamente anterior al actual
@@ -109,118 +110,125 @@
 							//Si el capituloAnterior está vacio, significa que no hemos entrado al bucle y, por tanto, estamos en el primero
 							if($capituloAnterior != "")
 								echo " <a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior->id_capitulo'>
-									  			<button type='button' class='btn btn-primary btn-lg' id='capituloAnterior'>Capitulo Anterior
+									  			<button type='button' class='btn btn-primary btn-md' id='capituloAnterior'>Capitulo Anterior
 									  			</button>
 									</a>";
 						?> 
-			  		</div>
-			  		<div class="col-sm-4">
+			  		</div> <!--col-sm-1 text-left-->
+			  		<div class="col-sm-9"></div>
+			  		<div class="col-sm-1">
 			  			<?php
 			  				if($capituloSiguiente != "")
 				  				echo " <a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente->id_capitulo'>
-									  			<button type='button' class='btn btn-primary btn-lg' id='capituloAnterior'>Capitulo Siguiente
+									  			<button type='button' class='btn btn-primary btn-md' id='capituloAnterior'>Capitulo Siguiente
 									  			</button>
 									</a>";
 			  			?>
-			  		</div>
-				<div class="row">     
-					<!-- Contenedor Principal -->
-				    <div class="comments-container">
-				    	<div class="row">
-						    <div class="col-xs-4 offset-xs-4">
-						      	<span class="h1"> Comentarios </span>
-						    </div>
-						    <div class="col-xs-4 offset-xs-4">
-						    	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
-						    </div>
-						</div>
-						<ul id="comments-list" class="comments-list">
-							<li>
-								<?php
-									//Cogemos todos los comentarios que NO son respuesta de otro
-									$resultado = comentarios($id_capitulo, "Capitulos");
-									while ($comentario = $resultado->fetch_object()) 
-									{
-										//Cogemos los datos del perfil del usuario que ha comentado
-										$usuario_comentario = usuario_comentario($comentario->id_usuario);
-										$rows = $usuario_comentario->num_rows;
-										if($rows > 0)
-										{
-											$comment_user = $usuario_comentario->fetch_object();
-											//Imprimimos el comentario
-											echo "<div class='comment-main-level'>
-														<!-- Avatar -->
-														<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
-														<!-- Contenedor del Comentario -->
-														<div class='comment-box'>
-															<div class='comment-head'>
-																<p class='comment-name h6'><a href='vistaUsuario.php?usuario=$comment_user->id'>$comment_user->usuario</a></p>
-																<span>$comentario->fecha</span>
-																<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$comentario->id_comentario><i class='fa fa-reply'></i></a>
-															</div>
-															<div class='comment-content'>
-																$comentario->cuerpo
-															</div>
-														</div>
-													</div>
-													<br>";
-											$id = $comentario->id_comentario;
-											$respuestas = respuestas($id, "Capitulos");
-											imprimir_respuestas($respuestas, "Capitulos");
-										}
-									}
-								?>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<?php
-			if(isset($_SESSION['usuario_actual']))
-			{
-				echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
-						<div class='modal-dialog' role='document'>
-							<div class='modal-content widget-area'>
-								<div class='modal-header'>
-									<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-									<p class='h4 modal-title'>Comenta</p>
-								</div>
-								<form class='form_comment' method='POST' action='php/funciones/new_comment.php'>
-									<div class='modal-body'>
-										<textarea id='edicion_comentario' name ='cuerpo' placeholder='¿Qué piensas de la historia?'></textarea>
-										<input type='hidden' name='padre' class='answerParent' id='answerParent' value='' />
-										<input type='hidden' name='user' value=$_SESSION[usuario_actual]  />
-										<input type='hidden' name='contenido' value= '$id_capitulo'/>
-										<input type='hidden' name='tipo_contenido' value='Capitulos' />
-									</div>
-									<div class='modal-footer container-fluid'>
-										<button type='submit' class='btn btn-success green'><span class='fa fa-share'></span>Comentar</button>
-									</div>
-								</form>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->";
-			}
-			else
-			{
-				echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
-						<div class='modal-dialog' role='document'>
-							<div class='modal-content widget-area'>
-								<div class='modal-header'>
-									<span class='h3'>Upsss... parece que no estás registrado. No podrás comentar hasta que lo hagas. Te esperamos :)</span>
-								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->";
-			}
-		?>
+			  		</div><!--col-sm-1-->
+			  	</div> <!-- row-->
+			</div> <!--col-sm-10 text-left-->
+			
+			<?php
+				$pagina_actual=$titulo;
+				require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
+			?>
+		</div> <!--row-->
 
-		<?php
-			$pagina_actual=$titulo;
-			require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_bloque_derecha.php");
-		?>
+
+		<div class="row">     
+			<!-- Contenedor Principal -->
+		    <div class="comments-container">
+		    	<div class="row">
+				    <div class="col-xs-4 offset-xs-4">
+				      	<span class="h1"> Comentarios </span>
+				    </div>
+				    <div class="col-xs-4 offset-xs-4">
+				    	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Comenta</button>
+				    </div>
+				</div>
+				<ul id="comments-list" class="comments-list">
+					<li>
+						<?php
+							//Cogemos todos los comentarios que NO son respuesta de otro
+							$resultado = comentarios($id_capitulo, "Capitulos");
+							while ($comentario = $resultado->fetch_object()) 
+							{
+								//Cogemos los datos del perfil del usuario que ha comentado
+								$usuario_comentario = usuario_comentario($comentario->id_usuario);
+								$rows = $usuario_comentario->num_rows;
+								if($rows > 0)
+								{
+									$comment_user = $usuario_comentario->fetch_object();
+									//Imprimimos el comentario
+									echo "<div class='comment-main-level'>
+												<!-- Avatar -->
+												<div class='comment-avatar'><img src=$comment_user->foto alt=''></div>
+												<!-- Contenedor del Comentario -->
+												<div class='comment-box'>
+													<div class='comment-head'>
+														<p class='comment-name h6'><a href='vistaUsuario.php?usuario=$comment_user->id'>$comment_user->usuario</a></p>
+														<span>$comentario->fecha</span>
+														<a class='botones-comentario' data-toggle='modal' data-target='#myModal' data-id=$comentario->id_comentario><i class='fa fa-reply'></i></a>
+													</div>
+													<div class='comment-content'>
+														$comentario->cuerpo
+													</div>
+												</div>
+											</div>
+											<br>";
+									$id = $comentario->id_comentario;
+									$respuestas = respuestas($id, "Capitulos");
+									imprimir_respuestas($respuestas, "Capitulos");
+								}
+							}
+						?>
+					</li>
+				</ul>
+			</div>
+		</div> <!--row-->
 	</div>
+	
+	<?php
+		if(isset($_SESSION['usuario_actual']))
+		{
+			echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
+					<div class='modal-dialog' role='document'>
+						<div class='modal-content widget-area'>
+							<div class='modal-header'>
+								<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+								<p class='h4 modal-title'>Comenta</p>
+							</div>
+							<form class='form_comment' method='POST' action='php/funciones/new_comment.php'>
+								<div class='modal-body'>
+									<textarea id='edicion_comentario' name ='cuerpo' placeholder='¿Qué piensas de la historia?'></textarea>
+									<input type='hidden' name='padre' class='answerParent' id='answerParent' value='' />
+									<input type='hidden' name='user' value=$_SESSION[usuario_actual]  />
+									<input type='hidden' name='contenido' value= '$id_capitulo'/>
+									<input type='hidden' name='tipo_contenido' value='Capitulos' />
+								</div>
+								<div class='modal-footer container-fluid'>
+									<button type='submit' class='btn btn-success green'><span class='fa fa-share'></span>Comentar</button>
+								</div>
+							</form>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->";
+		}
+		else
+		{
+			echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
+					<div class='modal-dialog' role='document'>
+						<div class='modal-content widget-area'>
+							<div class='modal-header'>
+								<span class='h3'>Upsss... parece que no estás registrado. No podrás comentar hasta que lo hagas. Te esperamos :)</span>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->";
+		}
+	?>
+
+
 
 	<?php 
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
