@@ -78,11 +78,11 @@
 				  					$capitulo = $res->fetch_object();
 				  					echo "
 				  					<div class='row'>
-				  						<a href='visualizacionContenidoLibro.php?id_libro=".$id_libro."&id_capitulo=".$capitulo->id_capitulo."'>
 				  							<button type='button' id='leer' class='btn btn-primary btn-lg opciones'>
-				  								Leer
+				  								<a href='visualizacionContenidoLibro.php?id_libro=".$id_libro."&id_capitulo=".$capitulo->id_capitulo."'>
+				  									Leer
+				  								</a>
 				  							</button>
-				  						</a>
 				  					</div>"; 
 				  				}
 

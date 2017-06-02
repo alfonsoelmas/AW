@@ -109,20 +109,22 @@
 							}
 							//Si el capituloAnterior está vacio, significa que no hemos entrado al bucle y, por tanto, estamos en el primero
 							if($capituloAnterior != "")
-								echo " <a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior->id_capitulo'>
-									  			<button type='button' class='btn btn-primary btn-md' id='capituloAnterior'>Capitulo Anterior
-									  			</button>
-									</a>";
+								echo " <button type='button' class='btn btn-primary btn-md' id='capituloAnterior'>
+											<a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior->id_capitulo'>
+												Capitulo Anterior
+											</a>
+									  	</button>";
 						?> 
 			  		</div> <!--col-sm-1 text-left-->
 			  		<div class="col-sm-9"></div>
 			  		<div class="col-sm-1">
 			  			<?php
 			  				if($capituloSiguiente != "")
-				  				echo " <a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente->id_capitulo'>
-									  			<button type='button' class='btn btn-primary btn-md' id='capituloAnterior'>Capitulo Siguiente
-									  			</button>
-									</a>";
+				  				echo "<button type='button' class='btn btn-primary btn-md' id='capituloAnterior'>Capitulo 
+									  	<a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente->id_capitulo'>
+									  		Siguiente
+									  	</a>		
+									</button>";
 			  			?>
 			  		</div><!--col-sm-1-->
 			  	</div> <!-- row-->
@@ -189,7 +191,6 @@
 			</div>
 		</div> <!--row-->
 	</div>
-
 	<?php 
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_pie.php"); 
 	?>
