@@ -56,8 +56,9 @@
 										<span class='input-group-addon glyphicon glyphicon-text-size'>Título</span>
 										<input type='text' class='form-control' id='titulo' name='titulo' value='$fila->titulo'/>
 										<br>
+										<input type='hidden' name='editando' value='1'/>
 										<span class='input-group-addon glyphicon glyphicon-text-size'>Sinópsis</span>
-										<textarea class='form-control' id='sinopsis' name='sinopsis' value='$fila->sinopsis'></textarea>";
+										<textarea class='form-control' id='sinopsis' name='sinopsis'>$fila->sinopsis</textarea>";
 									}else{
 										echo "
 										<br>
