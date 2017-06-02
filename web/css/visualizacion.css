@@ -1,4 +1,4 @@
-   #portada {
+      #portada {
       padding-top: 10px;
       padding-right: 20px;
       padding-left: 20px;
@@ -20,11 +20,6 @@
         position: relative;
         margin-left: 150px;
      }
-
-      #comenta{
-      position: relative;
-      margin: auto;
-    }
   }
 
     #comenta{
@@ -50,22 +45,30 @@
     width:100%;
   }
 
+/*Comentarios*/
+
  * {
      margin: 0;
-     padding: 0;
-     -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-     box-sizing: border-box;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+ }
+
+ a {
+  color: #03658c;
+  text-decoration: none;
+ }
+
+ul {
+  list-style-type: none;
 }
 
-#comentarios{
-  padding-top: 10px;
-  padding-bottom: 10px;
+body {
+  font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+  background: #ffffff;
 }
 
-.botones-comentario{
-  margin-left: 10px;
-}
 /** ====================
  * Lista de Comentarios
  =======================*/
@@ -228,7 +231,7 @@
   border-radius: 4px 4px 0 0;
 }
 
-.comment-box .comment-head span {
+.comment-box .comment-head i {
   float: right;
   margin-left: 14px;
   position: relative;
@@ -240,7 +243,7 @@
   transition: color 0.3s ease;
 }
 
-.comment-box .comment-head span:hover {
+.comment-box .comment-head i:hover {
   color: #03658c;
 }
 
@@ -303,92 +306,4 @@
   .reply-list .comment-box {
     width: 320px;
   }
-}
-
-/** =====================
- * Area para publicar los comentarios
- ========================*/
-.modal-footer{
-  border-top:none;
-}
-.widget-area {
-  background-color: #fff;
-  float: left;
-  margin-top: 30px;
-  padding: 25px 30px;
-  position: relative;
-  width: 100%;
-}
-form {
-float: left;
-width: 100%;
-}
-form textarea {
-color: #777777;
-float: left;
-font-family: Lato;
-font-size: 14px;
-height: 142px;
-letter-spacing: 0.3px;
-width: 100%;
-border:none;
-}
-
-.modal-footer ul {
-float: left;
-list-style: none outside none;
-margin: 0;
-padding: 0 0 0 15px;
-width: auto;
-}
-.modal-footer ul > li {
-float: left;
-}
-.modal-footer ul > li > a {
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
--ms-border-radius: 4px;
--o-border-radius: 4px;
-border-radius: 4px;
-color: #777777;
-float: left;
-font-size: 14px;
-height: 30px;
-line-height: 30px;
-margin: 10px 0 10px 10px;
-text-align: center;
--webkit-transition: all 0.4s ease 0s;
--moz-transition: all 0.4s ease 0s;
--ms-transition: all 0.4s ease 0s;
--o-transition: all 0.4s ease 0s;
-transition: all 0.4s ease 0s;
-width: 30px;
-cursor: pointer;
-}
-.modal-footer ul > li > a:hover {
-background: none repeat scroll 0 0 #606060;
-color: #fff;
-}
-
-.form-comment form button {
-border: medium none;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
--ms-border-radius: 4px;
--o-border-radius: 4px;
-border-radius: 4px;
-color: #fff;
-float: right;
-font-family: Lato;
-font-size: 14px;
-letter-spacing: 0.3px;
-margin-right: 9px;
-margin-top: 9px;
-padding: 6px 15px;
-}
-.modal-footer > a > span.green:before {
-border-left-color: #2dcb73;
-}
-.form-comment form button > span {
-margin-right: 7px;
 }
