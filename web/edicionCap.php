@@ -51,7 +51,10 @@
 								<span class="input-group-addon glyphicon glyphicon-text-size ">Contenido del capítulo</span>
 								<textarea class="form-control" id='cuerpo' name='cuerpo' rows="10" placeholder="Erase una vez que se era..."></textarea>
 								<input type="hidden" id="id_libro" name="id_libro" value="<?php echo $id_libro?>">
-								<button type="submit" class="btn btn-warning margen-top">Guardar cambios</button>
+								<button type="submit" class="btn btn-warning margen-top">Añadir capítulo</button>
+								<?php
+									echo "<a href='visualizacionLibro.php?id_libro=".$id_libro."'><button type='button' class='btn btn-warning margen-top'>He terminado</button></a>";
+								?>
 							</div>
 						</div>
 					</div>  
