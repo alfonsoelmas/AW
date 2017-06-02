@@ -123,6 +123,17 @@
 		$query = "SELECT * FROM bocetos WHERE id_usuario LIKE ".$_SESSION['usuario_actual'];
 	}
 
+	echo "
+	<div class='row'></div>
+	<div class='row'>
+		<div class='col-sm-12 text-center'>
+			<div class='btn-group' role='group' aria-label='...'>
+				<a href='edicion.php'><button type='button' class='btn btn-default'>Escribe un nuevo libro</button></a>
+				<a href='edicionFoto.php'><button type='button' class='btn btn-default'>Dibuja un nuevo boceto</button></a>
+			</div>
+		</div>
+	</div>";
+
 	$total_paginas = ceil(mysqli_num_rows(consulta($query)) / $tamanio_pagina);
 	$pagina_anterior = $pagina - 1;
 	$pagina_siguiente = $pagina + 1;
