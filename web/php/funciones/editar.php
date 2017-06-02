@@ -5,8 +5,19 @@
 	
 	// Registro de un boceto en la BD.
 	function annadir_libro() {
-		if (isset($_POST['titulo'])){
-			
+
+		//Si vamos a editar un libro ya creado
+		if(isset($_POST['id_libro']))
+		{
+			$titulo   = $_POST['titulo'];
+			$sinopsis = $_POST['sinopsis'];
+			$genero   = $_POST['genero'];
+			session_start();
+			modificar($titulo, $sinopsis, $genero, $_SESSION['usuario_actual']);
+			header('Location: ../../visualizacionLibro.php?id_libro='.$_POST['id_libro']);
+		}
+		//Si vamos a crear un libro nuevo
+		else if(isset($_POST['titulo'])){
 			$titulo   = $_POST['titulo'];
 			$sinopsis = $_POST['sinopsis'];
 			$genero   = $_POST['genero'];
@@ -80,9 +91,9 @@
 		$resultado = consulta($sql);
 	}
 
-	function modificar()
+	function modificar($titulo, $sinopsis, $genero, $usuario_actual)
 	{
-		$sql = "UPDATE libros SET titulo='$titulo', sinopsis='$sinopsis', genero='$genero', portada='$fich_bd' WHERE id_usuario='$usuario_actual' ";
+		$sql = "UPDATE libros SET titulo='$titulo', sinopsis='$sinopsis', categoria='$genero' WHERE id_usuario='$usuario_actual' ";
 		$resultado = consulta($sql);
 	}
 

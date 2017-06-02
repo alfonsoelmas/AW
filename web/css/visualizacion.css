@@ -60,6 +60,11 @@
   text-decoration: none;
  }
 
+  button a {
+  color: #ffffff;
+  text-decoration: none;
+ }
+
 ul {
   list-style-type: none;
 }

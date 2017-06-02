@@ -63,9 +63,9 @@
 						<a href='visualizacionLibro.php?id_libro=".$obra['id_libro']."'>
 							<img src='".$obra['portada']."' alt='' class='imgP'>
 							<div class='caption'>
-								<p>".$obra['titulo']."</p>
-								<p>".$num_capitulos."</p>
-								<p>".$obra['fecha']."</p>
+								<p>$obra[titulo]</p>
+								<p> Capitulos disponibles: $num_capitulos</p>
+								<p>$obra[fecha]</p>
 							</div>
 						</a>
 						<a href='edicionCap.php?libro=$obra[id_libro]'>
@@ -73,7 +73,7 @@
   								<i class='glyphicon glyphicon-plus'></i>
 							</button>
 						</a>
-						<a href='edicion.php?libro=".$obra['id_libro']."'>
+						<a href='edicion.php?libro=$obra[id_libro]'>
 							<button type='button' class='btn btn-primary bmd-btn-fab'>
   								<i class='glyphicon glyphicon-edit'></i>
 							</button>

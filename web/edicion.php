@@ -42,31 +42,28 @@
 						<div class="row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-8 text-left">
-								<label>Selecciona una imagen para la portada</label> 
-								<input id='imagen' name='imagen' type='file' class='file'>
-								
+						
 								<?php
 									if($id_libro){
 										require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/editar.php");
 										// buscamos los datos del libro
 										$libro = buscar_datos_libro($id_libro);
 										$fila = $libro->fetch_object();
-										echo "
-										<br>
-										<span class='input-group-addon glyphicon glyphicon-text-size'>Título</span>
-										<input type='text' class='form-control' id='titulo' name='titulo' value='$fila->titulo'/>
-										<br>
-										<input type='hidden' name='editando' value='1'/>
-										<span class='input-group-addon glyphicon glyphicon-text-size'>Sinópsis</span>
-										<textarea class='form-control' id='sinopsis' name='sinopsis'>$fila->sinopsis</textarea>";
+										echo "<span class='input-group-addon glyphicon glyphicon-text-size'>Título</span>
+												<input type='text' class='form-control' id='titulo' name='titulo' value='$fila->titulo'/>
+												<br>
+												<input type='hidden' name='id_libro' value='$id_libro'/>
+												<span class='input-group-addon glyphicon glyphicon-text-size'>Sinópsis</span>
+												<textarea class='form-control' id='sinopsis' name='sinopsis'>$fila->sinopsis</textarea>";
 									}else{
-										echo "
-										<br>
-										<span class='input-group-addon glyphicon glyphicon-text-size'>Título</span>
-										<input type='text' class='form-control' id='titulo' name='titulo' placeholder='Escribe aquí el título'/>
-										<br>
-										<span class='input-group-addon glyphicon glyphicon-text-size'>Sinópsis</span>
-										<textarea class='form-control' id='sinopsis' name='sinopsis' placeholder='Escribe aquí la sinópsis'></textarea>";
+										echo "<label>Selecciona una imagen para la portada</label> 
+												<input id='imagen' name='imagen' type='file' class='file'>
+												<br>
+												<span class='input-group-addon glyphicon glyphicon-text-size'>Título</span>
+												<input type='text' class='form-control' id='titulo' name='titulo' placeholder='Escribe aquí el título'/>
+												<br>
+												<span class='input-group-addon glyphicon glyphicon-text-size'>Sinópsis</span>
+												<textarea class='form-control' id='sinopsis' name='sinopsis' placeholder='Escribe aquí la sinópsis'></textarea>";
 									}
 								?>
 								
