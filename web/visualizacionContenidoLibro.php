@@ -2,16 +2,14 @@
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/comentarios.php");
 
-
 	$id_libro = $_GET['id_libro'];
 	$id_capitulo = $_GET['id_capitulo'];
 
 	//Esto hay que cogerlo de una consulta
-	$resultado = consulta_capitulos_avz($id_capitulo,$id_libro);
-	$libro = $resultado->fetch_object();
-	if($libro)
+	$resultado = consulta_capitulos($id_capitulo);
+	if($resultado)
 	{
-
+		$libro = $resultado->fetch_object();
 		$titulo = $libro->titulo;
 		$cuerpo = $libro->cuerpo;
 		$fecha = $libro->fecha;
@@ -42,6 +40,7 @@
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/control_accesos.php");
 		controlaAcceso();
+
 	?>
 
 	<div class="container-fluid">
@@ -70,7 +69,6 @@
 					<div class="col-sm-4 text-left">
 						<?php 
 							$resultado = capitulos_por_libro($id_libro);
-
 							//Vamos verificando el inmediatamente anterior al actual
 							$capituloAnterior="";
 							$capituloSiguiente="";
@@ -79,7 +77,6 @@
 							$capitulo = $resultado->fetch_object();
 							//Id del primer capitulo
 							$current_id = $capitulo->id_capitulo;
-
 							//Mientras que no sea igual al id de la página
 							while ($current_id != $id_capitulo)
 							{
@@ -89,14 +86,11 @@
 								$capitulo = $resultado->fetch_object();
 								$current_id = $capitulo->id_capitulo;
 							}
-
 							$resultado = capitulos_por_libro($id_libro);
-
 							//Incializamos los parámetros
 							$capitulo = $resultado->fetch_object();
 							//Id del primer capitulo
 							$current_id = $capitulo->id_capitulo;
-
 							//Vamos a verificar el inmediato posterior
 							//Mientras el id actual sea menor o igual al de la página
 							while ($current_id < $id_capitulo)
@@ -105,23 +99,20 @@
 								$capitulo = $resultado->fetch_object();
 								$current_id = $capitulo->id_capitulo;
 							}
-
 							//Cuando salimos es porque current_id = id_capitulo. A partir de aquí vamos a ver si hay más capitulos con otra consulta
 							$resultado = capitulos_mayores($id_libro, $current_id);
 							$num = $resultado->num_rows;
-
 							if($num > 0)
 							{
 								$capituloSiguiente = $resultado->fetch_object();
 							}
-
 							//Si el capituloAnterior está vacio, significa que no hemos entrado al bucle y, por tanto, estamos en el primero
 							if($capituloAnterior != "")
 								echo " <a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior->id_capitulo'>
 									  			<button type='button' class='btn btn-primary btn-lg' id='capituloAnterior'>Capitulo Anterior
 									  			</button>
 									</a>";
-					?> 
+						?> 
 			  		</div>
 			  		<div class="col-sm-4">
 			  			<?php
@@ -148,18 +139,14 @@
 								<?php
 									//Cogemos todos los comentarios que NO son respuesta de otro
 									$resultado = comentarios($id_capitulo, "Capitulos");
-
 									while ($comentario = $resultado->fetch_object()) 
 									{
 										//Cogemos los datos del perfil del usuario que ha comentado
 										$usuario_comentario = usuario_comentario($comentario->id_usuario);
 										$rows = $usuario_comentario->num_rows;
-
 										if($rows > 0)
 										{
-
 											$comment_user = $usuario_comentario->fetch_object();
-
 											//Imprimimos el comentario
 											echo "<div class='comment-main-level'>
 														<!-- Avatar -->
@@ -177,7 +164,6 @@
 														</div>
 													</div>
 													<br>";
-
 											$id = $comentario->id_comentario;
 											$respuestas = respuestas($id, "Capitulos");
 											imprimir_respuestas($respuestas, "Capitulos");
@@ -244,8 +230,6 @@
 	<script src="js/goTo.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script src="js/respuestaComentarios.js" type="text/javascript"></script>
 
 </body>
