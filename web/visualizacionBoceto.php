@@ -46,19 +46,42 @@
 	?>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="container col-sm-10 text-left">    
+			<div class="col-sm-10 text-left"> 
 				<div class="row">
 					<img class="col-sm-6 text-left img-responsive center-block" data-toggle="modal" data-target="	#myModal2" id="portada" alt="" src=<?php
 												$ruta = $imagen;
 												echo $ruta 
 										?> />
-					<div class="container text-center col-sm-4">
+					<div class="text-center" id="texto">
 						<p class="h3"><?php echo $titulo ?></p>
 						<div id="sipnopsis">
 							<?php echo $descripcion ?>
 						</div>
-				    	<a href=<?php echo "vistaUsuario.php?usuario=" . $autor;?>>Visita el perfil del autor</a>
+
+						<?php 
+
+			    		if(!$_SESSION || $_SESSION['usuario_actual'] != $autor){
+			    			?><a href=<?php echo "vistaUsuario.php?usuario=" . $autor;?>>Visita el perfil del autor</a><?php
+			    		}
+
+			    		?>
 				    </div>
+				    <div id="opciones">
+				  		<div class="col-sm-2 text-left">
+				  			<?php
+				  				if($_SESSION['usuario_actual'] == $autor) {
+				  					echo "
+				  					<div class='row'>
+										<a href='edicionFoto.php?foto=".$id_boceto."'>
+											<button type='button' class='btn btn-primary bmd-btn-fab'>
+  												Editar boceto
+											</button>
+										</a>
+									</div>";
+								}
+							?>
+				  		</div>
+				  	</div>
 				</div> 
 				<div class="row">     
 					<!-- Contenedor Principal -->
