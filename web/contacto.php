@@ -43,7 +43,7 @@
 						<div class="col-sm-6">
 						  <label for="message">Mensaje *</label>
 						  <br>
-						  <textarea  name="message" maxlength="1000" cols="50" rows="6"></textarea>
+						  <textarea  name="message" maxlength="1000" cols="35" rows="6"></textarea>
 						  <br><br>
 						  <input type="submit" class="btn" value="Enviar">
 						</div>
