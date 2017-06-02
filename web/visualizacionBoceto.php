@@ -129,23 +129,23 @@
 		<?php
 			if(isset($_SESSION['usuario_actual']))
 			{
-				echo "<div class='modal fade' id='myModal' tabindex='-1' role='dialog'>
-						<div class='modal-dialog' role='document'>
+				echo "<div class='modal fade' id='myModal' role='dialog'>
+						<div class='modal-dialog'>
 							<div class='modal-content widget-area'>
 								<div class='modal-header'>
 									<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 									<p class='h4 modal-title'>Comenta</p>
 								</div>
-								<form class='form_comment' method='POST' action='php/funciones/new_comment.php'>
+								<form id='form_comment' method='POST' action='php/funciones/new_comment.php'>
 									<div class='modal-body'>
-										<textarea id='edicion_comentario' name ='cuerpo' placeholder='¿Qué piensas de la imagen?'></textarea>
+										<textarea class='form-control' id='edicion_comentario' name ='cuerpo' placeholder='¿Qué piensas de la imagen?'></textarea>
 										<input type='hidden' name='padre' class='answerParent' id='answerParent' value='' />
 										<input type='hidden' name='user' value=$_SESSION[usuario_actual]  />
 										<input type='hidden' name='contenido' value= '$id_boceto'/>
 										<input type='hidden' name='tipo_contenido' value='Bocetos' />
 									</div>
 									<div class='modal-footer container-fluid'>
-										<button type='submit' class='btn btn-success green'><span class='fa fa-share'></span>Comentar</button>
+										<button type='submit' class='btn btn-success green'><span class='fa fa-share'></span> Comentar</button>
 									</div>
 								</form>
 							</div><!-- /.modal-content -->
@@ -182,9 +182,10 @@
 	<!-- scripts -->
 	<script src="js/goTo.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="js/respuestaComentarios.js" type="text/javascript"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 </body>
 </html>

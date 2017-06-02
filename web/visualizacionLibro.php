@@ -180,9 +180,9 @@
 									<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 									<p class='h4 modal-title'>Comenta</p>
 								</div>
-								<form class='form_comment' method='POST' action='php/funciones/new_comment.php'>
+								<form id='form_comment' method='POST' action='php/funciones/new_comment.php'>
 									<div class='modal-body'>
-										<textarea id='edicion_comentario' name ='cuerpo' placeholder='¿Qué piensas de la historia?'></textarea>
+										<textarea class='form-control' id='edicion_comentario' name ='cuerpo' placeholder='¿Qué piensas de la historia?'></textarea>
 										<input type='hidden' name='padre' class='answerParent' id='answerParent' value='' />
 										<input type='hidden' name='user' value=$_SESSION[usuario_actual]  />
 										<input type='hidden' name='contenido' value= '$id_libro'/>
@@ -223,6 +223,7 @@
 	<script src="js/star-rating.js" type="text/javascript"></script>
 	<script src="js/respuestaComentarios.js" type="text/javascript"></script>
 	<script src="js/rating.js"></script>	
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 </body>
 </html>
