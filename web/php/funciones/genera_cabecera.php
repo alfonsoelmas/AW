@@ -7,7 +7,7 @@ function genera_cabecera($pagina_actual) {
 	echo "<div class='jumbotron' id='banner'>";
 		echo "<div class='text-left'>";
 			echo "<div class='col-sm-2'>";
-				echo "<img id='logo' alt='logo' src='img/logo1.png'>";
+				echo "<a href='index.php'><img id='logo' alt='logo' src='img/logo1.png'></a>";
 			echo "</div>";
 			echo "<div class='col-sm-10'>";
 				echo "<p class='h1'>Paper Dreams</p>";      
