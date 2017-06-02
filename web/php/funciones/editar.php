@@ -74,10 +74,18 @@
 			}
 		}
 	}
+
 	function annadir($titulo, $sinopsis, $genero, $fich_bd, $usuario_actual){
 		$sql = "INSERT INTO libros(titulo,sinopsis,categoria,portada,id_usuario) VALUES ('$titulo', '$sinopsis', '$genero', '$fich_bd', '$usuario_actual')";
 		$resultado = consulta($sql);
 	}
+
+	function modificar()
+	{
+		$sql = "UPDATE libros SET titulo='$titulo', sinopsis='$sinopsis', genero='$genero', portada='$fich_bd' WHERE id_usuario='$usuario_actual' ";
+		$resultado = consulta($sql);
+	}
+
 	function n(){
 		$sql = "SELECT * FROM libros";
 		$resultado = consulta($sql);
