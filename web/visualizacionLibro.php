@@ -86,7 +86,7 @@
 				  					</div>"; 
 				  				}
 
-				  				if($_SESSION['usuario_actual'] == $autor) {
+				  				if(isset($_GET_SESSION['usuario_actual']) && $_SESSION['usuario_actual'] == $autor) {
 				  					echo "
 				  					<div class='row'>
 				  						<a href='edicionCap.php?libro=".$id_libro."'>
@@ -110,7 +110,7 @@
 						  		echo "<div id='estrellas' class='text-center'>
 						  			<form action='php/funciones/rating.php' method='post'>";
 
-						  		$res = consulta_rate($_SESSION['usuario_actual']);
+						  		$res = consulta_rate($_SESSION['usuario_actual'], $id_libro);
 						  		$num = $res->num_rows;
 
 						  		if($num > 0)
