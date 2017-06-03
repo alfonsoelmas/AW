@@ -42,9 +42,7 @@
 							echo"<div class='panel panel-default'>
 									<div class='panel-heading'>
 										<p class='panel-title h3'>
-											<a href='result-busqueda.php?categoria=$datosConsulta[categoria]&tipo='libro'>
 												$datosConsulta[categoria]
-											</a>
 											<span class='badge'>$nResultados</span>
 										</p>
 									</div>					
@@ -92,8 +90,7 @@
 					?>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<?php 	echo '<a href="result-busqueda.php?&esDibujo=1">'?>
-							<p class="panel-title h3">Bocetos </a>
+							<p class="panel-title h3">Bocetos 
 							<span class="badge"><?php echo $filas ?></span></p>
 						</div>
 						<div class="panel-body">
