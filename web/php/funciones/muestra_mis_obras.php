@@ -28,9 +28,9 @@
 		<div class='col-sm-12 text-center'>
 			<div class='btn-group' role='group' aria-label='...'>";
 				if($a_mostrar != "Libros")
-					echo "<a href='misObras.php?a_mostrar=Libros'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-book' aria-hidden='true'></span> Ver mis libros</button></a>";
+					echo "<button type='button' class='btn btn-default'><a href='misObras.php?a_mostrar=Libros'><span class='glyphicon glyphicon-book' aria-hidden='true'></span> Ver mis libros</a></button>";
 				if($a_mostrar != "Bocetos")
-					echo "<a href='misObras.php?a_mostrar=Bocetos'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Ver mis bocetos</button></a>";
+					echo "<button type='button' class='btn btn-default'><a href='misObras.php?a_mostrar=Bocetos'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Ver mis bocetos</a></button>";
 			echo "</div>
 		</div>
 	</div>";
@@ -128,8 +128,8 @@
 	<div class='row'>
 		<div class='col-sm-12 text-center'>
 			<div class='btn-group' role='group' aria-label='...'>
-				<a href='edicion.php'><button type='button' class='btn btn-default'>Escribe un nuevo libro</button></a>
-				<a href='edicionFoto.php'><button type='button' class='btn btn-default'>Dibuja un nuevo boceto</button></a>
+				<button type='button' class='btn btn-default'><a href='edicion.php'>Escribe un nuevo libro</a></button>
+				<button type='button' class='btn btn-default'><a href='edicionFoto.php'>Dibuja un nuevo boceto</a></button>
 			</div>
 		</div>
 	</div>";
@@ -145,10 +145,10 @@
 			<div class='btn-group' role='group' aria-label='...'>";
 				// Si hay que mostrar el enlace a la anterior página.
 				if($pagina_anterior >= 1)
-					echo "<a href='misObras.php?pagina=".$pagina_anterior."&a_mostrar=".$a_mostrar."'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>Prev</button></a>";
+					echo "<button type='button' class='btn btn-default'><a href='misObras.php?pagina=".$pagina_anterior."&a_mostrar=".$a_mostrar."'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>Prev</a></button>";
 				// Si hay que mostrar el enlace a la siguiente página.
 				if($pagina_siguiente <= $total_paginas)
-					echo "<a href='misObras.php?pagina=".$pagina_siguiente."&a_mostrar=".$a_mostrar."'><button type='button' class='btn btn-default'>Next<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></button></a>";
+					echo "<button type='button' class='btn btn-default'><a href='misObras.php?pagina=".$pagina_siguiente."&a_mostrar=".$a_mostrar."'>Next<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></a></button>";
 			echo "</div>
 		</div>
 	</div>";
