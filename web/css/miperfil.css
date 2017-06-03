@@ -43,7 +43,7 @@
         background-position: 50%;
         border-radius: 50%;
         background-size: 100% auto;
-        align-self: left;
+        align-self: auto;
       }
 
     #datos{
@@ -88,7 +88,6 @@
   
     #text-bloque-inicio{
       font-size: 34px;
-      font-weight: 13px;
     }
 
 
@@ -110,7 +109,7 @@
 
 
     button:hover #buscador{
-      background-color:646363;
+      background-color:#646363;
       border-color: #3C3B3B;
     }
 
