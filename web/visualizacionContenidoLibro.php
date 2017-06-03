@@ -120,7 +120,7 @@
 			  		<div class="col-sm-1">
 			  			<?php
 			  				if($capituloSiguiente != "")
-				  				echo "<button type='button' class='btn btn-primary btn-md' ='capituloAnterior'> 
+				  				echo "<button type='button' class='btn btn-primary btn-md' id='capituloSiguiente'> 
 									  	<a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente->id_capitulo'>
 									  		Capitulo Siguiente
 									  	</a>		

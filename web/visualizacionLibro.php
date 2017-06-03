@@ -62,7 +62,7 @@
 			    		<?php 
 
 			    		if(!$_SESSION || $_SESSION['usuario_actual'] != $autor){
-			    			?><a href=<?php echo "vistaUsuario.php?usuario=" . $autor;?>>Visita el perfil del autor</a><?php
+			    			?><a href=<?php echo "vistaUsuario.php?usuario=$autor";?>>Visita el perfil del autor</a><?php
 			    		}
 
 			    		?>
@@ -78,11 +78,11 @@
 				  					$capitulo = $res->fetch_object();
 				  					echo "
 				  					<div class='row'>
-				  							<button type='button' id='leer' class='btn btn-primary btn-lg opciones'>
-				  								<a href='visualizacionContenidoLibro.php?id_libro=".$id_libro."&id_capitulo=".$capitulo->id_capitulo."'>
-				  									Leer
-				  								</a>
-				  							</button>
+		  								<a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capitulo->id_capitulo'>
+			  								<button type='button' id='leer' class='btn btn-primary btn-lg opciones'>
+			  									Leer
+			  								</button>
+			  							</a>
 				  					</div>"; 
 				  				}
 
