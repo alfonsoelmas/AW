@@ -28,14 +28,14 @@
 								<form id="formulario" method="post" action="login.php">
 									
 									<div class="input-group input-group-md">
-										<span class="input-group-addon glyphicon glyphicon-user" id="icon_user"></span>
-										<input type="text" class="form-control" id="username" name='username' placeholder="Email" aria-describedby="icon_mail">
+										<span class="input-group-addon glyphicon glyphicon-user"></span>
+										<input type="text" class="form-control" id="username" name='username' placeholder="Email">
 									</div>
 									<br>
 
 									<div class="input-group input-group-md">
-										<span class="input-group-addon glyphicon glyphicon-lock" id ="icon_pass"></span>
-										<input type="password" class="form-control" id="password" name='password' placeholder="Contraseña" aria-describedby="icon_pass">
+										<span class="input-group-addon glyphicon glyphicon-lock"></span>
+										<input type="password" class="form-control" id="password" name='password' placeholder="Contraseña"/>
 									</div>
 									<br>
 									<div class="text-left">
@@ -92,5 +92,7 @@
 
 </body>
 </html>
+
+
 
 
