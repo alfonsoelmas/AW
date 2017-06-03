@@ -71,10 +71,10 @@
 			<div class='btn-group' role='group' aria-label='...'>";
 				// Si hay que mostrar el enlace a la anterior página.
 				if($pagina_anterior >= 1)
-					echo "<a href='misSeguidores.php?pagina=".$pagina_anterior."'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>Prev</button></a>";
+					echo "<a href='siguiendo.php?pagina=".$pagina_anterior."'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>Prev</button></a>";
 				// Si hay que mostrar el enlace a la siguiente página.
 				if($pagina_siguiente <= $total_paginas)
-					echo "<a href='misSeguidores.php?pagina=".$pagina_siguiente."'><button type='button' class='btn btn-default'>Next<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></button></a>";
+					echo "<a href='siguiendo.php?pagina=".$pagina_siguiente."'><button type='button' class='btn btn-default'>Next<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></button></a>";
 			echo "</div>
 		</div>
 	</div>";
