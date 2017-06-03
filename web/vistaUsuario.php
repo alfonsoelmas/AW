@@ -99,11 +99,11 @@
 												<button class='btn btn-primary btn-md' type='submit' id='unfollow'>
 													<span class='glyphicon glyphicon-minus'></span>
 													Dejar de seguir 
-												</button>";	
+												</button>	
+										</form>";
 											}
 									}
 								?> 
-								</form>
 							</div><!--col-sm-2-->
 						</div><!--row-->
 						<br>
@@ -247,4 +247,5 @@
 
 </body>
 </html>
+
 
