@@ -18,15 +18,14 @@
 			<span> 	Filtrar por: </span>
 			<div class="row">
 
-			  <input type="radio" name="tipo" value="libro" checked> Libro<br>
-			  <input type="radio" name="tipo" value="dibujo"> Dibujo<br> 
+			  <input type="radio" name="tipo" value="libro" checked></input> Libro<br>
+			  <input type="radio" name="tipo" value="dibujo"></input> Dibujo<br> 
 
 			</div>
 
 			<div class="row">
 				Género de libro:
-				<span class="caret"></span>
-				</button>
+
 				<select name="categoria">
 					<?php 
 						//Pintamos las categorías
@@ -41,7 +40,7 @@
 					?>
 				</select> 
 			</div>
-			<input type="submit" value="Busqueda" class="btn btn-lg"></input>
+			<input type="submit" value="Busqueda" class="btn btn-lg">
 		</form>
 	</div> <!--panel-body--> 
 </div>
