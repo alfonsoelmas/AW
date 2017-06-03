@@ -18,8 +18,8 @@ function genera_cabecera($pagina_actual) {
 	   		echo "<ol class='breadcrumb' id='breadcum' >";
 	   			// Mostrar usuario conectado en caso de haberlo.
 				if(isset($_SESSION["usuario_actual"])) {
-					echo "¡Hola, ".$_SESSION["name"]."! ";
-					echo "<a href='php/funciones/logout.php'>Desconectar</a> | ";
+					echo "<li>¡Hola, ".$_SESSION["name"]."! ";
+					echo "<a href='php/funciones/logout.php'>Desconectar</a></li>";
 				}
 				if($pagina_actual != "Inicio")
 	   				echo "<li><a href='index.php'>Inicio</a></li>";
