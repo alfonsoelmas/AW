@@ -53,7 +53,7 @@
 								<input type="hidden" id="id_libro" name="id_libro" value="<?php echo $id_libro?>">
 								<button type="submit" class="btn btn-warning margen-top">Añadir capítulo</button>
 								<?php
-									echo "<a href='visualizacionLibro.php?id_libro=".$id_libro."'><button type='button' class='btn btn-warning margen-top'>He terminado</button></a>";
+									echo "<a  class='btn btn-warning margen-top' href='visualizacionLibro.php?id_libro=".$id_libro."'>He terminado</a>";
 								?>
 							</div>
 						</div>
