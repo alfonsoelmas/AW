@@ -35,8 +35,8 @@
 									<div class="login">
 										<div class="login-form">
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-font" id="icon_user"></span>
-												<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" aria-describedby="icon_user"/>
+												<span class="input-group-addon glyphicon glyphicon-font"></span>
+												<input type="text" class="form-control" id="name" name="name" placeholder="Nombre"/>
 											</div>
 
 											<div class="input-group input-group-md">
@@ -45,13 +45,13 @@
 											</div>
 											
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-plus" id="sizing-addon1"></span>
-												<input type="text" class="form-control" id="age" name="age" placeholder="Edad" aria-describedby="sizing-addon1"/>
+												<span class="input-group-addon glyphicon glyphicon-plus"></span>
+												<input type="text" class="form-control" id="age" name="age" placeholder="Edad"/>
 											</div>
 
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-map-marker" id="icon_user"></span>
-												<input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" aria-describedby="icon_user"/>
+												<span class="input-group-addon glyphicon glyphicon-map-marker"></span>
+												<input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad"/>
 											</div>
 
 											<div class="input-group input-group-md">
@@ -67,21 +67,20 @@
 											<br>
 												<span class="input-group-addon glyphicon glyphicon-pencil"> Descripción</span>
 												<textarea class="form-control" id='desc' name='desc' rows="5" placeholder="Escribe una breve descripcion de ti..."></textarea>
-												<!--<textarea class="form-control" id="desc" name="desc" rows="5" placeholder=""></textarea>-->
 											
 											<div class="input-group input-group-md">
 												<span class="input-group-addon" id="icon_mail">@</span>
-												<input type="text" class="form-control" id="email" name="email" placeholder="Email" aria-describedby="icon_mail"/>
+												<input type="text" class="form-control" id="email" name="email" placeholder="Email"/>
 											</div>
 											
 											<div class="input-group input-group-md">
-												<span class="input-group-addon glyphicon glyphicon-lock" id="icon_pass"></span>
-												<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" aria-describedby="icon_pass"/>
+												<span class="input-group-addon glyphicon glyphicon-lock"></span>
+												<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" />
 											</div>
 											
 											<div class="input-group input-group-md">
-												<span class="input-group-addon  glyphicon glyphicon-lock" id="icon_pass2"></span>
-												<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Repetir Contraseña" aria-describedby="icon_pass2"/>
+												<span class="input-group-addon  glyphicon glyphicon-lock"></span>
+												<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Repetir Contraseña"/>
 											</div>
 											
 											<div class="text-left margin-normal">
@@ -123,3 +122,4 @@
 		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 	</body>
 </html>
+
