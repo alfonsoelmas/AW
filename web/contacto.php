@@ -27,21 +27,21 @@
 					<form name="contactform" method="post" action="php/funciones/send_form_email.php"> 
 						<div class="col-sm-6">
 
-						  <label for="first_name">Nombre *</label>
+						  <label>Nombre *</label>
 						  <input  type="text" class="form-control" name="first_name" maxlength="50" size="30">
 
-						  <label for="last_name">Apellido *</label>
+						  <label>Apellido *</label>
 						  <input type="text" class="form-control" name="last_name" maxlength="50" size="30">
 
-						  <label for="email">E-mail *</label>
+						  <label>E-mail *</label>
 						  <input  type="text" class="form-control" name="email" maxlength="80" size="30">
 
-						  <label for="telephone">Teléfono</label>
+						  <label>Teléfono</label>
 						  <input  type="text" class="form-control" name="telephone" maxlength="30" size="30">
 
 						</div>
 						<div class="col-sm-6">
-						  <label for="message">Mensaje *</label>
+						  <label>Mensaje *</label>
 						  <br>
 						  <textarea  name="message" maxlength="1000" cols="35" rows="6"></textarea>
 						  <br><br>
