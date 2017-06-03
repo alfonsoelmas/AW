@@ -61,7 +61,7 @@
 						<?php 
 
 			    		if(!$_SESSION || $_SESSION['usuario_actual'] != $autor){
-			    			?><a href=<?php echo "vistaUsuario.php?usuario=i" . $autor . "'";?>>Visita el perfil del autor</a><?php
+			    			?><a href=<?php echo "vistaUsuario.php?usuario=".$autor;?>>Visita el perfil del autor</a><?php
 			    		}
 
 			    		?>
