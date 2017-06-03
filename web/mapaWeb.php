@@ -65,7 +65,7 @@
 	    						<a href="misObras.php">mis obras</a>
 	    						<ul>
 	    							<li><a href="visualizacionLibro.php">visualizacion libro</a></li>
-	    							<li><a href="edicionFoto.php">visualizacion boceto</a></li>
+	    							<li><a href="visualizacionBoceto.php">visualizacion boceto</a></li>
 	    						</ul>
 	    					</li>
 	    					<li><a href="miPerfil.php">mi perfil</a></li>
