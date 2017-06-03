@@ -68,7 +68,7 @@
 										<input type='text' class='form-control' id='titulo' name='titulo' placeholder='Escribe aquí el título'/>
 										<br>
 										<span class='input-group-addon glyphicon glyphicon-text-size'>Descripción</span>
-										<textarea type='text' class='form-control' id='desc' name='desc' placeholder='Escribe aquí alguna descripción'></textarea>
+										<textarea class='form-control' id='desc' name='desc' placeholder='Escribe aquí alguna descripción'></textarea>
 									</div>";
 								}
 							?>

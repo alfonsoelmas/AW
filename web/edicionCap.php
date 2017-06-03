@@ -49,7 +49,7 @@
 								<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe aquí el título"/>
 								<br>
 								<span class="input-group-addon glyphicon glyphicon-text-size ">Contenido del capítulo</span>
-								<textarea type="text" class="form-control" id='cuerpo' name='cuerpo' rows="10" placeholder="Erase una vez que se era..."></textarea>
+								<textarea class="form-control" id='cuerpo' name='cuerpo' rows="10" placeholder="Erase una vez que se era..."></textarea>
 								<input type="hidden" id="id_libro" name="id_libro" value="<?php echo $id_libro?>">
 								<button type="submit" class="btn btn-warning margen-top">Añadir capítulo</button>
 								<?php
