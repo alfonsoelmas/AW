@@ -3,7 +3,7 @@
 
 function controlaSesion(){
 	if(!isset($_SESSION['usuario_actual'])){
-		header('Location: login.php');
+		header('Location:'.$_SERVER["DOCUMENT_ROOT"].'login.php');
 		return false;
 	}
 	return true;
@@ -11,7 +11,7 @@ function controlaSesion(){
 
 function controlaAcceso(){
 	if(!$_GET){
-		header('Location: 404error.php');
+		header('Location:'.$_SERVER["DOCUMENT_ROOT"].'404error.php');
 		return false;
 	}
 	return true;
