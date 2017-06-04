@@ -109,22 +109,19 @@
 							}
 							//Si el capituloAnterior está vacio, significa que no hemos entrado al bucle y, por tanto, estamos en el primero
 							if($capituloAnterior != "")
-								echo " <button type='button' class='btn btn-primary btn-md' id='capituloAnterior'>
-											<a  href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior->id_capitulo'>
-												Capitulo Anterior
-											</a>
-									  	</button>";
+								echo " <a  class='btn btn-primary btn-md' id='capituloAnterior' href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior->id_capitulo'>
+										Capitulo Anterior
+									</a>";
 						?> 
 			  		</div> <!--col-sm-1 text-left-->
 			  		<div class="col-sm-9"></div>
 			  		<div class="col-sm-1">
 			  			<?php
 			  				if($capituloSiguiente != "")
-				  				echo "<button type='button' class='btn btn-primary btn-md' id='capituloSiguiente'> 
-									  	<a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente->id_capitulo'>
-									  		Capitulo Siguiente
-									  	</a>		
-									</button>";
+				  				echo "
+								<a class='btn btn-primary btn-md' id='capituloSiguiente' href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente->id_capitulo'>
+									Capitulo Siguiente
+								</a>";
 			  			?>
 			  		</div><!--col-sm-1-->
 			  	</div> <!-- row-->
