@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <title>Categorías - Paper Dreams</title>
@@ -71,10 +71,10 @@
 									<div class='col-sm-12 text-center'>
 										<div class='btn-group' role='group' aria-label='...'>
 											<form method='get' action='result-busqueda.php'>
-												<input type='hidden' name='categoria' value='".$categoria."' class='btn btn-lg'></input></input>
-												<input type='hidden' name='tipo' value='libro'></input>
-												<input type='hidden' name='busq' value=''></input>
-												<input type='submit' value='Ver más' class='btn btn-lg'></input>
+												<input type='hidden' name='categoria' value='".$categoria."' class='btn btn-lg'>
+												<input type='hidden' name='tipo' value='libro'>
+												<input type='hidden' name='busq' value=''>
+												<input type='submit' value='Ver más' class='btn btn-lg'>
 											</form>
 										</div>
 										</div>
@@ -117,10 +117,10 @@
 									<div class="col-sm-12 text-center">
 										<div class="btn-group" role="group" aria-label="...">
 											<form method="get" action=<?php echo "result-busqueda.php";?>>
-												<input type="hidden" name="tipo" value="dibujo"></input>
-												<input type="hidden" name="categoria" value="terror"></input>
-												<input type="hidden" name="busq" value=""></input>
-												<input type="submit" value="Ver más" class="btn btn-lg"></input>
+												<input type="hidden" name="tipo" value="dibujo">
+												<input type="hidden" name="categoria" value="terror">
+												<input type="hidden" name="busq" value="">
+												<input type="submit" value="Ver más" class="btn btn-lg">
 											</form>
 										</div>
 									</div>

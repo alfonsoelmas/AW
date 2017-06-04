@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/comentarios.php");
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/rating_value.php");
@@ -59,14 +59,15 @@
 			    		<div id="sipnopsis">
 			    			<?php echo $sinopsis?>
 			    		</div>
-			    		<?php 
+			  		</div>
+			  		<?php 
 
 			    		if(!$_SESSION || $_SESSION['usuario_actual'] != $autor){
-			    			?><a href=<?php echo "vistaUsuario.php?usuario=$autor";?>>Visita el perfil del autor</a><?php
+			    			echo "<div class='row text-center'><a href='vistaUsuario.php?usuario=$autor'>Visita el perfil del autor</a>
+			    					</div>";
 			    		}
 
-			    		?>
-			  		</div> 
+			    	?>
 			  		<div id="opciones">
 				  		<div class="col-sm-2 text-left">
 				  			<?php
@@ -78,8 +79,8 @@
 				  					$capitulo = $res->fetch_object();
 				  					echo "
 				  					<div class='row'>
-		  								<a href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capitulo->id_capitulo' id='leer' class='btn btn-primary btn-lg opciones'
-			  								Leer
+		  								<a id='leer' class='btn btn-primary btn-lg opciones' href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capitulo->id_capitulo'>
+			  									Leer
 			  							</a>
 				  					</div>"; 
 				  				}

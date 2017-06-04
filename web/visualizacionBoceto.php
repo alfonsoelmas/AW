@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/bocetos.php");
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/comentarios.php");
 
@@ -57,15 +57,15 @@
 						<div id="sipnopsis">
 							<?php echo $descripcion ?>
 						</div>
-
-						<?php 
+				    </div>
+				    <?php 
 
 			    		if(!$_SESSION || $_SESSION['usuario_actual'] != $autor){
-			    			?><a href=<?php echo "vistaUsuario.php?usuario=".$autor;?>>Visita el perfil del autor</a><?php
+			    			echo "<div class='row text-center'><a href='vistaUsuario.php?usuario=$autor'>Visita el perfil del autor</a>
+			    					</div>";
 			    		}
 
-			    		?>
-				    </div>
+			    	?>
 				    <div id="opciones">
 				  		<div class="col-sm-2 text-left">
 				  			<?php
@@ -73,7 +73,8 @@
 				  					echo "
 				  					<div class='row'>
 										<a href='edicionFoto.php?foto=".$id_boceto."' class='btn btn-primary bmd-btn-fab'>
-											Editar boceto
+  												Editar boceto
+										
 										</a>
 									</div>";
 								}

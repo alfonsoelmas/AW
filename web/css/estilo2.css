@@ -265,3 +265,7 @@ div.botones{
     width: 200px;
   }
 }
+
+iframe{
+	border-width: 0px;
+}

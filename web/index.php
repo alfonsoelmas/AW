@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 	<title>Paper Dreams</title>
@@ -94,7 +94,7 @@
 		<!--//BLOQUE COOKIES-->
 	<div id="barraaceptacion" class="container-fluid">
 	    <div class="inner">
-	    	<a  class="ok"><button id="ok">OK</button></a> |  
+	    	<a id="ok" class="ok btn">OK</a> |  
 	        Solicitamos su permiso para obtener datos estadísticos de su navegación en esta web, en cumplimiento del Real 
 	        Decreto-ley 13/2012. Si continúa navegando consideramos que acepta el uso de cookies.
 	        <a href="http://politicadecookies.com" target="_blank" class="info">Más información</a>

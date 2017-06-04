@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/libros.php");
 	require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/comentarios.php");
 
@@ -109,19 +109,18 @@
 							}
 							//Si el capituloAnterior está vacio, significa que no hemos entrado al bucle y, por tanto, estamos en el primero
 							if($capituloAnterior != "")
-								echo " <a  class='btn btn-primary btn-md' id='capituloAnterior' href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior->id_capitulo'>
-										Capitulo Anterior
-									</a>";
+								echo " <a class='btn btn-primary btn-md' id='capituloAnterior' href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloAnterior->id_capitulo'>
+												Capitulo Anterior
+											</a>";
 						?> 
 			  		</div> <!--col-sm-1 text-left-->
-			  		<div class="col-sm-9"></div>
+			  		<div class="col-sm-7"></div>
 			  		<div class="col-sm-1">
 			  			<?php
 			  				if($capituloSiguiente != "")
-				  				echo "
-								<a class='btn btn-primary btn-md' id='capituloSiguiente' href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente->id_capitulo'>
-									Capitulo Siguiente
-								</a>";
+				  				echo " <a class='btn btn-primary btn-md' id='capituloSiguiente' href='visualizacionContenidoLibro.php?id_libro=$id_libro&id_capitulo=$capituloSiguiente->id_capitulo'>
+									  		Capitulo Siguiente
+									  	</a>";
 			  			?>
 			  		</div><!--col-sm-1-->
 			  	</div> <!-- row-->

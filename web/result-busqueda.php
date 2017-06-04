@@ -33,6 +33,7 @@
 					$resultado;
 					$totBusqueda=0;
 					$dato=false;
+					$pinta=true;
 
 					if(isset($_GET["busqFacil"]) || isset($_GET['busq']))
 					{
@@ -66,6 +67,7 @@
 							} else {
 								//Buscamos bocetos
 								$resultado = buscaDibujos($busqueda);
+								$pinta=false;
 						
 							}
 
@@ -88,7 +90,10 @@
 
 								$autor = dameAutor($dato["id_usuario"]);
 								$titulo = $dato["titulo"];
-								$valoracion = dameMedia($dato["id"]);
+								if($pinta){
+									//Obtenemos valoraciones solo si son libros
+									$valoracion = dameMedia($dato["id"]);
+								}
 								$valoracion = redondea($valoracion); //La redondeamos
 								$img = $dato["portada"];
 
@@ -113,15 +118,16 @@
 											<p>
 
 												<?php 
+												if($pinta){
+													//El if nos comprueba si es dibujo o no, y si no lo es, pinta valoraciones
+													for($i=0; $i<$valoracion; $i++){
+														echo '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>';
+													}
 
-												for($i=0; $i<$valoracion; $i++){
-													echo '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>';
-												}
-
-												for($i=$valoracion; $i<5; $i++){
-													echo '<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>';
-												}
-
+													for($i=$valoracion; $i<5; $i++){
+														echo '<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>';
+													}
+												}	
 
 												?>
 

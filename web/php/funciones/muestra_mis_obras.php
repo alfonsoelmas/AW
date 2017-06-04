@@ -28,9 +28,9 @@
 		<div class='col-sm-12 text-center'>
 			<div class='btn-group' role='group' aria-label='...'>";
 				if($a_mostrar != "Libros")
-					echo "<a class='btn btn-default' href='misObras.php?a_mostrar=Libros'><span class='glyphicon glyphicon-book' aria-hidden='true'></span> Ver mis libros</a>";
+					echo "<button type='button' class='btn btn-default'><a href='misObras.php?a_mostrar=Libros'><span class='glyphicon glyphicon-book' aria-hidden='true'></span> Ver mis libros</a></button>";
 				if($a_mostrar != "Bocetos")
-					echo "<a class='btn btn-default' href='misObras.php?a_mostrar=Bocetos'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Ver mis bocetos</a>";
+					echo "<button type='button' class='btn btn-default'><a href='misObras.php?a_mostrar=Bocetos'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Ver mis bocetos</a></button>";
 			echo "</div>
 		</div>
 	</div>";
@@ -64,15 +64,19 @@
 							<img src='".$obra['portada']."' alt='' class='imgP'>
 							<div class='caption'>
 								<p>$obra[titulo]</p>
-								<p>".$num_capitulos." capítulo(s)</p>
+								<p> Capitulos disponibles: $num_capitulos</p>
 								<p>$obra[fecha]</p>
 							</div>
 						</a>
-						<a class='btn btn-primary bmd-btn-fab' href='edicionCap.php?libro=$obra[id_libro]'>
-  							<i class='glyphicon glyphicon-plus'></i>
+						<a href='edicionCap.php?libro=$obra[id_libro]'>
+							<button type='button' class='btn btn-primary bmd-btn-fab'>
+  								<i class='glyphicon glyphicon-plus'></i>
+							</button>
 						</a>
-						<a class='btn btn-primary bmd-btn-fab' href='edicion.php?libro=$obra[id_libro]'>
-  							<i class='glyphicon glyphicon-edit'></i>
+						<a href='edicion.php?libro=$obra[id_libro]'>
+							<button type='button' class='btn btn-primary bmd-btn-fab'>
+  								<i class='glyphicon glyphicon-edit'></i>
+							</button>
 						</a>
 					</div>
 				</div>";
@@ -102,8 +106,10 @@
 								<p>".$obra['fecha']."</p>
 							</div>
 						</a>
-						<a class='btn btn-primary bmd-btn-fab' href='edicionFoto.php?foto=".$obra['id_bocetos']."'>
-  							<i class='glyphicon glyphicon-edit'></i>
+						<a href='edicionFoto.php?foto=".$obra['id_bocetos']."'>
+							<button type='button' class='btn btn-primary bmd-btn-fab'>
+  								<i class='glyphicon glyphicon-edit'></i>
+							</button>
 						</a>
 					</div>
 				</div>";
@@ -122,8 +128,8 @@
 	<div class='row'>
 		<div class='col-sm-12 text-center'>
 			<div class='btn-group' role='group' aria-label='...'>
-				<a class='btn btn-default' href='edicion.php'>Escribe un nuevo libro</a>
-				<a class='btn btn-default' href='edicionFoto.php'>Dibuja un nuevo boceto</a>
+				<button type='button' class='btn btn-default'><a href='edicion.php'>Escribe un nuevo libro</a></button>
+				<button type='button' class='btn btn-default'><a href='edicionFoto.php'>Dibuja un nuevo boceto</a></button>
 			</div>
 		</div>
 	</div>";
@@ -139,10 +145,10 @@
 			<div class='btn-group' role='group' aria-label='...'>";
 				// Si hay que mostrar el enlace a la anterior página.
 				if($pagina_anterior >= 1)
-					echo "<a class='btn btn-default' href='misObras.php?pagina=".$pagina_anterior."&a_mostrar=".$a_mostrar."'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>Prev</a>";
+					echo "<button type='button' class='btn btn-default'><a href='misObras.php?pagina=".$pagina_anterior."&a_mostrar=".$a_mostrar."'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>Prev</a></button>";
 				// Si hay que mostrar el enlace a la siguiente página.
 				if($pagina_siguiente <= $total_paginas)
-					echo "<a class='btn btn-default' href='misObras.php?pagina=".$pagina_siguiente."&a_mostrar=".$a_mostrar."'>Next<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></a>";
+					echo "<button type='button' class='btn btn-default'><a href='misObras.php?pagina=".$pagina_siguiente."&a_mostrar=".$a_mostrar."'>Next<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></a></button>";
 			echo "</div>
 		</div>
 	</div>";
