@@ -14,7 +14,7 @@
 
  	<?php 
  	//Incluimos la cabecera
- 	    $pagina_actual="Mi perfil";
+ 	    $pagina_actual="busqueda";
 		require_once($_SERVER['DOCUMENT_ROOT'] ."/web/php/funciones/genera_cabecera.php");
 	?>
 
