@@ -72,7 +72,7 @@
 				  				if($_SESSION['usuario_actual'] == $autor) {
 				  					echo "
 				  					<div class='row'>
-										<a href='edicionFoto.php?foto=".$id_boceto." class='btn btn-primary bmd-btn-fab''>
+										<a href='edicionFoto.php?foto=".$id_boceto."' class='btn btn-primary bmd-btn-fab'>
 											Editar boceto
 										</a>
 									</div>";
