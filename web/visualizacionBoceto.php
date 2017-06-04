@@ -72,10 +72,8 @@
 				  				if($_SESSION['usuario_actual'] == $autor) {
 				  					echo "
 				  					<div class='row'>
-										<a href='edicionFoto.php?foto=".$id_boceto."'>
-											<button type='button' class='btn btn-primary bmd-btn-fab'>
-  												Editar boceto
-											</button>
+										<a href='edicionFoto.php?foto=".$id_boceto." class='btn btn-primary bmd-btn-fab''>
+											Editar boceto
 										</a>
 									</div>";
 								}
