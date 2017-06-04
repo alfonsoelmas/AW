@@ -18,8 +18,8 @@
 			<span> 	Filtrar por: </span>
 			<div class="row">
 
-			  <input type="radio" name="tipo" value="libro" checked></input> Libro<br>
-			  <input type="radio" name="tipo" value="dibujo"></input> Dibujo<br> 
+			  <input type="radio" name="tipo" value="libro" checked> Libro<br>
+			  <input type="radio" name="tipo" value="dibujo"> Dibujo<br> 
 
 			</div>
 
