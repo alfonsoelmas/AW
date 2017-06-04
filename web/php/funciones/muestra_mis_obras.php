@@ -28,9 +28,9 @@
 		<div class='col-sm-12 text-center'>
 			<div class='btn-group' role='group' aria-label='...'>";
 				if($a_mostrar != "Libros")
-					echo "<a href='misObras.php?a_mostrar=Libros'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-book' aria-hidden='true'></span> Ver mis libros</button></a>";
+					echo "<a class='btn btn-default' href='misObras.php?a_mostrar=Libros'><span class='glyphicon glyphicon-book' aria-hidden='true'></span> Ver mis libros</a>";
 				if($a_mostrar != "Bocetos")
-					echo "<a href='misObras.php?a_mostrar=Bocetos'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Ver mis bocetos</button></a>";
+					echo "<a class='btn btn-default' href='misObras.php?a_mostrar=Bocetos'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span> Ver mis bocetos</a>";
 			echo "</div>
 		</div>
 	</div>";
@@ -68,15 +68,11 @@
 								<p>$obra[fecha]</p>
 							</div>
 						</a>
-						<a href='edicionCap.php?libro=$obra[id_libro]'>
-							<button type='button' class='btn btn-primary bmd-btn-fab'>
-  								<i class='glyphicon glyphicon-plus'></i>
-							</button>
+						<a class='btn btn-primary bmd-btn-fab' href='edicionCap.php?libro=$obra[id_libro]'>
+  							<i class='glyphicon glyphicon-plus'></i>
 						</a>
-						<a href='edicion.php?libro=$obra[id_libro]'>
-							<button type='button' class='btn btn-primary bmd-btn-fab'>
-  								<i class='glyphicon glyphicon-edit'></i>
-							</button>
+						<a class='btn btn-primary bmd-btn-fab' href='edicion.php?libro=$obra[id_libro]'>
+  							<i class='glyphicon glyphicon-edit'></i>
 						</a>
 					</div>
 				</div>";
@@ -106,10 +102,8 @@
 								<p>".$obra['fecha']."</p>
 							</div>
 						</a>
-						<a href='edicionFoto.php?foto=".$obra['id_bocetos']."'>
-							<button type='button' class='btn btn-primary bmd-btn-fab'>
-  								<i class='glyphicon glyphicon-edit'></i>
-							</button>
+						<a class='btn btn-primary bmd-btn-fab' href='edicionFoto.php?foto=".$obra['id_bocetos']."'>
+  							<i class='glyphicon glyphicon-edit'></i>
 						</a>
 					</div>
 				</div>";
@@ -128,8 +122,8 @@
 	<div class='row'>
 		<div class='col-sm-12 text-center'>
 			<div class='btn-group' role='group' aria-label='...'>
-				<a href='edicion.php'><button type='button' class='btn btn-default'>Escribe un nuevo libro</button></a>
-				<a href='edicionFoto.php'><button type='button' class='btn btn-default'>Dibuja un nuevo boceto</button></a>
+				<a class='btn btn-default' href='edicion.php'>Escribe un nuevo libro</a>
+				<a class='btn btn-default' href='edicionFoto.php'>Dibuja un nuevo boceto</a>
 			</div>
 		</div>
 	</div>";
@@ -145,10 +139,10 @@
 			<div class='btn-group' role='group' aria-label='...'>";
 				// Si hay que mostrar el enlace a la anterior página.
 				if($pagina_anterior >= 1)
-					echo "<a href='misObras.php?pagina=".$pagina_anterior."&a_mostrar=".$a_mostrar."'><button type='button' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>Prev</button></a>";
+					echo "<a class='btn btn-default' href='misObras.php?pagina=".$pagina_anterior."&a_mostrar=".$a_mostrar."'><span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>Prev</a>";
 				// Si hay que mostrar el enlace a la siguiente página.
 				if($pagina_siguiente <= $total_paginas)
-					echo "<a href='misObras.php?pagina=".$pagina_siguiente."&a_mostrar=".$a_mostrar."'><button type='button' class='btn btn-default'>Next<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></button></a>";
+					echo "<a class='btn btn-default' href='misObras.php?pagina=".$pagina_siguiente."&a_mostrar=".$a_mostrar."'>Next<span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span></a>";
 			echo "</div>
 		</div>
 	</div>";
